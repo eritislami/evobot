@@ -38,7 +38,6 @@ module.exports = {
     try {
       playlist = await youtube.getPlaylist(url, { part: "snippet" })
       videos = await playlist.getVideos(undefined, { part: "snippet" })
-      console.log(videos[0])
     } catch (error) {
       console.error(error)
     }
