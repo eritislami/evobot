@@ -1,7 +1,7 @@
-const { YOUTUBE_API_KEY } = require("../config.json"),
-      ytdlDiscord = require("ytdl-core-discord"),
-      YouTubeAPI = require("simple-youtube-api"),
-      youtube = new YouTubeAPI(YOUTUBE_API_KEY)
+const { YOUTUBE_API_KEY } = require("../config.json")
+const ytdlDiscord = require("ytdl-core-discord")
+const YouTubeAPI = require("simple-youtube-api")
+const youtube = new YouTubeAPI(YOUTUBE_API_KEY)
 
 module.exports = {
   name: "playlist",
