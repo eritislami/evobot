@@ -7,7 +7,7 @@ module.exports = {
     if (!message.member.voice.channel) return message.reply("You need to join a voice channel first!").catch(console.error)
     if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error)
 
-    if (!args[0]) return message.reply(`🔊 The current volume is: **${serverQueue.volume}**`).catch(console.error)
+    if (!args[0]) return message.reply(`🔊 The current volume is: **${serverQueue.volume}%**`).catch(console.error)
 
     serverQueue.volume = args[0]
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100)
