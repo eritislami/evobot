@@ -1,0 +1,22 @@
+{
+  "name": "evobot",
+  "version": "0.3.0",
+  "description": "Discord music bot built with discord.js",
+  "main": "index.js",
+  "author": "Erit Islami <eritislami@gmail.com>",
+  "private": true,
+  "dependencies": {
+    "discord.js": "github:discordjs/discord.js",
+    "opusscript": "0.0.6",
+    "simple-youtube-api": "^5.1.1",
+    "ytdl-core": "^0.29.2",
+    "ytdl-core-discord": "amishshah/ytdl-core-discord"
+  },
+  "optionalDependencies": {
+    "erlpack": "discordapp/erlpack",
+    "node-opus": "^0.3.1"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
