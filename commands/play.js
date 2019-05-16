@@ -24,6 +24,14 @@ module.exports = {
     const urlValid = pattern.test(args[0])
 
     const serverQueue = message.client.queue.get(message.guild.id)
+    const queueConstruct = {
+      textChannel: message.channel,
+      channel,
+      connection: null,
+      songs: [],
+      volume: 100,
+      playing: true
+    }
 
     let songInfo = null
     let song = null
@@ -39,9 +47,8 @@ module.exports = {
         console.error(error)
       }
     } else {
-      let results = null
       try {
-        results = await youtube.searchVideos(search, 1)
+        const results = await youtube.searchVideos(search, 1)
         songInfo = await ytdl.getInfo(results[0].url)
         song = {
           title: Util.escapeMarkdown(songInfo.title),
@@ -55,19 +62,11 @@ module.exports = {
     if (serverQueue) {
       serverQueue.songs.push(song)
       return serverQueue.textChannel.send(`✅ **${song.title}** has been added to the queue by ${message.author}`).catch(console.error)
+    } else {
+      queueConstruct.songs.push(song)
     }
 
-    const queueConstruct = {
-      textChannel: message.channel,
-      channel,
-      connection: null,
-      songs: [],
-      volume: 100,
-      playing: true
-    }
-
-    message.client.queue.set(message.guild.id, queueConstruct)
-    queueConstruct.songs.push(song)
+    if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct)
 
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id)
@@ -88,15 +87,17 @@ module.exports = {
       queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`).catch(console.error)
     }
 
-    try {
-      const connection = await channel.join()
-      queueConstruct.connection = connection
-      play(queueConstruct.songs[0])
-    } catch (error) {
-      console.error(`Could not join voice channel: ${error}`)
-      message.client.queue.delete(message.guild.id)
-      await channel.leave()
-      return message.channel.send(`Could not join the channel: ${error}`).catch(console.error)
+    if (!serverQueue) {
+      try {
+        const connection = await channel.join()
+        queueConstruct.connection = connection
+        play(queueConstruct.songs[0])
+      } catch (error) {
+        console.error(`Could not join voice channel: ${error}`)
+        message.client.queue.delete(message.guild.id)
+        await channel.leave()
+        return message.channel.send(`Could not join the channel: ${error}`).catch(console.error)
+      }
     }
   }
 }

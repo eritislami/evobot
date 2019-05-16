@@ -14,7 +14,7 @@ client.queue = new Map()
 /**
  * Client Events
  */
-client.on("ready", () => console.log("Ready"))
+client.on("ready", () => console.log("\nReady\n"))
 client.on("warn", info => console.log(info))
 client.on("error", console.error)
 

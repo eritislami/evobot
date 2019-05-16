@@ -16,10 +16,10 @@ module.exports = {
     if (!permissions.has("CONNECT")) return message.reply("Cannot connect to voice channel, missing permissions")
     if (!permissions.has("SPEAK")) return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!")
 
+    const search = args.join(" ")
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/ig;
     const url = args[0]
     const urlValid = pattern.test(args[0])
-    if (!urlValid) return message.reply("Invalid youtube playlist url").catch(console.error)
 
     const serverQueue = message.client.queue.get(message.guild.id)
     const queueConstruct = {
@@ -35,16 +35,26 @@ module.exports = {
     let playlist = null
     let videos = []
 
-    try {
-      playlist = await youtube.getPlaylist(url, { part: "snippet" })
-      videos = await playlist.getVideos(undefined, { part: "snippet" })
-    } catch (error) {
-      console.error(error)
+    if (urlValid) {
+      try {
+        playlist = await youtube.getPlaylist(url, { part: "snippet" })
+        videos = await playlist.getVideos(undefined, { part: "snippet" })
+      } catch (error) {
+        console.error(error)
+      }
+    } else {
+      try {
+        const results = await youtube.searchPlaylists(search, 1, { part: "snippet" })
+        playlist = results[0]
+        videos = await playlist.getVideos(undefined, { part: "snippet" })
+      } catch (error) {
+        console.error(error)
+      }
     }
 
     videos.forEach((video, index) => {
       song = {
-        index: index+1,
+        index: index + 1,
         title: video.title,
         url: video.url
       }
@@ -57,12 +67,12 @@ module.exports = {
       }
     })
 
-    if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct)
-
     message.channel.send(`${message.author} 📃 Added a playlist - **${playlist.title}** <${playlist.url}>
 
 ${queueConstruct.songs.map(song => song.index + ". " + song.title).join("\n")}
     `, { split: true }).catch(console.error)
+
+    if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct)
 
     const play = async song => {
       const queue = message.client.queue.get(message.guild.id)
@@ -83,15 +93,17 @@ ${queueConstruct.songs.map(song => song.index + ". " + song.title).join("\n")}
       queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`).catch(console.error)
     }
 
-    try {
-      const connection = await channel.join()
-      queueConstruct.connection = connection
-      play(queueConstruct.songs[0])
-    } catch (error) {
-      console.error(`Could not join voice channel: ${error}`)
-      message.client.queue.delete(message.guild.id)
-      await channel.leave()
-      return message.channel.send(`Could not join the channel: ${error}`).catch(console.error)
+    if (!serverQueue) {
+      try {
+        const connection = await channel.join()
+        queueConstruct.connection = connection
+        play(queueConstruct.songs[0])
+      } catch (error) {
+        console.error(`Could not join voice channel: ${error}`)
+        message.client.queue.delete(message.guild.id)
+        await channel.leave()
+        return message.channel.send(`Could not join the channel: ${error}`).catch(console.error)
+      }
     }
   }
 }

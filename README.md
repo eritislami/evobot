@@ -39,6 +39,8 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   * `/play under the bridge red hot chili peppers`
 * Play youtube playlists via url
   * `/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
+* Play youtube playlists via search query
+  * `/playlist linkin park meteora`
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Queue system
 * Volume control
