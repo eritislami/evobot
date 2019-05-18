@@ -9,7 +9,7 @@ module.exports = {
   async execute(message, args) {
     const { channel } = message.member.voice
 
-    if (!args.length) return message.reply("Usage: /playlist <YouTube Playlist URL>").catch(console.error)
+    if (!args.length) return message.reply("Usage: /playlist <YouTube Playlist URL | Playlist Name>").catch(console.error)
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error)
 
     const permissions = channel.permissionsFor(message.client.user)
