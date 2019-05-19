@@ -8,6 +8,6 @@ module.exports = {
     if (!serverQueue) return message.channel.send("There is nothing playing that I could skip for you.").catch(console.error)
     
     serverQueue.connection.dispatcher.end()
-    serverQueue.textChannel.send(`${message.author} ⏩ skipped the song`).catch(console.error)
+    serverQueue.textChannel.send(`${message.author} ⏭ skipped the song`).catch(console.error)
   }
 }

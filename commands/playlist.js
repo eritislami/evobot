@@ -1,5 +1,5 @@
+const { play } = require("../include/play")
 const { YOUTUBE_API_KEY } = require("../config.json")
-const ytdlDiscord = require("ytdl-core-discord")
 const YouTubeAPI = require("simple-youtube-api")
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY)
 
@@ -74,30 +74,11 @@ ${queueConstruct.songs.map(song => song.index + ". " + song.title).join("\n")}
 
     if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct)
 
-    const play = async song => {
-      const queue = message.client.queue.get(message.guild.id)
-      if (!song) {
-        queue.channel.leave()
-        message.client.queue.delete(message.guild.id)
-        return queue.textChannel.send("🚫 Music queue ended.").catch(console.error)
-      }
-
-      const options = { filter: "audioonly", quality: "highestaudio" }
-      const dispatcher = queue.connection.play(await ytdlDiscord(song.url, options), { type: "opus", passes: 3 })
-        .on("end", () => {
-          queue.songs.shift()
-          play(queue.songs[0])
-        })
-        .on("error", error => console.log(error))
-      dispatcher.setVolumeLogarithmic(queue.volume / 100)
-      queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`).catch(console.error)
-    }
-
     if (!serverQueue) {
       try {
         const connection = await channel.join()
         queueConstruct.connection = connection
-        play(queueConstruct.songs[0])
+        play(queueConstruct.songs[0], message)
       } catch (error) {
         console.error(`Could not join voice channel: ${error}`)
         message.client.queue.delete(message.guild.id)
