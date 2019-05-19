@@ -48,7 +48,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * Resume
 * Skip
 * Media Controls via Reactions
-![reactions](https://i.imgur.com/QXThEwj.png)
+![reactions](https://i.imgur.com/j7CevsH.png)
 
 ## Contributing
 
