@@ -56,7 +56,8 @@ module.exports = {
       song = {
         index: index + 1,
         title: video.title,
-        url: video.url
+        url: video.url,
+        duration: video.durationSeconds
       }
 
       if (serverQueue) {

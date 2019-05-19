@@ -41,7 +41,8 @@ module.exports = {
         songInfo = await ytdl.getInfo(url)
         song = {
           title: Util.escapeMarkdown(songInfo.title),
-          url: songInfo.video_url
+          url: songInfo.video_url,
+          duration: songInfo.length_seconds
         }
       } catch (error) {
         console.error(error)
@@ -52,7 +53,8 @@ module.exports = {
         songInfo = await ytdl.getInfo(results[0].url)
         song = {
           title: Util.escapeMarkdown(songInfo.title),
-          url: songInfo.video_url
+          url: songInfo.video_url,
+          duration: songInfo.length_seconds
         }
       } catch (error) {
         console.error(error)
