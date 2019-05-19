@@ -31,7 +31,7 @@ module.exports = {
       console.error(error)
     }
 
-    const filter = (reaction, user) => user.id != message.client.user.id
+    const filter = (reaction, user) => user.id !== message.client.user.id
     const collector = playingMessage.createReactionCollector(filter)
 
     collector.on('collect', (reaction, user) => {
