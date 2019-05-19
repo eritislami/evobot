@@ -33,13 +33,13 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 ## Features & Commands
 
-* Play music from YouTube via url
+* 🎶 Play music from YouTube via url
   * `/play https://www.youtube.com/watch?v=GLvohMXgcBo`
-* Play music from YouTube via search query
+* 🔎 Play music from YouTube via search query
   * `/play under the bridge red hot chili peppers`
-* Play youtube playlists via url
+* 📃 Play youtube playlists via url
   * `/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
-* Play youtube playlists via search query
+* 🔎 Play youtube playlists via search query
   * `/playlist linkin park meteora`
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Queue system
