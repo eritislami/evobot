@@ -32,7 +32,7 @@ module.exports = {
     }
 
     const filter = (reaction, user) => user.id !== message.client.user.id
-    const collector = playingMessage.createReactionCollector(filter, { time: song.duration * 1000 })
+    const collector = playingMessage.createReactionCollector(filter, { time: song.duration > 0 ? (song.duration * 1000) : 300000 })
 
     collector.on("collect", (reaction, user) => {
       // Stop if there is no queue on the server
