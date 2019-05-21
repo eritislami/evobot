@@ -19,7 +19,7 @@ module.exports = {
     if (!permissions.has("SPEAK")) return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!")
 
     const search = args.join(" ")
-    const pattern = /^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/ig;
+    const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/ig;
     const url = args[0]
     const urlValid = pattern.test(args[0])
 
@@ -72,8 +72,7 @@ module.exports = {
 
     if (!serverQueue) {
       try {
-        const connection = await channel.join()
-        queueConstruct.connection = connection
+        queueConstruct.connection = await channel.join()
         play(queueConstruct.songs[0], message)
       } catch (error) {
         console.error(`Could not join voice channel: ${error}`)
