@@ -6,7 +6,7 @@ module.exports = {
     if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error)
     return message.reply(`📃 **Song queue**
 
-${serverQueue.songs.map(song => song.index + ". " + song.title).join('\n')}
+${serverQueue.songs.map((song, index) => (index + 1) + ". " + song.title).join('\n')}
 
 Now playing: **${serverQueue.songs[0].title}**
 		`, { split: true }).catch(console.error)

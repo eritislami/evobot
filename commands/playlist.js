@@ -52,9 +52,8 @@ module.exports = {
       }
     }
 
-    videos.forEach((video, index) => {
+    videos.forEach(video => {
       song = {
-        index: index + 1,
         title: video.title,
         url: video.url,
         duration: video.durationSeconds
@@ -70,7 +69,7 @@ module.exports = {
 
     message.channel.send(`${message.author} 📃 Added a playlist - **${playlist.title}** <${playlist.url}>
 
-${queueConstruct.songs.map(song => song.index + ". " + song.title).join("\n")}
+${queueConstruct.songs.map((song, index) => (index+1) + ". " + song.title).join("\n")}
     `, { split: true }).catch(console.error)
 
     if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct)
