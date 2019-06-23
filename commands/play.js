@@ -19,9 +19,15 @@ module.exports = {
     if (!permissions.has("SPEAK")) return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!")
 
     const search = args.join(" ")
-    const pattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/ig;
+    const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/ig;
+    const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/ig;
     const url = args[0]
-    const urlValid = pattern.test(args[0])
+    const urlValid = videoPattern.test(args[0])
+
+    // Start the playlist if playlist url was provided
+    if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
+      return message.client.commands.get("playlist").execute(message, args)
+    }
 
     const serverQueue = message.client.queue.get(message.guild.id)
     const queueConstruct = {
@@ -45,7 +51,11 @@ module.exports = {
           duration: songInfo.length_seconds
         }
       } catch (error) {
-        console.error(error)
+        if (error.message.includes("copyright")) {
+          return message.reply("⛔ The video could not be played due to copyright protection ⛔").catch(console.error)
+        } else {
+          console.error(error)
+        }
       }
     } else {
       try {

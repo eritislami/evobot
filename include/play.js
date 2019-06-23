@@ -3,26 +3,39 @@ const ytdlDiscord = require("ytdl-core-discord")
 module.exports = {
   async play(song, message) {
     const queue = message.client.queue.get(message.guild.id)
+
     if (!song) {
       queue.channel.leave()
       message.client.queue.delete(message.guild.id)
       return queue.textChannel.send("🚫 Music queue ended.").catch(console.error)
     }
 
-    const options = { filter: "audioonly", quality: "highestaudio" }
-    const dispatcher = queue.connection.play(await ytdlDiscord(song.url, options), { type: "opus", passes: 3 })
+    try {
+      var stream = await ytdlDiscord(song.url, { filter: "audioonly", quality: "highestaudio" })
+    } catch (error) {
+      if (queue) {
+        queue.songs.shift()
+        module.exports.play(queue.songs[0], message)
+      }
+
+      if (error.message.includes("copyright")) {
+        return message.channel.send("⛔ A video could not be played due to copyright protection ⛔").catch(console.error)
+      } else {
+        console.error(error)
+      }
+    }
+
+    const dispatcher = queue.connection.play(stream, { type: "opus", passes: 3 })
       .on("end", () => {
         // Recursively play the next song
         queue.songs.shift()
         module.exports.play(queue.songs[0], message)
       })
-      .on("error", error => console.error(error))
+      .on("error", console.error)
     dispatcher.setVolumeLogarithmic(queue.volume / 100)
 
-    let playingMessage = null
-
     try {
-      playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`)
+      var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`)
       await playingMessage.react("⏭")
       await playingMessage.react("⏸")
       await playingMessage.react("▶")
