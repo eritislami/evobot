@@ -7,7 +7,7 @@
   "private": true,
   "dependencies": {
     "discord.js": "github:discordjs/discord.js",
-    "opusscript": "0.0.6",
+    "opusscript": "0.0.7",
     "simple-youtube-api": "^5.1.1",
     "ytdl-core": "^0.29.2",
     "ytdl-core-discord": "amishshah/ytdl-core-discord"
