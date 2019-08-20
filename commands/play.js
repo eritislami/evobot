@@ -46,7 +46,7 @@ module.exports = {
       try {
         songInfo = await ytdl.getInfo(url)
         song = {
-          title: Util.escapeMarkdown(songInfo.title),
+          title: songInfo.title,
           url: songInfo.video_url,
           duration: songInfo.length_seconds
         }
@@ -62,7 +62,7 @@ module.exports = {
         const results = await youtube.searchVideos(search, 1)
         songInfo = await ytdl.getInfo(results[0].url)
         song = {
-          title: Util.escapeMarkdown(songInfo.title),
+          title: songInfo.title,
           url: songInfo.video_url,
           duration: songInfo.length_seconds
         }
