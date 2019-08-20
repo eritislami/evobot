@@ -8,6 +8,8 @@ module.exports = {
     if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error)
 
     if (!args[0]) return message.reply(`🔊 The current volume is: **${serverQueue.volume}%**`).catch(console.error)
+    if (isNaN(args[0])) return message.reply("Please use a number to set volume.").catch(console.error)
+    if (parseInt(args[0]) > 100 || parseInt(args[0]) < 0) return message.reply("Please use a number between 0 - 100.").catch(console.error)
 
     serverQueue.volume = args[0]
     serverQueue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100)
