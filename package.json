@@ -9,7 +9,7 @@
     "discord.js": "github:discordjs/discord.js",
     "opusscript": "0.0.7",
     "simple-youtube-api": "^5.1.1",
-    "ytdl-core": "^0.29.5",
+    "ytdl-core": "^1.0.0",
     "ytdl-core-discord": "amishshah/ytdl-core-discord"
   },
   "optionalDependencies": {
