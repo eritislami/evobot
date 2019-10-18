@@ -9,6 +9,7 @@ const { TOKEN, PREFIX } = require("./config.json")
 
 client.login(TOKEN)
 client.commands = new discord.Collection()
+client.prefix = PREFIX
 client.queue = new Map()
 
 /**
