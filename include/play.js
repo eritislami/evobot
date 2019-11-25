@@ -30,9 +30,17 @@ module.exports = {
     const dispatcher = queue.connection
       .play(stream, { type: "opus", passes: 3 })
       .on("end", () => {
-        // Recursively play the next song
-        queue.songs.shift();
-        module.exports.play(queue.songs[0], message);
+        if (queue.loop) {
+          // if loop is on, push the song back at the end of the queue
+          // so it can repeat endlessly
+          let lastSong = queue.songs.shift();
+          queue.songs.push(lastSong);
+          module.exports.play(queue.songs[0], message);
+        } else {
+          // Recursively play the next song
+          queue.songs.shift();
+          module.exports.play(queue.songs[0], message);
+        }
       })
       .on("error", console.error);
     dispatcher.setVolumeLogarithmic(queue.volume / 100);

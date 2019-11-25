@@ -30,6 +30,7 @@ module.exports = {
       channel,
       connection: null,
       songs: [],
+      loop: false,
       volume: 100,
       playing: true
     };
