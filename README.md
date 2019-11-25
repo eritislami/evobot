@@ -34,6 +34,8 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 ## Features & Commands
 
+> Note: The default prefix is '/'
+
 * 🎶 Play music from YouTube via url
   * `/play https://www.youtube.com/watch?v=GLvohMXgcBo`
 * 🔎 Play music from YouTube via search query
@@ -43,11 +45,12 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * 🔎 Play youtube playlists via search query
   * `/playlist linkin park meteora`
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
-* Queue system
-* Volume control
-* Pause
-* Resume
-* Skip
+* Queue system (/queue)
+* Loop / Repeat (/loop)
+* Volume control (/volume)
+* Pause (/pause)
+* Resume (/resume)
+* Skip (/skip)
 * Media Controls via Reactions
 ![reactions](https://i.imgur.com/j7CevsH.png)
 
