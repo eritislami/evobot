@@ -71,7 +71,6 @@ module.exports = {
           url: songInfo.video_url,
           duration: songInfo.length_seconds
         };
-
       } catch (error) {
         console.error(error);
       }
