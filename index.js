@@ -15,9 +15,9 @@ client.queue = new Map();
 /**
  * Client Events
  */
-client.on(`ready`, () => {
+client.on("ready", () => {
 	console.log(`${client.user.username} ready!`)
-	client.user.setActivity(`Music | ${PREFIX}`, { type: "streaming", url: "https://www.twitch.tv/twitch" });
+	client.user.setActivity(`Music | ${PREFIX}`);
 });
 client.on("warn", info => console.log(info));
 client.on("error", console.error);
