@@ -15,7 +15,10 @@ client.queue = new Map();
 /**
  * Client Events
  */
-client.on("ready", () => console.log("\nReady\n"));
+client.on("ready", () => {
+	console.log(`${client.user.username} ready!`)
+	client.user.setActivity(`Music | ${PREFIX}`);
+});
 client.on("warn", info => console.log(info));
 client.on("error", console.error);
 
