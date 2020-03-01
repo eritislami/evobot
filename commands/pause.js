@@ -8,7 +8,7 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && serverQueue.playing) {
       serverQueue.playing = false;
-      serverQueue.connection.dispatcher.pause();
+      serverQueue.connection.dispatcher.pause(true);
       return serverQueue.textChannel.send(`${message.author} ⏸ paused the music.`).catch(console.error);
     }
     return message.reply("There is nothing playing.").catch(console.error);

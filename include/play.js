@@ -11,7 +11,10 @@ module.exports = {
     }
 
     try {
-      var stream = await ytdlDiscord(song.url, { filter: "audioonly", quality: "highestaudio" });
+      var stream = await ytdlDiscord(song.url, {
+        filter: "audioonly",
+        quality: "highestaudio"
+      });
     } catch (error) {
       if (queue) {
         queue.songs.shift();
@@ -28,8 +31,8 @@ module.exports = {
     }
 
     const dispatcher = queue.connection
-      .play(stream, { type: "opus", passes: 3 })
-      .on("end", () => {
+      .play(stream, { type: "opus" })
+      .on("finish", () => {
         if (queue.loop) {
           // if loop is on, push the song back at the end of the queue
           // so it can repeat endlessly

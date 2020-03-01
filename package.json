@@ -6,15 +6,11 @@
   "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
   "dependencies": {
-    "discord.js": "github:discordjs/discord.js",
-    "opusscript": "0.0.7",
+    "@discordjs/opus": "^0.1.0",
+    "discord.js": "^12.0.1",
     "simple-youtube-api": "^5.1.1",
     "ytdl-core": "^2.0.0",
     "ytdl-core-discord": "amishshah/ytdl-core-discord"
-  },
-  "optionalDependencies": {
-    "erlpack": "discordapp/erlpack",
-    "node-opus": "^0.3.1"
   },
   "scripts": {
     "start": "node index.js"
