@@ -53,6 +53,7 @@ module.exports = {
       await playingMessage.react("⏭");
       await playingMessage.react("⏸");
       await playingMessage.react("▶");
+      await playingMessage.react("🔁");
       await playingMessage.react("⏹");
     } catch (error) {
       console.error(error);
@@ -78,6 +79,7 @@ module.exports = {
           queue.playing = false;
           queue.connection.dispatcher.pause();
           queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
+          reaction.users.remove(user);
           break;
 
         case "▶":
@@ -85,6 +87,15 @@ module.exports = {
           queue.playing = true;
           queue.connection.dispatcher.resume();
           queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+          reaction.users.remove(user);
+          break;
+
+        case "🔁":
+          queue.loop = !queue.loop;
+          queue.textChannel
+            .send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`)
+            .catch(console.error);
+          reaction.users.remove(user);
           break;
 
         case "⏹":
