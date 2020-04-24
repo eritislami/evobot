@@ -22,7 +22,7 @@ module.exports = {
 
     const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-    const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
+    const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
