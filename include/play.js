@@ -11,10 +11,7 @@ module.exports = {
     }
 
     try {
-      var stream = await ytdlDiscord(song.url, {
-        filter: "audioonly",
-        quality: "highestaudio"
-      });
+      var stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
     } catch (error) {
       if (queue) {
         queue.songs.shift();
@@ -45,7 +42,11 @@ module.exports = {
           module.exports.play(queue.songs[0], message);
         }
       })
-      .on("error", console.error);
+      .on("error", err => {
+        console.error(err);
+        queue.songs.shift();
+        module.exports.play(queue.songs[0], message);
+      });
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
     try {
@@ -60,7 +61,9 @@ module.exports = {
     }
 
     const filter = (reaction, user) => user.id !== message.client.user.id;
-    const collector = playingMessage.createReactionCollector(filter, { time: 1800000 });
+    const collector = playingMessage.createReactionCollector(filter, {
+      time: song.duration > 0 ? song.duration * 1000 : 600000
+    });
 
     collector.on("collect", (reaction, user) => {
       // Stop if there is no queue on the server
@@ -71,7 +74,6 @@ module.exports = {
           queue.connection.dispatcher.end();
           queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
           collector.stop();
-          playingMessage.reactions.removeAll();
           break;
 
         case "⏸":
@@ -100,10 +102,14 @@ module.exports = {
 
         case "⏹":
           queue.songs = [];
-          queue.connection.dispatcher.end();
           queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
+          try {
+            queue.connection.dispatcher.end();
+          } catch (error) {
+            console.error(error);
+            queue.connection.disconnect();
+          }
           collector.stop();
-          playingMessage.reactions.removeAll();
           break;
 
         default:
