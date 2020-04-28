@@ -6,7 +6,7 @@
   "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
   "dependencies": {
-    "@discordjs/opus": "^0.1.0",
+    "@discordjs/opus": "^0.2.1",
     "discord.js": "^12.0.1",
     "simple-youtube-api": "^5.1.1",
     "ytdl-core": "^2.0.0",
