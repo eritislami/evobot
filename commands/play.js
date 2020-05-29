@@ -10,7 +10,7 @@ module.exports = {
   async execute(message, args) {
     const { channel } = message.member.voice;
 
-    if (!args.length) return message.reply("Usage: /play <YouTube URL | Video Name>").catch(console.error);
+    if (!args.length) return message.reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name>`).catch(console.error);
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
