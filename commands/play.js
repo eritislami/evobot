@@ -10,7 +10,10 @@ module.exports = {
   async execute(message, args) {
     const { channel } = message.member.voice;
 
-    if (!args.length) return message.reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name>`).catch(console.error);
+    if (!args.length)
+      return message
+        .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name>`)
+        .catch(console.error);
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
@@ -59,6 +62,7 @@ module.exports = {
             .catch(console.error);
         } else {
           console.error(error);
+          return message.reply(error.message).catch(console.error);
         }
       }
     } else {
@@ -72,6 +76,7 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
+        return message.reply("No video was found with a matching title").catch(console.error);
       }
     }
 
