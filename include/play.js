@@ -4,6 +4,7 @@ module.exports = {
   async play(song, message) {
     const { PRUNING } = require("../config.json");
     const queue = message.client.queue.get(message.guild.id);
+    let collector = null;
 
     if (!song) {
       queue.channel.leave();
@@ -31,7 +32,7 @@ module.exports = {
     const dispatcher = queue.connection
       .play(stream, { type: "opus" })
       .on("finish", () => {
-        if (!collector.ended) collector.stop();
+        if (collector && !collector.ended) collector.stop();
 
         if (PRUNING && playingMessage && !playingMessage.deleted)
           playingMessage.delete().catch(console.error);
@@ -67,7 +68,7 @@ module.exports = {
     }
 
     const filter = (reaction, user) => user.id !== message.client.user.id;
-    const collector = playingMessage.createReactionCollector(filter, {
+    collector = playingMessage.createReactionCollector(filter, {
       time: song.duration > 0 ? song.duration * 1000 : 600000
     });
 
