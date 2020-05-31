@@ -27,10 +27,11 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 ```json
 {
-	"TOKEN": "",
-	"YOUTUBE_API_KEY": "",
-	"MAX_PLAYLIST_SIZE": 10,
-	"PREFIX": "/"
+  "TOKEN": "",
+  "YOUTUBE_API_KEY": "",
+  "MAX_PLAYLIST_SIZE": 10,
+  "PREFIX": "/",
+  "PRUNING": false
 }
 ```
 
@@ -48,11 +49,13 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   * `/playlist linkin park meteora`
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Queue system (/queue)
-* Loop / Repeat (/loop)
+* Toggle Loop / Repeat (/loop)
 * Volume control (/volume)
 * Pause (/pause)
 * Resume (/resume)
 * Skip (/skip)
+* Toggle pruning of bot messages (/pruning)
+* Help (/help)
 * Media Controls via Reactions
 ![reactions](https://i.imgur.com/j7CevsH.png)
 

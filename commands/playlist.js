@@ -7,10 +7,13 @@ module.exports = {
   name: "playlist",
   description: "Play a playlist from youtube",
   async execute(message, args) {
+    const { PRUNING } = require("../config.json");
     const { channel } = message.member.voice;
 
     if (!args.length)
-      return message.reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`).catch(console.error);
+      return message
+        .reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
+        .catch(console.error);
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
@@ -56,7 +59,7 @@ module.exports = {
       }
     }
 
-    videos.forEach(video => {
+    videos.forEach((video) => {
       song = {
         title: video.title,
         url: video.url,
@@ -65,9 +68,10 @@ module.exports = {
 
       if (serverQueue) {
         serverQueue.songs.push(song);
-        message.channel
-          .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
-          .catch(console.error);
+        if (!PRUNING)
+          message.channel
+            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+            .catch(console.error);
       } else {
         queueConstruct.songs.push(song);
       }
@@ -77,7 +81,7 @@ module.exports = {
       .send(
         `${message.author} 📃 Added a playlist - **${playlist.title}** <${playlist.url}>
 
-${queueConstruct.songs.map((song, index) => index + 1 + ". " + song.title).join("\n")}
+${!PRUNING ? queueConstruct.songs.map((song, index) => index + 1 + ". " + song.title).join("\n") : ""}
     `,
         { split: true }
       )

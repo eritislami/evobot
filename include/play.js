@@ -2,6 +2,7 @@ const ytdlDiscord = require("ytdl-core-discord");
 
 module.exports = {
   async play(song, message) {
+    const { PRUNING } = require("../config.json");
     const queue = message.client.queue.get(message.guild.id);
 
     if (!song) {
@@ -30,6 +31,11 @@ module.exports = {
     const dispatcher = queue.connection
       .play(stream, { type: "opus" })
       .on("finish", () => {
+        if (!collector.ended) collector.stop();
+
+        if (PRUNING && playingMessage && !playingMessage.deleted)
+          playingMessage.delete().catch(console.error);
+
         if (queue.loop) {
           // if loop is on, push the song back at the end of the queue
           // so it can repeat endlessly
@@ -42,7 +48,7 @@ module.exports = {
           module.exports.play(queue.songs[0], message);
         }
       })
-      .on("error", err => {
+      .on("error", (err) => {
         console.error(err);
         queue.songs.shift();
         module.exports.play(queue.songs[0], message);
@@ -94,9 +100,7 @@ module.exports = {
 
         case "🔁":
           queue.loop = !queue.loop;
-          queue.textChannel
-            .send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`)
-            .catch(console.error);
+          queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
           reaction.users.remove(user);
           break;
 
