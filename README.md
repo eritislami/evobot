@@ -50,6 +50,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Queue system (/queue)
 * Toggle Loop / Repeat (/loop)
+* Shuffle (/shuffle)
 * Volume control (/volume)
 * Pause (/pause)
 * Resume (/resume)

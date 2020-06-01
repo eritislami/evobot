@@ -1,3 +1,4 @@
+const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const { YOUTUBE_API_KEY, MAX_PLAYLIST_SIZE } = require("../config.json");
 const YouTubeAPI = require("simple-youtube-api");
@@ -77,15 +78,16 @@ module.exports = {
       }
     });
 
-    message.channel
-      .send(
-        `${message.author} 📃 Added a playlist - **${playlist.title}** <${playlist.url}>
+    if (!PRUNING) {
+      let playlistEmbed = new MessageEmbed()
+        .setTitle(`${playlist.title}`)
+        .setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`))
+        .setURL(playlist.url)
+        .setColor("#F8AA2A");
 
-${!PRUNING ? queueConstruct.songs.map((song, index) => index + 1 + ". " + song.title).join("\n") : ""}
-    `,
-        { split: true }
-      )
-      .catch(console.error);
+      playlistEmbed.setTimestamp();
+      message.channel.send(`${message.author} Started a playlist`, playlistEmbed);
+    }
 
     if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
 
