@@ -51,9 +51,9 @@ module.exports = {
       try {
         songInfo = await ytdl.getInfo(url);
         song = {
-          title: songInfo.title,
-          url: songInfo.video_url,
-          duration: songInfo.length_seconds
+          title: songInfo.videoDetails.title,
+          url: songInfo.videoDetails.video_url,
+          duration: songInfo.videoDetails.length_seconds
         };
       } catch (error) {
         if (error.message.includes("copyright")) {
@@ -70,9 +70,9 @@ module.exports = {
         const results = await youtube.searchVideos(search, 1);
         songInfo = await ytdl.getInfo(results[0].url);
         song = {
-          title: songInfo.title,
-          url: songInfo.video_url,
-          duration: songInfo.length_seconds
+          title: songInfo.videoDetails.title,
+          url: songInfo.videoDetails.video_url,
+          duration: songInfo.videoDetails.length_seconds
         };
       } catch (error) {
         console.error(error);
