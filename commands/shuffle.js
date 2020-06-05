@@ -1,7 +1,7 @@
 module.exports = {
   name: "shuffle",
   description: "Shuffle queue",
-  async execute(message) {
+  execute(message) {
     const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!message.member.voice.channel)

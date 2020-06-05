@@ -4,7 +4,7 @@ const config = require("../config.json");
 module.exports = {
   name: "pruning",
   description: "Toggle pruning of bot messages",
-  async execute(message) {
+  execute(message) {
     config.PRUNING = !config.PRUNING;
 
     fs.writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {

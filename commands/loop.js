@@ -1,7 +1,7 @@
 module.exports = {
   name: "loop",
   description: "Toggle music loop",
-  async execute(message) {
+  execute(message) {
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!serverQueue) return message.reply("There is nothing playing.").catch(console.error);
 

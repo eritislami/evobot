@@ -4,7 +4,6 @@ module.exports = {
   async play(song, message) {
     const { PRUNING } = require("../config.json");
     const queue = message.client.queue.get(message.guild.id);
-    let collector = null;
 
     if (!song) {
       queue.channel.leave();
@@ -59,8 +58,7 @@ module.exports = {
     try {
       var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
       await playingMessage.react("⏭");
-      await playingMessage.react("⏸");
-      await playingMessage.react("▶");
+      await playingMessage.react("⏯");
       await playingMessage.react("🔁");
       await playingMessage.react("⏹");
     } catch (error) {
@@ -68,7 +66,7 @@ module.exports = {
     }
 
     const filter = (reaction, user) => user.id !== message.client.user.id;
-    collector = playingMessage.createReactionCollector(filter, {
+    var collector = playingMessage.createReactionCollector(filter, {
       time: song.duration > 0 ? song.duration * 1000 : 600000
     });
 
@@ -83,19 +81,16 @@ module.exports = {
           collector.stop();
           break;
 
-        case "⏸":
-          if (!queue.playing) break;
-          queue.playing = false;
-          queue.connection.dispatcher.pause();
-          queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
-          reaction.users.remove(user);
-          break;
-
-        case "▶":
-          if (queue.playing) break;
-          queue.playing = true;
-          queue.connection.dispatcher.resume();
-          queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+        case "⏯":
+          if (queue.playing) {
+            queue.playing = !queue.playing;
+            queue.connection.dispatcher.pause();
+            queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
+          } else {
+            queue.playing = !queue.playing;
+            queue.connection.dispatcher.resume();
+            queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+          }
           reaction.users.remove(user);
           break;
 
@@ -118,6 +113,7 @@ module.exports = {
           break;
 
         default:
+          reaction.users.remove(user);
           break;
       }
     });

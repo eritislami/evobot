@@ -85,22 +85,19 @@ module.exports = {
       return serverQueue.textChannel
         .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
         .catch(console.error);
-    } else {
-      queueConstruct.songs.push(song);
     }
 
-    if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
+    queueConstruct.songs.push(song);
+    message.client.queue.set(message.guild.id, queueConstruct);
 
-    if (!serverQueue) {
-      try {
-        queueConstruct.connection = await channel.join();
-        play(queueConstruct.songs[0], message);
-      } catch (error) {
-        console.error(`Could not join voice channel: ${error}`);
-        message.client.queue.delete(message.guild.id);
-        await channel.leave();
-        return message.channel.send(`Could not join the channel: ${error}`).catch(console.error);
-      }
+    try {
+      queueConstruct.connection = await channel.join();
+      play(queueConstruct.songs[0], message);
+    } catch (error) {
+      console.error(`Could not join voice channel: ${error}`);
+      message.client.queue.delete(message.guild.id);
+      await channel.leave();
+      return message.channel.send(`Could not join the channel: ${error}`).catch(console.error);
     }
   }
 };
