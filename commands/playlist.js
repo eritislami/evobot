@@ -86,6 +86,9 @@ module.exports = {
         .setColor("#F8AA2A");
 
       playlistEmbed.setTimestamp();
+      if (playlistEmbed.description.length >= 2048)
+        playlistEmbed.description =
+          playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit...";
       message.channel.send(`${message.author} Started a playlist`, playlistEmbed);
     }
 

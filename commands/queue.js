@@ -14,6 +14,9 @@ module.exports = {
       .setColor("#F8AA2A");
 
     queueEmbed.setTimestamp();
+    if (queueEmbed.description.length >= 2048)
+        queueEmbed.description =
+          queueEmbed.description.substr(0, 2007) + "\nQueue is larger than character limit...";
     return message.channel.send(queueEmbed);
   }
 };
