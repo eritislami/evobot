@@ -6,6 +6,7 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "play",
+  aliases: ["p"],
   description: "Plays audio from YouTube",
   async execute(message, args) {
     const { channel } = message.member.voice;
@@ -53,7 +54,7 @@ module.exports = {
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
-          duration: songInfo.videoDetails.length_seconds
+          duration: songInfo.videoDetails.lengthSeconds
         };
       } catch (error) {
         if (error.message.includes("copyright")) {
@@ -72,7 +73,7 @@ module.exports = {
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
-          duration: songInfo.videoDetails.length_seconds
+          duration: songInfo.videoDetails.lengthSeconds
         };
       } catch (error) {
         console.error(error);

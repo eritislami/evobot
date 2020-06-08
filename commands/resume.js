@@ -1,5 +1,6 @@
 module.exports = {
   name: "resume",
+  aliases: ['r'],
   description: "Resume currently playing music",
   execute(message) {
     const serverQueue = message.client.queue.get(message.guild.id);

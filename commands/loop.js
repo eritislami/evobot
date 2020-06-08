@@ -1,5 +1,6 @@
 module.exports = {
   name: "loop",
+  aliases: ['l'],
   description: "Toggle music loop",
   execute(message) {
     const serverQueue = message.client.queue.get(message.guild.id);

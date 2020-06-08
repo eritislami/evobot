@@ -6,6 +6,7 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "playlist",
+  aliases: ['pl'],
   description: "Play a playlist from youtube",
   async execute(message, args) {
     const { PRUNING } = require("../config.json");
