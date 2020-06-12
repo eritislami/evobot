@@ -43,20 +43,24 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   * `/play https://www.youtube.com/watch?v=GLvohMXgcBo`
 * 🔎 Play music from YouTube via search query
   * `/play under the bridge red hot chili peppers`
+* 🔎 Search and select music to play
+  * `/search Pearl Jam`
 * 📃 Play youtube playlists via url
   * `/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
 * 🔎 Play youtube playlists via search query
   * `/playlist linkin park meteora`
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
-* Queue system (/queue)
-* Toggle Loop / Repeat (/loop)
+* Now Playing (/np)
+* Queue system (/queue, /q)
+* Loop / Repeat (/loop)
 * Shuffle (/shuffle)
-* Volume control (/volume)
+* Volume control (/volume, /v)
 * Pause (/pause)
-* Resume (/resume)
-* Skip (/skip)
+* Resume (/resume, /r)
+* Skip (/skip, /s)
+* Skip to song # in queue (/skipto, /st)
 * Toggle pruning of bot messages (/pruning)
-* Help (/help)
+* Help (/help, /h)
 * Media Controls via Reactions
 ![reactions](https://i.imgur.com/j7CevsH.png)
 
