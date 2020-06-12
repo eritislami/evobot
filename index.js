@@ -6,7 +6,7 @@ const { readdirSync } = require("fs");
 const { join } = require("path");
 const { TOKEN, PREFIX } = require("./config.json");
 
-const client = new Client({ disableEveryone: true, disabledEvents: ["TYPING_START"] });
+const client = new Client({ disableMentions: "everyone" });
 
 client.login(TOKEN);
 client.commands = new Collection();
