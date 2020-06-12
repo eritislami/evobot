@@ -1,4 +1,5 @@
 const ytdlDiscord = require("ytdl-core-discord");
+const { canModifyQueue } = require("../util/EvobotUtil");
 
 module.exports = {
   async play(song, message) {
@@ -75,15 +76,20 @@ module.exports = {
     collector.on("collect", (reaction, user) => {
       // Stop if there is no queue on the server
       if (!queue) return;
+      const member = message.guild.member(user);
 
       switch (reaction.emoji.name) {
         case "⏭":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return
           queue.connection.dispatcher.end();
           queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
           collector.stop();
           break;
 
         case "⏯":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause();
@@ -93,16 +99,18 @@ module.exports = {
             queue.connection.dispatcher.resume();
             queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
           }
-          reaction.users.remove(user);
           break;
 
         case "🔁":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return
           queue.loop = !queue.loop;
           queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
-          reaction.users.remove(user);
           break;
 
         case "⏹":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return
           queue.songs = [];
           queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
           try {
@@ -115,13 +123,13 @@ module.exports = {
           break;
 
         default:
-          reaction.users.remove(user);
+          reaction.users.remove(user).catch(console.error);
           break;
       }
     });
 
     collector.on("end", () => {
-      playingMessage.reactions.removeAll();
+      playingMessage.reactions.removeAll().catch(console.error);
     });
   }
 };

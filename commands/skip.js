@@ -1,16 +1,17 @@
+const { canModifyQueue } = require("../util/EvobotUtil");
+
 module.exports = {
   name: "skip",
   aliases: ['s'],
   description: "Skip the currently playing song",
   execute(message) {
-    const serverQueue = message.client.queue.get(message.guild.id);
+    if (!canModifyQueue(message.member)) return;
 
-    if (!message.member.voice.channel)
-      return message.reply("You need to join a voice channel first!").catch(console.error);
-    if (!serverQueue)
+    const queue = message.client.queue.get(message.guild.id);
+    if (!queue)
       return message.channel.send("There is nothing playing that I could skip for you.").catch(console.error);
 
-    serverQueue.connection.dispatcher.end();
-    serverQueue.textChannel.send(`${message.author} ⏭ skipped the song`).catch(console.error);
+    queue.connection.dispatcher.end();
+    queue.textChannel.send(`${message.author} ⏭ skipped the song`).catch(console.error);
   }
 };
