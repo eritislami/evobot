@@ -33,7 +33,8 @@ module.exports = {
       message.channel.activeCollector = true;
       const response = await message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ["time"] });
       const choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
-
+      
+      message.channel.activeCollector = false;
       message.client.commands.get("play").execute(message, [choice]);
       resultsMessage.delete().catch(console.error);
     } catch (error) {
