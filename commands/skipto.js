@@ -5,12 +5,11 @@ module.exports = {
   aliases: ["st"],
   description: "Skip to the selected queue number",
   execute(message, args) {
-    if (!canModifyQueue(message.member)) return;
-    
     if (!args.length) return message.reply(`Usage: ${message.client.prefix}${name} <Queue Number>`);
 
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.channel.send("There is no queue.").catch(console.error);
+    if (!canModifyQueue(message.member)) return;
 
     queue.songs = queue.songs.slice(args[0] - 2);
     queue.connection.dispatcher.end();
