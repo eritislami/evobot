@@ -14,5 +14,8 @@
   },
   "scripts": {
     "start": "node index.js"
+  },
+  "optionalDependencies": {
+    "ffmpeg-static": "^4.2.3"
   }
 }
