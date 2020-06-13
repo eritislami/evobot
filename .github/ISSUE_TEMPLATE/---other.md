@@ -2,7 +2,7 @@
 name: "\U0001F914 Other"
 about: Other issue
 title: ''
-labels: ''
+labels: help
 assignees: ''
 
 ---
