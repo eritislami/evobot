@@ -14,5 +14,7 @@ module.exports = {
       queue.connection.dispatcher.resume();
       return queue.textChannel.send(`${message.author} ▶ resumed the music!`).catch(console.error);
     }
+
+    return message.reply("The queue is not paused.").catch(console.error);
   }
 };

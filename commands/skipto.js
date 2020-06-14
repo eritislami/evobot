@@ -11,6 +11,7 @@ module.exports = {
     if (!queue) return message.channel.send("There is no queue.").catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
+    if (!queue.playing) queue.playing = true;
     queue.songs = queue.songs.slice(args[0] - 2);
     queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
