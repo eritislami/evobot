@@ -6,10 +6,15 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "play",
+  cooldown: 3,
   aliases: ["p"],
   description: "Plays audio from YouTube",
   async execute(message, args) {
     const { channel } = message.member.voice;
+
+    const serverQueue = message.client.queue.get(message.guild.id);
+    if (serverQueue && channel !== message.guild.me.voice.channel)
+      return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
 
     if (!args.length)
       return message
@@ -34,7 +39,6 @@ module.exports = {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
-    const serverQueue = message.client.queue.get(message.guild.id);
     const queueConstruct = {
       textChannel: message.channel,
       channel,
