@@ -1,4 +1,4 @@
-const { MessageEmbed, splitMessage } = require("discord.js");
+const { MessageEmbed, splitMessage, escapeMarkdown } = require("discord.js");
 
 module.exports = {
   name: "queue",
@@ -6,13 +6,13 @@ module.exports = {
   description: "Show the music queue and now playing.",
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-
     if (!queue) return message.reply("There is nothing playing.").catch(console.error);
-    const description = queue.songs.map((song, index) => `${index + 1}. ${song.title}`);
+
+    const description = queue.songs.map((song, index) => `${index + 1}. ${escapeMarkdown(song.title)}`);
 
     let queueEmbed = new MessageEmbed()
       .setTitle("EvoBot Music Queue")
-      .setDescription(queue.songs.map((song, index) => `${index + 1}. ${song.title}`))
+      .setDescription(description)
       .setColor("#F8AA2A");
 
     const splitDescription = splitMessage(description, {
@@ -21,6 +21,7 @@ module.exports = {
       prepend: "",
       append: ""
     });
+
     splitDescription.forEach(async (m) => {
       queueEmbed.setDescription(m);
       message.channel.send(queueEmbed);
