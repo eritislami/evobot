@@ -74,14 +74,14 @@ module.exports = {
     });
 
     collector.on("collect", (reaction, user) => {
-      // Stop if there is no queue on the server
       if (!queue) return;
       const member = message.guild.member(user);
 
       switch (reaction.emoji.name) {
         case "⏭":
+          queue.playing = true;
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return
+          if (!canModifyQueue(member)) return;
           queue.connection.dispatcher.end();
           queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
           collector.stop();
@@ -89,10 +89,10 @@ module.exports = {
 
         case "⏯":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return
+          if (!canModifyQueue(member)) return;
           if (queue.playing) {
             queue.playing = !queue.playing;
-            queue.connection.dispatcher.pause();
+            queue.connection.dispatcher.pause(true);
             queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
           } else {
             queue.playing = !queue.playing;
@@ -103,14 +103,14 @@ module.exports = {
 
         case "🔁":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return
+          if (!canModifyQueue(member)) return;
           queue.loop = !queue.loop;
           queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
           break;
 
         case "⏹":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return
+          if (!canModifyQueue(member)) return;
           queue.songs = [];
           queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
           try {

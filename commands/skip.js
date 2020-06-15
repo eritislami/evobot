@@ -10,7 +10,7 @@ module.exports = {
       return message.reply("There is nothing playing that I could skip for you.").catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
-    if (!queue.playing) queue.playing = true;
+    queue.playing = true;
     queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ⏭ skipped the song`).catch(console.error);
   }
