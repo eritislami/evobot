@@ -1,0 +1,7 @@
+contact_links:
+  - name: 📃 Discord.js Guide
+    url: https://discordjs.guide/
+    about: The official guide for discord.js
+  - name: ❔ Discord.js Official Server
+    url: https://discord.gg/bRCvFy9
+    about: Please ask questions here
