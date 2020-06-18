@@ -36,9 +36,6 @@ module.exports = {
       .on("finish", () => {
         if (collector && !collector.ended) collector.stop();
 
-        if (PRUNING && playingMessage && !playingMessage.deleted)
-          playingMessage.delete().catch(console.error);
-
         if (queue.loop) {
           // if loop is on, push the song back at the end of the queue
           // so it can repeat endlessly
@@ -130,6 +127,9 @@ module.exports = {
 
     collector.on("end", () => {
       playingMessage.reactions.removeAll().catch(console.error);
+      if (PRUNING && playingMessage && !playingMessage.deleted) {
+        playingMessage.delete({ timeout: 3000 }).catch(console.error);
+      }
     });
   }
 };
