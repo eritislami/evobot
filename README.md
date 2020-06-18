@@ -35,7 +35,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 }
 ```
 
-## Features & Commands
+## 📝 Features & Commands
 
 > Note: The default prefix is '/'
 

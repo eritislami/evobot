@@ -54,6 +54,7 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
+        return message.reply("Playlist not found :(").catch(console.error);
       }
     } else {
       try {
@@ -62,6 +63,7 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
+        return message.reply("Playlist not found :(").catch(console.error);
       }
     }
 
