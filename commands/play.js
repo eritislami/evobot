@@ -1,14 +1,15 @@
 const { play } = require("../include/play");
-const { YOUTUBE_API_KEY } = require("../config.json");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID } = require("../config.json");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const scdl = require('soundcloud-downloader')
 
 module.exports = {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
-  description: "Plays audio from YouTube",
+  description: "Plays audio from YouTube or Soundcloud",
   async execute(message, args) {
     const { channel } = message.member.voice;
 
@@ -18,7 +19,7 @@ module.exports = {
 
     if (!args.length)
       return message
-        .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name>`)
+        .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
         .catch(console.error);
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
 
@@ -38,6 +39,8 @@ module.exports = {
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
       return message.client.commands.get("playlist").execute(message, args);
     }
+
+    const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/
 
     const queueConstruct = {
       textChannel: message.channel,
@@ -70,6 +73,22 @@ module.exports = {
           return message.reply(error.message).catch(console.error);
         }
       }
+    } else if ((url.match(scRegex) && url.match(scRegex)[2]) && SOUNDCLOUD_CLIENT_ID !== "") {
+      // It is a valid Soundcloud URL
+      try {
+        const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID)
+        const opus = trackInfo.media.transcodings.filter(e => e.preset === 'opus_0_0')[0]
+        song = {
+          title: trackInfo.title,
+          url: url
+        }
+      } catch (error) {
+        if (error.statusCode === 404) {
+          return message.reply('Could not find that Soundcloud track.')
+        }
+        return message.reply('There was an error playing that Soundcloud track.')
+      }
+
     } else {
       try {
         const results = await youtube.searchVideos(search, 1);
