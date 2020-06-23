@@ -1,5 +1,5 @@
 const ytdlDiscord = require("ytdl-core-discord");
-const scdl = require('soundcloud-downloader')
+const scdl = require("soundcloud-downloader");
 const { canModifyQueue } = require("../util/EvobotUtil");
 
 module.exports = {
@@ -13,14 +13,15 @@ module.exports = {
       return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
     }
 
+    let stream = null;
+
     try {
-      var stream;
-      if (song.url.includes('youtube.com')) {
+      if (song.url.includes("youtube.com")) {
         stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
-      } else if (song.url.includes('soundcloud.com') && SOUNDCLOUD_CLIENT_ID != "") {
-        const info = await scdl.getInfo(song.url, SOUNDCLOUD_CLIENT_ID)
-        const opus = scdl.filterMedia(info.media.transcodings, { format: scdl.FORMATS.OPUS })
-        stream = await scdl.downloadFromURL(opus[0].url, SOUNDCLOUD_CLIENT_ID)
+      } else if (song.url.includes("soundcloud.com") && SOUNDCLOUD_CLIENT_ID) {
+        const info = await scdl.getInfo(song.url, SOUNDCLOUD_CLIENT_ID);
+        const opus = scdl.filterMedia(info.media.transcodings, { format: scdl.FORMATS.OPUS });
+        stream = await scdl.downloadFromURL(opus[0].url, SOUNDCLOUD_CLIENT_ID);
       }
     } catch (error) {
       if (queue) {
@@ -34,12 +35,13 @@ module.exports = {
           .catch(console.error);
       } else {
         console.error(error);
+        return message.channel.send(`Stream error: ${error.message}`);
       }
     }
 
     queue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
 
-    const type = song.url.includes('youtube.com') ? 'opus' : 'ogg/opus'
+    const type = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
     const dispatcher = queue.connection
       .play(stream, { type: type })
       .on("finish", () => {

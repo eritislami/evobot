@@ -3,7 +3,7 @@ const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID } = require("../config.json");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const scdl = require('soundcloud-downloader')
+const scdl = require("soundcloud-downloader");
 
 module.exports = {
   name: "play",
@@ -14,6 +14,7 @@ module.exports = {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
+    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
     if (serverQueue && channel !== message.guild.me.voice.channel)
       return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
 
@@ -21,7 +22,6 @@ module.exports = {
       return message
         .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
         .catch(console.error);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
@@ -32,6 +32,7 @@ module.exports = {
     const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
+    const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
@@ -39,8 +40,6 @@ module.exports = {
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
       return message.client.commands.get("playlist").execute(message, args);
     }
-
-    const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/
 
     const queueConstruct = {
       textChannel: message.channel,
@@ -64,31 +63,24 @@ module.exports = {
           duration: songInfo.videoDetails.lengthSeconds
         };
       } catch (error) {
-        if (error.message.includes("copyright")) {
-          return message
-            .reply("⛔ The video could not be played due to copyright protection ⛔")
-            .catch(console.error);
-        } else {
-          console.error(error);
-          return message.reply(error.message).catch(console.error);
-        }
+        console.error(error);
+        return message.reply(error.message).catch(console.error);
       }
-    } else if ((url.match(scRegex) && url.match(scRegex)[2]) && SOUNDCLOUD_CLIENT_ID !== "") {
+    } else if (scRegex.test(url)) {
       // It is a valid Soundcloud URL
+      if (!SOUNDCLOUD_CLIENT_ID)
+        return message.reply("Missing Soundcloud Client ID in config").catch(console.error);
       try {
-        const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID)
-        const opus = trackInfo.media.transcodings.filter(e => e.preset === 'opus_0_0')[0]
+        const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
         song = {
           title: trackInfo.title,
           url: url
-        }
+        };
       } catch (error) {
-        if (error.statusCode === 404) {
-          return message.reply('Could not find that Soundcloud track.')
-        }
-        return message.reply('There was an error playing that Soundcloud track.')
+        if (error.statusCode === 404)
+          return message.reply("Could not find that Soundcloud track.").catch(console.error);
+        return message.reply("There was an error playing that Soundcloud track.").catch(console.error);
       }
-
     } else {
       try {
         const results = await youtube.searchVideos(search, 1);
