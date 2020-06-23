@@ -6,7 +6,8 @@
 ## Requirements
 
 1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-2. YouTube Data API v3 Key **[Guide](https://developers.google.com/youtube/v3/getting-started)**
+2. YouTube Data API v3 Key **[Guide](https://developers.google.com/youtube/v3/getting-started)**  
+2.1 **(Optional)** Soundcloud Client ID **[Guide](https://github.com/zackradisic/node-soundcloud-downloader#client-id)**
 3. Node.js v12.0.0 or newer
 
 ## 🚀 Getting Started
@@ -25,6 +26,8 @@ If you are planning to use ***Glitch.com*** please read [#27](https://github.com
 
 Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
+⚠️ **Note: Never commit or share your token or api keys publicly** ⚠️
+
 ```json
 {
   "TOKEN": "",
@@ -42,15 +45,23 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * 🎶 Play music from YouTube via url
 
 `/play https://www.youtube.com/watch?v=GLvohMXgcBo`
+
 * 🔎 Play music from YouTube via search query
 
 `/play under the bridge red hot chili peppers`
+
+* 🎶 Play music from Soundcloud via url **(Requires Soundcloud Client Id)**
+
+`/play https://soundcloud.com/blackhorsebrigade/pearl-jam-alive`
+
 * 🔎 Search and select music to play
 
 `/search Pearl Jam`
+
 * 📃 Play youtube playlists via url
 
 `/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
+
 * 🔎 Play youtube playlists via search query
 
 `/playlist linkin park meteora`

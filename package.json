@@ -17,12 +17,10 @@
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "0.0.9",
     "ytdl-core": "^3.1.0",
-    "ytdl-core-discord": "amishshah/ytdl-core-discord"
+    "ytdl-core-discord": "amishshah/ytdl-core-discord",
+    "ffmpeg-static": "^4.2.3"
   },
   "scripts": {
     "start": "node index.js"
-  },
-  "optionalDependencies": {
-    "ffmpeg-static": "^4.2.3"
   }
 }
