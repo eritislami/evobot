@@ -29,14 +29,8 @@ module.exports = {
         module.exports.play(queue.songs[0], message);
       }
 
-      if (error.message.includes("copyright")) {
-        return message.channel
-          .send("⛔ A video could not be played due to copyright protection ⛔")
-          .catch(console.error);
-      } else {
-        console.error(error);
-        return message.channel.send(`Stream error: ${error.message}`);
-      }
+      console.error(error);
+      return message.channel.send(`Error: ${error.message ? error.message : error}`);
     }
 
     queue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
