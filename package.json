@@ -13,12 +13,14 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
+    "@keyv/sqlite": "^2.0.2",
     "discord.js": "^12.0.1",
+    "ffmpeg-static": "^4.2.3",
+    "keyv": "^4.0.1",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "0.0.9",
     "ytdl-core": "^3.1.0",
-    "ytdl-core-discord": "amishshah/ytdl-core-discord",
-    "ffmpeg-static": "^4.2.3"
+    "ytdl-core-discord": "amishshah/ytdl-core-discord"
   },
   "scripts": {
     "start": "node index.js"

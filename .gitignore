@@ -1,6 +1,7 @@
 /config.json
 /.idea
 /.vscode
+db.sqlite
 
 # Logs
 logs
