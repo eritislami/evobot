@@ -1,4 +1,6 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
+const Keyv = require("keyv");
+const guildVolumes = new Keyv("sqlite://db.sqlite");
 
 module.exports = {
   name: "volume",
@@ -17,6 +19,7 @@ module.exports = {
       return message.reply("Please use a number between 0 - 100.").catch(console.error);
 
     queue.volume = args[0];
+    guildVolumes.set(message.guild.id+'volume', args[0]);
     queue.connection.dispatcher.setVolumeLogarithmic(args[0] / 100);
 
     return queue.textChannel.send(`Volume set to: **${args[0]}%**`).catch(console.error);

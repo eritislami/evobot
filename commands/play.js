@@ -4,6 +4,8 @@ const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const scdl = require("soundcloud-downloader");
+const Keyv = require("keyv");
+const guildVolumes = new Keyv("sqlite://db.sqlite");
 
 module.exports = {
   name: "play",
@@ -12,6 +14,8 @@ module.exports = {
   description: "Plays audio from YouTube or Soundcloud",
   async execute(message, args) {
     const { channel } = message.member.voice;
+    const tvolume = await guildVolumes.get(message.guild.id+'volume');
+    const fvolume = tvolume ? tvolume : 100;
 
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
@@ -47,7 +51,7 @@ module.exports = {
       connection: null,
       songs: [],
       loop: false,
-      volume: 100,
+      volume: fvolume,
       playing: true
     };
 
