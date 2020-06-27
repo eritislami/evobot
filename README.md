@@ -20,8 +20,6 @@ npm install
 
 After installation finishes you can use `node index.js` to start the bot.
 
-If you are planning to use ***Glitch.com*** please read [#27](https://github.com/eritislami/evobot/issues/27)
-
 ## ⚙️ Configuration
 
 Copy or Rename `config.json.example` to `config.json` and fill out the values:
