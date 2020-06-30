@@ -5,7 +5,7 @@ module.exports = {
   aliases: ["st"],
   description: "Skip to the selected queue number",
   execute(message, args) {
-    if (!args.length) return message.reply(`Usage: ${message.client.prefix}${name} <Queue Number>`);
+    if (!args.length) return message.reply(`Usage: ${message.client.prefix}${module.exports.name} <Queue Number>`);
 
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.channel.send("There is no queue.").catch(console.error);
