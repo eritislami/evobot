@@ -63,18 +63,19 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * 🔎 Play youtube playlists via search query
 
 `/playlist linkin park meteora`
-* Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Now Playing (/np)
 * Queue system (/queue, /q)
 * Loop / Repeat (/loop)
 * Shuffle (/shuffle)
 * Volume control (/volume, /v)
+* Lyircs (/lyrics, /ly)
 * Pause (/pause)
 * Resume (/resume, /r)
 * Skip (/skip, /s)
 * Skip to song # in queue (/skipto, /st)
 * Toggle pruning of bot messages (/pruning)
 * Help (/help, /h)
+* Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Media Controls via Reactions
 ![reactions](https://i.imgur.com/j7CevsH.png)
 
