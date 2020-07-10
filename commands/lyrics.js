@@ -13,6 +13,7 @@ module.exports = {
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
+      if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
     } catch (error) {
       lyrics = `No lyrics found for ${queue.songs[0].title}.`;
     }
