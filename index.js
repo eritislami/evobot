@@ -21,8 +21,10 @@ client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(config.status);
 });
-client.on("warn", (info) => console.log(info));
-client.on("error", console.error);
+
+client.on("error", (e) => console.error(e));
+client.on("warn", (e) => console.warn(e));
+client.on("debug", (e) => console.info(e));
 
 /**
  * Import all commands
