@@ -1,4 +1,5 @@
 const { MessageEmbed } = require("discord.js");
+const config = require("../config.json");
 
 module.exports = {
   name: "help",
@@ -8,7 +9,7 @@ module.exports = {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
-      .setTitle("Evobot Help")
+      .setTitle(config.botname +  "Help")
       .setDescription("List of all commands")
       .setColor("#F8AA2A");
 
