@@ -6,4 +6,5 @@
   "PREFIX": "/",
   "PRUNING": false,
   "botname": "Evobot"
-}
+  "status": "/help"
+  }
