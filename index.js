@@ -19,7 +19,7 @@ const cooldowns = new Collection();
  */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
-  client.user.setActivity(config.status);
+  client.user.setActivity(status);
 });
 
 client.on("error", (e) => console.error(e));
