@@ -5,6 +5,6 @@
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
   "PRUNING": false,
-  "botname": "Evobot"
+  "botname": "Evobot",
   "status": "/help"
   }
