@@ -30,10 +30,13 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 {
   "TOKEN": "",
   "YOUTUBE_API_KEY": "",
+  "SOUNDCLOUD_CLIENT_ID": "z7xDdzwjM6kB7fmXCd06c8kU6lFNtBCT",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
-  "PRUNING": false
-}
+  "PRUNING": false,
+  "botname": "Evobot"
+  "status": "/help"
+  }
 ```
 
 ## 📝 Features & Commands
