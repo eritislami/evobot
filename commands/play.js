@@ -14,13 +14,13 @@ module.exports = {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
+    if (!channel) return message.reply("Você precisa estar em um canal de voz!").catch(console.error);
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
+      return message.reply(`Você precisa estar no mesmo canal que ${message.client.user}`).catch(console.error);
 
     if (!args.length)
       return message
-        .reply(`Usage: ${message.client.prefix}play <YouTube URL | Video Name | Soundcloud URL>`)
+        .reply(`Uso: ${message.client.prefix}play <LINK YouTube | Nome do Vídeo >`)
         .catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
