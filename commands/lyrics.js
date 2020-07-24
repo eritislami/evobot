@@ -2,24 +2,24 @@ const { MessageEmbed } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 
 module.exports = {
-  name: "lyrics",
+  name: "letras",
   aliases: ["ly"],
-  description: "Get lyrics for the currently playing song",
+  description: "Mostra as letras da música atual",
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
+    if (!queue) return message.channel.send("Nada está tocando.").catch(console.error);
 
     let lyrics = null;
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      if (!lyrics) lyrics = `Letras para ${queue.songs[0].title} não encontradas.`;
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = `etras para ${queue.songs[0].title} não encontradas.`;
     }
 
     let lyricsEmbed = new MessageEmbed()
-      .setTitle("Lyrics")
+      .setTitle("Letras")
       .setDescription(lyrics)
       .setColor("#F8AA2A")
       .setTimestamp();

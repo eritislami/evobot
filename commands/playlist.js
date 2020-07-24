@@ -8,20 +8,20 @@ module.exports = {
   name: "playlist",
   cooldown: 3,
   aliases: ["pl"],
-  description: "Play a playlist from youtube",
+  description: "Toca uma playlist do Youtube",
   async execute(message, args) {
     const { PRUNING } = require("../config.json");
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
+      return message.reply(`Você precisa estar no mesmo canal que ${message.client.user}`).catch(console.error);
 
     if (!args.length)
       return message
-        .reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
+        .reply(`Usage: ${message.client.prefix}playlist <Link da Playlist do YouTube | Nome da Playlist >`)
         .catch(console.error);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
+    if (!channel) return message.reply("Você precisa estar em um canal de voz!").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
@@ -54,7 +54,7 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("Playlist not found :(").catch(console.error);
+        return message.reply("Playlist não encontrada").catch(console.error);
       }
     } else {
       try {
@@ -63,7 +63,7 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("Playlist not found :(").catch(console.error);
+        return message.reply("Playlist não encontrada").catch(console.error);
       }
     }
 
@@ -78,7 +78,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+            .send(`✅ **${song.title}** foi adicionado a playlist ${message.author}`)
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);
@@ -95,10 +95,10 @@ module.exports = {
       playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
       if (playlistEmbed.description.length >= 2048)
         playlistEmbed.description =
-          playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit...";
+          playlistEmbed.description.substr(0, 2007) + "\nPlaylist muito longa...";
     }
 
-    message.channel.send(`${message.author} Started a playlist`, playlistEmbed);
+    message.channel.send(`${message.author} Iniciou uma playlist`, playlistEmbed);
 
     if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
 

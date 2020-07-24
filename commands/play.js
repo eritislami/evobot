@@ -9,7 +9,7 @@ module.exports = {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
-  description: "Plays audio from YouTube or Soundcloud",
+  description: "Toca uma música do Youtube",
   async execute(message, args) {
     const { channel } = message.member.voice;
 
@@ -92,14 +92,14 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        return message.reply("No video was found with a matching title").catch(console.error);
+        return message.reply("Nenhuma música com esse nome foi encontrada").catch(console.error);
       }
     }
 
     if (serverQueue) {
       serverQueue.songs.push(song);
       return serverQueue.textChannel
-        .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+        .send(`✅ **${song.title}** foi adicionado a playlist ${message.author}`)
         .catch(console.error);
     }
 
