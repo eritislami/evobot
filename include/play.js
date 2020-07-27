@@ -19,9 +19,7 @@ module.exports = {
       if (song.url.includes("youtube.com")) {
         stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
       } else if (song.url.includes("soundcloud.com") && SOUNDCLOUD_CLIENT_ID) {
-        const info = await scdl.getInfo(song.url, SOUNDCLOUD_CLIENT_ID);
-        const opus = scdl.filterMedia(info.media.transcodings, { format: scdl.FORMATS.OPUS });
-        stream = await scdl.downloadFromURL(opus[0].url, SOUNDCLOUD_CLIENT_ID);
+        stream = await scdl.downloadFormat(song.url, scdl.FORMATS.OPUS, SOUNDCLOUD_CLIENT_ID);
       }
     } catch (error) {
       if (queue) {
