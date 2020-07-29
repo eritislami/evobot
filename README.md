@@ -30,6 +30,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 {
   "TOKEN": "",
   "YOUTUBE_API_KEY": "",
+  "SOUNDCLOUD_CLIENT_ID": "",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
   "PRUNING": false
@@ -48,7 +49,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 `/play under the bridge red hot chili peppers`
 
-* 🎶 Play music from Soundcloud via url **(Requires Soundcloud Client Id)**
+* 🎶 Play music from Soundcloud via url
 
 `/play https://soundcloud.com/blackhorsebrigade/pearl-jam-alive`
 

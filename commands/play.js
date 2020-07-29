@@ -67,9 +67,6 @@ module.exports = {
         return message.reply(error.message).catch(console.error);
       }
     } else if (scRegex.test(url)) {
-      // It is a valid Soundcloud URL
-      if (!SOUNDCLOUD_CLIENT_ID)
-        return message.reply("Missing Soundcloud Client ID in config").catch(console.error);
       try {
         const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
         song = {
