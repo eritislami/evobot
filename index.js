@@ -66,7 +66,7 @@ client.on("message", async (message) => {
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
       return message.reply(
-        `please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`
+        `por favor aguarde mais ${timeLeft.toFixed(1)} segundos antes de usar o comando \`${command.name}\` novamente.`
       );
     }
   }

@@ -3,7 +3,7 @@ const { canModifyQueue } = require("../util/EvobotUtil");
 module.exports = {
   name: "skipto",
   aliases: ["st"],
-  description: "Skip to the selected queue number",
+  description: "Pula para a música selecionada",
   execute(message, args) {
     if (!args.length)
       return message
@@ -16,11 +16,11 @@ module.exports = {
         .catch(console.error);
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is no queue.").catch(console.error);
+    if (!queue) return message.channel.send("Não tem nenhuma playlist agora.").catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     if (args[0] > queue.songs.length)
-      return message.reply(`The queue is only ${queue.songs.length} songs long!`).catch(console.error);
+      return message.reply(`A playlist atual possui somente ${queue.songs.length} músicas!`).catch(console.error);
 
     queue.playing = true;
     if (queue.loop) {
@@ -31,6 +31,6 @@ module.exports = {
       queue.songs = queue.songs.slice(args[0] - 2);
     }
     queue.connection.dispatcher.end();
-    queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
+    queue.textChannel.send(`${message.author} ⏭ pulando ${args[0] - 1} músicas`).catch(console.error);
   }
 };
