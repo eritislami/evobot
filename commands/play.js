@@ -30,7 +30,7 @@ module.exports = {
       return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
 
     const search = args.join(" ");
-    const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
+    const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
     const url = args[0];
@@ -67,14 +67,12 @@ module.exports = {
         return message.reply(error.message).catch(console.error);
       }
     } else if (scRegex.test(url)) {
-      // It is a valid Soundcloud URL
-      if (!SOUNDCLOUD_CLIENT_ID)
-        return message.reply("Missing Soundcloud Client ID in config").catch(console.error);
       try {
         const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
         song = {
           title: trackInfo.title,
-          url: url
+          url: trackInfo.permalink_url,
+          duration: trackInfo.duration
         };
       } catch (error) {
         if (error.statusCode === 404)

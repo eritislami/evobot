@@ -14,14 +14,18 @@ module.exports = {
     }
 
     let stream = null;
+    let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
     try {
       if (song.url.includes("youtube.com")) {
         stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
-      } else if (song.url.includes("soundcloud.com") && SOUNDCLOUD_CLIENT_ID) {
-        const info = await scdl.getInfo(song.url, SOUNDCLOUD_CLIENT_ID);
-        const opus = scdl.filterMedia(info.media.transcodings, { format: scdl.FORMATS.OPUS });
-        stream = await scdl.downloadFromURL(opus[0].url, SOUNDCLOUD_CLIENT_ID);
+      } else if (song.url.includes("soundcloud.com")) {
+        try {
+          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.OPUS, SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined);
+        } catch (error) {
+          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined);
+          streamType = "unknown";
+        }
       }
     } catch (error) {
       if (queue) {
@@ -35,9 +39,8 @@ module.exports = {
 
     queue.connection.on("disconnect", () => message.client.queue.delete(message.guild.id));
 
-    const type = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
     const dispatcher = queue.connection
-      .play(stream, { type: type })
+      .play(stream, { type: streamType })
       .on("finish", () => {
         if (collector && !collector.ended) collector.stop();
 
