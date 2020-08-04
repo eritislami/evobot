@@ -75,7 +75,7 @@ module.exports = {
 
     const filter = (reaction, user) => user.id !== message.client.user.id;
     var collector = playingMessage.createReactionCollector(filter, {
-      time: song.duration > 0 ? song.duration * 1000 : 600000
+      time: song.duration > 0 ? song.duration : 600000
     });
 
     collector.on("collect", (reaction, user) => {

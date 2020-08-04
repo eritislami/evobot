@@ -72,7 +72,7 @@ module.exports = {
         song = {
           title: trackInfo.title,
           url: trackInfo.permalink_url,
-          duration: trackInfo.duration
+          duration: trackInfo.duration / 1000
         };
       } catch (error) {
         if (error.statusCode === 404)

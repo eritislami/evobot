@@ -18,6 +18,7 @@
     "lyrics-finder": "^21.0.5",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.1.2",
+    "string-progressbar": "^1.0.1",
     "ytdl-core": "^3.1.0",
     "ytdl-core-discord": "^1.2.1"
   },
