@@ -1,4 +1,4 @@
-const { canModifyQueue } = require("../util/EvobotUtil");
+const { canModifyQueue } = require("../util/KizutoRadioUtil");
 
 module.exports = {
   name: "resume",
@@ -12,7 +12,7 @@ module.exports = {
     if (!queue.playing) {
       queue.playing = true;
       queue.connection.dispatcher.resume();
-      return queue.textChannel.send(`${message.author} ▶ resumed the music!`).catch(console.error);
+      return queue.textChannel.send(`${message.author} :arrow_forward: resumed the music!`).catch(console.error);
     }
 
     return message.reply("The queue is not paused.").catch(console.error);

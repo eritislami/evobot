@@ -21,7 +21,6 @@ module.exports = {
     let lyricsEmbed = new MessageEmbed()
       .setTitle("Lyrics")
       .setDescription(lyrics)
-      .setColor("#F8AA2A")
       .setTimestamp();
 
     if (lyricsEmbed.description.length >= 2048)

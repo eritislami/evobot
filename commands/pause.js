@@ -1,4 +1,4 @@
-const { canModifyQueue } = require("../util/EvobotUtil");
+const { canModifyQueue } = require("../util/KizutoRadioUtil");
 
 module.exports = {
   name: "pause",
@@ -11,7 +11,7 @@ module.exports = {
     if (queue.playing) {
       queue.playing = false;
       queue.connection.dispatcher.pause(true);
-      return queue.textChannel.send(`${message.author} ⏸ paused the music.`).catch(console.error);
+      return queue.textChannel.send(`${message.author} :pause_button: paused the music.`).catch(console.error);
     }
   }
 };

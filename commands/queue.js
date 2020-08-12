@@ -11,9 +11,8 @@ module.exports = {
     const description = queue.songs.map((song, index) => `${index + 1}. ${escapeMarkdown(song.title)}`);
 
     let queueEmbed = new MessageEmbed()
-      .setTitle("EvoBot Music Queue")
-      .setDescription(description)
-      .setColor("#F8AA2A");
+      .setTitle("Kizuto Radio Music Queue")
+      .setDescription(description);
 
     const splitDescription = splitMessage(description, {
       maxLength: 2048,

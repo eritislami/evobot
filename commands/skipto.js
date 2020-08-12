@@ -1,4 +1,4 @@
-const { canModifyQueue } = require("../util/EvobotUtil");
+const { canModifyQueue } = require("../util/KizutoRadioUtil");
 
 module.exports = {
   name: "skipto",
@@ -31,6 +31,6 @@ module.exports = {
       queue.songs = queue.songs.slice(args[0] - 2);
     }
     queue.connection.dispatcher.end();
-    queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
+    queue.textChannel.send(`${message.author} :track_next: skipped ${args[0] - 1} songs`).catch(console.error);
   }
 };

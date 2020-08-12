@@ -4,13 +4,12 @@ module.exports = {
   name: "help",
   aliases: ["h"],
   description: "Display all commands and descriptions",
-  execute(message) {
+  execute(message, client) {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
-      .setTitle("Evobot Help")
-      .setDescription("List of all commands")
-      .setColor("#F8AA2A");
+      .setTitle("Kizuto Radio Help")
+      .setDescription("List of all commands");
 
     commands.forEach((cmd) => {
       helpEmbed.addField(

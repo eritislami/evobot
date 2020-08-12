@@ -1,6 +1,6 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader");
-const { canModifyQueue } = require("../util/EvobotUtil");
+const { canModifyQueue } = require("../util/KizutoRadioUtil");
 
 module.exports = {
   async play(song, message) {
@@ -10,7 +10,7 @@ module.exports = {
     if (!song) {
       queue.channel.leave();
       message.client.queue.delete(message.guild.id);
-      return queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
+      return queue.textChannel.send(":no_entry_sign: Music queue ended.").catch(console.error);
     }
 
     let stream = null;
@@ -21,9 +21,17 @@ module.exports = {
         stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
       } else if (song.url.includes("soundcloud.com")) {
         try {
-          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.OPUS, SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined);
+          stream = await scdl.downloadFormat(
+            song.url,
+            scdl.FORMATS.OPUS,
+            SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined
+          );
         } catch (error) {
-          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined);
+          stream = await scdl.downloadFormat(
+            song.url,
+            scdl.FORMATS.MP3,
+            SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined
+          );
           streamType = "unknown";
         }
       }
@@ -56,7 +64,7 @@ module.exports = {
           module.exports.play(queue.songs[0], message);
         }
       })
-      .on("error", (err) => {
+      .on("error", err => {
         console.error(err);
         queue.songs.shift();
         module.exports.play(queue.songs[0], message);
@@ -64,11 +72,11 @@ module.exports = {
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
 
     try {
-      var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
-      await playingMessage.react("⏭");
-      await playingMessage.react("⏯");
+      var playingMessage = await queue.textChannel.send(`:notes: Started playing: **${song.title}** ${song.url}`);
+      await playingMessage.react("⏭️");
+      await playingMessage.react("⏯️");
       await playingMessage.react("🔁");
-      await playingMessage.react("⏹");
+      await playingMessage.react("⏹️");
     } catch (error) {
       console.error(error);
     }
@@ -83,26 +91,26 @@ module.exports = {
       const member = message.guild.member(user);
 
       switch (reaction.emoji.name) {
-        case "⏭":
+        case "⏭️":
           queue.playing = true;
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.connection.dispatcher.end();
-          queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
+          queue.textChannel.send(`${user} :fast_forward: skipped the song`).catch(console.error);
           collector.stop();
           break;
 
-        case "⏯":
+        case "⏯️":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
-            queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
+            queue.textChannel.send(`${user} :pause_button: paused the music.`).catch(console.error);
           } else {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.resume();
-            queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+            queue.textChannel.send(`${user} :arrow_forward: resumed the music!`).catch(console.error);
           }
           break;
 
@@ -113,11 +121,11 @@ module.exports = {
           queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
           break;
 
-        case "⏹":
+        case "⏹️":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.songs = [];
-          queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
+          queue.textChannel.send(`${user} :stop_button: stopped the music!`).catch(console.error);
           try {
             queue.connection.dispatcher.end();
           } catch (error) {

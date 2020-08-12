@@ -78,7 +78,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+            .send(`:white_check_mark: **${song.title}** has been added to the queue by ${message.author}`)
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);
@@ -88,7 +88,6 @@ module.exports = {
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
       .setURL(playlist.url)
-      .setColor("#F8AA2A")
       .setTimestamp();
 
     if (!PRUNING) {

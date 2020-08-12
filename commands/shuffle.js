@@ -1,4 +1,4 @@
-const { canModifyQueue } = require("../util/EvobotUtil");
+const { canModifyQueue } = require("../util/KizutoRadioUtil");
 
 module.exports = {
   name: "shuffle",
@@ -15,6 +15,6 @@ module.exports = {
     }
     queue.songs = songs;
     message.client.queue.set(message.guild.id, queue);
-    queue.textChannel.send(`${message.author} 🔀 shuffled the queue`).catch(console.error);
+    queue.textChannel.send(`${message.author} :twisted_rightwards_arrows: shuffled the queue`).catch(console.error);
   }
 };
