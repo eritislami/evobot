@@ -71,6 +71,7 @@ module.exports = {
       song = {
         title: video.title,
         url: video.url,
+        thumbnail: "https://cdn.discordapp.com/attachments/732605696532545626/744014529935048744/images_2.jpeg",
         duration: video.durationSeconds
       };
 
