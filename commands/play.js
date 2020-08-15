@@ -60,6 +60,7 @@ module.exports = {
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
+          thumbnail: songInfo.videoDetails.thumbnail.thumbnails[3].url,
           duration: songInfo.videoDetails.lengthSeconds
         };
       } catch (error) {
@@ -72,6 +73,7 @@ module.exports = {
         song = {
           title: trackInfo.title,
           url: trackInfo.permalink_url,
+          thumbnail: "https://cdn.discordapp.com/attachments/732605696532545626/744014530459336714/images.png",
           duration: trackInfo.duration / 1000
         };
       } catch (error) {
@@ -86,6 +88,7 @@ module.exports = {
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
+          thumbnail: songInfo.videoDetails.thumbnail.thumbnails[3].url,
           duration: songInfo.videoDetails.lengthSeconds
         };
       } catch (error) {
