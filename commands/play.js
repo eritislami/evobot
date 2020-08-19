@@ -39,6 +39,8 @@ module.exports = {
     // Start the playlist if playlist url was provided
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
       return message.client.commands.get("playlist").execute(message, args);
+    } else if (scdl.isValidUrl(url) && url.includes('/sets/')) {
+      return message.client.commands.get("playlist").execute(message, args);
     }
 
     const queueConstruct = {
