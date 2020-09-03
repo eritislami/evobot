@@ -60,7 +60,7 @@ module.exports = {
     } else if (scdl.isValidUrl(args[0])) {
       if (args[0].includes('/sets/')) {
         message.channel.send('⌛ fetching the playlist...')
-        playlist = await scdl.getSetInfo(args[0], true, SOUNDCLOUD_CLIENT_ID)
+        playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID)
         videos = playlist.tracks.map(track => ({
           title: track.title,
           url: track.permalink_url,
