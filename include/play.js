@@ -21,9 +21,17 @@ module.exports = {
         stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 25 });
       } else if (song.url.includes("soundcloud.com")) {
         try {
-          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.OPUS, SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined);
+          stream = await scdl.downloadFormat(
+            song.url,
+            scdl.FORMATS.OPUS,
+            SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined
+          );
         } catch (error) {
-          stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined);
+          stream = await scdl.downloadFormat(
+            song.url,
+            scdl.FORMATS.MP3,
+            SOUNDCLOUD_CLIENT_ID ? SOUNDCLOUD_CLIENT_ID : undefined
+          );
           streamType = "unknown";
         }
       }
@@ -67,6 +75,9 @@ module.exports = {
       var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
+      await playingMessage.react("🔇");
+      await playingMessage.react("🔉");
+      await playingMessage.react("🔊");
       await playingMessage.react("🔁");
       await playingMessage.react("⏹");
     } catch (error) {
@@ -104,6 +115,42 @@ module.exports = {
             queue.connection.dispatcher.resume();
             queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
           }
+          break;
+
+        case "🔇":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return;
+          if (queue.volume <= 0) {
+            queue.volume = 100;
+            queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
+            queue.textChannel.send(`${user} 🔊 unmuted the music!`).catch(console.error);
+          } else {
+            queue.volume = 0;
+            queue.connection.dispatcher.setVolumeLogarithmic(0);
+            queue.textChannel.send(`${user} 🔇 muted the music!`).catch(console.error);
+          }
+          break;
+
+        case "🔉":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return;
+          if (queue.volume - 10 <= 0) queue.volume = 0;
+          else queue.volume = queue.volume - 10;
+          queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
+          queue.textChannel
+            .send(`${user} 🔉 decreased the volume, the volume is now ${queue.volume}%`)
+            .catch(console.error);
+          break;
+
+        case "🔊":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return;
+          if (queue.volume + 10 >= 100) queue.volume = 100;
+          else queue.volume = queue.volume + 10;
+          queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
+          queue.textChannel
+            .send(`${user} 🔊 increased the volume, the volume is now ${queue.volume}%`)
+            .catch(console.error);
           break;
 
         case "🔁":
