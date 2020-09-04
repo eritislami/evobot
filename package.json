@@ -17,7 +17,7 @@
     "ffmpeg-static": "^4.2.3",
     "lyrics-finder": "^21.0.5",
     "simple-youtube-api": "^5.1.1",
-    "soundcloud-downloader": "^0.1.2",
+    "soundcloud-downloader": "^0.1.6",
     "string-progressbar": "^1.0.1",
     "ytdl-core": "^3.1.0",
     "ytdl-core-discord": "^1.2.1"
