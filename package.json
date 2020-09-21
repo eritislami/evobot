@@ -5,7 +5,7 @@
   "main": "index.js",
   "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
-  "homepage": "https://github.com/eritislami/evobot",
+  "homepage": "https://github.com/AlanDara/evobot",
   "repository": "github:eritislami/evobot",
   "bugs": "https://github.com/eritislami/evobot/issues",
   "engines": {
