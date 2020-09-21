@@ -82,4 +82,4 @@ client.on("message", async (message) => {
   }
 });
 
-client.login(client.PREFIX.TOKEN);
+client.login(client.TOKEN);
