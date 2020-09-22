@@ -18,10 +18,11 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 /**
  * Client Events
  */
-client.on("ready", () => {
-  console.log(`${client.user.username} ready!`);
- 
-  client.user.setActivity(`${client.guilds.cache.size} servers, ${client.channels.cache.size} channels, ${client.users.cache.size} users, ${prefix} help`);
+
+client.on('ready', () => {
+  let activities = [ ${client.guilds.cache.size} servers, ${client.channels.cache.size} channels, ${client.users.cache.size} users ], i = 0;
+
+  setInterval(() => client.user.setActivity(${prefix}help | ${activities[i ++ % activities.length]}, { type: "WATCHING"}),${process.env.INTERVAL})
 });
 
 client.on("warn", (info) => console.log(info));
