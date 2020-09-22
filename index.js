@@ -19,10 +19,12 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
  * Client Events
  */
 
+let activity = ["`${client.users.size} commands | ><help`, {type: "LISTENING"}", "`on ${client.guilds.size} servers | ><help`, {type: "PLAYING"}
 client.on('ready', () => {
-  let activities = [ ${client.guilds.cache.size} servers, ${client.channels.cache.size} channels, ${client.users.cache.size} users ], i = 0;
-
-  setInterval(() => client.user.setActivity(${prefix}help | ${activities[i ++ % activities.length]}, { type: "WATCHING"}),${process.env.INTERVAL})
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+        client.user.setActivity(activities_list[index]); // sets bot's activities to one of the phrases in the arraylist.
+    }, 10000);
 });
 
 client.on("warn", (info) => console.log(info));
