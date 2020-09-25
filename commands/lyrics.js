@@ -1,25 +1,27 @@
 const { MessageEmbed } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
+const { LYRICS } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const util = require('util');
 
 module.exports = {
   name: "lyrics",
   aliases: ["ly"],
-  description: "Get lyrics for the currently playing song",
+  description: LYRICS.description,
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
+    if (!queue) return message.channel.send(LYRICS.nothing_playing).catch(console.error);
 
     let lyrics = null;
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      if (!lyrics) lyrics = util.format(LYRICS.no_lyrics,${queue.songs[0].title});
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = util.format(LYRICS.no_lyrics,${queue.songs[0].title});
     }
 
     let lyricsEmbed = new MessageEmbed()
-      .setTitle("Lyrics")
+      .setTitle(LYRICS.lyricsEmbed.title)
       .setDescription(lyrics)
       .setColor("#F8AA2A")
       .setTimestamp();

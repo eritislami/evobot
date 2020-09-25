@@ -1,15 +1,18 @@
 const { MessageEmbed } = require("discord.js");
+const { HELP } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+
+
 
 module.exports = {
   name: "help",
   aliases: ["h"],
-  description: "Display all commands and descriptions",
+  description: HELP.description,
   execute(message) {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
-      .setTitle("Evobot Help")
-      .setDescription("List of all commands")
+      .setTitle(HELP.helpEmbed.title)
+      .setDescription(HELP.helpEmbed.description)
       .setColor("#F8AA2A");
 
     commands.forEach((cmd) => {

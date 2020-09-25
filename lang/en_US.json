@@ -1,0 +1,51 @@
+{
+    "HELP": {
+        "description": "Display all commands and descriptions",
+        "helpEmbed":{
+          "title": "Evobot Help",
+          "description":"List of all commands"
+        }
+    },
+
+
+    "LOOP":{
+        "description": "Toggle music loop",
+        "nothing_playing": "There is nothing playing.",
+        "loop_status": "Loop is now **%s**",
+        "on": "on",
+        "off": "off"
+    },
+
+
+    "LYRICS":{
+        "description": "Get lyrics for the currently playing song",
+        "nothing_playing": "There is nothing playing.",
+        "no_lyrics": "No lyrics found for **%s**.",
+        "lyricsEmbed":{
+          "title": "Lyrics"
+        }
+    },
+
+
+    "NOWPLAYING":{
+      "description": "Show now playing song",
+      "nothing_playing": "There is nothing playing.",
+      "nowPlayingEmbed":{
+        "title": "Now playing",
+        "author": "EvoBot",
+        "live": " ◉ LIVE",
+        "time_remaining":"Time Remaining: "
+      }
+    },
+
+
+    "PAUSE":{
+      "description":"Pause the currently playing music",
+      "nothing_playing": "There is nothing playing.",
+      "nothing_playing": "⏸ paused the music.",
+
+    }
+
+
+
+}
