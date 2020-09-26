@@ -1,7 +1,7 @@
-![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
+![logo]()
 
-# 🤖 EvoBot (Discord Music Bot)
-> EvoBot is a Discord Music Bot built with discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide)
+# 🤖 Remix (Discord Music Bot)
+> Remix is a Discord Music Bot built with discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide)
 
 ## Requirements
 
@@ -78,19 +78,16 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * Help (/help, /h)
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Media Controls via Reactions
-![reactions](https://i.imgur.com/j7CevsH.png)
+![reactions](https://cdn.discordapp.com/attachments/755937498340917299/758314690987950100/Screenshot_20200923-1611242.png)
 
 ## 🤝 Contributing
 
-1. [Fork the repository](https://github.com/eritislami/evobot/fork)
+1. [Fork the repository](https://github.com/baro010/XRythmPrivate)
 2. Clone your fork: `git clone https://github.com/your-username/evobot.git`
 3. Create your feature branch: `git checkout -b my-new-feature`
 4. Commit your changes: `git commit -am 'Add some feature'`
 5. Push to the branch: `git push origin my-new-feature`
 6. Submit a pull request
 
-## 📝 Credits
-
-[@iCrawl](https://github.com/iCrawl) For the queue system used in this application which was adapted from [@iCrawl/discord-music-bot](https://github.com/iCrawl/discord-music-bot)
 
 [![Run on Repl.it](https://repl.it/badge/github/eritislami/evobot)](https://repl.it/github/eritislami/evobot)

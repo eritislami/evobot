@@ -138,7 +138,7 @@ module.exports = {
           else queue.volume = queue.volume - 10;
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
           queue.textChannel
-            .send(``)
+            .send(` 🔉 decreased the volume, the volume is now ${queue.volume}%`)
             .catch(console.error);
           break;
 
@@ -149,7 +149,7 @@ module.exports = {
           else queue.volume = queue.volume + 10;
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
           queue.textChannel
-            .send(``)
+            .send(` 🔊 increased the volume, the volume is now ${queue.volume}%`)
             .catch(console.error);
           break;
 
