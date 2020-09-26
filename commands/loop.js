@@ -1,6 +1,6 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
 const { LOOP } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
-const util = require('util');
+const {format} = require('util');
 
 module.exports = {
   name: "loop",
@@ -14,7 +14,7 @@ module.exports = {
     // toggle from false to true and reverse
     queue.loop = !queue.loop;
     return queue.textChannel
-      .send(util.format(LOOP.loop_status, queue.loop ? LOOP.on:LOOP.off))
+      .send(format(LOOP.loop_status, queue.loop ? LOOP.on:LOOP.off))
       .catch(console.error);
   }
 };

@@ -2,23 +2,25 @@ const { MessageEmbed } = require("discord.js");
 const { YOUTUBE_API_KEY } = require("../config.json");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const { SEARCH } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const {format} = require('util');
 
 module.exports = {
   name: "search",
-  description: "Search and select videos to play",
+  description: SEARCH.description,
   async execute(message, args) {
     if (!args.length)
-      return message.reply(`Usage: ${message.client.prefix}${module.exports.name} <Video Name>`).catch(console.error);
+      return message.reply(format(SEARCH.usage,message.client.prefix,module.exports.name)).catch(console.error);
     if (message.channel.activeCollector)
-      return message.reply("A message collector is already active in this channel.");
+      return message.reply(SEARCH.message_collector);
     if (!message.member.voice.channel)
-      return message.reply("You need to join a voice channel first!").catch(console.error);
+      return message.reply(SEARCH.need_to_join).catch(console.error);
 
     const search = args.join(" ");
 
     let resultsEmbed = new MessageEmbed()
-      .setTitle(`**Reply with the song number you want to play**`)
-      .setDescription(`Results for: ${search}`)
+      .setTitle(SEARCH.resultsEmbed.title)
+      .setDescription(format(SEARCH.resultsEmbed.description,search))
       .setColor("#F8AA2A");
 
     try {

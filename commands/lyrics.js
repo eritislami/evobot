@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
 const { LYRICS } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
-const util = require('util');
+const {format} = require('util');
 
 module.exports = {
   name: "lyrics",
@@ -15,9 +15,9 @@ module.exports = {
 
     try {
       lyrics = await lyricsFinder(queue.songs[0].title, "");
-      if (!lyrics) lyrics = util.format(LYRICS.no_lyrics,${queue.songs[0].title});
+      if (!lyrics) lyrics = format(LYRICS.no_lyrics,queue.songs[0].title);
     } catch (error) {
-      lyrics = util.format(LYRICS.no_lyrics,${queue.songs[0].title});
+      lyrics = format(LYRICS.no_lyrics,queue.songs[0].title);
     }
 
     let lyricsEmbed = new MessageEmbed()

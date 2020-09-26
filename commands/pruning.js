@@ -1,20 +1,22 @@
 const fs = require("fs");
 const config = require("../config.json");
+const { PRUNING } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const {format} = require('util');
 
 module.exports = {
   name: "pruning",
-  description: "Toggle pruning of bot messages",
+  description: PRUNING.description,
   execute(message) {
     config.PRUNING = !config.PRUNING;
 
     fs.writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {
       if (err) {
         console.log(err);
-        return message.channel.send("There was an error writing to the file.").catch(console.error);
+        return message.channel.send(PRUNING.error_writing).catch(console.error);
       }
 
       return message.channel
-        .send(`Message pruning is ${config.PRUNING ? "**enabled**" : "**disabled**"}`)
+        .send(format(PRUNING.message_enable_disable, config.PRUNING ? PRUNING.enabled:PRUNING.disabled))
         .catch(console.error);
     });
   }

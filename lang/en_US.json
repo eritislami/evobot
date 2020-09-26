@@ -1,29 +1,29 @@
 {
     "HELP": {
-        "description": "Display all commands and descriptions",
-        "helpEmbed":{
-          "title": "Evobot Help",
-          "description":"List of all commands"
-        }
+      "description": "Display all commands and descriptions",
+      "helpEmbed":{
+        "title": "Evobot Help",
+        "description":"List of all commands"
+      }
     },
 
 
     "LOOP":{
-        "description": "Toggle music loop",
-        "nothing_playing": "There is nothing playing.",
-        "loop_status": "Loop is now **%s**",
-        "on": "on",
-        "off": "off"
+      "description": "Toggle music loop",
+      "nothing_playing": "There is nothing playing.",
+      "loop_status": "Loop is now **%s**",
+      "on": "on",
+      "off": "off"
     },
 
 
     "LYRICS":{
-        "description": "Get lyrics for the currently playing song",
-        "nothing_playing": "There is nothing playing.",
-        "no_lyrics": "No lyrics found for **%s**.",
-        "lyricsEmbed":{
-          "title": "Lyrics"
-        }
+      "description": "Get lyrics for the currently playing song",
+      "nothing_playing": "There is nothing playing.",
+      "no_lyrics": "No lyrics found for **%s**.",
+      "lyricsEmbed":{
+        "title": "Lyrics"
+      }
     },
 
 
@@ -42,10 +42,122 @@
     "PAUSE":{
       "description":"Pause the currently playing music",
       "nothing_playing": "There is nothing playing.",
-      "nothing_playing": "⏸ paused the music.",
+      "paused_music": "%s ⏸ paused the music."
+    },
 
+    "PLAY":{
+      "description":"Plays audio from YouTube or Soundcloud",
+      "need_to_join":"You need to join a voice channel first!",
+      "same_channel":"You must be in the same channel as %s",
+      "usage":"Usage: %splay <YouTube URL | Video Name | Soundcloud URL>",
+      "missing_permission":"Cannot connect to voice channel, missing permissions",
+      "cannot_speak":"I cannot speak in this voice channel, make sure I have the proper permissions!",
+      "error_track_not_find_soundcloud":"Could not find that Soundcloud track.",
+      "error_play_track_soundcloud":"There was an error playing that Soundcloud track.",
+      "youtube_no_video_find":"No video was found with a matching title",
+      "added_to_queue": "✅ **%s** has been added to the queue by %s",
+      "could_not_join_channel":"Could not join the channel: %s"
+    },
+
+
+    "PLAYLIST":{
+      "description":"Play a playlist from youtube",
+      "same_channel":"You must be in the same channel as %s",
+      "usage":"Usage: %splaylist <YouTube Playlist URL | Playlist Name>",
+      "need_to_join":"You need to join a voice channel first!",
+      "missing_permission":"Cannot connect to voice channel, missing permissions",
+      "cannot_speak":"I cannot speak in this voice channel, make sure I have the proper permissions!",
+      "playlist_not_found":"Playlist not found :(",
+      "fetching": "⌛ fetching the playlist...",
+      "added_to_queue": "✅ **%s** has been added to the queue by %s",
+      "playlist_larger":"\nPlaylist larger than character limit...",
+      "started":"%s Started a playlist",
+      "could_not_join_channel":"Could not join the channel: %s"
+    },
+
+
+    "PRUNING":{
+      "description":"Toggle pruning of bot messages",
+      "error_writing":"There was an error writing to the file.",
+      "enabled":"enabled",
+      "disabled":"disabled",
+      "message_enable_disable":"Message pruning is **%s**"
+    },
+
+
+    "QUEUE":{
+      "description":"Show the music queue and now playing.",
+      "nothing_playing": "There is nothing playing.",
+      "queueEmbed":{
+        "title":"EvoBot Music Queue"
+      }
+    },
+
+
+    "REMOVE":{
+      "description":"Remove song from the queue",
+      "no_queue":"There is no queue.",
+      "usage":"Usage: %sremove <Queue Number>",
+      "remove":"%s ❌ removed **%s** from the queue."
+    },
+
+
+    "RESUME":{
+      "description":"Resume currently playing music",
+      "nothing_playing": "There is nothing playing.",
+      "resume": "%s  ▶ resumed the music!",
+      "paused": "The queue is not paused."
+    },
+
+    "SEARCH":{
+      "description":"Search and select videos to play",
+      "usage":"Usage: %s%s <Video Name>",
+      "message_collector":"A message collector is already active in this channel.",
+      "need_to_join":"You need to join a voice channel first!",
+      "resultsEmbed":{
+        "title":"**Reply with the song number you want to play**",
+        "description":"Results for: %s"
+      }
+    },
+
+
+
+    "SHUFFLE":{
+      "description":"Shuffle queue",
+      "no_queue":"There is no queue.",
+      "shuffle":"%s 🔀 shuffled the queue"
+    },
+
+    "SKIP":{
+      "description":"Skip the currently playing song",
+      "nothing_playing":"There is nothing playing that I could skip for you.",
+      "skip":"%s ⏭ skipped the song"
+    },
+
+
+    "SKIPTO":{
+      "description":"Skip to the selected queue number",
+      "usage":"Usage: %s%s <Queue Number>",
+      "no_queue":"There is no queue.",
+      "queue":"The queue is only ${queue.songs.length} songs long!",
+      "skip":"%s ⏭ skipped %s songs"
+    },
+
+
+    "STOP":{
+      "description":"Stops the music",
+      "nothing_playing": "There is nothing playing.",
+      "stopped":"%s ⏹ stopped the music!"
+    },
+
+    "VOLUME":{
+      "description":"Change volume of currently playing music",
+      "nothing_playing": "There is nothing playing.",
+      "need_to_join":"You need to join a voice channel first!",
+      "current_volume":"🔊 The current volume is: **%s%**",
+      "use_number":"Please use a number to set volume.",
+      "range":"Please use a number between 0 - 100.",
+      "set_volume":"Volume set to: **%s%**"
     }
-
-
 
 }
