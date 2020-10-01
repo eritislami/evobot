@@ -79,6 +79,7 @@ module.exports = {
       await playingMessage.react("🔉");
       await playingMessage.react("🔊");
       await playingMessage.react("🔁");
+      await playingMessage.react("🔀");
       await playingMessage.react("⏹");
     } catch (error) {
       console.error(error);
@@ -158,6 +159,25 @@ module.exports = {
           if (!canModifyQueue(member)) return;
           queue.loop = !queue.loop;
           queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
+          break;
+
+        case "🔀":
+        reaction.users.remove(user).catch(console.error);
+        if (!queue)
+            return message.channel
+                  .send("There is no queue.")
+                  .catch(console.error);
+          if (!canModifyQueue(member)) return;
+          let songs = queue.songs;
+          queue.songs = songs;
+          for (let i = songs.length - 1; i > 1; i--) {
+              let j = 1 + Math.floor(Math.random() * i);
+              [songs[i], songs[j]] = [songs[j], songs[i]];
+          }
+          message.client.queue.set(message.guild.id, queue);
+          queue.textChannel
+            .send(`${user} 🔀 Shuffled The Queue.`)
+            .catch(console.error);
           break;
 
         case "⏹":
