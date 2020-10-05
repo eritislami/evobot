@@ -14,6 +14,6 @@ module.exports = {
     global.volumeold = queue.volume;
     queue.volume = 0;
     queue.connection.dispatcher.setVolumeLogarithmic(0);
-    queue.textChannel.send(`${user} 🔇 muted the music!`).catch(console.error);
+    queue.textChannel.send(`${message.author} 🔇 muted the music!`).catch(console.error);
   }
 };
