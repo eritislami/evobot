@@ -11,7 +11,7 @@ module.exports = {
     if (queue.volume <= 0) {
       queue.volume = volumeold;
       queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);;
-      return queue.textChannel.send(`${user} 🔊 unmuted the music!`).catch(console.error);
+      return queue.textChannel.send(`${message.author} 🔊 unmuted the music!`).catch(console.error);
     }
   }
 };
