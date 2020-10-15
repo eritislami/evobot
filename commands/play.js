@@ -101,7 +101,7 @@ module.exports = {
     if (serverQueue) {
       serverQueue.songs.push(song);
       return serverQueue.textChannel
-        .send(format(ERROR.added_to_queue,song.title,message.author))
+        .send(format(PLAY.added_to_queue,song.title,message.author))
         .catch(console.error);
     }
 

@@ -91,7 +91,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(format(ERROR.added_to_queue,song.title,message.author))
+            .send(format(PLAYLIST.added_to_queue,song.title,message.author))
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);

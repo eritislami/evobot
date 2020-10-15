@@ -43,32 +43,22 @@
 
     "PLAY":{
       "description":"Plays audio from YouTube or Soundcloud",
-
-
       "usage":"Usage: %splay <YouTube URL | Video Name | Soundcloud URL>",
-
-
       "error_track_not_find_soundcloud":"Could not find that Soundcloud track.",
       "error_play_track_soundcloud":"There was an error playing that Soundcloud track.",
-      "youtube_no_video_find":"No video was found with a matching title",
-
-
+      "added_to_queue": "✅ **%s** has been added to the queue by %s",
+      "youtube_no_video_find":"No video was found with a matching title"
     },
 
 
     "PLAYLIST":{
       "description":"Play a playlist from youtube",
-
       "usage":"Usage: %splaylist <YouTube Playlist URL | Playlist Name>",
-
-
-      "cannot_speak":"I cannot speak in this voice channel, make sure I have the proper permissions!",
       "playlist_not_found":"Playlist not found :(",
       "fetching": "⌛ fetching the playlist...",
-
       "playlist_larger":"\nPlaylist larger than character limit...",
-      "started":"%s Started a playlist",
-
+      "added_to_queue": "✅ **%s** has been added to the queue by %s",
+      "started":"%s Started a playlist"
     },
 
 
@@ -91,7 +81,6 @@
 
     "REMOVE":{
       "description":"Remove song from the queue",
-       ,
       "usage":"Usage: %sremove <Queue Number>",
       "remove":"%s ❌ removed **%s** from the queue."
     },
@@ -102,6 +91,7 @@
       "resume": "%s  ▶ resumed the music!",
       "paused": "The queue is not paused."
     },
+
 
     "SEARCH":{
       "description":"Search and select videos to play",
@@ -118,7 +108,6 @@
 
     "SHUFFLE":{
       "description":"Shuffle queue",
-       ,
       "shuffle":"%s 🔀 shuffled the queue"
     },
 
@@ -132,7 +121,6 @@
     "SKIPTO":{
       "description":"Skip to the selected queue number",
       "usage":"Usage: %s%s <Queue Number>",
-       ,
       "queue":"The queue is only %s songs long!",
       "skip":"%s ⏭ skipped %s songs"
     },
@@ -150,6 +138,7 @@
       "range":"Please use a number between 0 - 100.",
       "set_volume":"Volume set to: **%s%**"
     },
+
 
     "ERROR":{
       "nothing_playing": "There is nothing playing.",
