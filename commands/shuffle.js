@@ -1,5 +1,5 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
-const { SHUFFLE } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { SHUFFLE,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
   description: SHUFFLE.description,
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send(SHUFFLE.no_queue).catch(console.error);
+    if (!queue) return message.channel.send(ERROR.no_queue).catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     let songs = queue.songs;

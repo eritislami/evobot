@@ -1,6 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
-const { LYRICS } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { LYRICS,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
   description: LYRICS.description,
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send(LYRICS.nothing_playing).catch(console.error);
+    if (!queue) return message.channel.send(ERROR.nothing_playing).catch(console.error);
 
     let lyrics = null;
 

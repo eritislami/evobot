@@ -2,7 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { YOUTUBE_API_KEY } = require("../config.json");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const { SEARCH } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { SEARCH,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -14,7 +14,7 @@ module.exports = {
     if (message.channel.activeCollector)
       return message.reply(SEARCH.message_collector);
     if (!message.member.voice.channel)
-      return message.reply(SEARCH.need_to_join).catch(console.error);
+      return message.reply(ERROR.need_to_join).catch(console.error);
 
     const search = args.join(" ");
 

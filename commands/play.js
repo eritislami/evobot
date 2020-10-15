@@ -4,7 +4,7 @@ const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const scdl = require("soundcloud-downloader");
-const { PLAY } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { PLAY,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -16,9 +16,9 @@ module.exports = {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!channel) return message.reply(PLAY.need_to_join).catch(console.error);
+    if (!channel) return message.reply(ERROR.need_to_join).catch(console.error);
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(format(PLAY.same_channel,message.client.user)).catch(console.error);
+      return message.reply(format(ERROR.same_channel,message.client.user)).catch(console.error);
 
     if (!args.length)
       return message
@@ -27,9 +27,9 @@ module.exports = {
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.reply(PLAY.missing_permission);
+      return message.reply(ERROR.missing_permission);
     if (!permissions.has("SPEAK"))
-      return message.reply(PLAY.cannot_speak);
+      return message.reply(ERROR.cannot_speak);
 
     const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
@@ -101,7 +101,7 @@ module.exports = {
     if (serverQueue) {
       serverQueue.songs.push(song);
       return serverQueue.textChannel
-        .send(format(PLAY.added_to_queue,song.title,message.author))
+        .send(format(ERROR.added_to_queue,song.title,message.author))
         .catch(console.error);
     }
 
@@ -116,7 +116,7 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send(format(PLAY.could_not_join_channel,error)).catch(console.error);
+      return message.channel.send(format(ERROR.could_not_join_channel,error)).catch(console.error);
     }
   }
 };

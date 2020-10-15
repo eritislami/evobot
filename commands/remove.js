@@ -1,5 +1,5 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
-const { REMOVE } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { REMOVE,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -7,7 +7,7 @@ module.exports = {
   description: REMOVE.description,
   execute(message, args) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send(REMOVE.no_queue).catch(console.error);
+    if (!queue) return message.channel.send(ERROR.no_queue).catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     if (!args.length) return message.reply(format(REMOVE.usage,message.client.prefix));

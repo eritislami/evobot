@@ -1,13 +1,13 @@
 const createBar = require("string-progressbar");
 const { MessageEmbed } = require("discord.js");
-const { NOWPLAYING } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { NOWPLAYING,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 
 module.exports = {
   name: "np",
   description: NOWPLAYING.description,
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.reply(NOWPLAYING.nothing_playing).catch(console.error);
+    if (!queue) return message.reply(ERROR.nothing_playing).catch(console.error);
     const song = queue.songs[0];
     const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
     const left = song.duration - seek;

@@ -4,7 +4,7 @@ const { YOUTUBE_API_KEY, MAX_PLAYLIST_SIZE, SOUNDCLOUD_CLIENT_ID } = require("..
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const scdl = require("soundcloud-downloader")
-const { PLAYLIST } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { PLAYLIST,ERROR} = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -18,19 +18,19 @@ module.exports = {
 
     const serverQueue = message.client.queue.get(message.guild.id);
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(format(PLAYLIST.same_channel,message.client.user)).catch(console.error);
+      return message.reply(format(ERROR.same_channel,message.client.user)).catch(console.error);
 
     if (!args.length)
       return message
         .reply(format(PLAYLIST.usage,message.client.prefix))
         .catch(console.error);
-    if (!channel) return message.reply(PLAYLIST.need_to_join).catch(console.error);
+    if (!channel) return message.reply(ERROR.need_to_join).catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.reply(PLAYLIST.missing_permission);
+      return message.reply(ERROR.missing_permission);
     if (!permissions.has("SPEAK"))
-      return message.reply(PLAYLIST.cannot_speak);
+      return message.reply(ERROR.cannot_speak);
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
@@ -91,7 +91,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(format(PLAYLIST.added_to_queue,song.title,message.author))
+            .send(format(ERROR.added_to_queue,song.title,message.author))
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);
@@ -124,7 +124,7 @@ module.exports = {
         console.error(error);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(format(PLAYLIST.could_not_join_channel,error)).catch(console.error);
+        return message.channel.send(format(ERROR.could_not_join_channel,error)).catch(console.error);
       }
     }
   }

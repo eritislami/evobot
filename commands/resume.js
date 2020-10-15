@@ -1,5 +1,5 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
-const { RESUME } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { RESUME,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
   description: RESUME.description,
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.reply(RESUME.nothing_playing).catch(console.error);
+    if (!queue) return message.reply(ERROR.nothing_playing).catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     if (!queue.playing) {

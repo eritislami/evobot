@@ -1,5 +1,5 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
-const { LOOP } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { LOOP,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -8,7 +8,7 @@ module.exports = {
   description: LOOP.description,
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.reply(LOOP.nothing_playing).catch(console.error);
+    if (!queue) return message.reply(ERROR.nothing_playing).catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     // toggle from false to true and reverse

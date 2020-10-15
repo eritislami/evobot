@@ -1,5 +1,5 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
-const { SKIPTO } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
+const { SKIPTO,ERROR } = require(`../lang/${require("../config.json").LANGUAGE}.json`);
 const {format} = require('util');
 
 module.exports = {
@@ -18,7 +18,7 @@ module.exports = {
         .catch(console.error);
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send(SKIPTO.no_queue).catch(console.error);
+    if (!queue) return message.channel.send(ERROR.no_queue).catch(console.error);
     if (!canModifyQueue(message.member)) return;
 
     if (args[0] > queue.songs.length)
