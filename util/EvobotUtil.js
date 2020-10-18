@@ -1,11 +1,11 @@
 module.exports = {
   canModifyQueue(member) {
-    const { channel } = member.voice;
-    const botChannel = member.guild.me.voice.channel;
+    const { channelID } = member.voice;
+    const botChannel = member.guild.voice.channelID;
 
-    if (channel !== botChannel) {
+    if (channelID !== botChannel) {
       member.send("You need to join the voice channel first!").catch(console.error);
-      return false;
+      return;
     }
 
     return true;
