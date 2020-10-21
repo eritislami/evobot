@@ -4,7 +4,16 @@ const { canModifyQueue } = require("../util/EvobotUtil");
 
 module.exports = {
   async play(song, message) {
-    const { PRUNING, SOUNDCLOUD_CLIENT_ID } = require("../config.json");
+    let PRUNING, SOUNDCLOUD_CLIENT_ID;
+
+    try {
+      const config = require("../config.json");
+      PRUNING = config.PRUNING;
+      SOUNDCLOUD_CLIENT_ID = config.SOUNDCLOUD_CLIENT_ID;
+    } catch (error) {
+      PRUNING = process.env.PRUNING;
+      SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
+    }
     const queue = message.client.queue.get(message.guild.id);
 
     if (!song) {

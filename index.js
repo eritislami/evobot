@@ -4,7 +4,16 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX } = require("./config.json");
+
+let TOKEN, PREFIX;
+try {
+  const config = require("./config.json");
+  TOKEN = config.TOKEN;
+  PREFIX = config.PREFIX;
+} catch (error) {
+  TOKEN = process.env.TOKEN;
+  PREFIX = process.env.PREFIX;
+}
 
 const client = new Client({ disableMentions: "everyone" });
 
