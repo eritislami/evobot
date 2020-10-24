@@ -1,0 +1,7 @@
+contact_links:
+  - name: ❔ Questions / Help
+    url: https://github.com/eritislami/evobot/discussions
+    about: Please use the new GitHub Discussions forum for help and questions, do not start an issue.
+  - name: 📃 Discord.js Guide
+    url: https://discordjs.guide/
+    about: The official guide for discord.js
