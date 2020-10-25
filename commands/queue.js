@@ -36,12 +36,10 @@ module.exports = {
             }
             await reaction.users.remove(message.author.id);
           } catch {
-            serverQueue.connection.dispatcher.end();
             return message.channel.send("**Missing Permissions - [ADD_REACTIONS, MANAGE_MESSAGES]!**");
           }
         });
       } catch {
-          serverQueue.connection.dispatcher.end();
           return message.channel.send("**Missing Permissions - [ADD_REACTIONS, MANAGE_MESSAGES]!**");
       }
     }
