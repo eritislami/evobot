@@ -1,6 +1,6 @@
-/**
- * Module Imports
- */
+/*
+Module Imports
+*/
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
@@ -24,19 +24,28 @@ client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-/**
- * Client Events
- */
-client.on("ready", () => {
-  console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`${PREFIX}help`);
-});
-client.on("warn", (info) => console.log(info));
-client.on("error", console.error);
+/*
+Client Events
+*/
 
-/**
- * Import all commands
- */
+const { version } = require("./package.json");
+client.on("ready", () => {
+  console.log(
+    client.user.username + " Online in " +client.guilds.cache.size + " servers! ");
+    client.user.setPresence({
+    activity: {
+      name: `${prefix}Help | Version: ${version}`,
+      type: "COMPETING", // PLAYING, STREAMING, LISTENING, WATCHING, CUSTOM_STATUS, COMPETING
+      // url: "", // STREAMING URL
+    },
+    status: "online", // online, idle, invisible , dnd (do not disturb)
+  });
+});
+
+/*
+Import all commands
+*/
+
 const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) => file.endsWith(".js"));
 for (const file of commandFiles) {
   const command = require(join(__dirname, "commands", `${file}`));
