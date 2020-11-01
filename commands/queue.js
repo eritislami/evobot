@@ -43,7 +43,9 @@ module.exports = {
           return message.channel.send("**Missing Permissions - [ADD_REACTIONS, MANAGE_MESSAGES]!**");
         }
       });
-    } catch {
+    } catch (ex) {
+      console.error(ex.message);
+      console.error(new Error().stack);
       return message.channel.send("**Missing Permissions - [ADD_REACTIONS, MANAGE_MESSAGES]!**");
     }
   }
@@ -56,7 +58,7 @@ function generateQueueEmbed(message, queue) {
     const current = queue.slice(i, k);
     let j = i;
     k += 10;
-    const info = current.map((track) => `${++j} - [${track.title}](${track.url})`).join("\n");
+    const info = current.map((track) => `${++j} - [${track.title}](${track.url}) ${track.user}`).join("\n");
     const embed = new MessageEmbed()
       .setTitle("Song Queue\n")
       .setThumbnail(message.guild.iconURL())

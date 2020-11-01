@@ -5,11 +5,12 @@ const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
 
-let TOKEN, PREFIX;
+let TOKEN, PREFIX, TRUSTED_BOTS;
 try {
   const config = require("./config.json");
   TOKEN = config.TOKEN;
   PREFIX = config.PREFIX;
+  TRUSTED_BOTS = config.TRUSTED_BOTS;
 } catch (error) {
   TOKEN = process.env.TOKEN;
   PREFIX = process.env.PREFIX;
@@ -44,15 +45,19 @@ for (const file of commandFiles) {
 }
 
 client.on("message", async (message) => {
-  if (message.author.bot) return;
-  if (!message.guild) return;
-
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
   if (!prefixRegex.test(message.content)) return;
-
   const [, matchedPrefix] = message.content.match(prefixRegex);
-
   const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
+  if (message.author.bot) {
+    if (TRUSTED_BOTS.includes(message.author.id)) {
+      message.author = client.users.cache.get(args.pop().slice(1,-1));
+    } else {
+      return;
+    }
+  }
+  if (!message.guild) return;
+
   const commandName = args.shift().toLowerCase();
 
   const command =

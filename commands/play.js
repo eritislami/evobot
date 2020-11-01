@@ -2,6 +2,7 @@ const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader");
+const { SystemChannelFlags } = require("discord.js");
 
 let YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID;
 try {
@@ -61,6 +62,23 @@ module.exports = {
       volume: 100,
       playing: true
     };
+    queueConstruct.songs.fairPush = function(newSong) {
+      let lastIndex;
+      for (lastIndex = this.length-1; lastIndex>-1; lastIndex--) {
+        if (this[lastIndex].user.id == newSong.user.id) {
+          break;
+        }
+      }
+      lastIndex++;
+      const set = new Set();
+      for (;lastIndex<this.length;lastIndex++) {
+        if (set.has(this[lastIndex].user.id)) {
+          break;
+        }
+        set.add(this[lastIndex].user.id);
+      }
+      this.splice(lastIndex, 0, newSong);
+    }
 
     let songInfo = null;
     let song = null;
@@ -71,7 +89,8 @@ module.exports = {
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
-          duration: songInfo.videoDetails.lengthSeconds
+          duration: songInfo.videoDetails.lengthSeconds,
+          user: message.author
         };
       } catch (error) {
         console.error(error);
@@ -97,7 +116,8 @@ module.exports = {
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
-          duration: songInfo.videoDetails.lengthSeconds
+          duration: songInfo.videoDetails.lengthSeconds,
+          user: message.author
         };
       } catch (error) {
         console.error(error);
@@ -106,18 +126,20 @@ module.exports = {
     }
 
     if (serverQueue) {
-      serverQueue.songs.push(song);
+      serverQueue.songs.fairPush(song);
+      message.delete();
       return serverQueue.textChannel
         .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
         .catch(console.error);
     }
 
-    queueConstruct.songs.push(song);
+    queueConstruct.songs.fairPush(song);
     message.client.queue.set(message.guild.id, queueConstruct);
 
     try {
       queueConstruct.connection = await channel.join();
       await queueConstruct.connection.voice.setSelfDeaf(true);
+      message.delete();
       play(queueConstruct.songs[0], message);
     } catch (error) {
       console.error(error);
