@@ -75,6 +75,7 @@ module.exports = {
         videos = playlist.tracks.map((track) => ({
           title: track.title,
           url: track.permalink_url,
+          durationString: songInfo.videoDetails.duration,
           duration: track.duration / 1000
         }));
       }
@@ -100,7 +101,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(`**${song.title}** has been added to the queue by ${message.author.name}`)
+            .send(`**${song.title}** has been added to the queue by ${message.author.username}`)
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);

@@ -129,7 +129,7 @@ module.exports = {
       serverQueue.songs.fairPush(song);
       message.delete();
       return serverQueue.textChannel
-        .send(`**${song.title}** has been added to the queue by ${message.author.name}`)
+        .send(`**${song.title}** has been added to the queue by ${message.author.username}`)
         .catch(console.error);
     }
 

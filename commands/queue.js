@@ -52,18 +52,21 @@ module.exports = {
 };
 
 function generateQueueEmbed(message, queue) {
+  let total = 0;
+  queue.forEach((s) => total += parseInt(s.duration));
+  duration = new Date(total * 1000).toISOString().substr(11, 8)
   const embeds = [];
   let k = 10;
   for (let i = 0; i < queue.length; i += 10) {
     const current = queue.slice(i, k);
     let j = i;
     k += 10;
-    const info = current.map((track) => `${++j} - [${track.title}](${track.url}) ${track.user}`).join("\n");
+    const info = current.map((track) => `${++j} - [${track.title}](${track.url}) ${track.user.username}`).join("\n");
     const embed = new MessageEmbed()
       .setTitle("Song Queue\n")
       .setThumbnail(message.guild.iconURL())
       .setColor("#F8AA2A")
-      .setDescription(`**Current Song - [${queue[0].title}](${queue[0].url})**\n\n${info}`)
+      .setDescription(`**Current Song - [${queue[0].title}](${queue[0].url})**\nTotal Duration: ${duration}\n\n${info}`)
       .setTimestamp();
     embeds.push(embed);
   }
