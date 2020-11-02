@@ -100,7 +100,7 @@ module.exports = {
         serverQueue.songs.push(song);
         if (!PRUNING)
           message.channel
-            .send(`✅ **${song.title}** has been added to the queue by ${message.author}`)
+            .send(`**${song.title}** has been added to the queue by ${message.author.name}`)
             .catch(console.error);
       } else {
         queueConstruct.songs.push(song);
