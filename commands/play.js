@@ -17,7 +17,7 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "play",
-  cooldown: 3,
+  cooldown: 0,
   aliases: ["p"],
   description: "Plays audio from YouTube or Soundcloud",
   async execute(message, args) {
