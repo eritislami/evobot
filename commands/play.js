@@ -100,7 +100,7 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        return message.reply("No video was found with a matching title").catch(console.error);
+        return message.reply(error.message).catch(console.error);
       }
     }
 
