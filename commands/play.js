@@ -86,9 +86,8 @@ module.exports = {
           duration: Math.ceil(trackInfo.duration / 1000)
         };
       } catch (error) {
-        if (error.statusCode === 404)
-          return message.reply("Could not find that Soundcloud track.").catch(console.error);
-        return message.reply("There was an error playing that Soundcloud track.").catch(console.error);
+        console.error(error);
+        return message.reply(error.message).catch(console.error);
       }
     } else {
       try {
