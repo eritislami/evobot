@@ -25,7 +25,7 @@ module.exports = {
     } else {
       queue.songs = queue.songs.slice(args[0] - 2);
     }
-    
+
     queue.connection.dispatcher.end();
     queue.textChannel.send(`${message.author} ⏭ skipped ${args[0] - 1} songs`).catch(console.error);
   }
