@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
   name: "queue",
+  cooldown: 60,
   aliases: ["q"],
   description: "Show the music queue and now playing.",
   async execute(message) {
