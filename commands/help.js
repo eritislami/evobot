@@ -8,7 +8,7 @@ module.exports = {
     let commands = message.client.commands.array();
 
     let helpEmbed = new MessageEmbed()
-      .setTitle("Evobot Help")
+      .setTitle(`${message.client.user.username} Help`)
       .setDescription("List of all commands")
       .setColor("#F8AA2A");
 

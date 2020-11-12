@@ -16,7 +16,7 @@ module.exports = {
       .setTitle("Now playing")
       .setDescription(`${song.title}\n${song.url}`)
       .setColor("#F8AA2A")
-      .setAuthor("EvoBot");
+      .setAuthor(message.client.user.username);
 
     if (song.duration > 0) {
       nowPlaying.addField(
