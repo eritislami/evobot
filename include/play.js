@@ -12,7 +12,7 @@ module.exports = {
       config = null;
     }
 
-    const PRUNING = config.PRUNING ? config.PRUNING : process.env.PRUNING;
+    const PRUNING = config ? config.PRUNING : process.env.PRUNING
     const SOUNDCLOUD_CLIENT_ID = config ? config.SOUNDCLOUD_CLIENT_ID : process.env.SOUNDCLOUD_CLIENT_ID;
 
     const queue = message.client.queue.get(message.guild.id);
@@ -184,7 +184,7 @@ module.exports = {
 
     collector.on("end", () => {
       playingMessage.reactions.removeAll().catch(console.error);
-      if (PRUNING && playingMessage && !playingMessage.deleted) {
+      if (PRUNING === true || (PRUNING == "true") && playingMessage && !playingMessage.deleted) {
         playingMessage.delete({ timeout: 3000 }).catch(console.error);
       }
     });
