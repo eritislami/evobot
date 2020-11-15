@@ -15,6 +15,16 @@ try {
 }
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
+async function getInfoWithRetry(url, retries = 3) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await ytdl.getInfo(url);
+    } catch (error) {
+      console.warn(`Caught error (${i+1}/${retries}: ${error}`);
+    }
+  }
+}
+
 module.exports = {
   name: "play",
   cooldown: 0,
@@ -85,7 +95,7 @@ module.exports = {
 
     if (urlValid) {
       try {
-        songInfo = await ytdl.getInfo(url);
+        songInfo = await getInfoWithRetry(url);
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
@@ -112,7 +122,7 @@ module.exports = {
     } else {
       try {
         const results = await youtube.searchVideos(search, 1);
-        songInfo = await ytdl.getInfo(results[0].url);
+        songInfo = await getInfoWithRetry(results[0].url);
         song = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
