@@ -15,12 +15,12 @@ try {
 }
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
-async function getInfoWithRetry(url, retries = 3) {
+async function getInfoWithRetry(url, retries = 10) {
   for (let i = 0; i < retries; i++) {
     try {
       return await ytdl.getInfo(url);
     } catch (error) {
-      console.warn(`Caught error (${i+1}/${retries}: ${error}`);
+      console.warn(`Caught error (${i+1}/${retries}): ${error}`);
     }
   }
 }
