@@ -56,6 +56,7 @@ client.on("message", async (message) => {
       return;
     }
   }
+
   if (!message.guild) return;
 
   const commandName = args.shift().toLowerCase();
@@ -89,6 +90,7 @@ client.on("message", async (message) => {
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
   try {
+    console.log(`Executing command from ${message.author.id} (${message.author.username}): ${message.content}`)
     command.execute(message, args);
   } catch (error) {
     console.error(error);
