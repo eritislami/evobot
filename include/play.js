@@ -2,6 +2,16 @@ const ytdlDiscord = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader");
 const { canModifyQueue } = require("../util/EvobotUtil");
 
+async function playWithRetry(url, options, retries = 10) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      return await ytdlDiscord(url, options);
+    } catch (error) {
+      console.warn(`Caught error (${i+1}/${retries}): ${error}`);
+    }
+  }
+}
+
 module.exports = {
   async play(song, message) {
     let PRUNING, SOUNDCLOUD_CLIENT_ID;
@@ -27,7 +37,7 @@ module.exports = {
 
     try {
       if (song.url.includes("youtube.com")) {
-        stream = await ytdlDiscord(song.url, { highWaterMark: 1 << 26, quality: 'highestaudio' });
+        stream = await playWithRetry(song.url, { highWaterMark: 1 << 26, quality: 'highestaudio'});
       } else if (song.url.includes("soundcloud.com")) {
         try {
           stream = await scdl.downloadFormat(
