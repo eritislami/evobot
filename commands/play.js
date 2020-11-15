@@ -27,7 +27,7 @@ async function getInfoWithRetry(url, retries = 10) {
 
 module.exports = {
   name: "play",
-  cooldown: 0,
+  cooldown: 0.2,
   aliases: ["p"],
   description: "Plays audio from YouTube or Soundcloud",
   async execute(message, args) {
