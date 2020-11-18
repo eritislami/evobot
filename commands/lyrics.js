@@ -7,7 +7,14 @@ module.exports = {
   description: "Get lyrics for the currently playing song",
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
+    
+    const emptyQueue = new MessageEmbed()
+    .setColor(0xda7272)
+    .setTimestamp()
+    .setTitle('Empty Queue')
+    .setDescription('There is nothing playing')
+    
+    if (!queue) return message.channel.send(emptyQueue)
 
     let lyrics = null;
 
