@@ -1,4 +1,5 @@
 const { canModifyQueue } = require("../util/EvobotUtil");
+const { MessageEmbed } = require('discord.js');
 
 module.exports = {
   name: "pause",
