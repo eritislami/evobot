@@ -6,7 +6,14 @@ module.exports = {
   description: "Show now playing song",
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.reply("There is nothing playing.").catch(console.error);
+    
+    const emptyQueue = new MessageEmbed()
+    .setColor(0xda7272)
+    .setTimestamp()
+    .setTitle('Empty Queue')
+    .setDescription('There is nothing playing')
+    
+    if (!queue) return message.reply(emptyQueue).catch(console.error);
 
     const song = queue.songs[0];
     const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
