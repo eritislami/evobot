@@ -26,19 +26,45 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
 
     if (!args.length)
+      const pl = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Usage')
+      .setDescription(`${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
+      
       return message
-        .reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
+        .reply(pl)
         .catch(console.error);
     if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.reply("Cannot connect to voice channel, missing permissions");
+      const nullVC = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Error!')
+      .setDescription('Cannot connect to voice channel, missing permissions')
+      
+      return message.reply(nullVC);
     if (!permissions.has("SPEAK"))
-      return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
+      
+      const errVC = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Voice Channel Error')
+      .setDescription('I cannot speak in this voice channel, make sure I have the proper permissions')
+      
+      return message.reply(errVC);
 
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
+      
+      const sameVcErr = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Error!')
+      .setDescription(`You must be in the same channel as ${message.client.user}`)
+      
+      return message.reply(sameVcErr).catch(console.error);
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
@@ -65,7 +91,13 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("Playlist not found :(").catch(console.error);
+        
+      const playlistNotFound = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Not Found')
+      .setDescription('Playlist Not Found')
+        return message.reply(playlistNotFound);
       }
     } else if (scdl.isValidUrl(args[0])) {
       if (args[0].includes("/sets/")) {
@@ -124,7 +156,14 @@ module.exports = {
         console.error(error);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(`Could not join the channel: ${error.message}`).catch(console.error);
+        
+      const unableJoinVC = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Error!')
+      .setDescription(`Could not join the channel: ${error.message}`)
+        
+        return message.channel.send(unableJoinVC).catch(console.error);
       }
     }
   }
