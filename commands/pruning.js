@@ -1,5 +1,6 @@
 const fs = require("fs");
 let config;
+const { MessageEmbed } = require('discord.js');
 
 try {
   config = require("../config.json");
@@ -17,11 +18,25 @@ module.exports = {
     fs.writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {
       if (err) {
         console.log(err);
-        return message.channel.send("There was an error writing to the file.").catch(console.error);
+        
+        
+      const pruneErr = new MessageEmbed()
+      .setColor(0xda7272)
+      .setTimestamp()
+      .setTitle('Error!')
+      .setDescription('There was an error writing to the file')
+        
+        return message.channel.send(pruneErr).catch(console.error);
       }
-
+      
+      const pruneMsg = new MessageEmbed()
+      .setColor(0x7289da)
+      .setTimestamp()
+      .setTitle('Prune')
+      .setDescription(`Message pruning is ${config.PRUNING ? "**enabled**" : "**disabled**"}`)
+      
       return message.channel
-        .send(`Message pruning is ${config.PRUNING ? "**enabled**" : "**disabled**"}`)
+        .send(pruneMsg)
         .catch(console.error);
     });
   }
