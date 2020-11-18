@@ -11,9 +11,15 @@ module.exports = {
     seconds %= 60;
     minutes %= 60;
     hours %= 24;
-
+    
+    const uptimeR = new MessageEmbed()
+      .setColor(0x7289da)
+      .setTimestamp()
+      .setTitle('Uptime Duration')
+      .setDescription(`**${days}** day(s), **${hours}** hours, **${minutes}** minutes, **${seconds}** seconds`)
+    
     return message
-      .reply(`Uptime: \`${days} day(s),${hours} hours, ${minutes} minutes, ${seconds} seconds\``)
+      .reply(uptimeR)
       .catch(console.error);
   }
 };
