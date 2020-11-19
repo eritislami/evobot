@@ -2,18 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader");
-
-let config;
-try {
-  config = require("../config.json");
-} catch (error) {
-  config = null;
-}
-
-const YOUTUBE_API_KEY = config ? config.YOUTUBE_API_KEY : process.env.YOUTUBE_API_KEY;
-const SOUNDCLOUD_CLIENT_ID = config ? config.SOUNDCLOUD_CLIENT_ID : process.env.SOUNDCLOUD_CLIENT_ID;
-const MAX_PLAYLIST_SIZE = config ? config.MAX_PLAYLIST_SIZE : process.env.MAX_PLAYLIST_SIZE;
-
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
@@ -55,7 +44,6 @@ module.exports = {
       playing: true
     };
 
-    let song = null;
     let playlist = null;
     let videos = [];
 
@@ -97,7 +85,6 @@ module.exports = {
     });
 
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
-
     const songs = serverQueue ? serverQueue.songs : queueConstruct.songs;
 
     let playlistEmbed = new MessageEmbed()
