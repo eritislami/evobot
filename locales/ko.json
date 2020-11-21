@@ -68,67 +68,67 @@
     "result": "메세지 자동 삭제가 {result} 되었습니다."
   },
   "queue": {
-    "description": "Show the music queue and now playing.",
-    "missingPermissionMessage": "Missing permission to manage messages or add reactions",
-    "errorNotQueue": "❌ **Nothing playing in this server**",
-    "currentPage": "**Current Page - {currentPage}/{length}**",
-    "embedTitle": "Song Queue\n",
-    "embedCurrentSong": "**Current Song - [{title}]({url})**\n\n{info}"
+    "description": "현재 재생중인 음악과 대기열을 표시합니다.",
+    "missingPermissionMessage": "메세지를 관리하는 권한이 없습니다. 권한을 확인해 주세요.",
+    "errorNotQueue": "❌ **대기열에 어떤 항목도 존재하지 않습니다.**",
+    "currentPage": "**현재 페이지 - {currentPage}/{length}**",
+    "embedTitle": "대기열\n",
+    "embedCurrentSong": "**현재 재생중인 음악 - [{title}]({url})**\n\n{info}"
   },
   "remove": {
-    "description": "Remove song from the queue",
-    "errorNotQueue": "There is no queue.",
-    "usageReply": "Usage: {prefix}remove <Queue Number>",
-    "result": "{author} ❌ removed **{title}** from the queue."
+    "description": "대기열부터 음악을 제거합니다.",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "usageReply": "사용 방법: {prefix}remove <Queue Number>",
+    "result": "{author} ❌ **{title}** 를 대기열부터 제거했습니다."
   },
   "resume": {
-    "description": "Resume currently playing music",
+    "description": "현재 재생중인 음악을 재개합니다.",
     "errorNotQueue": "재생할 음악이 없습니다.",
-    "resultNotPlaying": "{author} ▶ resumed the music!",
-    "errorPlaying": "The queue is not paused."
+    "resultNotPlaying": "{author} ▶ 음악을 재개헸습니다.",
+    "errorPlaying": "대기열이 일시중지 되어있지 않습니다."
   },
   "search": {
-    "description": "Search and select videos to play",
-    "usageReply": "Usage: {prefix}{name} <Video Name>",
-    "errorAlreadyCollector": "A message collector is already active in this channel.",
+    "description": "영상을 검색하고 재생할 영상을 선택합니다.",
+    "usageReply": "사용방법`: {prefix}{name} <Video Name>",
+    "errorAlreadyCollector": "해당 채널에 메세지 컬렉터가 이미 존재합니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
-    "resultEmbedTtile": "**Reply with the song number you want to play**",
-    "resultEmbedDesc": "Results for: {search}"
+    "resultEmbedTtile": "**재생할 음악 번호를 답장으로 보내주세요.**",
+    "resultEmbedDesc": "검색 결과: {search}"
   },
   "shuffle": {
-    "description": "Shuffle queue",
-    "errorNotQueue": "There is no queue.",
-    "result": "{author} 🔀 shuffled the queue"
+    "description": "대기열 섞기",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "result": "{author} 🔀 대기열을 섞었습니다."
   },
   "skip": {
-    "description": "Skip the currently playing song",
-    "errorNotQueue": "There is nothing playing that I could skip for you.",
-    "result": "{author} ⏭ skipped the song"
+    "description": "현재 재생중인 음악을 넘깁니다.",
+    "errorNotQueue": "넘길 음악이 존재하지 않습니다.",
+    "result": "{author} ⏭ 음악을 넘겼습니다."
   },
   "skipto": {
-    "description": "Skip to the selected queue number",
-    "usageReply": "Usage: {prefix}{name} <Queue Number>",
-    "errorNotQueue": "There is no queue.",
-    "errorNotValid": "The queue is only {length} songs long!",
-    "result": "{author} ⏭ skipped {arg} songs"
+    "description": "설정한 대기열 번호까지 음악을 넘깁니다.",
+    "usageReply": "사용 방법: {prefix}{name} <Queue Number>",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "errorNotValid": "대기열에 {length} 개의 음악이 존재합니다.",
+    "result": "{author} ⏭ {arg} 개의 음악을 넘겼습니다."
   },
   "stop": {
-    "description": "Stops the music",
+    "description": "음악을 멈춥니다.",
     "errorNotQueue": "재생할 음악이 없습니다.",
-    "result": "{author} ⏹ stopped the music!"
+    "result": "{author} ⏹ 음악을 멈췄습니다."
   },
   "uptime": {
-    "description": "Check the uptime",
-    "result": "Uptime: `{days} day(s),{hours} hours, {minutes} minutes, {seconds} seconds`"
+    "description": "가동 시간 확인",
+    "result": "가동 시간: `{days} 일,{hours} 시간, {minutes} 분, {seconds} 초`"
   },
   "volume": {
-    "description": "Change volume of currently playing music",
+    "description": "현재 재생중인 음악의 볼륨을 설정합니다.",
     "errorNotQueue": "재생할 음악이 없습니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
-    "currentVolume": "🔊 The current volume is: **{volume}%**",
-    "errorNotNumber": "Please use a number to set volume.",
-    "errorNotValid": "Please use a number between 0 - 100.",
-    "result": "Volume set to: **{arg}%**"
+    "currentVolume": "🔊 현재 볼륨은 **{volume}%** 입니다.",
+    "errorNotNumber": "설정할 볼륨을 입력해 주세요.",
+    "errorNotValid": "0 과 100 사이의 볼륨을 사용해 주세요.",
+    "result": "볼륨이 **{arg}%**로 설정되었습니다."
   },
   "common": {
     "on": "**켜짐**",
