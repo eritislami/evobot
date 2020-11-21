@@ -21,7 +21,7 @@ module.exports = {
     const embeds = generateQueueEmbed(message, queue.songs);
 
     const queueEmbed = await message.channel.send(
-      i18n.__mf("queue.currentPage", { currentPage: currentPage + 1, length: embeds.leng }),
+      i18n.__mf("queue.currentPage", { page: currentPage + 1, length: embeds.length }),
       embeds[currentPage]
     );
 
@@ -44,7 +44,7 @@ module.exports = {
           if (currentPage < embeds.length - 1) {
             currentPage++;
             queueEmbed.edit(
-              i18n.__mf("queue.currentPage", { currentPage: currentPage + 1, length: embeds.leng }),
+              i18n.__mf("queue.currentPage", { page: currentPage + 1, length: embeds.length }),
               embeds[currentPage]
             );
           }
@@ -52,7 +52,7 @@ module.exports = {
           if (currentPage !== 0) {
             --currentPage;
             queueEmbed.edit(
-              i18n.__mf("queue.currentPage", { currentPage: currentPage + 1, length: embeds.leng }),
+              i18n.__mf("queue.currentPage", { page: currentPage + 1, length: embeds.length }),
               embeds[currentPage]
             );
           }

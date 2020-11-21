@@ -25,7 +25,7 @@
 	"pause": {
 		"description": "Pause the currently playing music",
 		"errorNotQueue": "There is nothing playing.",
-		"result": "{author} ⏸ paused the music."
+		"result": "<@{author}> ⏸ paused the music."
 	},
 	"play": {
 		"description": "Plays audio from YouTube or Soundcloud",
@@ -34,20 +34,20 @@
 		"usageReply": "Usage: {preifx}play <YouTube URL | Video Name | Soundcloud URL>",
 		"missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
 		"missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
-		"queueAdded": "✅ **{songtitle}** has been added to the queue by {author}",
+		"queueAdded": "✅ **{songtitle}** has been added to the queue by <@{author}>",
 		"cantJoinChannel": "Could not join the channel: {error}",
 		"queueEnded": "❌ Music queue ended.",
 		"queueError": "Error: {error}",
 		"startedPlaying": "🎶 Started playing: **{title}** {url}",
-		"skipSong": "{user} ⏩ skipped the song",
-		"pauseSong": "{user} ⏸ paused the music.",
-		"resumeSong": "{user} ▶ resumed the music!",
-		"unmutedSong": "{user} 🔊 unmuted the music!",
-		"mutedSong": "{user} 🔇 muted the music!",
-		"decreasedVolume": "{user} 🔉 decreased the volume, the volume is now {volume}%",
-		"increasedVolume": "{user} 🔊 increased the volume, the volume is now {volume}%",
-		"loopSong": "Loop is now {loop}",
-		"stopSong": "{user} ⏹ stopped the music!"
+		"skipSong": "<@{author}> ⏩ skipped the song",
+		"pauseSong": "<@{author}> ⏸ paused the music.",
+		"resumeSong": "<@{author}> ▶ resumed the music!",
+		"unmutedSong": "<@{author}> 🔊 unmuted the music!",
+		"mutedSong": "<@{author}> 🔇 muted the music!",
+		"decreasedVolume": "<@{author}> 🔉 decreased the volume, the volume is now {volume}%",
+		"increasedVolume": "<@{author}> 🔊 increased the volume, the volume is now {volume}%",
+		"loopSong": "<@{author}> Loop is now {loop}",
+		"stopSong": "<@{author}> ⏹ stopped the music!"
 	},
 	"playlist": {
 		"description": "Play a playlist from youtube",
@@ -59,7 +59,7 @@
 		"errorNotFoundPlaylist": "Playlist not found :(",
 		"fetchingPlaylist": "⌛ fetching the playlist...",
 		"playlistCharLimit": "\nPlaylist larger than character limit...",
-		"startedPlaylist": "{author} Started a playlist",
+		"startedPlaylist": "<@{author}> Started a playlist",
 		"cantJoinChannel": "Could not join the channel: {error}"
 	},
 	"pruning": {
@@ -79,12 +79,12 @@
 		"description": "Remove song from the queue",
 		"errorNotQueue": "There is no queue.",
 		"usageReply": "Usage: {prefix}remove <Queue Number>",
-		"result": "{author} ❌ removed **{title}** from the queue."
+		"result": "<@{author}> ❌ removed **{title}** from the queue."
 	},
 	"resume": {
 		"description": "Resume currently playing music",
 		"errorNotQueue": "There is nothing playing.",
-		"resultNotPlaying": "{author} ▶ resumed the music!",
+		"resultNotPlaying": "<@{author}> ▶ resumed the music!",
 		"errorPlaying": "The queue is not paused."
 	},
 	"search": {
@@ -98,24 +98,24 @@
 	"shuffle": {
 		"description": "Shuffle queue",
 		"errorNotQueue": "There is no queue.",
-		"result": "{author} 🔀 shuffled the queue"
+		"result": "<@{author}> 🔀 shuffled the queue"
 	},
 	"skip": {
 		"description": "Skip the currently playing song",
 		"errorNotQueue": "There is nothing playing that I could skip for you.",
-		"result": "{author} ⏭ skipped the song"
+		"result": "<@{author}> ⏭ skipped the song"
 	},
 	"skipto": {
 		"description": "Skip to the selected queue number",
 		"usageReply": "Usage: {prefix}{name} <Queue Number>",
 		"errorNotQueue": "There is no queue.",
 		"errorNotValid": "The queue is only {length} songs long!",
-		"result": "{author} ⏭ skipped {arg} songs"
+		"result": "<@{author}> ⏭ skipped {arg} songs"
 	},
 	"stop": {
 		"description": "Stops the music",
 		"errorNotQueue": "There is nothing playing.",
-		"result": "{author} ⏹ stopped the music!"
+		"result": "<@{author}> ⏹ stopped the music!"
 	},
 	"uptime": {
 		"description": "Check the uptime",
