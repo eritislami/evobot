@@ -1,4 +1,4 @@
-/**
+unnecessarily/**
  * Module Imports
  */
 const { Client, Collection } = require("discord.js");
@@ -36,7 +36,6 @@ i18n.configure({
     return value;
   },
 
-  // use mustache with customTags (https://www.npmjs.com/package/mustache#custom-delimiters) or disable mustache entirely
   mustacheConfig: {
     tags: ["{{", "}}"],
     disable: false
