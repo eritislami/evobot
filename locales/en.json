@@ -47,7 +47,7 @@
     "decreasedVolume": "{user} 🔉 decreased the volume, the volume is now {volume}%",
     "increasedVolume": "{user} 🔊 increased the volume, the volume is now {volume}%",
     "loopSong": "Loop is now {loop}",
-    "stopSong": "{user} ⏹ stopped the music!"
+    "stopSong": "{user} ⏹ stopped the music!",
   },
   "playlist": {
     "description": "Play a playlist from youtube",
