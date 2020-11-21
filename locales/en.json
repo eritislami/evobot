@@ -47,7 +47,8 @@
     "decreasedVolume": "<@{author}> 🔉 decreased the volume, the volume is now {volume}%",
     "increasedVolume": "<@{author}> 🔊 increased the volume, the volume is now {volume}%",
     "loopSong": "<@{author}> Loop is now {loop}",
-    "stopSong": "<@{author}> ⏹ stopped the music!"
+    "stopSong": "<@{author}> ⏹ stopped the music!",
+    "leaveChannel": "Leaving voice channel..."
   },
   "playlist": {
     "description": "Play a playlist from youtube",
