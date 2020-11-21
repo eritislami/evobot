@@ -4,7 +4,9 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+const { I18n } = require("i18n");
+const path = require("path");
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -14,6 +16,24 @@ client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/**
+ * i18n settings
+ */
+const i18n = new I18n();
+
+i18n.init({
+  locales: ["en", "ko"],
+  directory: path.join(__dirname, "locales"),
+  defaultLocale: "en",
+  objectNotation: true,
+  register: global,
+  // use mustache with customTags (https://www.npmjs.com/package/mustache#custom-delimiters) or disable mustache entirely
+  mustacheConfig: {
+    tags: ["{{", "}}"],
+    disable: false
+  }
+});
 
 /**
  * Client Events
