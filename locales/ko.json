@@ -1,72 +1,71 @@
 {
   "help": {
-    "description": "Display all commands and descriptions",
-    "embedTitle": "{botname} Help",
-    "embedDescription": "List of all commands"
+    "description": "모든 명령어와 설명을 표시합니다.",
+    "embedTitle": "{botname} 도움말",
+    "embedDescription": "명령어 리스트"
   },
   "loop": {
-    "description": "Toggle music loop",
-    "errorNotQueue": "There is nothing playing.",
-    "result": "Loop is now {loop}"
+    "description": "음악 반복을 실행/해제 합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "result": "음악 반복이 {loop} 되었습니다."
   },
   "lyrics": {
-    "description": "Get lyrics for the currently playing song",
-    "errorNotQueue": "There is nothing playing.",
-    "lyricsNotFound": "No lyrics found for {title}.",
-    "embedTitle": "{title} - Lyrics"
+    "description": "현재 재생중인 음악의 가사를 가져옵니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "lyricsNotFound": "{title} 에 대한 가사를 찾을 수 없습니다.",
+    "embedTitle": "{title} 가사"
   },
   "nowplaying": {
-    "description": "Show now playing song",
-    "errorNotQueue": "There is nothing playing.",
-    "embedTitle": "Now playing",
-    "live": " ◉ LIVE",
-    "timeRemaining": "Time Remaining: {time}"
+    "description": "현재 재생중인 음악을 표시합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "embedTitle": "현재 재생중",
+    "live": " ◉ 스트리밍",
+    "timeRemaining": "남은 재생시간은 {time} 입니다."
   },
   "pause": {
-    "description": "Pause the currently playing music",
-    "errorNotQueue": "There is nothing playing.",
-    "result": "{author} ⏸ paused the music."
+    "description": "현재 재생중인 음악을 일시 중지합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "result": "{author} ⏸ 음악을 일시 중지했습니다."
   },
   "play": {
-    "description": "Plays audio from YouTube or Soundcloud",
-    "errorNotChannel": "You need to join a voice channel first!",
-    "errorNotInSameChannel": "You must be in the same channel as {user}",
-    "usageReply": "Usage: {preifx}play <YouTube URL | Video Name | Soundcloud URL>",
-    "missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
-    "missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
-    "queueAdded": "✅ **{songtitle}** has been added to the queue by {author}",
-    "cantJoinChannel": "Could not join the channel: {error}",
-    "queueEnded": "❌ Music queue ended.",
-    "queueError": "Error: {error}",
-    "startedPlaying": "🎶 Started playing: **{title}** {url}",
-    "skipSong": "{user} ⏩ skipped the song",
-    "pauseSong": "{user} ⏸ paused the music.",
-    "resumeSong": "{user} ▶ resumed the music!",
-    "unmutedSong": "{user} 🔊 unmuted the music!",
-    "mutedSong": "{user} 🔇 muted the music!",
-    "decreasedVolume": "{user} 🔉 decreased the volume, the volume is now {volume}%",
-    "increasedVolume": "{user} 🔊 increased the volume, the volume is now {volume}%",
-    "loopSong": "Loop is now {loop}",
-    "stopSong": "{user} ⏹ stopped the music!"
+    "description": "YouTube 또는 Soundcloud 부터 음악을 재생합니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "errorNotInSameChannel": "{user} 와 같은 음성 채널에 들어와 있어야 합니다.",
+    "usageReply": "사용 방법: {preifx}play <YouTube URL | Video Name | Soundcloud URL>",
+    "missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",
+    "missingPermissionSpeak": "음성 채널에서 말할 수 없습니다. 권한을 확인해 주세요.",
+    "queueAdded": "✅ **{songtitle}** 가 {author}에 의해 대기열에 추가되었습니다.",
+    "cantJoinChannel": "채널에 진입할 수 없습니다.: {error}",
+    "queueEnded": "❌ 모든 대기열 재생을 완료했습니다.",
+    "queueError": "에러가 발생했습니다.: {error}",
+    "startedPlaying": "🎶 **{title}** 재생을 시작합니다. {url}",
+    "skipSong": "{user} ⏩ 음악을 넘겼습니다.",
+    "pauseSong": "{user} ⏸ 음악을 일시중지 했습니다.",
+    "resumeSong": "{user} ▶ 음악을 재개했습니다.",
+    "unmutedSong": "{user} 🔊 음소거를 해제했습니다.",
+    "mutedSong": "{user} 🔇 음악을 음소거 했습니다.",
+    "decreasedVolume": "{user} 🔉 볼륨을 낮추어, 현재 {volume}% 로 설정되어 있습니다.",
+    "increasedVolume": "{user} 🔊 볼륨을 높어, 현재 {volume}% 로 설정되어 있습니다",
+    "loopSong": "음악 반복이 {loop} 되었습니다.",
+    "stopSong": "{user} ⏹ 음악을 중지했습니다."
   },
   "playlist": {
-    "description": "Play a playlist from youtube",
-    "usagesReply": "Usage: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
-    "errorNotChannel": "You need to join a voice channel first!",
-    "errorNotInSameChannel": "You must be in the same channel as {user}",
-    "missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
-    "missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
-    "errorNotFoundPlaylist": "Playlist not found :(",
-    "fetchingPlaylist": "⌛ fetching the playlist...",
-    "playlistCharLimit": "\nPlaylist larger than character limit...",
-    "startedPlaylist": "{author} Started a playlist",
-    "cantJoinChannel": "Could not join the channel: {error}"
+    "description": "Youtube 부터 재생목록을 재생합니다.",
+    "usagesReply": "사용 방법: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "errorNotInSameChannel": "{user} 와 같은 음성 채널에 들어와 있어야 합니다.",
+    "missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",
+    "missingPermissionSpeak": "음성 채널에서 말할 수 없습니다. 권한을 확인해 주세요.",
+    "errorNotFoundPlaylist": "재생목록을 찾지 못했습니다. :(",
+    "fetchingPlaylist": "⌛ 재생목록을 가져오고 있습니다...",
+    "playlistCharLimit": "\n재생목록 생략...",
+    "startedPlaylist": "{author} 재생목록을 시작합니다.",
+    "cantJoinChannel": "채널에 진입할 수 없습니다.: {error}"
   },
   "pruning": {
-    "descripiton": "Toggle pruning of bot messages",
-    "errorWritingFile": "There was an error writing to the file.",
-    "result": "Message pruning is {result}",
-    "description": "pruning.description"
+    "description": "봇이 발행하는 메세지의 삭제 여부를 결정합니다.",
+    "errorWritingFile": "파일 작성에 실패했습니다.",
+    "result": "메세지 자동 삭제가 {result} 되었습니다."
   },
   "queue": {
     "description": "Show the music queue and now playing.",
@@ -84,7 +83,7 @@
   },
   "resume": {
     "description": "Resume currently playing music",
-    "errorNotQueue": "There is nothing playing.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
     "resultNotPlaying": "{author} ▶ resumed the music!",
     "errorPlaying": "The queue is not paused."
   },
@@ -92,7 +91,7 @@
     "description": "Search and select videos to play",
     "usageReply": "Usage: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "A message collector is already active in this channel.",
-    "errorNotChannel": "You need to join a voice channel first!",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "resultEmbedTtile": "**Reply with the song number you want to play**",
     "resultEmbedDesc": "Results for: {search}"
   },
@@ -115,7 +114,7 @@
   },
   "stop": {
     "description": "Stops the music",
-    "errorNotQueue": "There is nothing playing.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
     "result": "{author} ⏹ stopped the music!"
   },
   "uptime": {
@@ -124,18 +123,18 @@
   },
   "volume": {
     "description": "Change volume of currently playing music",
-    "errorNotQueue": "There is nothing playing.",
-    "errorNotChannel": "You need to join a voice channel first!",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "currentVolume": "🔊 The current volume is: **{volume}%**",
     "errorNotNumber": "Please use a number to set volume.",
     "errorNotValid": "Please use a number between 0 - 100.",
     "result": "Volume set to: **{arg}%**"
   },
   "common": {
-    "on": "**on**",
-    "off": "**off**",
-    "enabled": "**enabled**",
-    "disabled": "**disabled**",
-    "errorNotChannel": "You need to join a voice channel first!"
+    "on": "**켜짐**",
+    "off": "**꺼짐**",
+    "enabled": "**활성화**",
+    "disabled": "**비활성화**",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다."
   }
 }

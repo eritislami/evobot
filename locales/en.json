@@ -63,10 +63,9 @@
 		"cantJoinChannel": "Could not join the channel: {error}"
 	},
 	"pruning": {
-		"descripiton": "Toggle pruning of bot messages",
+		"description": "Toggle pruning of bot messages",
 		"errorWritingFile": "There was an error writing to the file.",
-		"result": "Message pruning is {result}",
-		"description": "pruning.description"
+		"result": "Message pruning is {result}"
 	},
 	"queue": {
 		"description": "Show the music queue and now playing.",
