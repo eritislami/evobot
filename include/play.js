@@ -162,7 +162,7 @@ module.exports = {
           queue.textChannel
             .send(
               i18n.__mf("play.loopSong", {
-                loop: queue.loop ? i18n.__("common.enabled") : i18n.__("common.disabled")
+                loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off")
               })
             )
             .catch(console.error);

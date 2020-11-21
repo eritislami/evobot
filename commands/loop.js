@@ -15,7 +15,7 @@ module.exports = {
     // toggle from false to true and reverse
     queue.loop = !queue.loop;
     return queue.textChannel
-      .send(i18n.__("loop.result", { loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off") }))
+      .send(i18n.__mf("loop.result", { loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off") }))
       .catch(console.error);
   }
 };

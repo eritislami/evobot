@@ -7,7 +7,7 @@
 	"loop": {
 		"description": "음악 반복을 실행/해제 합니다.",
 		"errorNotQueue": "재생할 음악이 없습니다.",
-		"result": "음악 반복이 {loop} 되었습니다."
+		"result": "음악 반복 상태: {loop}"
 	},
 	"lyrics": {
 		"description": "현재 재생중인 음악의 가사를 가져옵니다.",
@@ -34,7 +34,7 @@
 		"usageReply": "사용 방법: {preifx}play <YouTube URL | Video Name | Soundcloud URL>",
 		"missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",
 		"missingPermissionSpeak": "음성 채널에서 말할 수 없습니다. 권한을 확인해 주세요.",
-		"queueAdded": "✅ **{songtitle}** 가 <@{author}>에 의해 대기열에 추가되었습니다.",
+		"queueAdded": "✅ **{title}** 가 <@{author}>에 의해 대기열에 추가되었습니다.",
 		"cantJoinChannel": "채널에 진입할 수 없습니다.: {error}",
 		"queueEnded": "❌ 모든 대기열 재생을 완료했습니다.",
 		"queueError": "에러가 발생했습니다.: {error}",
@@ -46,7 +46,7 @@
 		"mutedSong": "<@{author}> 🔇 음악을 음소거 했습니다.",
 		"decreasedVolume": "<@{author}> 🔉 볼륨을 낮추어, 현재 {volume}% 로 설정되어 있습니다.",
 		"increasedVolume": "<@{author}> 🔊 볼륨을 높어, 현재 {volume}% 로 설정되어 있습니다",
-		"loopSong": "<@{author}> 음악 반복이 {loop} 되었습니다.",
+		"loopSong": "<@{author}> 음악 반복 상태: {loop}",
 		"stopSong": "<@{author}> ⏹ 음악을 중지했습니다."
 	},
 	"playlist": {
@@ -113,7 +113,7 @@
 		"result": "<@{author}> ⏭ {arg} 개의 음악을 넘겼습니다."
 	},
 	"stop": {
-		"description": "음악을 멈춥니다.",
+		"description": "모든 음악을 멈춥니다.",
 		"errorNotQueue": "재생할 음악이 없습니다.",
 		"result": "<@{author}> ⏹ 음악을 멈췄습니다."
 	},

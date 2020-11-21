@@ -14,9 +14,7 @@ module.exports = {
     if (!canModifyQueue(message.member))
       return message.reply(i18n.__("volume.errorNotChannel")).catch(console.error);
 
-    if (!args[0]) return message
-      .reply(i18n.__mf("volume.result", { volume: queue.volume }))
-      .catch(console.error);
+    if (!args[0]) return message.reply(i18n.__mf("volume.currentVolume", { volume: queue.volume })).catch(console.error);
     if (isNaN(args[0])) return message.reply(i18n.__("volume.errorNotNumber")).catch(console.error);
     if (parseInt(args[0]) > 100 || parseInt(args[0]) < 0)
       return message.reply(i18n.__("volume.errorNotValid")).catch(console.error);
