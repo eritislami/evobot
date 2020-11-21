@@ -1,5 +1,37 @@
 {
-    "play": {
-        "description": "Plays audio from YouTube or Soundcloud"
-    }
+  "help": {
+    "description": "Display all commands and descriptions",
+    "embedTitle": "{botname} Help",
+    "embedDescription": "List of all commands"
+  },
+  "loop": {
+    "description": "Toggle music loop",
+    "errorNotQueue": "There is nothing playing.",
+    "result": "Loop is now {loop}"
+  },
+  "lyrics": {
+    "description": "Get lyrics for the currently playing song",
+    "errorNotQueue": "There is nothing playing.",
+    "lyricsNotFound": "No lyrics found for {title}.",
+    "embedTitle": "{title} - Lyrics"
+  },
+  "nowplaying": {
+    "description": "Show now playing song",
+    "errorNotQueue": "There is nothing playing.",
+    "embedTitle": "Now playing",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Time Remaining: {time}"
+  },
+  "pause": {
+    "description": "Pause the currently playing music",
+    "errorNotQueue": "There is nothing playing.",
+    "result": "{author} ⏸ paused the music."
+  },
+  "play": {
+    "description": "Plays audio from YouTube or Soundcloud"
+  },
+  "common": {
+    "on": "**on**",
+    "off": "**off**"
+  }
 }
