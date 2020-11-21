@@ -5,5 +5,5 @@
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
   "PRUNING": false,
-  "STAY_TIME": 0
+  "STAY_TIME": 30
 }
