@@ -12,11 +12,12 @@ module.exports = {
       setTimeout(function () {
         if (!queue.connection.dispatcher && message.guild.me.voice.channel) {
           queue.channel.leave();
-          message.client.queue.delete(message.guild.id);
-          queue.textChannel.send("I have left the channel. See you again.").catch(console.error);
+          queue.textChannel.send("Leaving voice channel...");
+          
         } else return;
-      }, STAY_TIME);
-      return queue.textChannel.send("❌ Music queue ended.").catch(console.error);
+      }, STAY_TIME * 1000);
+      queue.textChannel.send("❌ Music queue ended.").catch(console.error);
+      return message.client.queue.delete(message.guild.id);
     }
 
     let stream = null;
@@ -180,7 +181,7 @@ module.exports = {
 
     collector.on("end", () => {
       playingMessage.reactions.removeAll().catch(console.error);
-      if (PRUNING === true || (PRUNING == "true" && playingMessage && !playingMessage.deleted)) {
+      if (PRUNING == "true" && playingMessage && !playingMessage.deleted) {
         playingMessage.delete({ timeout: 3000 }).catch(console.error);
       }
     });
