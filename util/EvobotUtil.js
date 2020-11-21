@@ -1,9 +1,14 @@
+const { LOCALE } = require("../util/EvobotUtil");
+const i18n = require("i18n");
+
+i18n.setLocale(LOCALE);
+
 exports.canModifyQueue = (member) => {
   const { channelID } = member.voice;
   const botChannel = member.guild.voice.channelID;
 
   if (channelID !== botChannel) {
-    member.send("You need to join the voice channel first!").catch(console.error);
+    member.send(i18n.__("common.errorNotChannel")).catch(console.error);
     return;
   }
 
