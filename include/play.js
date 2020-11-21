@@ -16,7 +16,7 @@ module.exports = {
         queue.channel.leave();
         queue.textChannel.send(i18n.__("play.leaveChannel"));
       }, STAY_TIME * 1000);
-      return queue.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
+      queue.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
       return message.client.queue.delete(message.guild.id);
     }
 
