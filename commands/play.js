@@ -2,14 +2,17 @@ const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader");
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID } = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, LOCALE } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const i18n = require("i18n");
+
+i18n.setLocale(LOCALE)
 
 module.exports = {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
-  description: "Plays audio from YouTube or Soundcloud",
+  description: i18n.__("play.description"),
   async execute(message, args) {
     const { channel } = message.member.voice;
 

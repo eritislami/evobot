@@ -1,3 +1,5 @@
 {
-    
+  "play": {
+    "description": "YouTube 또는 Soundcloud 로부터 음악을 재생합니다."
+  }
 }
