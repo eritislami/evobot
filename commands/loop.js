@@ -10,7 +10,7 @@ module.exports = {
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.reply(i18n.__("loop.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member)) return;
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
     // toggle from false to true and reverse
     queue.loop = !queue.loop;

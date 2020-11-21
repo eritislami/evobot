@@ -97,7 +97,7 @@ module.exports = {
         case "⏭":
           queue.playing = true;
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
           queue.connection.dispatcher.end();
           queue.textChannel.send(i18n.__mf("play.skipSong", { user: user })).catch(console.error);
           collector.stop();
@@ -105,7 +105,7 @@ module.exports = {
 
         case "⏯":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
@@ -119,7 +119,7 @@ module.exports = {
 
         case "🔇":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
           if (queue.volume <= 0) {
             queue.volume = 100;
             queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
@@ -133,7 +133,7 @@ module.exports = {
 
         case "🔉":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member) || queue.volume == 0) return;
+          if (!canModifyQueue(member) || queue.volume == 0) return i18n.__("common.errorNotChannel");
           if (queue.volume - 10 <= 0) queue.volume = 0;
           else queue.volume = queue.volume - 10;
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
@@ -144,7 +144,7 @@ module.exports = {
 
         case "🔊":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member) || queue.volume == 100) return;
+          if (!canModifyQueue(member) || queue.volume == 100) return i18n.__("common.errorNotChannel");
           if (queue.volume + 10 >= 100) queue.volume = 100;
           else queue.volume = queue.volume + 10;
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
@@ -155,7 +155,7 @@ module.exports = {
 
         case "🔁":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
           queue.loop = !queue.loop;
           queue.textChannel
             .send(
@@ -166,7 +166,7 @@ module.exports = {
 
         case "⏹":
           reaction.users.remove(user).catch(console.error);
-          if (!canModifyQueue(member)) return;
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
           queue.songs = [];
           queue.textChannel.send(i18n.__mf("play.stopSong", { user: user })).catch(console.error);
           try {

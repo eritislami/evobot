@@ -1,5 +1,56 @@
 {
-  "play": {
-    "description": "YouTube 또는 Soundcloud 로부터 음악을 재생합니다."
-  }
+	"play": {
+		"description": "YouTube 또는 Soundcloud 로부터 음악을 재생합니다."
+	},
+	"help": {
+		"description": "help.description"
+	},
+	"loop": {
+		"description": "loop.description"
+	},
+	"lyrics": {
+		"description": "lyrics.description"
+	},
+	"nowplaying": {
+		"description": "nowplaying.description"
+	},
+	"pause": {
+		"description": "pause.description"
+	},
+	"playlist": {
+		"description": "playlist.description"
+	},
+	"pruning": {
+		"description": "pruning.description"
+	},
+	"queue": {
+		"description": "queue.description"
+	},
+	"remove": {
+		"description": "remove.description"
+	},
+	"resume": {
+		"description": "resume.description"
+	},
+	"search": {
+		"description": "search.description"
+	},
+	"shuffle": {
+		"description": "shuffle.description"
+	},
+	"skip": {
+		"description": "skip.description"
+	},
+	"skipto": {
+		"description": "skipto.description"
+	},
+	"stop": {
+		"description": "stop.description"
+	},
+	"uptime": {
+		"description": "uptime.description"
+	},
+	"volume": {
+		"description": "volume.description"
+	}
 }

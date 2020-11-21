@@ -10,7 +10,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!queue) return message.reply(i18n.__("stop.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member)) return;
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
     queue.songs = [];
     queue.connection.dispatcher.end();

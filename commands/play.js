@@ -17,7 +17,7 @@ module.exports = {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!channel) return message.reply(i18n.__("play.errorChannel")).catch(console.error);
+    if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
     if (serverQueue && channel !== message.guild.me.voice.channel)
       return message
         .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
