@@ -4,5 +4,6 @@
   "SOUNDCLOUD_CLIENT_ID": "",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
-  "PRUNING": false
+  "PRUNING": false,
+  "STAY_TIME": 30
 }
