@@ -16,6 +16,8 @@
     "discord.js": "^12.4.1",
     "ffmpeg-static": "^4.2.3",
     "lyrics-finder": "^21.0.5",
+    "node-fetch": "^2.6.1",
+    "random-puppy": "^1.1.0",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.0",
     "string-progressbar": "^1.0.1",

@@ -2,8 +2,16 @@
   "TOKEN": "",
   "YOUTUBE_API_KEY": "",
   "SOUNDCLOUD_CLIENT_ID": "",
+  "comment": "Don't change NASA_API_KEY unless you have one. If you don't that one will work",
+  "NASA_API_KEY": "DEMO_KEY",
+  "TENOR_API_KEY": "",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
   "PRUNING": false,
   "STAY_TIME": 30
+  "activities_list": [
+    "Hello!",
+    "/play",
+    "/help"
+  ]
 }
