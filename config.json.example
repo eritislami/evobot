@@ -13,5 +13,6 @@
     "Hello!",
     "/play",
     "/help"
-  ]
+  ],
+  "MEME_SUBREDDITS": ["dank_memes", "meme", "funny"]
 }
