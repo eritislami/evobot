@@ -19,7 +19,7 @@
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.1",
     "string-progressbar": "^1.0.1",
-    "ytdl-core": "^4.0.6",
+    "ytdl-core": "^4.1.0",
     "ytdl-core-discord": "^1.2.4"
   },
   "scripts": {
