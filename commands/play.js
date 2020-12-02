@@ -49,7 +49,7 @@ module.exports = {
       connection: null,
       songs: [],
       loop: false,
-      volume: DEFAULT_VOLUME,
+      volume: DEFAULT_VOLUME || 100,
       playing: true
     };
 
