@@ -4,7 +4,17 @@ const { canModifyQueue, STAY_TIME } = require("../util/EvobotUtil");
 
 module.exports = {
   async play(song, message) {
-    const { PRUNING, SOUNDCLOUD_CLIENT_ID } = require("../util/EvobotUtil");
+    const { SOUNDCLOUD_CLIENT_ID } = require("../util/EvobotUtil");
+
+    let config;
+
+    try {
+      config = require("../config.json");
+    } catch (error) {
+      config = null;
+    }
+
+    const PRUNING = config ? config.PRUNING : process.env.PRUNING;
 
     const queue = message.client.queue.get(message.guild.id);
 
@@ -179,7 +189,7 @@ module.exports = {
 
     collector.on("end", () => {
       playingMessage.reactions.removeAll().catch(console.error);
-      if (PRUNING == "true" && playingMessage && !playingMessage.deleted) {
+      if (PRUNING && playingMessage && !playingMessage.deleted) {
         playingMessage.delete({ timeout: 3000 }).catch(console.error);
       }
     });
