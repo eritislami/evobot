@@ -1,8 +1,20 @@
 {
+  "clip": {
+    "description": "주어진 클립을 재생합니다.",
+    "usagesReply": "Usage: /clip <name>",
+    "errorQueue": "대기열에 음악이 있을 경우 클립을 재생할 수 없습니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다."
+  },
+  "clips": {
+    "description": "모든 클립을 재생합니다."
+  },
   "help": {
     "description": "모든 명령어와 설명을 표시합니다.",
     "embedTitle": "{botname} 도움말",
     "embedDescription": "명령어 리스트"
+  },
+  "invite": {
+    "description": "봇에 대한 초대 링크를 생성합니다."
   },
   "loop": {
     "description": "음악 반복을 실행/해제 합니다.",
