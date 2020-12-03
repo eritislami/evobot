@@ -1,6 +1,7 @@
 /**
  * Module Imports
  */
+const SpotifyHandler = require('./util/SpotifyHandler')
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
@@ -11,6 +12,7 @@ const client = new Client({ disableMentions: "everyone" });
 client.login(TOKEN);
 client.commands = new Collection();
 client.prefix = PREFIX;
+client.spotify = new SpotifyHandler();
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -18,9 +20,10 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 /**
  * Client Events
  */
-client.on("ready", () => {
+client.on("ready", async () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+  await client.spotify._init();
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
