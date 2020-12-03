@@ -2,6 +2,7 @@ const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader");
+const ytdl = require("ytdl-core");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
@@ -31,9 +32,10 @@ module.exports = {
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-    const url = args[0];
+    let url = args[0];
     const urlValid = pattern.test(args[0]);
-
+    const spotifyPattern = /^.*(https:\/\/open\.spotify\.com\/user\/([^#\&\?]*)\/playlist\/)([^#\&\?]*).*/gi;
+    const spotifyValid = spotifyPattern.test(args[0]);
     const queueConstruct = {
       textChannel: message.channel,
       channel,
@@ -46,7 +48,6 @@ module.exports = {
 
     let playlist = null;
     let videos = [];
-
     if (urlValid) {
       try {
         playlist = await youtube.getPlaylist(url, { part: "snippet" });
@@ -65,7 +66,52 @@ module.exports = {
           duration: track.duration / 1000
         }));
       }
-    } else {
+    }
+    else if(spotifyValid) {
+      const msg = await message.channel.send("⚙️ Converting Spotify Playlist into Youtube Playlist");
+      let i = 0;
+      const interval = setInterval(() => {
+        if(i === 3) {
+          msg.edit("⚙️ Converting Spotify Playlist into Youtube Playlist");
+          i = 0;
+        }
+        else {
+          msg.edit(msg.content += ".");
+          i++
+        }
+      }, 2000)
+        const linkPattern = /.*?\?/gi;
+        url = url.split("/");
+        url = url[url.length-1].match(linkPattern)[0].slice(0, -1);
+        try {
+          let BasePlaylist = await message.client.spotify.getPlaylist(url);
+          playlist = {
+            title: BasePlaylist.title,
+            url: args[0]
+          };
+          for(let i in BasePlaylist.tracks) {
+            try {
+            const results = await youtube.searchVideos(BasePlaylist.tracks[i].track.name, 1);
+            songInfo = await ytdl.getInfo(results[0].url);
+            } catch (error) {
+              console.error(error);
+              return message.reply(error.message).catch(console.error);
+            }
+            song = {
+              title: songInfo.videoDetails.title,
+              url: songInfo.videoDetails.video_url,
+              duration: songInfo.videoDetails.lengthSeconds
+            };
+            videos.push(song);
+          };
+        } catch(error){
+          console.error(error);
+          return message.reply(error.message).catch(console.error);
+        }
+        msg.delete()
+      clearInterval(interval)
+      }
+    else {
       try {
         const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });
         playlist = results[0];
@@ -75,7 +121,6 @@ module.exports = {
         return message.reply(error.message).catch(console.error);
       }
     }
-
     const newSongs = videos.map((video) => {
       return (song = {
         title: video.title,
