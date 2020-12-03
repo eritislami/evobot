@@ -1,4 +1,4 @@
-const { play } = require("../include/play");
+const { play, resolveSoundCloud } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader");
@@ -33,7 +33,7 @@ module.exports = {
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com|soundcloud\.app\.goo\.gl)\/(.*)$/;
-    const url = args[0];
+    let url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
     // Start the playlist if playlist url was provided
@@ -70,6 +70,8 @@ module.exports = {
       }
     } else if (scRegex.test(url)) {
       try {
+        url = await resolveSoundCloud(url);
+        console.log(url)
         const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
         song = {
           title: trackInfo.title,
