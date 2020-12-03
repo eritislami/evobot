@@ -4,6 +4,7 @@ const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const https = require('https')
 
 module.exports = {
   name: "play",
@@ -33,6 +34,7 @@ module.exports = {
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
+    const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
@@ -43,6 +45,23 @@ module.exports = {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
+    if (mobileScRegex.test(url)) {
+      /* if url is a sound cloud mobile link, gets the redirect url and uses
+         it for the rest of the command */
+      try {
+        https.get(url, function(res) {
+          if (res.statusCode == "302") {
+            return message.client.commands.get("play").execute(message, [res.headers.location]);
+          } else {
+            return message.reply("No content could be found at that url.").catch(console.error);
+          }
+        })
+      } catch(error) {
+        console.error(error);
+        return message.reply(error.message).catch(console.error);
+      }
+      return message.reply("Following url redirection...").catch(console.error);
+    }
     const queueConstruct = {
       textChannel: message.channel,
       channel,
