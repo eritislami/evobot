@@ -1,8 +1,17 @@
 const ytdlDiscord = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader");
+const https = require('https')
 const { canModifyQueue, STAY_TIME } = require("../util/EvobotUtil");
 
 module.exports = {
+  resolveSoundCloud(url) {
+    return new Promise((resolve, reject) => {
+      https.get(url, (res, err) => {
+        if(err) throw err;
+        resolve(res.headers.location || url)
+          });
+    })
+  },
   async play(song, message) {
     const { SOUNDCLOUD_CLIENT_ID } = require("../util/EvobotUtil");
 
