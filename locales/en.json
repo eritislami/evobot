@@ -39,6 +39,10 @@
     "errorNotQueue": "There is nothing playing.",
     "result": "<@{author}> ⏸ paused the music."
   },
+  "ping": {
+    "description": "Show the bot's average ping",
+    "result": "📈 Average ping to API: {ping} ms"
+  },
   "play": {
     "description": "Plays audio from YouTube or Soundcloud",
     "errorNotChannel": "You need to join a voice channel first!",

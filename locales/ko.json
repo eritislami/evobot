@@ -39,6 +39,10 @@
     "errorNotQueue": "재생할 음악이 없습니다.",
     "result": "<@{author}> ⏸ 음악을 일시 중지했습니다."
   },
+  "ping": {
+    "description": "봇의 평균 핑 수치를 보여줍니다.",
+    "result": "📈 현재 평균 핑 수치는 {ping} ms 입니다."
+  },
   "play": {
     "description": "YouTube 또는 Soundcloud 부터 음악을 재생합니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
