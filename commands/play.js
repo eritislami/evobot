@@ -1,10 +1,10 @@
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader");
+const scdl = require("soundcloud-downloader").default;
+const https = require("https");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const https = require('https')
 
 module.exports = {
   name: "play",
@@ -46,22 +46,21 @@ module.exports = {
     }
 
     if (mobileScRegex.test(url)) {
-      /* if url is a sound cloud mobile link, gets the redirect url and uses
-         it for the rest of the command */
       try {
-        https.get(url, function(res) {
+        https.get(url, function (res) {
           if (res.statusCode == "302") {
             return message.client.commands.get("play").execute(message, [res.headers.location]);
           } else {
             return message.reply("No content could be found at that url.").catch(console.error);
           }
-        })
-      } catch(error) {
+        });
+      } catch (error) {
         console.error(error);
         return message.reply(error.message).catch(console.error);
       }
       return message.reply("Following url redirection...").catch(console.error);
     }
+
     const queueConstruct = {
       textChannel: message.channel,
       channel,
