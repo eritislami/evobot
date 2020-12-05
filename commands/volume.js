@@ -13,7 +13,7 @@ module.exports = {
 
     if (!args[0]) return message.reply(`🔊 The current volume is: **${queue.volume}%**`).catch(console.error);
     if (isNaN(args[0])) return message.reply("Please use a number to set volume.").catch(console.error);
-    if (parseInt(args[0]) > 100 || parseInt(args[0]) < 0)
+    if (Number(args[0]) > 100 || Number(args[0]) < 0 )
       return message.reply("Please use a number between 0 - 100.").catch(console.error);
 
     queue.volume = args[0];

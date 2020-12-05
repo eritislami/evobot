@@ -1,3 +1,5 @@
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/eritislami/evobot)
+
 ![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
 
 # 🤖 EvoBot (Discord Music Bot)
@@ -11,6 +13,10 @@
 3. Node.js v12.0.0 or newer
 
 ## 🚀 Getting Started
+
+If deploying to Heroku make sure to create config variables
+
+![heroku](https://i.imgur.com/iaoUePg.png?1)
 
 ```
 git clone https://github.com/eritislami/evobot.git
@@ -33,7 +39,8 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   "SOUNDCLOUD_CLIENT_ID": "",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
-  "PRUNING": false
+  "PRUNING": false,
+  "STAY_TIME": 30
 }
 ```
 
@@ -57,6 +64,10 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 `/search Pearl Jam`
 
+Reply with song number or numbers seperated by comma that you wish to play
+
+Examples: `1` or `1,2,3`
+
 * 📃 Play youtube playlists via url
 
 `/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
@@ -69,11 +80,12 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * Loop / Repeat (/loop)
 * Shuffle (/shuffle)
 * Volume control (/volume, /v)
-* Lyircs (/lyrics, /ly)
+* Lyrics (/lyrics, /ly)
 * Pause (/pause)
 * Resume (/resume, /r)
 * Skip (/skip, /s)
 * Skip to song # in queue (/skipto, /st)
+* Remove song # from queue (/remove, /rm)
 * Toggle pruning of bot messages (/pruning)
 * Help (/help, /h)
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
@@ -92,5 +104,3 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 ## 📝 Credits
 
 [@iCrawl](https://github.com/iCrawl) For the queue system used in this application which was adapted from [@iCrawl/discord-music-bot](https://github.com/iCrawl/discord-music-bot)
-
-[![Run on Repl.it](https://repl.it/badge/github/eritislami/evobot)](https://repl.it/github/eritislami/evobot)
