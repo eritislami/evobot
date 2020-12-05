@@ -4,17 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-
-let TOKEN, PREFIX, TRUSTED_BOTS;
-try {
-  const config = require("./config.json");
-  TOKEN = config.TOKEN;
-  PREFIX = config.PREFIX;
-  TRUSTED_BOTS = config.TRUSTED_BOTS;
-} catch (error) {
-  TOKEN = process.env.TOKEN;
-  PREFIX = process.env.PREFIX;
-}
+const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
 

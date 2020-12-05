@@ -39,7 +39,8 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   "SOUNDCLOUD_CLIENT_ID": "",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
-  "PRUNING": false
+  "PRUNING": false,
+  "STAY_TIME": 30
 }
 ```
 
@@ -63,6 +64,10 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 `/search Pearl Jam`
 
+Reply with song number or numbers seperated by comma that you wish to play
+
+Examples: `1` or `1,2,3`
+
 * 📃 Play youtube playlists via url
 
 `/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
@@ -75,11 +80,12 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 * Loop / Repeat (/loop)
 * Shuffle (/shuffle)
 * Volume control (/volume, /v)
-* Lyircs (/lyrics, /ly)
+* Lyrics (/lyrics, /ly)
 * Pause (/pause)
 * Resume (/resume, /r)
 * Skip (/skip, /s)
 * Skip to song # in queue (/skipto, /st)
+* Remove song # from queue (/remove, /rm)
 * Toggle pruning of bot messages (/pruning)
 * Help (/help, /h)
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
