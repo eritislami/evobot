@@ -4,7 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, ROLE } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, DJ_ROLE } = require("./util/EvobotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -62,11 +62,11 @@ client.on("message", async (message) => {
    * Role checking logic
    */
   if (!musicRole) {
-    musicRole = message.guild.roles.cache.find(role => role.name === ROLE)
+    musicRole = message.guild.roles.cache.find(role => role.name === DJ_ROLE)
   };
 
   if(musicRole && !message.member.roles.cache.has(musicRole.id)) {
-    return message.reply(`Only users with the ${ROLE} role can access this feature !`);
+    return message.reply(`Only users with the ${DJ_ROLE} role can access this feature !`);
   } 
 
   const now = Date.now();

@@ -26,4 +26,4 @@ exports.MAX_PLAYLIST_SIZE = config ? config.MAX_PLAYLIST_SIZE : process.env.MAX_
 exports.PRUNING = config ? config.PRUNING : process.env.PRUNING;
 exports.STAY_TIME = config ? config.STAY_TIME : process.env.STAY_TIME;
 exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOLUME;
-exports.ROLE = config ? config.ROLE : process.env.ROLE 
+exports.DJ_ROLE = config ? config.DJ_ROLE : process.env.ROLE 
