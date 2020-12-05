@@ -12,8 +12,8 @@
     "node": ">=12.0.0"
   },
   "dependencies": {
-    "array.prototype.move": "0.0.4",
     "@discordjs/opus": "^0.3.3",
+    "array-move": "^3.0.1",
     "discord.js": "^12.5.1",
     "erit-ytdl": "^0.1.2",
     "ffmpeg-static": "^4.2.3",
