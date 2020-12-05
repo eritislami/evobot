@@ -39,7 +39,8 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   "SOUNDCLOUD_CLIENT_ID": "",
   "MAX_PLAYLIST_SIZE": 10,
   "PREFIX": "/",
-  "PRUNING": false
+  "PRUNING": false,
+  "STAY_TIME": 30
 }
 ```
 

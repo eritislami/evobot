@@ -1,17 +1,9 @@
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader");
-
-let YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID;
-try {
-  const config = require("../config.json");
-  YOUTUBE_API_KEY = config.YOUTUBE_API_KEY;
-  SOUNDCLOUD_CLIENT_ID = config.SOUNDCLOUD_CLIENT_ID;
-} catch (error) {
-  YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
-  SOUNDCLOUD_CLIENT_ID = process.env.SOUNDCLOUD_CLIENT_ID;
-}
+const scdl = require("soundcloud-downloader").default;
+const https = require("https");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
@@ -42,6 +34,7 @@ module.exports = {
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
+    const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
@@ -52,13 +45,29 @@ module.exports = {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
+    if (mobileScRegex.test(url)) {
+      try {
+        https.get(url, function (res) {
+          if (res.statusCode == "302") {
+            return message.client.commands.get("play").execute(message, [res.headers.location]);
+          } else {
+            return message.reply("No content could be found at that url.").catch(console.error);
+          }
+        });
+      } catch (error) {
+        console.error(error);
+        return message.reply(error.message).catch(console.error);
+      }
+      return message.reply("Following url redirection...").catch(console.error);
+    }
+
     const queueConstruct = {
       textChannel: message.channel,
       channel,
       connection: null,
       songs: [],
       loop: false,
-      volume: 100,
+      volume: DEFAULT_VOLUME || 100,
       playing: true
     };
 
