@@ -1,5 +1,5 @@
 const ytdl = require("erit-ytdl");
-const scdl = require("soundcloud-downloader");
+const scdl = require("soundcloud-downloader").default;
 const { canModifyQueue, STAY_TIME } = require("../util/EvobotUtil");
 
 module.exports = {
