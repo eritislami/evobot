@@ -4,7 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, ROLE } = require("./util/EvobotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -14,6 +14,8 @@ client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+let musicRole = undefined;
 
 /**
  * Client Events
@@ -37,6 +39,7 @@ for (const file of commandFiles) {
 client.on("message", async (message) => {
   if (message.author.bot) return;
   if (!message.guild) return;
+  
 
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
   if (!prefixRegex.test(message.content)) return;
@@ -55,6 +58,16 @@ client.on("message", async (message) => {
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Collection());
   }
+  /**
+   * Role checking logic
+   */
+  if (!musicRole) {
+    musicRole = message.guild.roles.cache.find(role => role.name === ROLE)
+  };
+
+  if(musicRole && !message.member.roles.cache.has(musicRole.id)) {
+    return message.reply(`Only users with the ${ROLE} role can access this feature !`);
+  } 
 
   const now = Date.now();
   const timestamps = cooldowns.get(command.name);
