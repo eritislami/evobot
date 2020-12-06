@@ -4,3 +4,5 @@ steps:
     args: [ '-c', "gcloud secrets versions access latest --secret=evobot-config --format='get(payload.data)' | tr '_-' '/+' | base64 -d > config.json"]
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'gcr.io/rythmaddon/evobot:$SHORT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/rythmaddon/evobot:$SHORT_SHA']
