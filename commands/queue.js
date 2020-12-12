@@ -6,7 +6,7 @@ i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "queue",
-  cooldown: 60,
+  cooldown: 5,
   aliases: ["q"],
   description: i18n.__("queue.description"),
   async execute(message) {

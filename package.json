@@ -13,15 +13,16 @@
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
+    "array-move": "^3.0.1",
     "discord.js": "^12.5.1",
+    "erit-ytdl": "^0.1.2",
     "ffmpeg-static": "^4.2.3",
     "i18n": "^0.13.2",
     "lyrics-finder": "^21.0.5",
     "simple-youtube-api": "^5.1.1",
-    "soundcloud-downloader": "0.2.0",
+    "soundcloud-downloader": "^0.2.1",
     "string-progressbar": "^1.0.1",
-    "ytdl-core": "^4.1.1",
-    "ytdl-core-discord": "^1.2.4"
+    "ytdl-core": "^4.1.2"
   },
   "scripts": {
     "start": "node index.js"
