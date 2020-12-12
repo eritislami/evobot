@@ -27,6 +27,12 @@
     "lyricsNotFound": "{title} 에 대한 가사를 찾을 수 없습니다.",
     "embedTitle": "{title} 가사"
   },
+  "move": {
+    "description": "대기열에서 음악을 이동합니다.",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "usagesReply": "사용 방법: {prefix}move <Queue Number>",
+    "result": "<@{author}> 🚚 **{title}** 를 대기열에서 {index}번째로 옮겼습니다."
+  },
   "nowplaying": {
     "description": "현재 재생중인 음악을 표시합니다.",
     "errorNotQueue": "재생할 음악이 없습니다.",

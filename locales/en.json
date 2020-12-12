@@ -27,6 +27,12 @@
     "lyricsNotFound": "No lyrics found for {title}.",
     "embedTitle": "{title} - Lyrics"
   },
+  "move": {
+    "description": "Move songs around in the queue",
+    "errorNotQueue": "There is no queue.",
+    "usagesReply": "Usage: {prefix}move <Queue Number>",
+    "result": "<@{author}> 🚚 moved **{title}** to {index} in the queue."
+  },
   "nowplaying": {
     "description": "Show now playing song",
     "errorNotQueue": "There is nothing playing.",
