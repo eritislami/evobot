@@ -13,7 +13,6 @@ module.exports = {
   async execute(message, args) {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
-    const serverQueueLength = serverQueue.songs.length;
 
     if (!args.length)
       return message
@@ -85,6 +84,7 @@ module.exports = {
       });
     });
 
+    const serverQueueLength = serverQueue ? serverQueue.songs.length : 0;
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
     const songs = serverQueue ? serverQueue.songs : queueConstruct.songs;
 
