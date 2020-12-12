@@ -13,6 +13,7 @@ module.exports = {
   async execute(message, args) {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
+    const serverQueueLength = serverQueue.songs.length;
 
     if (!args.length)
       return message
@@ -89,7 +90,7 @@ module.exports = {
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
-      .setDescription(songs.map((song, index) => `${index + 1}. ${song.title}`))
+      .setDescription(songs.slice(serverQueueLength).map((song, index) => `${index + 1}. ${song.title}`))
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setTimestamp();
