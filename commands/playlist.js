@@ -84,13 +84,11 @@ module.exports = {
       });
     });
 
-    const serverQueueLength = serverQueue ? serverQueue.songs.length : 0;
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
-    const songs = serverQueue ? serverQueue.songs : queueConstruct.songs;
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
-      .setDescription(songs.slice(serverQueueLength).map((song, index) => `${index + 1}. ${song.title}`))
+      .setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`))
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setTimestamp();
