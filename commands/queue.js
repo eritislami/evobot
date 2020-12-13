@@ -4,11 +4,11 @@ module.exports = {
   name: "queue",
   cooldown: 5,
   aliases: ["q"],
-  description: "Show the music queue and now playing.",
+  description: "แสดงคิวเพลงและกำลังเล่น",
   async execute(message) {
     const permissions = message.channel.permissionsFor(message.client.user);
     if (!permissions.has(["MANAGE_MESSAGES", "ADD_REACTIONS"]))
-      return message.reply("Missing permission to manage messages or add reactions");
+      return message.reply("ไม่มีสิทธิ์ในการจัดการข้อความหรือเพิ่มการกระทำ");
 
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.channel.send("❌ **Nothing playing in this server**");
@@ -17,7 +17,7 @@ module.exports = {
     const embeds = generateQueueEmbed(message, queue.songs);
 
     const queueEmbed = await message.channel.send(
-      `**Current Page - ${currentPage + 1}/${embeds.length}**`,
+      `**หน้าปัจจุบัน - ${currentPage + 1}/${embeds.length}**`,
       embeds[currentPage]
     );
 

@@ -5,22 +5,22 @@ const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "search",
-  description: "Search and select videos to play",
+  description: "ค้นหาและเลือกวิดีโอที่จะเล่น",
   async execute(message, args) {
     if (!args.length)
       return message
         .reply(`Usage: ${message.client.prefix}${module.exports.name} <Video Name>`)
         .catch(console.error);
     if (message.channel.activeCollector)
-      return message.reply("A message collector is already active in this channel.");
+      return message.reply("ตัวรวบรวมข้อความใช้งานอยู่แล้วในช่องนี้");
     if (!message.member.voice.channel)
-      return message.reply("You need to join a voice channel first!").catch(console.error);
+      return message.reply("คุณต้องเข้าร่วมช่องสนทนาเสียงก่อน!").catch(console.error);
 
     const search = args.join(" ");
 
     let resultsEmbed = new MessageEmbed()
-      .setTitle(`**Reply with the song number you want to play**`)
-      .setDescription(`Results for: ${search}`)
+      .setTitle(`**ตอบกลับด้วยหมายเลขเพลงที่คุณต้องการเล่น**`)
+      .setDescription(`ผลลัพธ์: ${search}`)
       .setColor("#F8AA2A");
 
     try {
