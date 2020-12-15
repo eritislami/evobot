@@ -1,5 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
+const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/EvobotUtil");
@@ -75,13 +76,16 @@ module.exports = {
         return message.reply(error.message).catch(console.error);
       }
     }
-
+    
+let songInfo = null;
+    
     const newSongs = videos.map((video) => {
-      return (song = {
+      songInfo = await ytdl.getInfo(`https://www.youtube.com/watch?v=${video.id}`);
+      song = {
         title: video.title,
         url: video.url,
-        duration: video.durationSeconds
-      });
+        duration: songInfo.videoDetails.lengthSeconds
+      };
     });
 
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
