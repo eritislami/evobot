@@ -17,6 +17,7 @@
     "discord.js": "^12.5.1",
     "erit-ytdl": "^0.1.2",
     "ffmpeg-static": "^4.2.3",
+    "genius-lyrics-api": "^3.0.3",
     "lyrics-finder": "^21.0.5",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.1",
