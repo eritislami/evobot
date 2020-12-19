@@ -3,7 +3,8 @@
  */
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
-const { Server } = require("http");
+const http = require("http");
+const httpPort = process.env.HTTP_PORT || 8080;
 const { join } = require("path");
 const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
 
@@ -24,6 +25,22 @@ process.on('SIGTERM', function() {
   client.destroy();
   process.exit(0);
 });
+
+/**
+ * HTTP Server
+ */
+function handleHttpRequest(req, res) {
+  if (req.url == '/favicon.ico') {
+    return;
+  }
+  res.writeHead(200);
+  let jsonOut = [];
+  client.queue.forEach(value => value.songs.forEach(song => jsonOut.push(song)));
+  res.end(JSON.stringify(jsonOut, null, 2));
+}
+
+const server = http.createServer(handleHttpRequest).listen(httpPort);
+console.log(`HTTP Server listening on port ${httpPort}`);
 
 /**
  * Client Events
@@ -55,13 +72,17 @@ client.on("message", async (message) => {
   const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
   if (message.author.bot) {
     if (TRUSTED_BOTS.includes(message.author.id)) {
-      message.author = client.users.cache.get(args.pop().slice(1,-1));
+      const realAuthorId = args.pop().slice(1, -1);
+      message.author = client.users.cache.get(realAuthorId);
+      if (!message.author) {
+        return message.channel.send(`User ${realAuthorId} is not currently in a voice channel.`)
+      }
     } else {
       return;
     }
   }
 
-  if (!message.guild) return;
+  if (!message.guild || !message.author) return; // TODO: Return error
 
   const commandName = args.shift().toLowerCase();
 
