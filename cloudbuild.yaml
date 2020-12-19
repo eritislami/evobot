@@ -8,5 +8,5 @@ steps:
     args: ['push', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/evobot:latest']
-# - name: 'gcr.io/cloud-builders/gcloud'
-#   args: ['compute', 'instances', 'update-container', '${_INSTANCE_NAME}', '--zone', '${_ZONE}', '--container-image', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA', '&']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['compute', 'instances', 'update-container', '${_INSTANCE_NAME}', '--zone', '${_ZONE}', '--container-image', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA', '--container-env', 'FRED_VERSION=$SHORT_SHA']

@@ -3,6 +3,7 @@
  */
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
+const { Server } = require("http");
 const { join } = require("path");
 const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
 
@@ -16,10 +17,23 @@ const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
+ * Process Events
+ */
+process.on('SIGTERM', function() {
+  console.log("Received SIGTERM");
+  client.destroy();
+  process.exit(0);
+});
+
+/**
  * Client Events
  */
 client.on("ready", () => {
-  console.log(`${client.user.username} ready!`);
+  if (process.env.FRED_VERSION) {
+    console.log(`${client.user.username} ready (${process.env.FRED_VERSION})!`)
+  } else {
+    console.log(`${client.user.username} ready!`);
+  }
   client.user.setActivity('some neighborhood jams', { type : "PLAYING" });
 });
 client.on("warn", (info) => console.log(info));
