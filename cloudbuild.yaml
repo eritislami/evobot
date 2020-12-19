@@ -3,10 +3,15 @@ steps:
     entrypoint: 'bash'
     args: [ '-c', "gcloud secrets versions access latest --secret=${_SECRET_NAME} --format='get(payload.data)' | tr '_-' '/+' | base64 -d > config.json"]
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA', '-t', 'gcr.io/$PROJECT_ID/evobot:latest', '.']
+    args: ['build',
+           '-t', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA',
+           '-t', 'gcr.io/$PROJECT_ID/evobot:latest',
+           '--cache-from', 'gcr.io/$PROJECT_ID/evobot:latest',
+           '.']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/evobot:latest']
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: ['compute', 'instances', 'update-container', '${_INSTANCE_NAME}', '--zone', '${_ZONE}', '--container-image', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA', '--container-env', 'FRED_VERSION=$SHORT_SHA']
+    args: ['compute', 'instances', 'update-container', '${_INSTANCE_NAME}', '--zone', '${_ZONE}',
+           '--container-image', 'gcr.io/$PROJECT_ID/evobot:$SHORT_SHA', '--container-env', 'FRED_VERSION=$SHORT_SHA']
