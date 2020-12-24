@@ -20,11 +20,14 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 /**
  * Process Events
  */
-process.on('SIGTERM', function() {
-  console.log("Received SIGTERM");
+function handleSignal(signal) {
+  console.log(`Received ${signal}`);
   client.destroy();
   process.exit(0);
-});
+}
+
+process.on('SIGTERM', handleSignal);
+process.on('SIGINT', handleSignal);
 
 /**
  * HTTP Server
@@ -33,10 +36,11 @@ function handleHttpRequest(req, res) {
   if (req.url == '/favicon.ico') {
     return;
   }
+  console.log(`Queue request from: ${req.client.remoteAddress}`)
   res.writeHead(200);
-  let jsonOut = [];
-  client.queue.forEach(value => value.songs.forEach(song => jsonOut.push(song)));
-  res.end(JSON.stringify(jsonOut, null, 2));
+  let songs = [];
+  client.queue.forEach(value => value.songs.forEach(song => songs.push(song)));
+  res.end(JSON.stringify({songs}, null, 2));
 }
 
 const server = http.createServer(handleHttpRequest).listen(httpPort);
