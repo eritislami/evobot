@@ -4,7 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const http = require("http");
-const httpPort = process.env.HTTP_PORT || 8080;
+const httpPort = process.env.HTTP_PORT || 80;
 const { join } = require("path");
 const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
 
