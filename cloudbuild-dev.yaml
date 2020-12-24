@@ -3,5 +3,8 @@ steps:
     entrypoint: 'bash'
     args: [ '-c', "gcloud secrets versions access latest --secret=${_SECRET_NAME} --format='get(payload.data)' | tr '_-' '/+' | base64 -d > config.json"]
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/evobot:dev-$SHORT_SHA', '.']
+    entrypoint: 'bash'
+    args: ['-c', 'docker pull gcr.io/$PROJECT_ID/evobot:latest || exit 0']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/evobot:dev-$SHORT_SHA', '--cache-from', 'gcr.io/$PROJECT_ID/evobot:latest', '.']
 images: ['gcr.io/$PROJECT_ID/evobot:dev-$SHORT_SHA']
