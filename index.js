@@ -3,9 +3,16 @@
  */
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
-const http = require("http");
+const http = require("https");
+const fs = require("fs");
+const express = require("express");
+const expressApp = express();
 const httpPort = process.env.HTTP_PORT || 8080;
 const { join } = require("path");
+const cert = {
+  key: fs.readFileSync("./private.key"),
+  cert: fs.readFileSync("./certificate.crt")
+}
 const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
@@ -32,7 +39,7 @@ process.on('SIGINT', handleSignal);
 /**
  * HTTP Server
  */
-function handleHttpRequest(req, res) {
+expressApp.use((req, res) => {
   if (req.url == '/favicon.ico') {
     return;
   }
@@ -41,9 +48,8 @@ function handleHttpRequest(req, res) {
   let songs = [];
   client.queue.forEach(value => value.songs.forEach(song => songs.push(song)));
   res.end(JSON.stringify({songs}, null, 2));
-}
-
-const server = http.createServer(handleHttpRequest).listen(httpPort);
+});
+http.createServer(cert, expressApp).listen(httpPort);
 console.log(`HTTP Server listening on port ${httpPort}`);
 
 /**
