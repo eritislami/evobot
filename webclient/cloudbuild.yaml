@@ -7,7 +7,7 @@ steps:
            '-t', 'gcr.io/$PROJECT_ID/fred-frontend:$SHORT_SHA',
            '-t', 'gcr.io/$PROJECT_ID/fred-frontend:latest',
            '--cache-from', 'gcr.io/$PROJECT_ID/fred-frontend:latest',
-           '.']
+           'webclient/']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/fred-frontend:$SHORT_SHA']
   - name: 'gcr.io/cloud-builders/docker'
