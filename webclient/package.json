@@ -35,5 +35,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080"
+  "proxy": "http://fred.skydev.one:8080/"
 }

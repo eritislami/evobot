@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { getQueue } from './QueueService';
 
 class QueueTable extends Component {
+    intervalId = 0;
+
     constructor(props) {
         super(props);
         this.state = {
@@ -34,11 +36,14 @@ class QueueTable extends Component {
     componentDidMount() {
         this.getQueueContent();
 
-        setInterval(this.getQueueContent, 5000);
-    }    
+        this.intervalId = setInterval(this.getQueueContent, 5000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.intervalId);
+    }
 
     render() {
-        console.log("Rendering QueueTable");
         const { error, isLoaded, songs } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
@@ -47,11 +52,25 @@ class QueueTable extends Component {
         } else {
             return (
                 <div id="songTable">
-                <ul>
+                <table className="pure-table pure-table-horizontal">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th colSpan="2">Requestor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {songs.map((song, index) => (
-                        <li key={index}>{song.title}</li>
+                        <tr key={"song-" + index}  className={index % 2 === 0 ? '' : 'pure-table-odd'}>
+                            <td>{index+1}</td>
+                            <td><a href={song.url}>{song.title}</a></td>
+                            <td>{song.user.username}</td>
+                            <td><img src={song.user.avatarURL} height="25" width="25" alt=""/></td>
+                        </tr>
                     ))}
-                </ul>
+                    </tbody>
+                </table>
                 <p>Last updated: {new Date().toString()}</p>
                 </div>
             );
