@@ -3,11 +3,11 @@
  */
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
-const http = require("https");
+const http = require("http");
+const https = require("https");
 const fs = require("fs");
-const express = require("express");
-const expressApp = express();
 const httpPort = process.env.HTTP_PORT || 8080;
+const httpsPort = process.env.HTTPS_PORT || 8081;
 const { join } = require("path");
 const cert = {
   key: fs.readFileSync("./private.key"),
@@ -39,7 +39,12 @@ process.on('SIGINT', handleSignal);
 /**
  * HTTP Server
  */
-expressApp.use((req, res) => {
+https.createServer(cert, (req, res) => handleRequest(req, res)).listen(httpsPort);
+http.createServer((req, res) => handleRequest(req, res)).listen(httpPort);
+console.log(`HTTP Server listening on port ${httpPort}`);
+console.log(`HTTPS Server listening on port ${httpsPort}`);
+
+function handleRequest(req, res) {
   if (req.url == '/favicon.ico') {
     return;
   }
@@ -48,9 +53,7 @@ expressApp.use((req, res) => {
   let songs = [];
   client.queue.forEach(value => value.songs.forEach(song => songs.push(song)));
   res.end(JSON.stringify({songs}, null, 2));
-});
-http.createServer(cert, expressApp).listen(httpPort);
-console.log(`HTTP Server listening on port ${httpPort}`);
+}
 
 /**
  * Client Events
