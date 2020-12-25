@@ -1,23 +1,13 @@
-FROM node:12.19-slim
-
-ENV USER=evobot
-
-# install python and make
-RUN apt-get update && \
-	apt-get install -y python3 build-essential && \
-	apt-get purge -y --auto-remove
-	
-# create evobot user
-RUN groupadd -r ${USER} && \
-	useradd --create-home --home /home/evobot -r -g ${USER} ${USER}
+FROM node:12.19-alpine
 	
 # set up volume and user
-USER ${USER}
-WORKDIR /home/evobot
+WORKDIR /app
+
+ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package*.json ./
 RUN npm install
-VOLUME [ "/home/evobot" ]
+VOLUME [ "/home/fred" ]
 
 COPY . .
 
