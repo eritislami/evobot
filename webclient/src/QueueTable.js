@@ -66,7 +66,7 @@ class QueueTable extends Component {
                             <td>{index+1}</td>
                             <td><a href={song.url}>{song.title}</a></td>
                             <td>{song.user.username}</td>
-                            <td><img src={song.user.avatarURL} height="25" width="25" alt=""/></td>
+                            <td><img src={song.user.displayAvatarURL} height="25" width="25" alt=""/></td>
                         </tr>
                     ))}
                     </tbody>
