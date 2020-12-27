@@ -2,6 +2,7 @@
  * Module Imports
  */
 const { Client, Collection } = require("discord.js");
+const delay = require("delay");
 const { readdirSync } = require("fs");
 const { join } = require("path");
 
@@ -25,11 +26,23 @@ const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /**
+ * status changer
+ */
+async function changeStatus() {
+  client.user.setActivity(`${PREFIX}help`, { type : "LISTENING" });
+  await delay(10000);
+  client.user.setActivity(`${PREFIX}play`, { type : "LISTENING" });
+  await delay(10000);
+  client.user.setActivity("Build with evobot core", { type : "LISTENING" });
+  await delay(10000);
+  changeStatus();
+}
+/**
  * Client Events
  */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type : "LISTENING" });
+  changeStatus();
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
