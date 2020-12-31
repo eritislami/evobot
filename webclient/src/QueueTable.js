@@ -9,7 +9,8 @@ class QueueTable extends Component {
         this.state = {
             error: null,
             isLoaded: false,
-            songs: []
+            songs: [],
+            totalTime: 0
         };
 
         this.getQueueContent = this.getQueueContent.bind(this);
@@ -17,11 +18,11 @@ class QueueTable extends Component {
 
     getQueueContent() {
         getQueue()
-            .then(res => res.json())
             .then((result) => {
                 this.setState({
                     isLoaded: true,
-                    songs: result.songs
+                    songs: result.songs,
+                    totalTime: result.totalTime
                 });
             },
             (error) => {
@@ -44,7 +45,7 @@ class QueueTable extends Component {
     }
 
     render() {
-        const { error, isLoaded, songs } = this.state;
+        const { error, isLoaded, songs, totalTime } = this.state;
         if (error) {
             return <div>Error: {error.message}</div>;
         } else if (!isLoaded) {
@@ -71,6 +72,7 @@ class QueueTable extends Component {
                     ))}
                     </tbody>
                 </table>
+                <p>Queued music: {totalTime}</p>
                 <p>Last updated: {new Date().toString()}</p>
                 </div>
             );
