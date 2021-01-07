@@ -24,7 +24,7 @@ module.exports = {
         queue.channel.leave();
         queue.textChannel.send("Leaving voice channel...");
       }, STAY_TIME * 1000);
-      queue.textChannel.send("❌ Music queue ended.").catch(console.error);
+      queue.textChannel.send("🚫 Music queue ended.").catch(console.error);
       return message.client.queue.delete(message.guild.id);
     }
 
@@ -80,8 +80,8 @@ module.exports = {
 
     try {
       var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
-      await playingMessage.react("⏭");
-      await playingMessage.react("⏯");
+      await playingMessage.react("⏩");
+      await playingMessage.react("⏸️");
       await playingMessage.react("🔇");
       await playingMessage.react("🔉");
       await playingMessage.react("🔊");
@@ -101,7 +101,7 @@ module.exports = {
       const member = message.guild.member(user);
 
       switch (reaction.emoji.name) {
-        case "⏭":
+        case "⏩":
           queue.playing = true;
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
@@ -110,7 +110,7 @@ module.exports = {
           collector.stop();
           break;
 
-        case "⏯":
+        case "⏸️":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           if (queue.playing) {
