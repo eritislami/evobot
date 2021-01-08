@@ -85,11 +85,10 @@ module.exports = {
     });
 
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
-    const songs = serverQueue ? serverQueue.songs : queueConstruct.songs;
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
-      .setDescription(songs.map((song, index) => `${index + 1}. ${song.title}`))
+      .setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`))
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setTimestamp();
