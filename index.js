@@ -9,10 +9,6 @@ const fs = require("fs");
 const httpPort = process.env.HTTP_PORT || 8080;
 const httpsPort = process.env.HTTPS_PORT || 8081;
 const { join } = require("path");
-const cert = {
-  key: fs.readFileSync("./private.key"),
-  cert: fs.readFileSync("./certificate.crt")
-}
 const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
@@ -39,10 +35,18 @@ process.on('SIGINT', handleSignal);
 /**
  * HTTP Server
  */
-https.createServer(cert, (req, res) => handleRequest(req, res)).listen(httpsPort);
+try {
+  const cert = {
+    key: fs.readFileSync("./private.key"),
+    cert: fs.readFileSync("./certificate.crt")
+  }
+  https.createServer(cert, (req, res) => handleRequest(req, res)).listen(httpsPort);
+  console.log(`HTTPS Server listening on port ${httpsPort}`);
+} catch (err) {
+  console.warn(`Failed to  start HTTPS server: ${err}`)
+}
 http.createServer((req, res) => handleRequest(req, res)).listen(httpPort);
 console.log(`HTTP Server listening on port ${httpPort}`);
-console.log(`HTTPS Server listening on port ${httpsPort}`);
 
 function handleRequest(req, res) {
   if (req.url == '/favicon.ico') {

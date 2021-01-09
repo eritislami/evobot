@@ -1,6 +1,6 @@
 /config.json
 /.idea
-/.vscode
+**/.vscode
 
 # Logs
 logs
