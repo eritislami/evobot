@@ -1,0 +1,30 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker pull gcr.io/$PROJECT_ID/fred-frontend:latest || exit 0']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+           '-t', 'gcr.io/$PROJECT_ID/fred-frontend:$SHORT_SHA',
+           '-t', 'gcr.io/$PROJECT_ID/fred-frontend:latest',
+           '--cache-from', 'gcr.io/$PROJECT_ID/fred-frontend:latest',
+           'webclient/']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/fred-frontend:$SHORT_SHA']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/fred-frontend:latest']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [
+      'run',
+      'deploy',
+      'fred-frontend',
+      '--image',
+      'gcr.io/$PROJECT_ID/fred-frontend:latest',
+      '--region',
+      'us-west1',
+      '--platform',
+      'managed']
+images:
+  - gcr.io/$PROJECT_ID/fred-frontend:latest
+  - gcr.io/$PROJECT_ID/fred-frontend:$SHORT_SHA
