@@ -1,0 +1,80 @@
+<template>
+  <div class="songtable">
+    <table class="pure-table pure-table-horizontal">
+        <thead>
+            <tr>
+              <th>#</th>
+              <th>Title</th>
+              <th colspan="2">Requestor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <SongRow v-for="(item, idx) in songs" :key="idx" :idx='idx' :song='item' />
+        </tbody>
+    </table>
+    <p>Queued music: {{ totalTime }}</p>
+    <p>Last updated: {{ lastUpdated }}</p>
+  </div>
+</template>
+
+<script>
+import axios from 'axios'
+import SongRow from './SongRow'
+
+export default {
+  name: 'SongTable',
+  // props are used to pass data into this component
+  //   props: {
+  //     msg2: String
+  //   },
+  components: {
+    SongRow
+  },
+  data () {
+    return {
+      songs: [],
+      totalTime: '00:00',
+      lastUpdated: 'Never',
+      timer: ''
+    }
+  },
+  created () {
+    this.fetchEventsList()
+    this.timer = setInterval(this.fetchEventsList, 5000)
+  },
+  methods: {
+    fetchEventsList () {
+      axios.get('http://localhost:9090/api/queue')
+        .then(res => {
+          this.songs = res.data.songs
+          this.totalTime = res.data.totalTime || '00:00'
+          this.lastUpdated = new Date().toString()
+        })
+    },
+    cancelAutoUpdate () {
+      clearInterval(this.timer)
+    }
+  },
+  beforeDestroy () {
+    clearInterval(this.timer)
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
