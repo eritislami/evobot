@@ -21,7 +21,7 @@
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.1",
-    "ytdl-core": "^4.4.1"
+    "ytdl-core": "^4.4.2"
   },
   "scripts": {
     "start": "node index.js"
