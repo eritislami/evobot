@@ -44,12 +44,15 @@ export default {
   },
   methods: {
     fetchEventsList () {
-      axios.get('http://localhost:9090/api/queue')
+      axios.get('https://fred.skydev.one:8081/api/queue')
         .then(res => {
           this.songs = res.data.songs
-          this.totalTime = res.data.totalTime || '00:00'
+          this.totalTime = this.getTotalTime(res.data.songs.reduce((a, b) => a + parseInt(b.duration), 0)) || '00:00'
           this.lastUpdated = new Date().toString()
         })
+    },
+    getTotalTime (seconds) {
+      return new Date(seconds * 1000).toISOString().substr(11, 8)
     },
     cancelAutoUpdate () {
       clearInterval(this.timer)
