@@ -2,7 +2,12 @@ const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/EvobotUtil");
+const {
+  YOUTUBE_API_KEY,
+  SOUNDCLOUD_CLIENT_ID,
+  MAX_PLAYLIST_SIZE,
+  DEFAULT_VOLUME
+} = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
@@ -76,13 +81,15 @@ module.exports = {
       }
     }
 
-    const newSongs = videos.map((video) => {
-      return (song = {
-        title: video.title,
-        url: video.url,
-        duration: video.durationSeconds
+    const newSongs = videos
+      .filter((video) => video.title != "Private video")
+      .map((video) => {
+        return (song = {
+          title: video.title,
+          url: video.url,
+          duration: video.durationSeconds
+        });
       });
-    });
 
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
 
