@@ -29,7 +29,7 @@ module.exports = {
       queue.textChannel.send(
         `${message.author} ❌ removed **${removed.map((song) => song.title).join("\n")}** from the queue.`
       );
-    } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] < queue.songs.length) {
+    } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= queue.songs.length) {
       return queue.textChannel.send(
         `${message.author} ❌ removed **${queue.songs.splice(args[0] - 1, 1)[0].title}** from the queue.`
       );
