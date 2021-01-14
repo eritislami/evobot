@@ -100,7 +100,7 @@ module.exports = {
       }
     } else {
       try {
-        const results = await youtube.searchVideos(search, 1);
+        const results = await youtube.searchVideos(search, 1, { part: "snippet" });
         songInfo = await ytdl.getInfo(results[0].url);
         song = {
           title: songInfo.videoDetails.title,
