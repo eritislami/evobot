@@ -10,6 +10,7 @@ const httpPort = process.env.HTTP_PORT || 8080;
 const httpsPort = process.env.HTTPS_PORT || 8081;
 const { join } = require("path");
 const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
+const firebase = require('./firebase')
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -51,6 +52,11 @@ console.log(`HTTP Server listening on port ${httpPort}`);
 function handleRequest(req, res) {
   if (req.url == '/favicon.ico') {
     return;
+  }
+  if (req.url == '/test') {
+    res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
+    let t = firebase.getAllSongHistory();
+    res.end(JSON.stringify({t}, null, 2));
   }
   console.log(`Queue request from: ${req.client.remoteAddress}`)
   res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
