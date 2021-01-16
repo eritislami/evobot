@@ -1,21 +1,36 @@
-# This script will kill evobot process and pull the latest git.
-# make sure that your files are save in the evobot folder.
+#!/bin/bash
 
-echo searching PID
-VARPID="$(ps aux | grep evobot | head -1 | awk '{print $2}')"
+unset VARPID
+unset DIRECTORY
 
-echo FOUND : $VARPID
-echo KILLING $VARPID
-kill $VARPID
+DIRECTORY="$(cd `dirname $0` && pwd)"
+VARPID="$(ps aux | grep evobot | grep -v evobot | head -1 | awk '{print $2}')"
 
-echo PULLING evobot
-git pull https://github.com/eritislami/evobot
+if [ ! -n "$VARPID" ]
 
-echo UPDATING NPM
-npm install
-npm update
-
-echo STARTING
-nohup node $PWD/index.js &
-
+then
+	echo "EVOBOT IS NOT RUNNING"
+	echo "CHECKING UPDATES"
+	cd $DIRECTORY 
+		git pull https://github.com/eritislami/evobot
+		npm install
+		npm update
+	echo "STARTING EVOBOT"
+		nohup node $PWD/index.js &
+	unset VARPID
+	unset DIRECTORY
+else
+	echo "EVOBOT IS RUNNING AT PID : $VARPID"
+	echo "KILLING PROCESS ID : $VARPID"
+	cd $DIRECTORY
+		kill $VARPID || /bin/true
+	echo "CHECKING UPDATES"
+		git pull https://github.com/eritislami/evobot
+		npm install
+		npm update
+	echo "STARTING EVOBOT"
+		nohup node $PWD/index.js &
+	unset VARPID
+	unset DIRECTORY
+fi
 exit 0
