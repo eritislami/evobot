@@ -4,14 +4,14 @@ unset VARPID
 unset DIRECTORY
 
 DIRECTORY="$(cd `dirname $0` && pwd)"
-VARPID="$(ps aux | grep [e]vobot | head -1 | awk '{print $2}')"
+VARPID="$(ps aux | grep evobot | grep -v update.sh | head -1 | awk '{print $2}')"
 
 if [ ! -n "$VARPID" ]
 
 then
 	echo "EVOBOT IS NOT RUNNING"
 	echo "CHECKING UPDATES"
-	cd $DIRECTORY 
+	cd $DIRECTORY
 		git pull https://github.com/eritislami/evobot
 		npm install
 		npm update
@@ -23,7 +23,7 @@ else
 	echo "EVOBOT IS RUNNING AT PID : $VARPID"
 	echo "KILLING PROCESS ID : $VARPID"
 	cd $DIRECTORY
-		kill $VARPID || /bin/true
+		kill $VARPID || /bin/true >/dev/null
 	echo "CHECKING UPDATES"
 		git pull https://github.com/eritislami/evobot
 		npm install
