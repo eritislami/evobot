@@ -1,9 +1,10 @@
 const { MessageEmbed } = require("discord.js");
-const lyricsFinder = require("lyrics-finder");
+const genius = require('genius-lyrics-api');
+const { GENIUS_TOKEN } = require('../util/EvobotUtil')
 
 module.exports = {
   name: "lyrics",
-  aliases: ["ly"],
+  aliases: ["l"],
   description: "Get lyrics for the currently playing song",
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
@@ -11,11 +12,18 @@ module.exports = {
 
     let lyrics = null;
 
+    const options = {
+      apiKey: GENIUS_TOKEN,
+      title: song.title,
+      artist: "",
+      optimizeQuery: true
+    };
+
     try {
-      lyrics = await lyricsFinder(queue.songs[0].title, "");
+      lyrics = await genius.getLyrics(options);
       if (!lyrics) lyrics = `No lyrics found for ${queue.songs[0].title}.`;
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = `No lyrics found for ${queue.songs[0].title}`
     }
 
     let lyricsEmbed = new MessageEmbed()
