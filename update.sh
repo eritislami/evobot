@@ -4,7 +4,7 @@ unset VARPID
 unset DIRECTORY
 
 DIRECTORY="$(cd `dirname $0` && pwd)"
-VARPID="$(ps aux | grep evobot | grep -v evobot | head -1 | awk '{print $2}')"
+VARPID="$(ps aux | grep [e]vobot | head -1 | awk '{print $2}')"
 
 if [ ! -n "$VARPID" ]
 
