@@ -55,14 +55,21 @@ function handleRequest(req, res) {
   }
   if (req.url == '/test') {
     res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
-    let t = firebase.getAllSongHistory();
-    res.end(JSON.stringify({t}, null, 2));
+    firebase.getAllSongHistory().then(result => {
+      res.end(JSON.stringify({result}, null, 2));
+    })
+  } else if (req.url == '/topsongs') {
+    res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
+    firebase.getMostPlayedSongs(3).then(result => {
+      res.end(JSON.stringify(result, null, 2))
+    });
+  } else {
+    console.log(`Queue request from: ${req.client.remoteAddress}`)
+    res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
+    let songs = [];
+    client.queue.forEach(value => value.songs.forEach(song => songs.push(song)));
+    res.end(JSON.stringify({songs}, null, 2));
   }
-  console.log(`Queue request from: ${req.client.remoteAddress}`)
-  res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
-  let songs = [];
-  client.queue.forEach(value => value.songs.forEach(song => songs.push(song)));
-  res.end(JSON.stringify({songs}, null, 2));
 }
 
 /**
