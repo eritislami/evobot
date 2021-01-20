@@ -1,48 +1,60 @@
 var admin = require("firebase-admin");
-const { FIREBASE_ACCOUNT } = require("./util/EvobotUtil");
-const songHistoryDb = "song_history";
-const songAggregateDb = "song_aggregate";
+const { FIREBASE_CONFIG } = require("./util/EvobotUtil");
+const songHistoryDb = FIREBASE_CONFIG.song_history_collection;
+const songAggregateDb = FIREBASE_CONFIG.song_aggregate_collection;
 
 let db;
-if (FIREBASE_ACCOUNT) {
+if (FIREBASE_CONFIG) {
   admin.initializeApp({
-    credential: admin.credential.cert(FIREBASE_ACCOUNT)
+    credential: admin.credential.cert(FIREBASE_CONFIG)
   });
   db = admin.firestore();
 } else {
   console.warn("No firebase account specified. Data will not be recorded in the database.")
 }
 
+function getSongIdFromUrl(url) {
+  const searchParams = new URLSearchParams(new URL(url).search);
+  return searchParams.get('v');
+}
+
 function createSongHistoryDbJson(song) {
-  const searchParams = new URLSearchParams(new URL(song.url).search);
-  const songId = searchParams.get('v');
+  const songId = getSongIdFromUrl(song.url);
   return {
     id: songId,
-    duration: song.duration,
-    time: Date.now(),
-    title: song.title,
-    url: song.url,
-    user: song.user.id,
+    played_at: Date.now(),
+    user: {
+      id: song.user.id,
+      username: song.user.username
+    },
+    schema_version: FIREBASE_CONFIG.schema_version
   }
 }
 
-async function updateSongAggregate(songRef) {
+async function updateSongAggregate(song, songRefId) {
   if (!db) return;
 
-  songDoc = await songRef.get();
-  songId = songDoc.data().id;
+  songId = getSongIdFromUrl(song.url);
   songAggregateRef = await db.collection(songAggregateDb).doc(songId).get();
   let s;
   if(songAggregateRef.exists) {
     s = songAggregateRef.data();
     s.play_count++;
     s.last_played = Date.now();
-    s.song_history.push(songRef.id);
+    s.song_history.push(songRefId);
   } else {
     s = {
+      title: song.title,
+      duration: song.duration,
+      url: song.url,
       play_count: 1,
       last_played: Date.now(),
-      song_history: [songRef.id]
+      last_played_by: {
+        id: song.user.id,
+        username: song.user.username,
+      },
+      song_history: [songRefId],
+      schema_version: FIREBASE_CONFIG.schema_version
     };
   }
 
@@ -60,22 +72,17 @@ module.exports = {
     if (!db) return;
     songs = await db.collection(songAggregateDb).orderBy('play_count', 'desc').limit(count).get();
     data = songs.docs.map(doc => {
-      data = doc.data();
-      return {
-        id: doc.id,
-        play_count: data.play_count
-      };
+      return doc.data();
     });
-    console.debug(data);
+    //console.debug(data);
     return data;
   },
 
-  // TODO: make it work async
   async saveSong(song) {
     if (!db) return;
-    console.debug(song);
+    //console.debug(song);
 
     songHistoryDocRef = await db.collection(songHistoryDb).add(createSongHistoryDbJson(song));
-    updateSongAggregate(songHistoryDocRef);
+    updateSongAggregate(song, songHistoryDocRef.id);
   }
 }
