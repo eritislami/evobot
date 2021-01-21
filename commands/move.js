@@ -24,7 +24,7 @@ module.exports = {
       i18n.__mf("move.result", {
         author: message.author,
         title: song.title,
-        index: args[1] == 1 ? 1 : args[1] - 1
+        index: args[1] == 1 ? 1 : args[1]
       })
     );
   }
