@@ -16,6 +16,7 @@ module.exports = {
       .setTitle("Now playing")
       .setDescription(`${song.title}\n${song.url}`)
       .setColor("#F8AA2A")
+      .setImage(`${song.thumbnail}`)
       .setAuthor(message.client.user.username);
 
     if (song.duration > 0) {
@@ -23,7 +24,7 @@ module.exports = {
         "\u200b",
         new Date(seek * 1000).toISOString().substr(11, 8) +
           "[" +
-          createBar(song.duration == 0 ? seek : song.duration, seek, 20)[0] +
+          createBar(song.duration == 0 ? seek : song.duration, seek, 10)[0] +
           "]" +
           (song.duration == 0 ? " ◉ LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)),
         false
