@@ -2,7 +2,14 @@ const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME, LOCALE } = require("../util/EvobotUtil");
+
+const {
+  YOUTUBE_API_KEY,
+  SOUNDCLOUD_CLIENT_ID,
+  MAX_PLAYLIST_SIZE,
+  DEFAULT_VOLUME,
+  LOCALE
+} = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const i18n = require("i18n");
 
@@ -79,20 +86,21 @@ module.exports = {
       }
     }
 
-    const newSongs = videos.map((video) => {
-      return (song = {
-        title: video.title,
-        url: video.url,
-        duration: video.durationSeconds
+    const newSongs = videos
+      .filter((video) => video.title != "Private video")
+      .map((video) => {
+        return (song = {
+          title: video.title,
+          url: video.url,
+          duration: video.durationSeconds
+        });
       });
-    });
 
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
-    const songs = serverQueue ? serverQueue.songs : queueConstruct.songs;
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
-      .setDescription(songs.map((song, index) => `${index + 1}. ${song.title}`))
+      .setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`))
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setTimestamp();
