@@ -88,7 +88,7 @@
     "description": "Afficher la file d'attente et la musique en cours de lecture.",
     "missingPermissionMessage": "Il me manque l'autorisation de gérer les messages ou d'ajouter des réactions",
     "errorNotQueue": "❌ **Rien ne joue sur ce serveur**",
-    "currentPage": "**Page actuelle - {currentPage}/{length}**",
+    "currentPage": "Page actuelle - ",
     "embedTitle": "Song Queue\n",
     "embedCurrentSong": "**Morceau en cours - [{title}]({url})**\n\n{info}"
   },

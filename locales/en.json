@@ -94,7 +94,7 @@
     "description": "Show the music queue and now playing.",
     "missingPermissionMessage": "Missing permission to manage messages or add reactions",
     "errorNotQueue": "❌ **Nothing playing in this server**",
-    "currentPage": "**Current Page - {currentPage}/{length}**",
+    "currentPage": "Current Page - ",
     "embedTitle": "Song Queue\n",
     "embedCurrentSong": "**Current Song - [{title}]({url})**\n\n{info}"
   },

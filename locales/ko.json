@@ -94,7 +94,7 @@
     "description": "현재 재생중인 음악과 대기열을 표시합니다.",
     "missingPermissionMessage": "메세지를 관리하는 권한이 없습니다. 권한을 확인해 주세요.",
     "errorNotQueue": "❌ **대기열에 어떤 항목도 존재하지 않습니다.**",
-    "currentPage": "**현재 페이지 - {page}/{length}**",
+    "currentPage": "현재 페이지 - ",
     "embedTitle": "대기열\n",
     "embedCurrentSong": "**현재 재생중인 음악 - [{title}]({url})**\n\n{info}"
   },
