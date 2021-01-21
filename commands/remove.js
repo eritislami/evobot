@@ -1,6 +1,5 @@
 const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
 const i18n = require("i18n");
-
 i18n.setLocale(LOCALE);
 
 const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/g;
@@ -11,21 +10,19 @@ module.exports = {
   description: i18n.__("remove.description"),
   execute(message, args) {
     const queue = message.client.queue.get(message.guild.id);
+
     if (!queue) return message.channel.send(i18n.__("remove.errorNotQueue")).catch(console.error);
     if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
     if (!args.length) return message.reply(i18n.__mf("remove.usageReply", { prefix: message.client.prefix }));
 
     const arguments = args.join("");
-    const songs = arguments.split(",").map((str) => str.trim());
+    const songs = arguments.split(",").map((arg) => parseInt(arg));
     let removed = [];
 
-    if (pattern.test(arguments) && songs.every((value) => value < queue.songs.length)) {
+    if (pattern.test(arguments) && songs.every((songIndex) => songIndex < queue.songs.length)) {
       queue.songs = queue.songs.filter((item, index) => {
-        if (songs.every((value) => value - 1 != index)) {
-          return true;
-        } else {
-          removed.push(item);
-        }
+        if (songs.find((songIndex) => songIndex - 1 == index)) removed.push(item);
+        else return true;
       });
 
       queue.textChannel.send(

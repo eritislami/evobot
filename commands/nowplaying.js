@@ -30,9 +30,7 @@ module.exports = {
           "[" +
           createBar(song.duration == 0 ? seek : song.duration, seek, 20)[0] +
           "]" +
-          (song.duration == 0
-            ? i18n.__("nowplaying.live")
-            : new Date(song.duration * 1000).toISOString().substr(11, 8)),
+          (song.duration == 0 ? " ◉ LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)),
         false
       );
       nowPlaying.setFooter(

@@ -21,7 +21,7 @@ module.exports = {
     const embeds = generateQueueEmbed(message, queue.songs);
 
     const queueEmbed = await message.channel.send(
-      i18n.__mf("queue.currentPage", { page: currentPage + 1, length: embeds.length }),
+      `**${i18n.__mf("queue.currentPage")} ${currentPage + 1}/${embeds.length}**`,
       embeds[currentPage]
     );
 
