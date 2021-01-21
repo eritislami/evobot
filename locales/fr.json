@@ -50,7 +50,7 @@
     "usageReply": "Usage: {preifx}play <YouTube URL | Nom Vidéo | Soundcloud URL>",
     "missingPermissionConnect": "Impossible de se connecter au canal vocal, autorisations manquantes",
     "missingPermissionSpeak": "Je ne peux pas parler dans ce canal vocal, assurez-vous que j'ai les autorisations appropriées!",
-    "queueAdded": "✅ **{songtitle}** a été ajouté à la file d'attente par <@{author}>",
+    "queueAdded": "✅ **{title}** a été ajouté à la file d'attente par <@{author}>",
     "cantJoinChannel": "Impossible de rejoindre le channel: {error}",
     "queueEnded": "❌ La file d'attente est terminée.",
     "queueError": "Erreur: {error}",
