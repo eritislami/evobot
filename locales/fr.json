@@ -47,7 +47,7 @@
     "description": "Ecoute de la musqiue depuis YouTube ou Soundcloud",
     "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!",
     "errorNotInSameChannel": "Vous devez être dans le même canal que {user}",
-    "usageReply": "Usage: {preifx}play <YouTube URL | Nom Vidéo | Soundcloud URL>",
+    "usageReply": "Usage: {prefix}play <YouTube URL | Nom Vidéo | Soundcloud URL>",
     "missingPermissionConnect": "Impossible de se connecter au canal vocal, autorisations manquantes",
     "missingPermissionSpeak": "Je ne peux pas parler dans ce canal vocal, assurez-vous que j'ai les autorisations appropriées!",
     "queueAdded": "✅ **{title}** a été ajouté à la file d'attente par <@{author}>",

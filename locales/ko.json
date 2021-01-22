@@ -53,7 +53,7 @@
     "description": "YouTube 또는 Soundcloud 부터 음악을 재생합니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "errorNotInSameChannel": "{user} 와 같은 음성 채널에 들어와 있어야 합니다.",
-    "usageReply": "사용 방법: {preifx}play <YouTube URL | Video Name | Soundcloud URL>",
+    "usageReply": "사용 방법: {prefix}play <YouTube URL | Video Name | Soundcloud URL>",
     "missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",
     "missingPermissionSpeak": "음성 채널에서 말할 수 없습니다. 권한을 확인해 주세요.",
     "queueAdded": "✅ **{title}** 가 <@{author}>에 의해 대기열에 추가되었습니다.",
