@@ -21,7 +21,7 @@ const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 i18n.configure({
-  locales: ["en", "ko", "fr"],
+  locales: ["en", "ko", "fr", "zh_ch", "zh_tw"],
   directory: path.join(__dirname, "locales"),
   defaultLocale: "en",
   objectNotation: true,
