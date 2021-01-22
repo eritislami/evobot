@@ -53,7 +53,7 @@
     "description": "Plays audio from YouTube or Soundcloud",
     "errorNotChannel": "You need to join a voice channel first!",
     "errorNotInSameChannel": "You must be in the same channel as {user}",
-    "usageReply": "Usage: {preifx}play <YouTube URL | Video Name | Soundcloud URL>",
+    "usageReply": "Usage: {prefix}play <YouTube URL | Video Name | Soundcloud URL>",
     "missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
     "missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
     "queueAdded": "✅ **{title}** has been added to the queue by <@{author}>",

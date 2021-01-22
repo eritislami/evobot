@@ -53,7 +53,7 @@
     "description": "播放 YouTube 或 Soundcloud 的音樂",
     "errorNotChannel": "你必須先加入語音頻道!",
     "errorNotInSameChannel": "你必須跟 {user} 在同一個頻道裡",
-    "usageReply": "Usage: {preifx}play <YouTube 網址 | 影片名稱 | Soundcloud 網址>",
+    "usageReply": "Usage: {prefix}play <YouTube 網址 | 影片名稱 | Soundcloud 網址>",
     "missingPermissionConnect": "無法連結至語音頻道，沒有權限",
     "missingPermissionSpeak": "我無法在語音頻道裡說話，請確定我有相關的權限!",
     "queueAdded": "✅ **{title}** 已經被 <@{author}> 加入音樂隊列",
