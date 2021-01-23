@@ -1,18 +1,8 @@
 const ytdl = require("erit-ytdl");
 const scdl = require("soundcloud-downloader").default;
 const { canModifyQueue, STAY_TIME } = require("../util/EvobotUtil");
-
-/*
-async function playWithRetry(url, options, retries = 10) {
-  for (let i = 0; i < retries; i++) {
-    try {
-      return await ytdlDiscord(url, options);
-    } catch (error) {
-      console.warn(`Caught error (${i+1}/${retries}): ${error}`);
-    }
-  }
-}
-*/
+// TODO: Load firebase once (index?) instead of on every play
+const firebase = require("../firebase");
 
 module.exports = {
   async play(song, message) {
@@ -44,8 +34,8 @@ module.exports = {
     let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
     try {
+      firebase.saveSong(song);
       if (song.url.includes("youtube.com")) {
-        //stream = await playWithRetry(song.url, { highWaterMark: 1 << 26, quality: 'highestaudio'});
         stream = await ytdl(song.url, { highWaterMark: 1 << 25 });
       } else if (song.url.includes("soundcloud.com")) {
         try {
