@@ -1,7 +1,7 @@
 {
   "name": "webclient-vue",
   "version": "1.0.0",
-  "description": "Fred Vue.js frontend",
+  "description": "Fred",
   "author": "Skyler Sell <4495439+skyler91@users.noreply.github.com>",
   "private": true,
   "scripts": {
@@ -69,5 +69,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "main": "index.js",
+  "repository": "fred.skydev.one",
+  "license": "MIT"
 }

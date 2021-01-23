@@ -13,7 +13,6 @@
         </tbody>
     </table>
     <p>Queued music: {{ totalTime }}</p>
-    <p>Last updated: {{ lastUpdated }}</p>
   </div>
 </template>
 
@@ -79,5 +78,9 @@ li {
 }
 a {
   color: #42b983;
+}
+table {
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>
