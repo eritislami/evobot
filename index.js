@@ -6,10 +6,11 @@ const { readdirSync } = require("fs");
 const http = require("http");
 const https = require("https");
 const fs = require("fs");
+const api = require("./api");
 const httpPort = process.env.HTTP_PORT || 8080;
 const httpsPort = process.env.HTTPS_PORT || 8081;
 const { join } = require("path");
-const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, TRUSTED_BOTS, HTTPS } = require("./util/EvobotUtil");
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -35,29 +36,20 @@ process.on('SIGINT', handleSignal);
 /**
  * HTTP Server
  */
-try {
-  const cert = {
-    key: fs.readFileSync("./private.key"),
-    cert: fs.readFileSync("./certificate.crt")
+if (HTTPS) {
+  try {
+    const cert = {
+      key: HTTPS.private_key,
+      cert: HTTPS.certificate
+    }
+    https.createServer(cert, (req, res) => api.handleRequest(client, req, res)).listen(httpsPort);
+    console.log(`HTTPS Server listening on port ${httpsPort}`);
+  } catch (err) {
+    console.warn(`Failed to  start HTTPS server: ${err}`)
   }
-  https.createServer(cert, (req, res) => handleRequest(req, res)).listen(httpsPort);
-  console.log(`HTTPS Server listening on port ${httpsPort}`);
-} catch (err) {
-  console.warn(`Failed to  start HTTPS server: ${err}`)
 }
-http.createServer((req, res) => handleRequest(req, res)).listen(httpPort);
+http.createServer((req, res) => api.handleRequest(client, req, res)).listen(httpPort);
 console.log(`HTTP Server listening on port ${httpPort}`);
-
-function handleRequest(req, res) {
-  if (req.url == '/favicon.ico') {
-    return;
-  }
-  console.log(`Queue request from: ${req.client.remoteAddress}`)
-  res.writeHead(200, {"Access-Control-Allow-Origin": "*"});
-  let songs = [];
-  client.queue.forEach(value => value.songs.forEach(song => songs.push(song)));
-  res.end(JSON.stringify({songs}, null, 2));
-}
 
 /**
  * Client Events
