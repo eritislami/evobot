@@ -7,7 +7,8 @@ const { join } = require("path");
 const { TOKEN, PREFIX, LOCALE, MONGODB_URI } = require("./util/EvobotUtil");
 const path = require("path");
 const i18n = require("i18n");
-const mongoDB = require('mongoose')
+const mongoDB = require('mongoose');
+const blacklistModel = require('./schemas/blacklist')
 
 const client = new Client({
   disableMentions: "everyone",
@@ -86,6 +87,16 @@ client.on("message", async (message) => {
     client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
   if (!command) return;
+
+  const blacklisted = await blacklistModel.find();
+
+  let isBlacklisted;
+
+  if (blacklisted) {
+    isBlacklisted = blacklisted.find(u => u.userId === message.author.id)
+  }
+
+  if (isBlacklisted) return;
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Collection());
