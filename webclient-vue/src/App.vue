@@ -1,17 +1,23 @@
 <template>
   <div id="app">
-    <SongTable/>
+    <div id="nav">
+      <router-link to="/">Home</router-link>
+      <router-link v-if="$auth.isAuthenticated" to="/profile">Profile</router-link>
+      <a v-if="!$auth.isAuthenticated" @click.prevent="$auth.loginWithRedirect({connection: 'discord'})" href="/">Login</a>
+      <a v-if="$auth.isAuthenticated" @click.prevent="$auth.logout()" href="/">Logout</a>
+    </div>
+    <router-view></router-view>
+    <Login/>
   </div>
 </template>
 
 <script>
-import SongTable from './components/SongTable'
-
+import Login from './components/Login'
 export default {
   name: 'App',
   components: {
-    SongTable
-  }
+    Login
+  },
 }
 </script>
 
