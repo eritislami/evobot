@@ -18,6 +18,7 @@
     "ffmpeg-static": "^4.2.3",
     "i18n": "^0.13.2",
     "lyrics-finder": "^21.0.5",
+    "mongoose": "^5.11.13",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.1",
