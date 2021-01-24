@@ -163,14 +163,14 @@
 		"errorCommend": "There was an error executing that command."
 	},
 	"blacklist": {
-    "description": "Block user from using this bot.",
-    "noType": "Please provide a type. Use list, add, or remove.",
-    "noBlacklisted": "No one is blacklisted.",
-    "provideMember": "Please tag a member to blacklist.",
-    "botMember": "Please never blacklist a bot.",
-    "alreadyBlacklisted": "This user is already blacklisted.",
-    "doneBlacklisted": "User has been blacklisted.",
-    "notBlacklisted": "User is not blacklisted.",
-    "userWhitelisted": "User has been whitelisted."
+		"description": "Block user from using this bot.",
+		"noType": "Please provide a type. Use list, add, or remove.",
+		"noBlacklisted": "No one is blacklisted.",
+		"provideMember": "Please tag a member to blacklist.",
+		"botMember": "Please never blacklist a bot.",
+		"alreadyBlacklisted": "This user is already blacklisted.",
+		"doneBlacklisted": "User has been blacklisted.",
+		"notBlacklisted": "User is not blacklisted.",
+		"userWhitelisted": "User has been whitelisted."
 	}
 }
