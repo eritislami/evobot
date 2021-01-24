@@ -2,12 +2,6 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     args: [ '-c', "gcloud secrets versions access latest --secret=${_SECRET_NAME} --format='get(payload.data)' | tr '_-' '/+' | base64 -d > config.json"]
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args: [ '-c', "gcloud secrets versions access latest --secret=${_PKEY_NAME} --format='get(payload.data)' | tr '_-' '/+' | base64 -d > private.key"]
-  - name: 'gcr.io/cloud-builders/gcloud'
-    entrypoint: 'bash'
-    args: [ '-c', "gcloud secrets versions access latest --secret=${_CERT_NAME} --format='get(payload.data)' | tr '_-' '/+' | base64 -d > certificate.crt"]
   - name: 'gcr.io/cloud-builders/docker'
     entrypoint: 'bash'
     args: ['-c', 'docker pull gcr.io/$PROJECT_ID/evobot:latest || exit 0']
