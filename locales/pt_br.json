@@ -161,5 +161,16 @@
     "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!",
     "cooldownMessage": "Por favor espere {time} segundo(s) mais antes de usar o comando `{name}` novamente.",
     "errorCommend": "Houve um erro ao executar este comando."
+  },
+  "blacklist": {
+    "description": "Impedir que os usuários usem este bot.",
+    "noType": "Forneça um tipo. Usa list, add, ou remove.",
+    "noBlacklisted": "Ninguém está na lista negra.",
+    "provideMember": "Fornece um usuário para a lista negra.",
+    "botMember": "Nunca coloque um bot na lista negra.",
+    "alreadyBlacklisted": "Este usuário já está na lista negra.",
+    "doneBlacklisted": "O usuário foi colocado na lista negra.",
+    "notBlacklisted": "O usuário não está na lista negra.",
+    "userWhitelisted": "O usuário foi colocado na lista de permissões."
   }
 }

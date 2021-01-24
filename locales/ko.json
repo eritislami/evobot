@@ -161,5 +161,16 @@
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "cooldownMessage": "`{name}` 명령어를 실행하기 전 {time} 초 만큼 기다려주세요.",
     "errorCommend": "명령어 실행에 실패했습니다."
+  },
+  "blacklist": {
+    "description": "사용자가이 봇을 사용하지 못하도록 차단.",
+    "noType": "유형을 입력하십시오. 사용하다 list, add, 또는 remove.",
+    "noBlacklisted": "블랙리스트에 아무도 없습니다.",
+    "provideMember": "블랙리스트에 회원 제공.",
+    "botMember": "어떤 봇도 블랙리스트하지 마십시오.",
+    "alreadyBlacklisted": "이 사용자는 이미 블랙리스트에 있습니다.",
+    "doneBlacklisted": "사용자가 블랙리스트에 올랐습니다.",
+    "notBlacklisted": "사용자가 블랙리스트에 없습니다.",
+    "userWhitelisted": "사용자가 허용되었습니다."
   }
 }

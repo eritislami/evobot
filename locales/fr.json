@@ -161,5 +161,16 @@
     "errorNotQueue": "Il n'y a pas de file d'attente.",
     "usagesReply": "Usage: {prefix}move <Nombre dans la file d'attente>",
     "result": "<@{author}> 🚚 a déplacé **{title}** vers {index} dans la file d'attente."
+  },
+  "blacklist": {
+    "description": "Empêcher l'utilisateur d'utiliser ce bot.",
+    "noType": "Veuillez fournir un type. Use list, add, ou remove.",
+    "noBlacklisted": "Personne n'est sur liste noire.",
+    "provideMember": "Veuillez fournir un membre à la liste noire.",
+    "botMember": "Veuillez ne jamais mettre un bot sur liste noire.",
+    "alreadyBlacklisted": "Cet utilisateur est déjà sur la liste noire.",
+    "doneBlacklisted": "L'utilisateur a été mis sur liste noire.",
+    "notBlacklisted": "L'utilisateur n'est pas sur la liste noire.",
+    "userWhitelisted": "L'utilisateur a été ajouté à la liste blanche."
   }
 }

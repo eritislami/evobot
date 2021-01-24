@@ -161,5 +161,16 @@
     "errorNotChannel": "你必须先加入语音频道!",
     "cooldownMessage": "请等待 {time} 秒后再使用 `{name}` 指令",
     "errorCommend": "执行指令时發生错误"
+  },
+  "blacklist": {
+    "description": "阻止用户使用该机器人.",
+    "noType": "请提供类型. 采用 list, add, 要么 remove.",
+    "noBlacklisted": "没有人被列入黑名单.",
+    "provideMember": "请提供用户黑名单.",
+    "botMember": "请不要将机器人列入黑名单.",
+    "alreadyBlacklisted": "用户已被列入黑名单.",
+    "doneBlacklisted": "用户已被列入黑名单.",
+    "notBlacklisted": "用户未列入黑名单.",
+    "userWhitelisted": "用户已列入白名单."
   }
 }
