@@ -31,7 +31,7 @@
       "description": "Şarkıyı sırada taşı",
       "errorNotQueue": "Liste bulunamadı.",
       "usagesReply": "Kullanım: {prefix} taşı <Liste numarası>",
-      "result": "<@{author}> 🚚 moved **{title}** to {index} in the queue."
+      "result": "<@{author}> 🚚  **{title}** klibini {index}.sıraya taşıdı."
     },
     "nowplaying": {
       "description": "Şimdi çalan şarkıyı göster",
