@@ -1,6 +1,6 @@
 {
   "name": "evobot",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "description": "Discord music bot built with discord.js",
   "main": "index.js",
   "author": "Erit Islami <eritislami@gmail.com>",
@@ -9,18 +9,19 @@
   "repository": "github:eritislami/evobot",
   "bugs": "https://github.com/eritislami/evobot/issues",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=14.0.0"
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.3",
     "array-move": "^3.0.1",
     "discord.js": "^12.5.1",
-    "erit-ytdl": "^0.1.2",
     "ffmpeg-static": "^4.2.3",
+    "i18n": "^0.13.2",
     "simple-youtube-api": "^5.1.1",
-    "soundcloud-downloader": "^0.2.1",
+    "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.1",
-    "ytdl-core": "^4.1.2"
+    "ytdl-core": "^4.4.3",
+    "ytdl-core-discord": "^1.2.5"
   },
   "scripts": {
     "start": "node index.js"
