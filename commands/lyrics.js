@@ -1,6 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 const fetch = require("node-fetch");
-const lyricsFinder = require("lyrics-finder");
 
 module.exports = {
   name: "lyrics",
@@ -9,7 +8,7 @@ module.exports = {
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
-    function sendLyrics(lyrics) {
+    function sendLyrics(lyrics, album_art) {
       charLength = lyrics.length;
       if (charLength < 2048) {
         cantEmbeds = 1
@@ -19,14 +18,16 @@ module.exports = {
           if (charLength < 2048 * i) {
             cantEmbeds = i
             break;
-          }
+          } 
         }
       }
-      function embeds(lyrics, cant) {
+      function embeds(lyrics, cant, album_art) {
         String.prototype.trimEllip = function (length) {
           return this.length > length ? this.substring(0, length) : this;
         }
+        if (!album_art) album_art='https://kknd26.ru/images/no_photo.png';
         let lyricsEmbed = new MessageEmbed()
+          .setThumbnail(album_art)
           .setTitle(queue.songs[0].title)
           .setDescription(lyrics.trimEllip(2047))
           .setColor("#F8AA2A")
@@ -42,21 +43,18 @@ module.exports = {
           lyrics = lyrics.replace(lyrics.trimEllip(2048), '');
         }
       }
-      embeds(lyrics, cantEmbeds);
+      embeds(lyrics, cantEmbeds, album_art);
     }
     try {
-      lyrics = await lyricsFinder(queue.songs[0].title);
-      if (lyrics < 2) {
-        const url = 'https://api.lxndr.live/lyrics/?song=' + encodeURI(queue.songs[0].title);
+        const url = 'https://api.lxndr.dev/lyrics/?song=' + encodeURI(queue.songs[0].title);
         console.log(url)
         fetch(url)
           .then(response => response.json())
           .then(data => {
-            sendLyrics(data.lyrics);
+            sendLyrics(data.lyrics, data.album_art);
           });
-      } else {
-        sendLyrics(lyrics);
-      }
+
+
     } catch (error) {
       lyrics = `No lyrics found for ${queue.songs[0].title}.`;
       message.channel.send(lyrics)
