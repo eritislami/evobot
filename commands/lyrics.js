@@ -1,13 +1,18 @@
 const { MessageEmbed } = require("discord.js");
-const fetch = require("node-fetch");
+const { LOCALE } = require("../util/EvobotUtil");
+const i18n = require("i18n");
+
+i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "lyrics",
   aliases: ["ly"],
-  description: "Get lyrics for the currently playing song",
+  description: i18n.__("lyrics.description"),
   async execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is nothing playing.").catch(console.error);
+    if (!queue) return message.channel.send(i18n.__("lyrics.errorNotQueue")).catch(console.error);
+
+    const title = queue.songs[0].title;
     function sendLyrics(lyrics, album_art) {
       charLength = lyrics.length;
       if (charLength < 2048) {
@@ -56,7 +61,7 @@ module.exports = {
 
 
     } catch (error) {
-      lyrics = `No lyrics found for ${queue.songs[0].title}.`;
+      lyrics = i18n.__mf("lyrics.lyricsNotFound", { title: title });
       message.channel.send(lyrics)
       console.log(error)
     }
