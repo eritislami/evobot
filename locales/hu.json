@@ -1,0 +1,165 @@
+{
+  "clip": {
+    "description": "Lejátszik egy clip hangot",
+    "usagesReply": "Használat: /clip <name>",
+    "errorQueue": "Nem sikerült a clip lejátszása meet már van egy aktív várólista.",
+    "errorNotChannel": "Előbb lépjen be egy hangcsatornára"
+  },
+  "clips": {
+    "description": "Összes clip"
+  },
+  "help": {
+    "description": "Megmutatja az összess parancsot és hozzájuk a leírást.",
+    "embedTitle": "{botname} Help",
+    "embedDescription": "Parancsok listája"
+  },
+  "invite": {
+    "description": "Küld egy meghívót a bot számára"
+  },
+  "loop": {
+    "description": "Ismétlés be/ki kapcsolása",
+    "errorNotQueue": "Jelenleg semmi sincs lejátszás alatt.",
+    "result": "A loop most {loop} "
+  },
+  "lyrics": {
+    "description": "Lyrics az aktuális zeneszámhoz.",
+    "errorNotQueue": "Jelenleg semmi sincs lejátszás alatt.",
+    "lyricsNotFound": "Nincs Lyrics találat a {title} -hez.",
+    "embedTitle": "{title} - Lyrics"
+  },
+  "move": {
+    "description": "Zeneszámok mozgatása a várólistán.",
+    "errorNotQueue": "A várólista jelenleg üres.",
+    "usagesReply": "Használat: {prefix}move <Queue Number>",
+    "result": "<@{author}> 🚚 áthelyezte a **{title}** {index} helyre a várólistán."
+  },
+  "nowplaying": {
+    "description": "Megmutatja a jelenlegi zenét.",
+    "errorNotQueue": "Jelenleg semmi sincs lejátszás alatt..",
+    "embedTitle": "Jelenlegi szám: ",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Hátravan: {time}"
+  },
+  "pause": {
+    "description": "Szünetelteti a zenét.",
+    "errorNotQueue": "Hmm, Jelenleg nincs mit megállítanom.",
+    "result": "<@{author}> ⏸ szünetre tette a bulit."
+  },
+  "ping": {
+    "description": "Mutatja a Bot átlag válaszidejét",
+    "result": "📈 Átlag válaszidő az API-hoz: {ping} ms"
+  },
+  "play": {
+    "description": "Zene lejátszása YouTube-ról vagy Soundcloud-ról",
+    "errorNotChannel": "Előbb lépjen be egy hangcsatornába!",
+    "errorNotInSameChannel": "Ugyanabban a csatornában kell lennie mint {user}",
+    "usageReply": "Használat: {prefix}play <YouTube URL | Videó cím | Soundcloud URL>",
+    "missingPermissionConnect": "Hűha, úgy látszik nincs meg minden jogom a tökéletes működéshez",
+    "missingPermissionSpeak": "Úgy látszik nem beszélhetek ebben a csatornában, kérem győződjön meg arról hogy van jogom hozzá!",
+    "queueAdded": "✅ **{title}** -t várólistára rakta <@{author}>",
+    "cantJoinChannel": "Nem tudtam csatlakozni a csatornához: {error}",
+    "queueEnded": "❌ Máris vége? Úgy látszik üres a várólista",
+    "queueError": "Error: {error}",
+    "startedPlaying": "🎶 Elindítva: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ átlépte a dalt",
+    "pauseSong": "<@{author}> ⏸ szünetelteti a bulit.",
+    "resumeSong": "<@{author}> ▶ újraindította a bulit!",
+    "unmutedSong": "<@{author}> 🔊 szerint nem zavarja a szomszédokat a zene!",
+    "mutedSong": "<@{author}> 🔇 szerint jobb ha néma a zene!",
+    "decreasedVolume": "<@{author}> 🔉 lehalkította a zenét{volume}%-ra",
+    "increasedVolume": "<@{author}> 🔊 megemelte a hangerőt {volume}%-ra",
+    "loopSong": "<@{author}> az ismétlés most {loop}",
+    "stopSong": "<@{author}> ⏹ megállította a bulit, hát de ne már!",
+    "leaveChannel": "Csatorna elhagyása..."
+  },
+  "playlist": {
+    "description": "Youtube Playlist lejátszása",
+    "usagesReply": "Használat: {prefix}playlist <YouTube Playlist URL | Playlist Neve>",
+    "errorNotChannel": "Előbb lépjen be egy hangcsatornára!",
+    "errorNotInSameChannel": "Ugyan abban a csatornában kell lennie mint  {user}",
+    "missingPermissionConnect": "Nincs meg minden jogosultságom hogy csatlakozzak",
+    "missingPermissionSpeak": "Nincs jogom beszélni a csatornán!",
+    "errorNotFoundPlaylist": "A megadott lejátszási lista nem található  😢",
+    "fetchingPlaylist": "⌛ Listák keresése...",
+    "playlistCharLimit": "\nPlaylist nagyobb mint a  karakter limit...",
+    "startedPlaylist": "<@{author}> Elindította a bulit",
+    "cantJoinChannel": "Hát de ne már, nem tudok csatlakozni: {error}"
+  },
+  "pruning": {
+    "description": "Toggle pruning of bot messages",
+    "errorWritingFile": "There was an error writing to the file.",
+    "result": "Message pruning is {result}"
+  },
+  "queue": {
+    "description": "Megmutatja a várólistát és a jelenlegi számot.",
+    "missingPermissionMessage": "Nincs jogom az üzeneteket kezelni",
+    "errorNotQueue": "❌ **A lista üres**",
+    "currentPage": "Jelenlegi oldal - ",
+    "embedTitle": "Song Queue\n",
+    "embedCurrentSong": "**Jelenlegi zene - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Eltávolít egy zeneszámot a várólistáról",
+    "errorNotQueue": "Jelenleg a várólista üres.",
+    "usageReply": "Használat: {prefix}remove <Queue Number>",
+    "result": "<@{author}> ❌ eltávolította a **{title}** a várólistáról."
+  },
+  "resume": {
+    "description": "Zene folytatása",
+    "errorNotQueue": "Jelenleg semmilyen zene nem megy",
+    "resultNotPlaying": "<@{author}> ▶ folytatta a bulit!",
+    "errorPlaying": "A várólista már megy."
+  },
+  "search": {
+    "description": "Videók keresése lejátszásra",
+    "usageReply": "Használat: {prefix}{name} <Video Címe>",
+    "errorAlreadyCollector": "A message collector is already active in this channel.",
+    "errorNotChannel": "Előbb csatlakozzon egy csatornához!",
+    "resultEmbedTtile": "**Válaszoljon a zene sorszámával a lejátszáshoz**",
+    "resultEmbedDesc": "Találatok: {search}"
+  },
+  "shuffle": {
+    "description": "Megkeveri a várólistát",
+    "errorNotQueue": "Üres a várólista, nincs mit keverni.",
+    "result": "<@{author}> 🔀 átrendezte a listát"
+  },
+  "skip": {
+    "description": "Átlépteti a jelenlegi zeneszámot",
+    "errorNotQueue": "Jelenleg nincs zene lejátszva.",
+    "result": "<@{author}> -nak nem tetszett a zene és átléptette ⏭"
+  },
+  "skipto": {
+    "description": "Léptet a kiválasztott számra a várólistán",
+    "usageReply": "Használat: {prefix}{name} <Queue Number>",
+    "errorNotQueue": "Sajnos üres a várólista.",
+    "errorNotValid": "A várólista csak {length} dalt tartalmaz",
+    "result": "<@{author}> {arg} számot átlépett."
+  },
+  "stop": {
+    "description": "Megállítja a zenét",
+    "errorNotQueue": "Nincs mit megállítani.",
+    "result": "<@{author}> ⏹ véget vetett a bulinak!"
+  },
+  "uptime": {
+    "description": "Megmutatja mennyi ideje van online a Bot",
+    "result": "Online: `{days} nap, {hours} óra, {minutes} perc, {seconds} másodperc`"
+  },
+  "volume": {
+    "description": "Zene hangerejét válthatja ezzel",
+    "errorNotQueue": "Jelenleg semmilyen zene nem megy.",
+    "errorNotChannel": "Előbb lépjen be egy hangcsatornára",
+    "currentVolume": "🔊 jelenlegi hangerő: **{volume}%**",
+    "errorNotNumber": "Kérem számot használjon a hangerő állításához.",
+    "errorNotValid": "Lehetséges hangerő 0 és 100 között van.",
+    "result": "Hangerő átállítva: **{arg}%**"
+  },
+  "common": {
+    "on": "**be**",
+    "off": "**ki**",
+    "enabled": "**engedélyezve**",
+    "disabled": "**letiltva**",
+    "errorNotChannel": "Előbb csatlakozzon egy hangcsatornához",
+    "cooldownMessage": "⏳Kérem várjon {time} másodpercet mielőtt újra használná a  `{name}` parancsot",
+    "errorCommend": "Hiba a parancs futtatásakor."
+  }
+}
