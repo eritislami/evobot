@@ -11,7 +11,7 @@ if (_.isEmpty(applicationId)) {
 Create/Update Global Application Command
 Docs: https://discord.com/developers/docs/interactions/slash-commands#registering-a-command
 
-This script will refresh command list of evobot to discord command section(https://i.stack.imgur.com/5tDg1.png).
+This script will refresh command list of evobot to discord command section(https://discord.com/assets/a660b11b63a95e932719346ff67ea60f.png).
 
 Usage: node refresh-commands {applicationId}
 'applicationId' can be found on discord developer portal (https://discord.com/developers/applications)
