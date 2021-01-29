@@ -30,7 +30,8 @@ for (const file of commandFiles) {
   const command = require(join(__dirname, "commands", `${file}`));
   commandList.push({
       "name": command.name,
-      "description": command.description
+      "description": command.description,
+      "options": command.slashargs || []
   })
 }
 

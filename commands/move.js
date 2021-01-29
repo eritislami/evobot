@@ -1,5 +1,5 @@
 const move = require("array-move");
-const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
+const { canModifyQueue, LOCALE, PREFIX } = require("../util/EvobotUtil");
 const i18n = require("i18n");
 
 i18n.setLocale(LOCALE);
@@ -8,6 +8,14 @@ module.exports = {
   name: "move",
   aliases: ["mv"],
   description: i18n.__("move.description"),
+  slashargs: [
+    {
+      "name": "queue-number",
+      "description": i18n.__mf("move.usageReply", { prefix: PREFIX }), 
+      "type": 3,
+      "required": true
+    }
+  ],
   execute(message, args) {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.channel.send(i18n.__("move.errorNotQueue")).catch(console.error);

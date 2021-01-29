@@ -5,6 +5,14 @@ i18n.setLocale(LOCALE);
 module.exports = {
   name: "clip",
   description: i18n.__('clip.description'),
+  slashargs: [
+    {
+      "name": "NAME",
+      "description": i18n.__mf("clip.usageReply", { prefix: PREFIX }), 
+      "type": 3,
+      "required": true
+    }
+  ],
   async execute(message, args) {
     const { channel } = message.member.voice;
     const queue = message.client.queue.get(message.guild.id);

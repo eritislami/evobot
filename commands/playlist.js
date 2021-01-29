@@ -8,7 +8,8 @@ const {
   SOUNDCLOUD_CLIENT_ID,
   MAX_PLAYLIST_SIZE,
   DEFAULT_VOLUME,
-  LOCALE
+  LOCALE,
+  PREFIX
 } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const i18n = require("i18n");
@@ -20,6 +21,14 @@ module.exports = {
   cooldown: 5,
   aliases: ["pl"],
   description: i18n.__("playlist.description"),
+  slashargs: [
+    {
+      "name": "url",
+      "description": i18n.__mf("playlist.usageReply", { prefix: PREFIX }), 
+      "type": 3,
+      "required": true
+    }
+  ],
   async execute(message, args) {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
