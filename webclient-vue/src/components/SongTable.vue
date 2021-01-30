@@ -19,6 +19,8 @@
 <script>
 import axios from 'axios'
 import SongRow from './SongRow'
+import '../services/firebase-messaging'
+import { authorize } from '../auth/discord'
 
 export default {
   name: 'SongTable',
@@ -38,6 +40,7 @@ export default {
     }
   },
   created () {
+    authorize()
     this.fetchEventsList()
     this.timer = setInterval(this.fetchEventsList, 5000)
   },

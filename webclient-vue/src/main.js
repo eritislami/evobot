@@ -8,6 +8,7 @@ import './assets/pure-min.css'
 import VueRouter from 'vue-router'
 import { domain, clientId } from '../auth_config.json'
 import { Auth0Plugin } from './auth'
+import { auth } from './services/firebase'
 
 Vue.config.productionTip = false
 
@@ -34,16 +35,34 @@ var router = new VueRouter({
     {
       path: "/profile",
       name: "profile",
-      component: Profile
+      component: Profile,
+      meta: {
+        requiresAuth: true
+      }
     }
   ],
   mode: "history"
 })
+router.beforeEach((to, from, next) => {
+  const requiresAuth = to.matched.some(x => x.meta.requiresAuth)
 
-new Vue({
-  router,
-  render: h => h(App)
-}).$mount('#app')
+  if (requiresAuth && !auth.currentUser) {
+    next('/login')
+  } else {
+    next()
+  }
+})
+
+let app
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    new Vue({
+      router,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
+
 
 /* eslint-disable no-new */
 // new Vue({
