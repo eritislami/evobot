@@ -13,19 +13,25 @@ exports.canModifyQueue = (member) => {
 };
 
 var DJ_PERMISSION_OBJ='';
-exports.isDJ = (member,message) => {
+exports.isDJOnly = (command,member,message) => {
   /**
    * Role checking logic
    */
-  if (!DJ_PERMISSION_OBJ) {
+  if(!member&&message){
+    member=message.member
+  }
+  if(DJ_Commands.indexOf('command')<0){
+    return false;
+  }
+  if (!DJ_PERMISSION_OBJ && message) {
     DJ_PERMISSION_OBJ = message.guild.roles.cache.find(role => role.name === DJ_ROLE)
   };
 
-  if(DJ_PERMISSION_OBJ && !message.member.roles.cache.has(DJ_PERMISSION_OBJ.id)) {
-     message.reply(i18n.__("common.errorDJOnly"); 
-     return false;
+  if(DJ_PERMISSION_OBJ && !member.roles.cache.has(DJ_PERMISSION_OBJ.id)) {
+     mesage && message.reply(i18n.__("common.errorDJOnly"); 
+     return true;
   } 
-  return true;
+  return false;
 };
 
 let config;
@@ -46,3 +52,4 @@ exports.STAY_TIME = config ? config.STAY_TIME : process.env.STAY_TIME;
 exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOLUME;
 exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
 var DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
+var DJ_Commands='loop,move,pause,pruning,remove,shuffle,skip,skipto,volume';
