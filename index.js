@@ -50,7 +50,7 @@ i18n.configure({
  */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`🔇. Use ${PREFIX}play to queue up some tunes! For more info use ${PREFIX}help`, { type: "CUSTOM_STATUS" });
+  client.user.setActivity(`Use ${PREFIX}play to queue up some tunes! For more info use ${PREFIX}help`, { type: "WATCHING" });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
