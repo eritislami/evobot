@@ -17,7 +17,7 @@ exports.isDJOnly = (command,member,guild) => {
   if(DJ_Commands.indexOf(command)<0){
     return false;
   }
-  if (!DJ_PERMISSION_OBJ && message) {
+  if (!DJ_PERMISSION_OBJ && guild) {
     DJ_PERMISSION_OBJ = guild.roles.cache.find(role => role.name === DJ_ROLE)
   };
 
