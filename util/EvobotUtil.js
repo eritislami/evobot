@@ -1,3 +1,6 @@
+const i18n = require("i18n");
+i18n.setLocale(LOCALE);
+
 exports.canModifyQueue = (member) => {
   const { channelID } = member.voice;
   const botChannel = member.guild.voice.channelID;
@@ -19,7 +22,7 @@ exports.isDJ = (member,message) => {
   };
 
   if(DJ_PERMISSION_OBJ && !message.member.roles.cache.has(DJ_PERMISSION_OBJ.id)) {
-     message.reply(`Only users with the ${DJ_ROLE} role can access this feature!`);
+     message.reply(i18n.__("common.errorDJOnly"); 
      return false;
   } 
   return true;
