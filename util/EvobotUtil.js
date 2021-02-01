@@ -28,7 +28,7 @@ exports.isDJOnly = (command,member,message) => {
   };
 
   if(DJ_PERMISSION_OBJ && !member.roles.cache.has(DJ_PERMISSION_OBJ.id)) {
-     mesage && message.reply(i18n.__("common.errorDJOnly"); 
+     mesage && message.reply(i18n.__("common.errorDJOnly")); 
      return true;
   } 
   return false;
