@@ -43,7 +43,6 @@ exports.MAX_PLAYLIST_SIZE = config ? config.MAX_PLAYLIST_SIZE : process.env.MAX_
 exports.PRUNING = config ? config.PRUNING : process.env.PRUNING;
 exports.STAY_TIME = config ? config.STAY_TIME : process.env.STAY_TIME;
 exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOLUME;
-var LOCALE = exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
-i18n.setLocale(LOCALE);
+exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
 var DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
 var DJ_Commands='loop,move,pause,pruning,remove,shuffle,skip,skipto,volume';
