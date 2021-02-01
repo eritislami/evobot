@@ -14,7 +14,7 @@ exports.isDJOnly = (command,member,guild) => {
   /**
    * Role checking logic
    */
-  if(DJ_Commands.indexOf('command')<0){
+  if(DJ_Commands.indexOf(command)<0){
     return false;
   }
   if (!DJ_PERMISSION_OBJ && message) {
