@@ -1,6 +1,3 @@
-const i18n = require("i18n");
-
-
 exports.canModifyQueue = (member) => {
   const { channelID } = member.voice;
   const botChannel = member.guild.voice.channelID;
@@ -13,22 +10,18 @@ exports.canModifyQueue = (member) => {
 };
 
 var DJ_PERMISSION_OBJ='';
-exports.isDJOnly = (command,member,message) => {
+exports.isDJOnly = (command,member,guild) => {
   /**
    * Role checking logic
    */
-  if(!member&&message){
-    member=message.member
-  }
   if(DJ_Commands.indexOf('command')<0){
     return false;
   }
   if (!DJ_PERMISSION_OBJ && message) {
-    DJ_PERMISSION_OBJ = message.guild.roles.cache.find(role => role.name === DJ_ROLE)
+    DJ_PERMISSION_OBJ = guild.roles.cache.find(role => role.name === DJ_ROLE)
   };
 
   if(DJ_PERMISSION_OBJ && !member.roles.cache.has(DJ_PERMISSION_OBJ.id)) {
-     mesage && message.reply(i18n.__("common.errorDJOnly")); 
      return true;
   } 
   return false;
