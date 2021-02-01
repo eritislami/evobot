@@ -40,7 +40,9 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   "PRUNING": false,
   "LOCALE": "en",
   "DEFAULT_VOLUME": 100,
-  "STAY_TIME": 30
+  "STAY_TIME": 30,
+  "DJ_ROLE": "",
+  "DJ_COMMANDS", "stop,skip,volume"
 }
 ```
 
@@ -107,6 +109,7 @@ Examples: `1` or `1,2,3`
 * Help (/help, /h)
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Media Controls via Reactions
+* DJ Role permissions
 
 ![reactions](https://i.imgur.com/9S7Omf9.png)
 
