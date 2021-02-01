@@ -82,7 +82,7 @@ client.on("message", async (message) => {
 
   if (!command) return;
   
-  if(isDJOnly(command.name,message.member,message.guild)) return message.reply(i18n.__("common.errorDJOnly"));
+  if(isDJOnly(command.name,message.member,message.guild)) return message.reply(i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE}));
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Collection());
