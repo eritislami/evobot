@@ -9,6 +9,22 @@ exports.canModifyQueue = (member) => {
   return true;
 };
 
+var DJ_PERMISSION_OBJ='';
+exports.isDJ = (member,message) => {
+  /**
+   * Role checking logic
+   */
+  if (!DJ_PERMISSION_OBJ) {
+    DJ_PERMISSION_OBJ = message.guild.roles.cache.find(role => role.name === DJ_ROLE)
+  };
+
+  if(DJ_PERMISSION_OBJ && !message.member.roles.cache.has(DJ_PERMISSION_OBJ.id)) {
+     message.reply(`Only users with the ${DJ_ROLE} role can access this feature!`);
+     return false;
+  } 
+  return true;
+};
+
 let config;
 
 try {
@@ -26,4 +42,4 @@ exports.PRUNING = config ? config.PRUNING : process.env.PRUNING;
 exports.STAY_TIME = config ? config.STAY_TIME : process.env.STAY_TIME;
 exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOLUME;
 exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
-exports.DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
+var DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
