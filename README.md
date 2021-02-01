@@ -42,7 +42,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   "DEFAULT_VOLUME": 100,
   "STAY_TIME": 30,
   "DJ_ROLE": "",
-  "DJ_COMMANDS", "stop,skip,volume"
+  "DJ_COMMANDS": "stop,skip,volume"
 }
 ```
 
