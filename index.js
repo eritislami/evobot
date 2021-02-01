@@ -81,6 +81,8 @@ client.on("message", async (message) => {
     client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
   if (!command) return;
+  
+  if(isDJOnly(command.name,message.member,message)return;
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Collection());
