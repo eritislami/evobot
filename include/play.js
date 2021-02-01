@@ -1,6 +1,6 @@
 const ytdl = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader").default;
-const { canModifyQueue, STAY_TIME, LOCALE, isDJOnly } = require("../util/EvobotUtil");
+const { canModifyQueue, STAY_TIME, LOCALE, isDJOnly, DJ_ROLE } = require("../util/EvobotUtil");
 const i18n = require("i18n");
 i18n.setLocale(LOCALE);
 
@@ -112,7 +112,7 @@ module.exports = {
           queue.playing = true;
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('skip',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('skip',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           queue.connection.dispatcher.end();
           queue.textChannel.send(i18n.__mf("play.skipSong", { author: user })).catch(console.error);
           collector.stop();
@@ -121,7 +121,7 @@ module.exports = {
         case "⏯": //pause
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('pause',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('pause',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
@@ -136,7 +136,7 @@ module.exports = {
         case "🔇": //mute
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('volume',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('volume',member,message.guild)) i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           if (queue.volume <= 0) {
             queue.volume = 100;
             queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
@@ -152,7 +152,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (queue.volume == 0) return;
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('volume',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('volume',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           if (queue.volume - 10 <= 0) queue.volume = 0;
           else queue.volume = queue.volume - 10;
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
@@ -165,7 +165,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (queue.volume == 100) return;
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('volume',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('volume',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           if (queue.volume + 10 >= 100) queue.volume = 100;
           else queue.volume = queue.volume + 10;
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
@@ -177,7 +177,7 @@ module.exports = {
         case "🔁": // loop
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('loop',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('loop',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           queue.loop = !queue.loop;
           queue.textChannel
             .send(
@@ -192,7 +192,7 @@ module.exports = {
         case "⏹": // stop
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('stop',member,message.guild)) return i18n.__("common.errorDJOnly");
+          if (isDJOnly('stop',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           queue.songs = [];
           queue.textChannel.send(i18n.__mf("play.stopSong", { author: user })).catch(console.error);
           try {
