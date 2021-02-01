@@ -8,5 +8,6 @@
   "LOCALE": "en",
   "STAY_TIME": 30,
   "DEFAULT_VOLUME": 100,
-  "DJ_ROLE":""
+  "DJ_ROLE":"",
+  "DJ_COMMANDS":"loop,move,pause,pruning,remove,shuffle,skip,skipto,volume,stop"
 }
