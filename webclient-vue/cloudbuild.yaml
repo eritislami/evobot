@@ -1,0 +1,33 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    args: [ '-c', "gcloud secrets versions access latest --secret=${_SECRET_NAME} --format='get(payload.data)' | tr '_-' '/+' | base64 -d > webclient-vue/auth_config.json"]
+  - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker pull gcr.io/$PROJECT_ID/fred-vue:latest || exit 0']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+           '-t', 'gcr.io/$PROJECT_ID/fred-vue:$SHORT_SHA',
+           '-t', 'gcr.io/$PROJECT_ID/fred-vue:latest',
+           '--cache-from', 'gcr.io/$PROJECT_ID/fred-vue:latest',
+           'webclient-vue/']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/fred-vue:$SHORT_SHA']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/fred-vue:latest']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: [
+      'run',
+      'deploy',
+      'fred-vue',
+      '--image',
+      'gcr.io/$PROJECT_ID/fred-vue:$SHORT_SHA',
+      '--region',
+      'us-west1',
+      '--platform',
+      'managed']
+images:
+  - gcr.io/$PROJECT_ID/fred-vue:latest
+  - gcr.io/$PROJECT_ID/fred-vue:$SHORT_SHA
