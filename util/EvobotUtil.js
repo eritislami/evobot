@@ -46,4 +46,4 @@ exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOL
 exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
 var DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
 var DJ_COMMANDS = exports.DJ_COMMANDS = config ? config.DJ_COMMANDS : process.env.DJ_COMMANDS;
-DJ_COMMANDS=DJ_COMMANDS||"loop,move,pause,pruning,remove,shuffle,skip,skipto,volume,stop";
+DJ_COMMANDS=(DJ_COMMANDS==null)?"":DJ_COMMANDS;
