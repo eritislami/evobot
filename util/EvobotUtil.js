@@ -26,3 +26,4 @@ exports.PRUNING = config ? config.PRUNING : process.env.PRUNING;
 exports.STAY_TIME = config ? config.STAY_TIME : process.env.STAY_TIME;
 exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOLUME;
 exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
+exports.DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
