@@ -136,7 +136,7 @@ module.exports = {
         case "🔇": //mute
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (isDJOnly('volume',member,message.guild)) i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
+          if (isDJOnly('volume',member,message.guild)) return i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE});
           if (queue.volume <= 0) {
             queue.volume = 100;
             queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
