@@ -4,7 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, LOCALE , isDJOnly, DJ_ROLE} = require("./util/EvobotUtil");
 const path = require("path");
 const i18n = require("i18n");
 
@@ -50,7 +50,7 @@ i18n.configure({
  */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+  client.user.setActivity(`tunes! Type:${PREFIX}help for more info`, { type: "STREAMING" });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
@@ -81,6 +81,8 @@ client.on("message", async (message) => {
     client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
   if (!command) return;
+  
+  if(isDJOnly(command.name,message.member,message.guild)) return message.reply(i18n.__mf("common.errorDJOnly",{DJ_ROLE:DJ_ROLE}));
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Collection());
