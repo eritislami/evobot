@@ -48,8 +48,8 @@ exports.STAY_TIME = config ? config.STAY_TIME : process.env.STAY_TIME;
 exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOLUME;
 exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
 var DJ_ROLE = config ? config.DJ_ROLE : process.env.DJ_ROLE;
-var DJ_COMMANDS =  config ? config.DJ_COMMANDS : process.env.DJ_COMMANDS;
-if(DJ_ROLE && !DJ_COMMANDS){
-   DJ_COMMANDS = 'loop,move,pause,pruning,remove,shuffle,skip,skipto,volume,stop';
+var DJ_COMMANDS =  config ? config.DJ_COMMANDS : (process.env.DJ_COMMANDS||'').split(',');
+if(DJ_ROLE && (!DJ_COMMANDS||!DJ_COMMANDS.length)){
+   DJ_COMMANDS = 'loop,move,pause,pruning,remove,shuffle,skip,skipto,volume,stop'.split(',');
 }
 exports.DJ_COMMANDS = DJ_COMMANDS;
