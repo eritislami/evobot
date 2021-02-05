@@ -25,12 +25,9 @@
     "spotify-uri": "^2.1.0",
     "spotify-url-info": "^2.2.0",
     "string-progressbar": "^1.0.3",
-    "ytdl-core": "^4.4.3",
+    "ytdl-core": "^4.4.5",
     "ytdl-core-discord": "^1.2.5",
     "ytsr": "^3.2.4"
-    "string-progressbar": "^1.0.3",
-    "ytdl-core": "^4.4.5",
-    "ytdl-core-discord": "^1.2.5"
   },
   "scripts": {
     "start": "node index.js"
