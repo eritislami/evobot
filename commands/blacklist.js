@@ -1,6 +1,6 @@
-const blacklistModel = require('../schemas/blacklist')
-const { MessageEmbed } = require('discord.js')
-const { LOCALE } = require("../util/EvobotUtil");
+const blacklistModel = require('../schemas/blacklist');
+const { MessageEmbed } = require('discord.js');
+const { LOCALE, MONGODB_URI } = require("../util/EvobotUtil");
 const i18n = require("i18n");
 
 i18n.setLocale(LOCALE);
@@ -9,7 +9,8 @@ module.exports = {
     name: 'blacklist',
     description: i18n.__("blacklist.description"),
     async execute(message, args) {
-
+        if(!MONGODB_URI) return message.channel.send('No MongoDB URI was provided. Blacklist system disabled!')
+        
         const type = args[0];
         const member = message.mentions.users.first()
         const users = await blacklistModel.find();
