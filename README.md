@@ -47,6 +47,8 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 Currently available locales are:
 - English (en)
 - French (fr)
+- Spanish (es)
+- Turkish (tr)
 - Korean (ko)
 - Brazilian Portuguese (pt_br)
 - Simplified Chinese (zh_cn)
