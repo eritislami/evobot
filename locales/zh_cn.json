@@ -53,7 +53,7 @@
     "description": "播放 YouTube 或 Soundcloud 的音乐",
     "errorNotChannel": "你必须先加入语音频道!",
     "errorNotInSameChannel": "你必须跟 {user} 在同一个频道裡",
-    "usageReply": "Usage: {prefix}play <YouTube 网址 | 影片名称 | Soundcloud 网址>",
+    "usageReply": "Usage: {prefix}play <YouTube 网址 | 影片名称 | Soundcloud 网址 | Spotify 网址>",
     "missingPermissionConnect": "无法连结至语音频道，没有权限",
     "missingPermissionSpeak": "我无法在语音频道裡说话，请确定我有相关的权限!",
     "queueAdded": "✅ **{title}** 已经被 <@{author}> 加入音乐队列",
