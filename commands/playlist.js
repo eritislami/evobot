@@ -58,46 +58,35 @@ module.exports = {
       playing: true
     };
 
-    let song = null;
+    let newSongs = null;
     let playlist = null;
     let videos = [];
+    let waitMessage = null;
 
     if (spotifyPlaylistValid) {
       try {
-        var fetching = await message.channel.send('Fetching....');
-        let playlistTrack = await getTracks(url)
-        playlistTrack.length = MAX_PLAYLIST_SIZE ? MAX_PLAYLIST_SIZE : 20
-        playlist = playlistTrack.map(track => ({
-          title: track.name,
-          url: track.external_urls.spotify,
-          duration: track.duration_ms / 1000
-        }))
-
-        for (let i in playlistTrack) {
-          let result
-          try {
-            if (fetching && i % 4 == 0) {
-              fetching.edit(`${i} songs fetched`)
-            }
-            const ytsrResult = await ytsr((`${playlistTrack[i].name} - ${playlistTrack[i].artists ? playlistTrack[i].artists[0].name : ''}`), { limit: 1 })
-            result = ytsrResult.items[0];
-          } catch (err) {
-            console.log(err)
-            return message.channel.send(err)
-          }
-          song = {
+        waitMessage = await message.channel.send('fetching playlist...')
+        let playlistTrack = await getTracks(url);
+        if (playlistTrack > MAX_PLAYLIST_SIZE) {
+          playlistTrack.length = MAX_PLAYLIST_SIZE
+        }
+        const spotfiyPl = await Promise.all(playlistTrack.map(async (track) => {
+          let result;
+          const ytsrResult = await ytsr((`${track.name} - ${track.artists ? track.artists[0].name : ''}`), { limit: 1 });
+          result = ytsrResult.items[0];
+          return (song = {
             title: result.title,
             url: result.url,
-            duration: this.convert(result.duration)
-          }
-          videos.push(song)
-        }
-
+            duration: result.duration ? this.convert(result.duration) : undefined,
+            thumbnail: result.thumbnails ? result.thumbnails[0].url : undefined
+          });
+        }));
+        const result = await Promise.all(spotfiyPl.filter((song) => song.title != undefined || song.duration != undefined));
+        videos = result;
       } catch (err) {
-        console.log(err)
-        return message.channel.send(err)
+        console.log(err);
+        return message.channel.send(err ? err.message : 'There was an error!');
       }
-
     } else if (urlValid) {
       try {
         playlist = await youtube.getPlaylist(url, { part: "snippet" });
@@ -127,7 +116,7 @@ module.exports = {
       }
     }
 
-    const newSongs = videos
+    newSongs = videos
       .filter((video) => video.title != "Private video" && video.title != "Deleted video")
       .map((video) => {
         return (song = {
@@ -140,9 +129,9 @@ module.exports = {
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
 
     let playlistEmbed = new MessageEmbed()
-      .setTitle(`${playlist.title ? playlist.title : 'Spotify Playlist'}`)
+      .setTitle(`${playlist ? playlist.title : 'Spotify Playlist'}`)
       .setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`))
-      .setURL(playlist.url)
+      .setURL(playlist ? playlist.url : 'https://www.spotify.com/')
       .setColor("#F8AA2A")
       .setTimestamp();
 
@@ -150,6 +139,7 @@ module.exports = {
       playlistEmbed.description =
         playlistEmbed.description.substr(0, 2007) + i18n.__("playlist.playlistCharLimit");
 
+    waitMessage ? waitMessage.delete() : null
     message.channel.send(i18n.__mf("playlist.startedPlaylist", { author: message.author }), playlistEmbed);
 
     if (!serverQueue) {
