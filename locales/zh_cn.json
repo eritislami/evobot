@@ -9,7 +9,7 @@
     "description": "列出所有本地音乐"
   },
   "help": {
-    "description": "列出所有的指令已经详细资讯",
+    "description": "列出所有指令的详细资讯",
     "embedTitle": "{botname} 帮助",
     "embedDescription": "所有的指令清单"
   },
