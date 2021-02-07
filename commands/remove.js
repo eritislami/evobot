@@ -1,18 +1,41 @@
-const { canModifyQueue } = require("../util/EvobotUtil");
+const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
+const i18n = require("i18n");
+i18n.setLocale(LOCALE);
+
+const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
 
 module.exports = {
   name: "remove",
   aliases: ["rm"],
-  description: "Remove song from the queue",
+  description: i18n.__("remove.description"),
   execute(message, args) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send("There is no queue.").catch(console.error);
-    if (!canModifyQueue(message.member)) return;
 
-    if (!args.length) return message.reply(`Usage: ${message.client.prefix}remove <Queue Number>`);
-    if (isNaN(args[0])) return message.reply(`Usage: ${message.client.prefix}remove <Queue Number>`);
+    if (!queue) return message.channel.send(i18n.__("remove.errorNotQueue")).catch(console.error);
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
+    if (!args.length) return message.reply(i18n.__mf("remove.usageReply", { prefix: message.client.prefix }));
 
-    const song = queue.songs.splice(args[0] - 1, 1);
-    queue.textChannel.send(`${message.author} ❌ removed **${song[0].title}** from the queue.`);
+    const arguments = args.join("");
+    const songs = arguments.split(",").map((arg) => parseInt(arg));
+    let removed = [];
+
+    if (pattern.test(arguments)) {
+      queue.songs = queue.songs.filter((item, index) => {
+        if (songs.find((songIndex) => songIndex - 1 === index)) removed.push(item);
+        else return true;
+      });
+
+      queue.textChannel.send(
+        `${message.author} ❌ removed **${removed.map((song) => song.title).join("\n")}** from the queue.`
+      );
+    } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= queue.songs.length) {
+      console.log("we got elsed!");
+      return queue.textChannel.send(
+        `${message.author} ❌ removed **${queue.songs.splice(args[0] - 1, 1)[0].title}** from the queue.`
+      );
+    } else {
+      console.log("we got the last one");
+      return message.reply(i18n.__mf("remove.usageReply", { prefix: message.client.prefix }));
+    }
   }
 };
