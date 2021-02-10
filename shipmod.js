@@ -1,7 +1,7 @@
 /**
  * Module Imports
  */
-const evobot = require("/index.js");
+const evobot = require("/app/index.js");
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
