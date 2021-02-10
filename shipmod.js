@@ -2,11 +2,11 @@
  * Module Imports
  */
 let evobot;
-function(){
+(function main(){
   evobot = require("/app/index.js");
 })();
 
-function(){
+(function shipmod(){
   const { Client, Collection } = require("discord.js");
   const { readdirSync } = require("fs");
   const { join } = require("path");
