@@ -1,6 +1,7 @@
 /**
  * Module Imports
  */
+const evobot = require("index.js");
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
@@ -13,9 +14,9 @@ const client = new Client({
   restTimeOffset: 0
 });
 
-client.login(TOKEN);
+client.login(SHIPMOD_TOKEN);
 client.commands = new Collection();
-client.prefix = PREFIX;
+client.prefix = "_";
 client.queue = new Map();
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
