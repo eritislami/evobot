@@ -14,7 +14,7 @@ const client = new Client({
   restTimeOffset: 0
 });
 
-client.login(SHIPMOD_TOKEN);
+client.login(process.env.SHIPMOD_TOKEN);
 client.commands = new Collection();
 client.prefix = "_";
 client.queue = new Map();
