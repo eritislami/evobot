@@ -1,1 +1,1 @@
-worker: node shiptunes.js
+worker: node shipmod.js
