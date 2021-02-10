@@ -10,7 +10,9 @@ let evobot;
   const { Client, Collection } = require("discord.js");
   const { readdirSync } = require("fs");
   const { join } = require("path");
-  const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+  let { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+  PREFIX =  '_';
+  TOKEN = process.env.SHIPMOD_TOKEN;
   const path = require("path");
   const i18n = require("i18n");
 
@@ -19,9 +21,9 @@ let evobot;
     restTimeOffset: 0
   });
 
-  client.login(process.env.SHIPMOD_TOKEN);
+  client.login(TOKEN);
   client.commands = new Collection();
-  client.prefix = "_";
+  client.prefix = PREFIX;
   client.queue = new Map();
   const cooldowns = new Collection();
   const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
