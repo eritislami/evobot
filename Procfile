@@ -1,1 +1,1 @@
-worker: node shipmod.js
+web: node shipmod.js
