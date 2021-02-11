@@ -24,6 +24,7 @@ module.exports = {
       setTimeout(function () {
         if (queue.connection.dispatcher && message.guild.me.voice.channel) return;
         queue.channel.leave();
+        firebase.stopSession();
         queue.textChannel.send("Leaving voice channel...");
       }, STAY_TIME * 1000);
       queue.textChannel.send("❌ Music queue ended.").catch(console.error);
@@ -34,7 +35,7 @@ module.exports = {
     let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
     try {
-      firebase.saveSong(song);
+      firebase.playSong(song);
       if (song.url.includes("youtube.com")) {
         stream = await ytdl(song.url, { highWaterMark: 1 << 25 });
       } else if (song.url.includes("soundcloud.com")) {
