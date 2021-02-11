@@ -123,16 +123,16 @@ let evobot;
   });
   
   
-  bot.on("voiceChannelSwitch", async (member,newChannel,oldChannel) => {
-    voiceLink.switchVoice(oldChannel,newChannel,member,guildCashe)
+  client.on("voiceChannelSwitch", async (member,newChannel,oldChannel) => {
+    // voiceLink.switchVoice(oldChannel,newChannel,member,guildCashe)
   });
 
-  bot.on("voiceChannelJoin", async (member,newChannel) => {
-    voiceLink.enterVoice(newChannel,member,guildCashe)
+  client.on("voiceChannelJoin", async (member,newChannel) => {
+   // voiceLink.enterVoice(newChannel,member,guildCashe)
   });
 
-  bot.on("voiceChannelLeave", async (member,oldChannel) => {
-    voiceLink.exitVoice(oldChannel,member,guildCashe)
+  client.on("voiceChannelLeave", async (member,oldChannel) => {
+    // voiceLink.exitVoice(oldChannel,member,guildCashe)
   });
   
   
