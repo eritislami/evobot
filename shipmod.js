@@ -145,6 +145,7 @@ setInterval(function(){
       let owners = ['500468522468507648','500467960914116609']; // Getting shipwash
 
       for(var i=0,l=owners.length;i<l;i++){
+        //check user activity status
         var member=Guild.members.cache.get(owners[i]);
         if(member.presence.status == 'online'){
           keepAlive(member.displayName+' is online');
@@ -169,13 +170,14 @@ setInterval(function(){
 
         //see if last message was 30 minutes old
         var ttl=30*60*1000;
-        var date = member.lastMessage.createdAt
-        if((Date.now() - date) < ttl) { //is user active in the last 30 minutes?
-           keepAlive(member.displayName+' sent a message recently');
-           return true
+        var lastMessage= member.lastMessage;
+        if(lastMessage){
+          var date = lastMessage.createdAt
+          if((Date.now() - date) < ttl) { //is user active in the last 30 minutes?
+             keepAlive(member.displayName+' sent a message recently');
+             return true
+          }
         }
-
-        //check user activity status
 
       }); 
 
