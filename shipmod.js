@@ -145,7 +145,6 @@ let evobot;
     for(var i=0,l=owners.length;i<l;i++){
       //check user activity status
       var member=Guild.members.cache.get(owners[i]);
-      console.log('test',member,member.presence.status)
       if(member.presence.status == 'online'){
         keepAlive(member.displayName+' is online');
         return true
@@ -154,7 +153,7 @@ let evobot;
 
     var keptAlive=Guild.members.cache.some(function(member){
         if(member.user.bot){
-          return
+          return false;
         }
         // Checking if the member is connected to a VoiceChannel.
         if (member.voice.channel && member.voice.channel.id !== Guild.afkChannelID) { 
