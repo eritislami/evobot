@@ -180,7 +180,7 @@ let evobot;
     if(!keptAlive()){
       client.channels.cache.get('805549728099860480').send('Bot will sign off in '+(Date.now()-lastKeepAlive).toString());
     }
-  },29*60*1000);
+  },5*60*1000);
   
   
 
@@ -193,7 +193,7 @@ function shutdown(signal) {
   return (err) => {
     console.log(`${ signal }...`);
     if (err){
-      client.channels.cache.get('805549728099860480').send('Bot going to sleep now');
+      client.channels.cache.get('805549728099860480').send('Bot going to sleep now. Wake up by visiting https://tunes.shipwa.sh');
       console.error(err.stack || err);
     }
     setTimeout(() => {
