@@ -69,6 +69,9 @@ module.exports = {
           let lastSong = queue.songs.shift();
           queue.songs.push(lastSong);
           module.exports.play(queue.songs[0], message);
+        } else if (queue.loopSong) {
+          // repeat the current song endlessly
+          module.exports.play(queue.songs[0], message);
         } else {
           // Recursively play the next song
           queue.songs.shift();
