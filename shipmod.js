@@ -143,10 +143,7 @@ let evobot;
     var keptAlive=function(){
       const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
       let members = [Guild.members.cache.get("500468522468507648")]; // Getting shipwash
-
-      for(var i=0,l=members.length;i<l;i++){
-        var member= members[i];
-
+      var members = Guild.members.forEach(function(member){
         // Checking if the member is connected to a VoiceChannel.
         if (member.voice.channel) { 
             // The member is connected to a voice channel.
@@ -154,10 +151,10 @@ let evobot;
             keepAlive(member.displayName+' is in a voice channel');
             return true
             //console.log(`${member.user.tag} is connected to ${member.voice.channel.name}!`);
-        } else {
+        } //else {
             // The member is not connected to a voice channel.
-            console.log(`${member.user.tag} is not connected.`);
-        };
+          //  console.log(`${member.user.tag} is not connected.`);
+        //};
 
         //see if last message was 30 minutes old
         var ttl=30*60*1000;
@@ -173,14 +170,14 @@ let evobot;
             keepAlive(member.displayName+' is online');
             return true
         }
+      }); 
 
-      } //end for
     };
 
     if(!keptAlive()){
       client.channels.cache.get('805549728099860480').send('Bot will sign off in '+(Date.now()-lastKeepAlive).toString());
     }
-  },5*60*1000);
+  },5*60*1000); //end setinterval
   
   
 
