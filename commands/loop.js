@@ -12,6 +12,8 @@ module.exports = {
     if (!queue) return message.reply(i18n.__("loop.errorNotQueue")).catch(console.error);
     if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
+    //turn off loopSong
+    queue.loopSong = false;
     // toggle from false to true and reverse
     queue.loop = !queue.loop;
     return queue.textChannel
