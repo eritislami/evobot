@@ -34,6 +34,7 @@ i18n.configure({
 
   logErrorFn: function (msg) {
     console.log("error", msg);
+    process.exit(1);
   },
 
   missingKeyFn: function (locale, value) {
@@ -56,8 +57,13 @@ client.on("ready", () => {
   client.destroy();
   process.exit();
 });
-client.on("warn", (info) => console.log(info));
-client.on("error", console.error);
+client.on("warn", (info) => {
+  console.log(info);
+});
+client.on("error", (e) => {
+  console.error(e);
+  process.exit(1);
+});
 
 
 
@@ -67,7 +73,10 @@ function keepAlive(string){
   var website="https://"+process.env.HEROKU_APP_NAME+".herokuapp.com";
   console.log('KeepAlive - Pinging heroku app for reason:'+string);
   request(website, (err, res, body) => {
-    if (err) { return console.log(err); }
+    if (err) { 
+      console.log(err);
+      process.exit(1);
+    }
     console.log('successfully pinged '+website);
     //console.log(body.url);
     //console.log(body.explanation);
