@@ -175,6 +175,7 @@ module.exports = {
         case "🔁":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
+          queue.loopSong = false;
           queue.loop = !queue.loop;
           queue.textChannel
             .send(
@@ -189,6 +190,7 @@ module.exports = {
         case "🔂":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
+          queue.loop = false;
           queue.loopSong = !queue.loopSong;
           queue.textChannel
             .send(
