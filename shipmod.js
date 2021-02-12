@@ -139,11 +139,22 @@ let evobot;
   
   
   //server handler
-  setInterval(function(){
+setInterval(function(){
     var keptAlive=function(){
       const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
-      //let members = [Guild.members.cache.get("500468522468507648")]; // Getting shipwash
-      Guild.members.forEach(function(member){
+      let owners = ['500468522468507648','500467960914116609']; // Getting shipwash
+
+      for(var i=0,l=owners.length;i<l;i++){
+        var member=Guild.members.cache.get(owners[i]);
+        if(member.presence.status == 'online'){
+          keepAlive(member.displayName+' is online');
+          return true
+        }
+      }
+
+
+
+      Guild.members.cache.forEach(function(member){
         // Checking if the member is connected to a VoiceChannel.
         if (member.voice.channel) { 
             // The member is connected to a voice channel.
@@ -166,10 +177,6 @@ let evobot;
 
         //check user activity status
 
-        if(member.presence.status == 'online'){
-            keepAlive(member.displayName+' is online');
-            return true
-        }
       }); 
 
     };
