@@ -22,7 +22,8 @@
     "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.3",
     "ytdl-core": "^4.4.5",
-    "ytdl-core-discord": "^1.2.5"
+    "ytdl-core-discord": "^1.2.5",
+    "request":"*"
   },
   "scripts": {
     "start": "node index.js"
