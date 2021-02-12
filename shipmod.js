@@ -139,8 +139,8 @@ let evobot;
   
   
   //server handler
-setInterval(function(){
-    var keptAlive=function(){
+  setInterval(function(){
+    var keptAlive=(function(){
       const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
       let owners = ['500468522468507648','500467960914116609']; // Getting shipwash
 
@@ -151,13 +151,18 @@ setInterval(function(){
           keepAlive(member.displayName+' is online');
           return true
         }
+      }})();
+
+      if(keptAlive){
+        return
       }
 
-
-
-      Guild.members.cache.forEach(function(member){
+      keptAlive=Guild.members.cache.some(function(member){
+        if(member.user.bot){
+          return
+        }
         // Checking if the member is connected to a VoiceChannel.
-        if (member.voice.channel) { 
+        if (member.voice.channel && member.voice.channel.id !== Guild..afkChannelID) { 
             // The member is connected to a voice channel.
             // https://discord.js.org/#/docs/main/stable/class/VoiceState
             keepAlive(member.displayName+' is in a voice channel');
@@ -179,13 +184,7 @@ setInterval(function(){
           }
         }
 
-      }); 
-
-    };
-
-    if(!keptAlive()){
-      client.channels.cache.get('805549728099860480').send('Bot will sign off in '+(Date.now()-lastKeepAlive).toString());
-    }
+      }); //end some
   },5*60*1000); //end setinterval
   
   
