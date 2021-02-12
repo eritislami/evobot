@@ -151,7 +151,7 @@ let evobot;
         if (member.voice.channel) { 
             // The member is connected to a voice channel.
             // https://discord.js.org/#/docs/main/stable/class/VoiceState
-            keepAlive(member.displayName+' is in a voice channel);
+            keepAlive(member.displayName+' is in a voice channel');
             return true
             //console.log(`${member.user.tag} is connected to ${member.voice.channel.name}!`);
         } else {
@@ -205,9 +205,10 @@ function shutdown(signal) {
 
   const request = require('request');
   let lastKeepAlive=null;
-  function keepAlive(){
+  function keepAlive(string){
     request("https://"+process.env.HEROKU_APP_NAME+".herokuapp.com", (err, res, body) => {
       if (err) { return console.log(err); }
+      console.log('KeepAlive - Pinging heroku app for reason:'+string)
       //console.log(body.url);
       //console.log(body.explanation);
     });
