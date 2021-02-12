@@ -117,5 +117,3 @@ function keepAlive(string){
   });
   lastKeepAlive=Date.now();
 };
-keepAlive();
-
