@@ -95,6 +95,7 @@ module.exports = {
       await playingMessage.react("🔉");
       await playingMessage.react("🔊");
       await playingMessage.react("🔁");
+      await playingMessage.react("🔂");
       await playingMessage.react("⏹");
     } catch (error) {
       console.error(error);
@@ -180,6 +181,20 @@ module.exports = {
               i18n.__mf("play.loopSong", {
                 author: user,
                 loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off")
+              })
+            )
+            .catch(console.error);
+          break;
+
+        case "🔂":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
+          queue.loopSong = !queue.loopSong;
+          queue.textChannel
+            .send(
+              i18n.__mf("play.loopSong", {
+                author: user,
+                loop: queue.loopSong ? i18n.__("common.on") : i18n.__("common.off")
               })
             )
             .catch(console.error);
