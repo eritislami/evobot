@@ -181,6 +181,27 @@ let evobot;
       client.channels.cache.get('805549728099860480').send('Bot will sign off in '+(Date.now()-lastKeepAlive).toString());
     }
   },29*60*1000);
+  
+  
+
+process
+  .on('SIGTERM', shutdown('SIGTERM'))
+  .on('SIGINT', shutdown('SIGINT'))
+  .on('uncaughtException', shutdown('uncaughtException'));
+
+function shutdown(signal) {
+  return (err) => {
+    console.log(`${ signal }...`);
+    if (err){
+      client.channels.cache.get('805549728099860480').send('Bot going to sleep now);
+      console.error(err.stack || err);
+    }
+    setTimeout(() => {
+      console.log('...waited 5s, exiting.');
+      process.exit(err ? 1 : 0);
+    }, 5000).unref();
+  };
+}
 
   const request = require('request');
   let lastKeepAlive=null;
