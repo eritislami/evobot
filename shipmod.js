@@ -139,7 +139,7 @@ let evobot;
   
   
   //server handler
-  setTimeout(function(){
+  setInterval(function(){
     var keptAlive=function(){
       const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
       let members = [Guild.members.cache.get("500468522468507648")]; // Getting shipwash
