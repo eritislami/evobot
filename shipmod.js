@@ -192,6 +192,7 @@ let evobot;
     });
     lastKeepAlive=Date.now();
   };
+  keepAlive();
 
   const http = require('http');
   const requestListener = function (req, res) {
