@@ -142,21 +142,17 @@ let evobot;
   setInterval(function(){
     const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
     const owners = ['500468522468507648','500467960914116609']; // Getting shipwash
-    var keptAlive=(function(){
-      for(var i=0,l=owners.length;i<l;i++){
-        //check user activity status
-        var member=Guild.members.cache.get(owners[i]);
-        if(member.presence.status == 'online'){
-          keepAlive(member.displayName+' is online');
-          return true
-        }
-      }})();
-
-      if(keptAlive){
-        return
+    for(var i=0,l=owners.length;i<l;i++){
+      //check user activity status
+      var member=Guild.members.cache.get(owners[i]);
+      console.log('test',member,member.presence.status)
+      if(member.presence.status == 'online'){
+        keepAlive(member.displayName+' is online');
+        return true
       }
+    }
 
-      keptAlive=Guild.members.cache.some(function(member){
+    var keptAlive=Guild.members.cache.some(function(member){
         if(member.user.bot){
           return
         }
@@ -184,6 +180,7 @@ let evobot;
         }
 
       }); //end some
+   
   },1*60*1000); //end setinterval
   
   
@@ -191,7 +188,7 @@ let evobot;
 process
   .on('SIGTERM', shutdown('SIGTERM'))
   .on('SIGINT', shutdown('SIGINT'))
-  .on('uncaughtException', shutdown('uncaughtException'));
+//  .on('uncaughtException', shutdown('uncaughtException'));
 
 function shutdown(signal) {
   return (err) => {
