@@ -142,8 +142,8 @@ let evobot;
   setInterval(function(){
     var keptAlive=function(){
       const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
-      let members = [Guild.members.cache.get("500468522468507648")]; // Getting shipwash
-      var members = Guild.members.forEach(function(member){
+      //let members = [Guild.members.cache.get("500468522468507648")]; // Getting shipwash
+      Guild.members.forEach(function(member){
         // Checking if the member is connected to a VoiceChannel.
         if (member.voice.channel) { 
             // The member is connected to a voice channel.
