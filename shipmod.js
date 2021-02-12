@@ -140,10 +140,9 @@ let evobot;
   
   //server handler
   setInterval(function(){
+    const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
+    const owners = ['500468522468507648','500467960914116609']; // Getting shipwash
     var keptAlive=(function(){
-      const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
-      let owners = ['500468522468507648','500467960914116609']; // Getting shipwash
-
       for(var i=0,l=owners.length;i<l;i++){
         //check user activity status
         var member=Guild.members.cache.get(owners[i]);
@@ -185,7 +184,7 @@ let evobot;
         }
 
       }); //end some
-  },5*60*1000); //end setinterval
+  },1*60*1000); //end setinterval
   
   
 
