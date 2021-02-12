@@ -162,7 +162,7 @@ let evobot;
           return
         }
         // Checking if the member is connected to a VoiceChannel.
-        if (member.voice.channel && member.voice.channel.id !== Guild..afkChannelID) { 
+        if (member.voice.channel && member.voice.channel.id !== Guild.afkChannelID) { 
             // The member is connected to a voice channel.
             // https://discord.js.org/#/docs/main/stable/class/VoiceState
             keepAlive(member.displayName+' is in a voice channel');
