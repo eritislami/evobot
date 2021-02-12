@@ -91,6 +91,8 @@ let evobot;
       client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
     if (!command) return;
+    
+    keepAlive();
 
     if (!cooldowns.has(command.name)) {
       cooldowns.set(command.name, new Collection());
@@ -136,14 +138,68 @@ let evobot;
   });
   
   
+  //server handler
+  setTimeout(function(){
+    var keptAlive=function(){
+      const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
+      let members = [Guild.members.cache.get("500468522468507648")]; // Getting shipwash
+
+      for(var i=0,l=members.length;i<l;i++){
+        var member= members[i];
+
+        // Checking if the member is connected to a VoiceChannel.
+        if (member.voice.channel) { 
+            // The member is connected to a voice channel.
+            // https://discord.js.org/#/docs/main/stable/class/VoiceState
+            keepAlive();
+            return true
+            //console.log(`${member.user.tag} is connected to ${member.voice.channel.name}!`);
+        } else {
+            // The member is not connected to a voice channel.
+            console.log(`${member.user.tag} is not connected.`);
+        };
+
+        //see if last message was 30 minutes old
+        var ttl=30*60*1000;
+        var date = member.lastMessage.createdAt
+        if((Date.now() - date) < ttl) { //is user active in the last 30 minutes?
+           keepAlive();
+           return true
+        }
+
+        //check user activity status
+
+        if(member.presence.status == 'online'){
+            keepAlive();
+            return true
+        }
+
+      } //end for
+    };
+
+    if(!keptAlive()){
+      client.channels.cache.get('805549728099860480').send('Bot will sign off in '+(Date.now()-lastKeepAlive).toString());
+    }
+  },29*60*1000);
+
+  const request = require('request');
+  let lastKeepAlive=null;
+  function keepAlive(){
+    request("https://"+process.env.HEROKU_APP_NAME+".herokuapp.com", (err, res, body) => {
+      if (err) { return console.log(err); }
+      //console.log(body.url);
+      //console.log(body.explanation);
+    });
+    lastKeepAlive=Date.now();
+  };
+
+
+  const requestListener = function (req, res) {
+    res.writeHead(200);
+    res.end('Hello, World!');
+  }
+
+  const server = http.createServer(requestListener);
+  server.listen(process.env.PORT||80);
 })();
 
-const http = require('http');
-
-const requestListener = function (req, res) {
-  res.writeHead(200);
-  res.end('Hello, World!');
-}
-
-const server = http.createServer(requestListener);
-server.listen(process.env.PORT||80);
