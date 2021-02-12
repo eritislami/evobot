@@ -193,7 +193,7 @@ function shutdown(signal) {
   return (err) => {
     console.log(`${ signal }...`);
     if (err){
-      client.channels.cache.get('805549728099860480').send('Bot going to sleep now);
+      client.channels.cache.get('805549728099860480').send('Bot going to sleep now');
       console.error(err.stack || err);
     }
     setTimeout(() => {
