@@ -206,7 +206,8 @@ function shutdown(signal) {
   const request = require('request');
   let lastKeepAlive=null;
   function keepAlive(string){
-    request("https://"+process.env.HEROKU_APP_NAME+".herokuapp.com", (err, res, body) => {
+    var website="https://"+process.env.HEROKU_APP_NAME+".herokuapp.com";
+    request(website, (err, res, body) => {
       if (err) { return console.log(err); }
       console.log('KeepAlive - Pinging heroku app for reason:'+string)
       //console.log(body.url);
