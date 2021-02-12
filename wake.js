@@ -53,6 +53,7 @@ client.on("ready", () => {
   //console.log(`${client.user.username} ready!`);
   //client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
   wakeHandler(client);
+  client.destroy()
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
@@ -79,15 +80,15 @@ function keepAlive(string){
 //wake handler
 function wakeHandler(client){
   const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
-  const owners = ['500468522468507648','500467960914116609']; // Getting shipwash
-  for(var i=0,l=owners.length;i<l;i++){
-    //check user activity status
-    var member=Guild.members.cache.get(owners[i]);
-    if(member.presence.status == 'online'){
-      keepAlive(member.displayName+' is online');
-      return true
-    }
-  }
+//   const owners = ['500468522468507648','500467960914116609']; // Getting shipwash
+//   for(var i=0,l=owners.length;i<l;i++){
+//     //check user activity status
+//     var member=Guild.members.cache.get(owners[i]);
+//     if(member.presence.status == 'online'){
+//       keepAlive(member.displayName+' is online');
+//       return true
+//     }
+//   }
 
   var keptAlive=Guild.members.cache.some(function(member){
     if(member.user.bot){
@@ -97,7 +98,7 @@ function wakeHandler(client){
     if (member.voice.channel && member.voice.channel.id !== Guild.afkChannelID) { 
         // The member is connected to a voice channel.
         // https://discord.js.org/#/docs/main/stable/class/VoiceState
-        keepAlive(member.displayName+' is in a voice channel');
+        keepAlive(member.displayName+' is in a usable voice channel');
         return true
         //console.log(`${member.user.tag} is connected to ${member.voice.channel.name}!`);
     } //else {
