@@ -52,7 +52,7 @@ i18n.configure({
 client.on("ready", () => {
   //console.log(`${client.user.username} ready!`);
   //client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
-  wakeHandler();
+  wakeHandler(client);
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
@@ -77,7 +77,7 @@ function keepAlive(string){
 
 
 //wake handler
-function wakeHandler(){
+function wakeHandler(client){
   const Guild = client.guilds.cache.get("690661623831986266"); // Getting the guild.
   const owners = ['500468522468507648','500467960914116609']; // Getting shipwash
   for(var i=0,l=owners.length;i<l;i++){
