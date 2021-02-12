@@ -92,7 +92,7 @@ let evobot;
 
     if (!command) return;
     
-    keepAlive();
+    keepAlive(command.name+' was called');
 
     if (!cooldowns.has(command.name)) {
       cooldowns.set(command.name, new Collection());
@@ -151,7 +151,7 @@ let evobot;
         if (member.voice.channel) { 
             // The member is connected to a voice channel.
             // https://discord.js.org/#/docs/main/stable/class/VoiceState
-            keepAlive();
+            keepAlive(member.displayName+' is in a voice channel);
             return true
             //console.log(`${member.user.tag} is connected to ${member.voice.channel.name}!`);
         } else {
@@ -163,14 +163,14 @@ let evobot;
         var ttl=30*60*1000;
         var date = member.lastMessage.createdAt
         if((Date.now() - date) < ttl) { //is user active in the last 30 minutes?
-           keepAlive();
+           keepAlive(member.displayName+' sent a message recently');
            return true
         }
 
         //check user activity status
 
         if(member.presence.status == 'online'){
-            keepAlive();
+            keepAlive(member.displayName+' is online');
             return true
         }
 
