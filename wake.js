@@ -72,7 +72,10 @@ let lastKeepAlive=null;
 function keepAlive(string){
   var website="https://"+process.env.HEROKU_APP_NAME+".herokuapp.com";
   console.log('KeepAlive - Pinging heroku app for reason:'+string);
-  request(website, (err, res, body) => {
+  request({
+    url: website,
+    timeout: 5000
+}, (err, res, body) => {
     if (err) { 
       console.log(err);
       process.exit(1);
