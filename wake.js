@@ -81,6 +81,7 @@ function keepAlive(string){
       process.exit(1);
     }
     console.log('successfully pinged '+website);
+    process.exit(0);
     //console.log(body.url);
     //console.log(body.explanation);
   });
