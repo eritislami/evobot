@@ -5,12 +5,12 @@ const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const http = require("http");
 const https = require("https");
-const fs = require("fs");
 const api = require("./api");
 const httpPort = process.env.HTTP_PORT || 8080;
 const httpsPort = process.env.HTTPS_PORT || 8081;
 const { join } = require("path");
 const { TOKEN, PREFIX, TRUSTED_BOTS, HTTPS } = require("./util/EvobotUtil");
+const firebase = require('./firebase');
 
 const client = new Client({ disableMentions: "everyone" });
 
@@ -25,8 +25,11 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
  * Process Events
  */
 function handleSignal(signal) {
-  console.log(`Received ${signal}`);
+  firebase.stopSession().then(() => {
+    console.log("Stopped Firebase session");
+  });
   client.destroy();
+  console.log(`Received ${signal}`);
   process.exit(0);
 }
 

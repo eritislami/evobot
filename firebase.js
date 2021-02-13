@@ -91,6 +91,8 @@ module.exports = {
       });
       console.info(`Ended session ${currentSession}`);
       currentSession = null;
+    } else {
+      console.log("No Firebase session to stop");
     }
   },
 
@@ -130,7 +132,7 @@ module.exports = {
       "now_playing": nowPlaying
     });
     updateSongAggregate(song, songHistoryDocRef);
-    console.info(`Played ${song.title} with document id ${songHistoryDocRef.id}`);
+    console.info(`${song.user.username} (${song.user.id}) playing ${song.title} with document id ${songHistoryDocRef.id}`);
   },
 
   async queueSong(song) {
@@ -149,6 +151,6 @@ module.exports = {
     sessionRef.update({
       "now_playing": admin.firestore.FieldValue.arrayUnion(songHistoryJson)
     });
-    console.info(`Queued ${song.title} with document id ${songHistoryDocRef.id}`);
+    console.info(`${song.user.username} (${song.user.id}) queued ${song.title} with document id ${songHistoryDocRef.id}`);
   },
 }
