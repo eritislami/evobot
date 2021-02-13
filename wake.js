@@ -107,10 +107,10 @@ function wakeHandler(client){
       return false;
     }
     // Checking if the member is connected to a VoiceChannel.
-    if (member.voice.channel && member.voice.channel.id !== Guild.afkChannelID) { 
+    if (member.voice.channel && member.voice.channel.id !== Guild.afkChannelID && member.voice.guild.id == Guild.id) { 
         // The member is connected to a voice channel.
         // https://discord.js.org/#/docs/main/stable/class/VoiceState
-        keepAlive(member.displayName+' is in a usable voice channel');
+        keepAlive(member.displayName+' is in '+member.voice.channel.name+' voice channel');
         return true
         //console.log(`${member.user.tag} is connected to ${member.voice.channel.name}!`);
     } //else {
