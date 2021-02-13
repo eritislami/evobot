@@ -75,7 +75,7 @@ function keepAlive(string){
   request({
     url: website,
     timeout: 5000
-}, (err, res, body) => {
+}, function(err, res, body){
     if (err) { 
       console.log(err);
       process.exit(1);
