@@ -5,6 +5,7 @@ const scdl = require("soundcloud-downloader").default;
 const https = require("https");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const { queueSong } = require("../firebase");
 
 async function getInfoWithRetry(url, retries = 10) {
   for (let i = 0; i < retries; i++) {
@@ -96,6 +97,7 @@ module.exports = {
         set.add(this[lastIndex].user.id);
       }
       this.splice(lastIndex, 0, newSong);
+      queueSong(newSong);
     }
 
     let songInfo = null;
