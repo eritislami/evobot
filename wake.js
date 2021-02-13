@@ -67,6 +67,7 @@ client.on("error", (e) => {
 
 
 
+
 const request = require('request');
 let lastKeepAlive=null;
 function keepAlive(string){
@@ -81,12 +82,13 @@ function keepAlive(string){
       process.exit(1);
     }
     console.log('successfully pinged '+website);
+    lastKeepAlive=Date.now();
     process.exit(0);
     //console.log(body.url);
     //console.log(body.explanation);
   });
-  lastKeepAlive=Date.now();
 };
+
 
 
 
