@@ -71,7 +71,7 @@ const request = require('request');
 let lastKeepAlive=null;
 function keepAlive(string){
   var website="https://"+process.env.HEROKU_APP_NAME+".herokuapp.com";
-  console.log('KeepAlive - Pinging heroku app for reason:'+string);
+  console.log('KeepAlive - Pinging '+website+' for reason:'+string);
   request({
     url: website,
     timeout: 5000
