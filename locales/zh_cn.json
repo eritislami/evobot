@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "播放本地音乐",
-    "usagesReply": "用法: /clip <名称>",
+    "usagesReply": "用法: {prefix}clip <名称>",
     "errorQueue": "无法播放本地音乐，因为目前已经有有效的音乐队列",
     "errorNotChannel": "你必须先加入语音频道!"
   },
