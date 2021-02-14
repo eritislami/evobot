@@ -18,6 +18,7 @@
     "qs": "^6.9.6",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
+    "vuefire": "^2.2.5",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
