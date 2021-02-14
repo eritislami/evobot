@@ -9,7 +9,7 @@
             </tr>
         </thead>
         <tbody>
-            <SongRow v-for="(item, idx) in songs" :key="idx" :idx='idx' :song='item' />
+            <SongRow v-for="(item, idx) in fred_session.now_playing" :key="idx" :idx='idx' :song='item' />
         </tbody>
     </table>
     <p>Queued music: {{ totalTime }}</p>
@@ -17,7 +17,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import SongRow from './SongRow'
 import Vue from 'vue'
 import { firestorePlugin } from 'vuefire'
@@ -35,40 +34,22 @@ export default {
   },
   data () {
     return {
-      songs: [],
-      totalTime: '00:00',
-      lastUpdated: 'Never',
-      timer: ''
+      fred_session: {}
     }
-  },
-  
-  firestore: {
-    fred_essions: db.collection('fred_session')
   },
 
-  created () {
-    this.fetchEventsList()
-    this.timer = setInterval(this.fetchEventsList, 5000)
-  },
-  methods: {
-    fetchEventsList () {
-      axios.get('https://fred.skydev.one:8081/api/queue')
-        .then(res => {
-          this.songs = res.data.songs
-          this.totalTime = this.getTotalTime(res.data.songs.reduce((a, b) => a + parseInt(b.duration), 0)) || '00:00'
-          this.lastUpdated = new Date().toString()
-        })
-    },
-    getTotalTime (seconds) {
-      return new Date(seconds * 1000).toISOString().substr(11, 8)
-    },
-    cancelAutoUpdate () {
-      clearInterval(this.timer)
+  computed : {
+    totalTime: function() {
+      const time = this.fred_session.now_playing
+        ? this.fred_session.now_playing.reduce((a,b) => a + parseInt(b.duration), 0)
+        : 0;
+      return new Date(time * 1000).toISOString().substr(11, 8);
     }
   },
-  beforeDestroy () {
-    clearInterval(this.timer)
-  }
+
+  firestore: {
+    fred_session: db.collection('fred_session').doc('current')
+  },
 }
 </script>
 
