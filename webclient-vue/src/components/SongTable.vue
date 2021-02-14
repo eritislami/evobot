@@ -19,6 +19,10 @@
 <script>
 import axios from 'axios'
 import SongRow from './SongRow'
+import Vue from 'vue'
+import { firestorePlugin } from 'vuefire'
+import { db } from '../services/firebase'
+Vue.use(firestorePlugin)
 
 export default {
   name: 'SongTable',
@@ -37,6 +41,11 @@ export default {
       timer: ''
     }
   },
+  
+  firestore: {
+    fred_essions: db.collection('fred_session')
+  },
+
   created () {
     this.fetchEventsList()
     this.timer = setInterval(this.fetchEventsList, 5000)
