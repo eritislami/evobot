@@ -70,11 +70,15 @@ async function updateSongAggregate(song, songRef) {
 async function startSession() {
   if (!db) return;
   
-  sessionDoc = await db.collection(fredSessionDb).add({
+  const sessionInfo = {
     "start": Date.now(),
     "now_playing": [],
     "history": []
-  });
+  };
+  sessionDoc = await db.collection(fredSessionDb).add(sessionInfo);
+
+  sessionInfo.session_id = sessionDoc.id;
+  await db.collection(fredSessionDb).doc('current').set(sessionInfo);
   currentSession = sessionDoc.id;
   console.info(`Starting play session ${currentSession}`);
 }
@@ -84,9 +88,12 @@ module.exports = {
     if (!db) return;
 
     if (currentSession !== null) {
-      const sessionRef = await db.collection(fredSessionDb).doc(currentSession);
-      sessionRef.update({
+      const sessionRef = await db.collection(fredSessionDb).doc(currentSession)
+      await sessionRef.update({
         "end": Date.now(),
+        "now_playing": []
+      });
+      await db.collection(fredSessionDb).doc('current').set({
         "now_playing": []
       });
       console.info(`Ended session ${currentSession}`);
@@ -116,7 +123,13 @@ module.exports = {
     if (!db) return;
     //console.debug(song);
 
-    const songHistoryDocRef = await db.collection(songHistoryDb).doc(song.doc_id);
+    let songHistoryDocRef;
+    try {
+      songHistoryDocRef = await db.collection(songHistoryDb).doc(song.doc_id);
+    } catch(err) {
+      log.warn(`Failed to get song history reference (${err}). Retrying...`)
+      songHistoryDocRef = await db.collection(songHistoryDb).doc(song.doc_id);
+    }
     songHistoryDocRef.update({
       played_at: Date.now()
     });
@@ -127,10 +140,15 @@ module.exports = {
     if (nowPlaying[0].doc_id != song.doc_id) {
       nowPlaying.shift();
     }
-    sessionRef.update({
+    await sessionRef.update({
       "history": admin.firestore.FieldValue.arrayUnion(songHistoryDocRef),
       "now_playing": nowPlaying
     });
+    const currentSessionRef = await db.collection(fredSessionDb).doc('current')
+    await currentSessionRef.update({
+      "history": admin.firestore.FieldValue.arrayUnion(songHistoryDocRef),
+      "now_playing": nowPlaying
+    })
     updateSongAggregate(song, songHistoryDocRef);
     console.info(`${song.user.username} (${song.user.id}) playing ${song.title} with document id ${songHistoryDocRef.id}`);
   },
@@ -146,9 +164,12 @@ module.exports = {
     const songHistoryDocRef = await db.collection(songHistoryDb).add(songHistoryJson);
     song.doc_id = songHistoryDocRef.id;
     songHistoryJson.doc_id = songHistoryDocRef.id;
-    
-    const sessionRef = await db.collection(fredSessionDb).doc(currentSession);
-    sessionRef.update({
+    const sessionRef = await db.collection(fredSessionDb).doc(currentSession)
+    await sessionRef.update({
+      "now_playing": admin.firestore.FieldValue.arrayUnion(songHistoryJson)
+    });
+    const currentSessionRef = await db.collection(fredSessionDb).doc('current')
+    await currentSessionRef.update({
       "now_playing": admin.firestore.FieldValue.arrayUnion(songHistoryJson)
     });
     console.info(`${song.user.username} (${song.user.id}) queued ${song.title} with document id ${songHistoryDocRef.id}`);
