@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Ecoute le son d'un clip",
-    "usagesReply": "Usage: /clip <name>",
+    "usagesReply": "Usage: {prefix}clip <name>",
     "errorQueue": "Impossible d'écouter le clip car une file d'attente est active.",
     "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!"
   },
