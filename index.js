@@ -4,14 +4,25 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, LOCALE, MONGODB_URI } = require("./util/EvobotUtil");
 const path = require("path");
 const i18n = require("i18n");
+const mongoDB = require('mongoose');
+const blacklistModel = require('./schemas/blacklist')
 
-const client = new Client({ 
+const client = new Client({
   disableMentions: "everyone",
   restTimeOffset: 0
 });
+if (MONGODB_URI) {
+  const db = mongoDB.connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }).then(() => console.log(`Connected to database`)).catch(err => console.log(`Oops, there was an error! ${err}`))
+} else {
+  console.log(`No MongoDB URI was provided. Blacklist system won't work.`)
+}
+
 
 client.login(TOKEN);
 client.commands = new Collection();
@@ -81,6 +92,19 @@ client.on("message", async (message) => {
     client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
 
   if (!command) return;
+
+  if (MONGODB_URI) {
+    const blacklisted = await blacklistModel.find();
+
+    let isBlacklisted;
+
+    if (blacklisted) {
+      isBlacklisted = blacklisted.find(u => u.userId === message.author.id)
+    }
+
+    if (isBlacklisted) return;
+  }
+
 
   if (!cooldowns.has(command.name)) {
     cooldowns.set(command.name, new Collection());
