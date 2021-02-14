@@ -27,7 +27,7 @@
     "string-progressbar": "^1.0.3",
     "ytdl-core": "^4.4.5",
     "ytdl-core-discord": "^1.2.5",
-    "ytsr": "^3.2.4"
+    "ytsr": "^3.3.0"
   },
   "scripts": {
     "start": "node index.js"
