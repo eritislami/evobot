@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Plays a clip sound",
-    "usagesReply": "Usage: /clip <name>",
+    "usagesReply": "Usage: {prefix}clip <name>",
     "errorQueue": "Can't play clip because there is an active queue.",
     "errorNotChannel": "You need to join a voice channel first!"
   },
