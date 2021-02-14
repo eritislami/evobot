@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "주어진 클립을 재생합니다.",
-    "usagesReply": "Usage: /clip <name>",
+    "usagesReply": "Usage: {prefix}clip <name>",
     "errorQueue": "대기열에 음악이 있을 경우 클립을 재생할 수 없습니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다."
   },
