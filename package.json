@@ -23,7 +23,9 @@
     "string-progressbar": "^1.0.3",
     "ytdl-core": "^4.4.5",
     "ytdl-core-discord": "^1.2.5",
-    "request":"*"
+    "request":"*",
+    "eris": "^0.13.3",
+    "pg": "^8.4.1"
   },
   "scripts": {
     "start": "node index.js"
