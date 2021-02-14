@@ -161,9 +161,9 @@ module.exports = {
     const a = second.split(':');
     let rre
     if (a.length == 2) {
-      rre = (a[0] * 60) + a[1]
+      rre = (+a[0]) * 60 + (+a[1])
     } else {
-      rre = ((a[0] * 60) * 60) + (a[1] * 60) + a[2]
+      rre = (+a[0]) * 60 * 60 + (+a[1]) * 60 + (+a[2])
     }
 
     return rre;
