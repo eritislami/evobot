@@ -26,6 +26,7 @@ function createSongHistoryDbJson(song) {
     id: songId,
     title: song.title,
     url: song.url,
+    duration: song.duration,
     queued_at: Date.now(),
     user: {
       id: song.user.id,
