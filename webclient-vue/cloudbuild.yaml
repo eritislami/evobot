@@ -6,10 +6,22 @@ steps:
     entrypoint: 'bash'
     args: ['-c', 'docker pull gcr.io/$PROJECT_ID/fred-vue:latest || exit 0']
   - name: 'gcr.io/cloud-builders/docker'
+    entrypoint: 'bash'
+    args: ['-c', 'docker pull gcr.io/$PROJECT_ID/fred-vue-builder:latest || exit 0']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build',
+           '-t', 'gcr.io/$PROJECT_ID/fred-vue-builder:latest',
+           '--cache-from', 'gcr.io/$PROJECT_ID/fred-vue-builder:latest',
+           '--target', 'build-image',
+           'webclient-vue/']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/fred-vue-builder:latest']
+  - name: 'gcr.io/cloud-builders/docker'
     args: ['build',
            '-t', 'gcr.io/$PROJECT_ID/fred-vue:$SHORT_SHA',
            '-t', 'gcr.io/$PROJECT_ID/fred-vue:latest',
            '--cache-from', 'gcr.io/$PROJECT_ID/fred-vue:latest',
+           '--cache-from', 'gcr.io/$PROJECT_ID/fred-vue-builder:latest',
            'webclient-vue/']
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'gcr.io/$PROJECT_ID/fred-vue:$SHORT_SHA']
