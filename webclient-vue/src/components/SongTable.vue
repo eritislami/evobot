@@ -3,15 +3,16 @@
     <table class="pure-table pure-table-horizontal">
         <thead>
             <tr>
-              <th>#</th>
-              <th>Title</th>
-              <th colspan="2">Requestor</th>
+              <th class="numberColumn">#</th>
+              <th class="titleColumn">Title</th>
+              <th class="requestorColumn" colspan="2">Requestor</th>
             </tr>
         </thead>
-        <tbody>
-            <SongRow v-for="(item, idx) in fred_session.now_playing" :key="idx" :idx='idx' :song='item' />
-        </tbody>
+        <transition-group tag="tbody" name="songRow">
+            <SongRow v-for="(item, idx) in fred_session.now_playing" :key="'song'+idx" :idx='idx' :song='item' />
+        </transition-group>
     </table>
+    <br />
     <p>Queued music: {{ totalTime }}</p>
   </div>
 </template>
@@ -21,20 +22,19 @@ import SongRow from './SongRow'
 import Vue from 'vue'
 import { firestorePlugin } from 'vuefire'
 import { db } from '../services/firebase'
+import { config } from '../config'
 Vue.use(firestorePlugin)
+const fred_session_collection = config.fred_session_collection || 'fred_session';
+const fred_session_current_doc = config.fred_session_current_doc || 'current';
 
 export default {
   name: 'SongTable',
-  // props are used to pass data into this component
-  //   props: {
-  //     msg2: String
-  //   },
   components: {
     SongRow
   },
   data () {
     return {
-      fred_session: {}
+      fred_session: {},
     }
   },
 
@@ -43,34 +43,48 @@ export default {
       const time = this.fred_session.now_playing
         ? this.fred_session.now_playing.reduce((a,b) => a + parseInt(b.duration), 0)
         : 0;
-      return new Date(time * 1000).toISOString().substr(11, 8);
+      return time
+        ? new Date(time * 1000).toISOString().substr(11, 8)
+        : "00:00";
     }
   },
 
   firestore: {
-    fred_session: db.collection('fred_session').doc('current')
+    fred_session: db.collection(fred_session_collection).doc(fred_session_current_doc)
   },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
 a {
   color: #42b983;
+}
+th {
+  background-color: #1A1E23;
+  color: white;
+  border: none;
+  text-align: center;
+}
+.numberColumn {
+  width: 10%;
+}
+.titleColumn {
+  width: 50%;
+}
+.requestorColumn {
+  width: 20%;
 }
 table {
   margin-left: auto;
   margin-right: auto;
+  border: none;
+}
+.songRow-enter-active, .songRow-leave-active {
+  transition: all 1s;
+}
+.songRow-enter, .songRow-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
