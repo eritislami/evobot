@@ -1,6 +1,6 @@
 <template>
-  <tr class='songrow' :class="(idx % 2) === 0 ? '' : 'pure-table-odd'">
-    <td>{{ idx+1 }}</td>
+  <tr>
+    <td class="indexCol">{{ idx+1 }}</td>
     <td>
       <a :href=song.url>{{ song.title }}</a>
     </td>
@@ -24,18 +24,14 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h1, h2 {
-  font-weight: normal;
+tr:hover {
+  border: 1px solid white;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+td {
+  border: none;
+  text-align: left;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+.indexCol {
+  text-align: center;
 }
 </style>
