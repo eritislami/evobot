@@ -134,7 +134,7 @@ module.exports = {
     try {
       songHistoryDocRef = await db.collection(songHistoryDb).doc(song.doc_id);
     } catch(err) {
-      log.warn(`Failed to get song history reference (${err}). Retrying...`)
+      console.warn(`Failed to get song history reference (${err}). Retrying...`)
       songHistoryDocRef = await db.collection(songHistoryDb).doc(song.doc_id);
     }
     songHistoryDocRef.update({
