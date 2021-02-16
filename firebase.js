@@ -14,6 +14,7 @@ if (FIREBASE_CONFIG) {
 } else {
   console.warn("No firebase account specified. Data will not be recorded in the database.")
 }
+await clearCurrentSession();
 
 function getSongIdFromUrl(url) {
   const searchParams = new URLSearchParams(new URL(url).search);
@@ -84,6 +85,13 @@ async function startSession() {
   console.info(`Starting play session ${currentSession}`);
 }
 
+async function clearCurrentSession() {
+  await db.collection(fredSessionDb).doc('current').set({
+    "now_playing": [],
+    "history": []
+  });
+}
+
 module.exports = {
   async stopSession() {
     if (!db) return;
@@ -94,9 +102,7 @@ module.exports = {
         "end": Date.now(),
         "now_playing": []
       });
-      await db.collection(fredSessionDb).doc('current').set({
-        "now_playing": []
-      });
+      await clearCurrentSession();
       console.info(`Ended session ${currentSession}`);
       currentSession = null;
     } else {
