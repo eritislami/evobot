@@ -1,19 +1,24 @@
 <template>
-  <div class="songtable">
-    <table class="pure-table pure-table-horizontal">
-        <thead>
-            <tr>
-              <th class="numberColumn">#</th>
-              <th class="titleColumn">Title</th>
-              <th class="requestorColumn" colspan="2">Requestor</th>
-            </tr>
-        </thead>
-        <transition-group tag="tbody" name="songRow">
-            <SongRow v-for="(item, idx) in fred_session.now_playing" :key="'song'+idx" :idx='idx' :song='item' />
-        </transition-group>
-    </table>
-    <br />
-    <p>Queued music: {{ totalTime }}</p>
+  <div>
+    <div v-if="isPlaying" class="songtable">
+      <table class="pure-table pure-table-horizontal">
+          <thead>
+              <tr>
+                <th class="numberColumn">#</th>
+                <th class="titleColumn">Title</th>
+                <th class="requestorColumn" colspan="2">Requestor</th>
+              </tr>
+          </thead>
+          <transition-group tag="tbody" name="songRow">
+              <SongRow v-for="(item, idx) in fred_session.now_playing" :key="'song'+idx" :idx='idx' :song='item' />
+          </transition-group>
+      </table>
+      <br />
+      <p>Queued music: {{ totalTime }}</p>
+    </div>
+    <div v-if="!isPlaying">
+      <h1>Add some music!</h1>
+    </div>
   </div>
 </template>
 
@@ -46,6 +51,9 @@ export default {
       return time
         ? new Date(time * 1000).toISOString().substr(11, 8)
         : "00:00";
+    },
+    isPlaying: function() {
+      return this.fred_session && this.fred_session.now_playing && this.fred_session.now_playing.length > 0
     }
   },
 

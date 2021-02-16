@@ -14,7 +14,7 @@ if (FIREBASE_CONFIG) {
 } else {
   console.warn("No firebase account specified. Data will not be recorded in the database.")
 }
-await clearCurrentSession();
+clearCurrentSession().then(console.log("Cleared current session"));
 
 function getSongIdFromUrl(url) {
   const searchParams = new URLSearchParams(new URL(url).search);
