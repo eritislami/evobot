@@ -1,0 +1,4 @@
+web:
+  image: fred-vue:latest
+  ports:
+   - "8080:80"
