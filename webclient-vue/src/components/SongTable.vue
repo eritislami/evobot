@@ -27,10 +27,10 @@ import SongRow from './SongRow'
 import Vue from 'vue'
 import { firestorePlugin } from 'vuefire'
 import { db } from '../services/firebase'
-import { config } from '../config'
+import { vue_config } from '../../auth_config'
 Vue.use(firestorePlugin)
-const fred_session_collection = config.fred_session_collection || 'fred_session';
-const fred_session_current_doc = config.fred_session_current_doc || 'current';
+const fred_session_collection = vue_config.fred_session_collection || 'fred_session';
+const fred_session_current_doc = vue_config.fred_session_current_doc || 'current';
 
 export default {
   name: 'SongTable',

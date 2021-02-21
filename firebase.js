@@ -1,8 +1,9 @@
 var admin = require("firebase-admin");
-const { FIREBASE_CONFIG } = require("./util/EvobotUtil");
+const { FIREBASE_CONFIG, DISCORD_SERVER_ID } = require("./util/EvobotUtil");
 const songHistoryDb = FIREBASE_CONFIG.song_history_collection;
 const songAggregateDb = FIREBASE_CONFIG.song_aggregate_collection;
 const fredSessionDb = FIREBASE_CONFIG.fred_session_collection;
+const { discordClient } = require('./index');
 let currentSession = null;
 
 let db;
@@ -22,21 +23,7 @@ function getSongIdFromUrl(url) {
 }
 
 function createSongHistoryDbJson(song) {
-  const songId = getSongIdFromUrl(song.url);
-  return {
-    id: songId,
-    title: song.title,
-    url: song.url,
-    duration: song.duration,
-    queued_at: Date.now(),
-    user: {
-      id: song.user.id,
-      username: song.user.username,
-      displayAvatarURL: song.user.displayAvatarURL(),
-    },
-    session: currentSession,
-    schema_version: FIREBASE_CONFIG.schema_version
-  }
+  return JSON.parse(JSON.stringify(song));
 }
 
 async function updateSongAggregate(song, songRef) {
@@ -92,6 +79,26 @@ async function clearCurrentSession() {
   });
 }
 
+async function updateCurrentSessionDoc() {
+  if (!db) return;
+
+  // TODO: add error handling
+  const nowPlaying = discordClient.queue.get(DISCORD_SERVER_ID).songs.map(s => createSongHistoryDbJson(s));
+  const currentSessionRef = await db.collection(fredSessionDb).doc('current');
+  await currentSessionRef.update({
+    "now_playing": nowPlaying
+  });
+}
+
+async function addSongToSessionHistoryDoc(song) {
+  if (!db) return;
+
+  const sessionRef = await db.collection(fredSessionDb).doc(currentSession);
+  await sessionRef.update({
+    "history": admin.firestore.FieldValue.arrayUnion(createSongHistoryDbJson(song))
+  });
+}
+
 module.exports = {
   async stopSession() {
     if (!db) return;
@@ -140,23 +147,10 @@ module.exports = {
     songHistoryDocRef.update({
       played_at: Date.now()
     });
-    const sessionRef = await db.collection(fredSessionDb).doc(currentSession);
-    const sessionData = await sessionRef.get();
-    const nowPlaying = sessionData.data().now_playing
-    // TODO: Fix this to allow for duplicate songs
-    if (nowPlaying[0].doc_id != song.doc_id) {
-      nowPlaying.shift();
-    }
-    await sessionRef.update({
-      "history": admin.firestore.FieldValue.arrayUnion(songHistoryDocRef),
-      "now_playing": nowPlaying
-    });
-    const currentSessionRef = await db.collection(fredSessionDb).doc('current')
-    await currentSessionRef.update({
-      "history": admin.firestore.FieldValue.arrayUnion(songHistoryDocRef),
-      "now_playing": nowPlaying
-    })
+
     updateSongAggregate(song, songHistoryDocRef);
+    await updateCurrentSessionDoc();
+    addSongToSessionHistoryDoc(song);
     console.info(`${song.user.username} (${song.user.id}) playing ${song.title} with document id ${songHistoryDocRef.id}`);
   },
 
@@ -170,15 +164,8 @@ module.exports = {
     const songHistoryJson = createSongHistoryDbJson(song);
     const songHistoryDocRef = await db.collection(songHistoryDb).add(songHistoryJson);
     song.doc_id = songHistoryDocRef.id;
-    songHistoryJson.doc_id = songHistoryDocRef.id;
-    const sessionRef = await db.collection(fredSessionDb).doc(currentSession)
-    await sessionRef.update({
-      "now_playing": admin.firestore.FieldValue.arrayUnion(songHistoryJson)
-    });
-    const currentSessionRef = await db.collection(fredSessionDb).doc('current')
-    await currentSessionRef.update({
-      "now_playing": admin.firestore.FieldValue.arrayUnion(songHistoryJson)
-    });
+
+    await updateCurrentSessionDoc();
     console.info(`${song.user.username} (${song.user.id}) queued ${song.title} with document id ${songHistoryDocRef.id}`);
   },
 }

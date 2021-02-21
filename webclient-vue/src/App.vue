@@ -7,7 +7,7 @@
 
 <script>
 import {login} from './auth/discord'
-import {config} from './config'
+import {vue_config} from '../auth_config'
 import NavHeader from './components/NavHeader'
 export default {
   name: 'App',
@@ -16,7 +16,7 @@ export default {
   },
   data() {
     return {
-      navbar_feature: config.navbar_feature || false
+      navbar_feature: vue_config.navbar_feature || false
     }
   },
   mounted() {
