@@ -97,7 +97,6 @@ module.exports = {
         set.add(this[lastIndex].user.id);
       }
       this.splice(lastIndex, 0, newSong);
-      queueSong(newSong);
     }
 
     let songInfo = null;
@@ -146,6 +145,7 @@ module.exports = {
 
     if (serverQueue) {
       serverQueue.songs.fairPush(song);
+      queueSong(song);
       message.delete();
       return serverQueue.textChannel
         .send(`**${song.title}** has been added to the queue by ${message.author.username}`)
@@ -154,6 +154,7 @@ module.exports = {
 
     queueConstruct.songs.fairPush(song);
     message.client.queue.set(message.guild.id, queueConstruct);
+    await queueSong(song);
 
     try {
       queueConstruct.connection = await channel.join();
