@@ -4,9 +4,10 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, LOCALE, MONGO } = require("./util/EvobotUtil");
 const path = require("path");
 const i18n = require("i18n");
+const mongoose = require('mongoose');
 
 const client = new Client({ 
   disableMentions: "everyone",
@@ -51,6 +52,11 @@ i18n.configure({
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+  mongoose.set('useFindAndModify', false);
+	mongoose.set('useUnifiedTopology', true);
+	mongoose.set('useNewUrlParser', true);
+	mongoose.connect(MONGO);
+  console.log("Connected to MongoDB!")
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);

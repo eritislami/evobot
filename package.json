@@ -18,10 +18,11 @@
     "ffmpeg-static": "^4.2.3",
     "i18n": "^0.13.2",
     "lyrics-finder": "^21.0.5",
+    "mongoose": "^5.11.15",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.3",
-    "ytdl-core": "^4.4.5",
+    "ytdl-core": "^4.5.0",
     "ytdl-core-discord": "^1.2.5"
   },
   "scripts": {
