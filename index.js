@@ -8,7 +8,7 @@ const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
 const path = require("path");
 const i18n = require("i18n");
 
-const client = new Client({ 
+const client = new Client({
   disableMentions: "everyone",
   restTimeOffset: 0
 });
@@ -50,6 +50,22 @@ i18n.configure({
  */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
+
+  const voiceChannels = client.channels.cache.filter(c => c.type == 'voice');
+  voiceChannels.forEach(vc => {
+
+    vc.members.forEach(m => console.log(m.user.username))
+    console.log('----_!!!------')
+    console.log(vc)
+  })
+
+
+  // console.log(client.channels.cache.filter(channel => {
+  //   channel.members.forEach(member => {
+  //     // console.log(member)
+  //   })
+  //   return true
+  // }))
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
 });
 client.on("warn", (info) => console.log(info));
@@ -65,6 +81,21 @@ for (const file of commandFiles) {
 }
 
 client.on("message", async (message) => {
+  // console.log(message)
+
+
+  if (message.webhookID) {
+    const msg = message.content;
+    const voiceChannels = client.channels.cache.filter(c => c.type == 'voice');
+    voiceChannels.forEach(vc => {
+      vc.members.forEach(m => {
+        console.log(m.user.username)
+        if (m.user.username === 'Guilherme Sanches')
+          client.commands.get('play').execute(message, msg.slice(msg.lastIndexOf('tocar') + 'tocar '.length), vc);
+      })
+    })
+    return;
+  }
   if (message.author.bot) return;
   if (!message.guild) return;
 

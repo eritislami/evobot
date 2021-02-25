@@ -14,8 +14,24 @@ module.exports = {
   cooldown: 3,
   aliases: ["p"],
   description: i18n.__("play.description"),
-  async execute(message, args) {
-    const { channel } = message.member.voice;
+  async execute(message, args, voice) {
+    console.log('teste', voice)
+    console.log(args);
+    let channel;
+    let search;
+    try {
+      channel = message.member.voice
+
+      const permissions = channel.permissionsFor(message.client.user);
+      if (!permissions.has("CONNECT")) return message.reply(i18n.__("play.missingPermissionConnect"));
+      if (!permissions.has("SPEAK")) return message.reply(i18n.__("play.missingPermissionSpeak"));
+      search = args.join(" ");
+    } catch (e) {
+      channel = voice
+      search = args;
+    }
+    console.log('channel')
+    console.log(channel)
 
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
@@ -29,11 +45,6 @@ module.exports = {
         .reply(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
         .catch(console.error);
 
-    const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT")) return message.reply(i18n.__("play.missingPermissionConnect"));
-    if (!permissions.has("SPEAK")) return message.reply(i18n.__("play.missingPermissionSpeak"));
-
-    const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
@@ -134,7 +145,7 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send(i18n.__('play.cantJoinChannel', {error: error})).catch(console.error);
+      return message.channel.send(i18n.__('play.cantJoinChannel', { error: error })).catch(console.error);
     }
   }
 };
