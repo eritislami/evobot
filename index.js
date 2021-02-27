@@ -3,11 +3,6 @@
  */
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
-const http = require("http");
-const https = require("https");
-// const api = require("./api");
-const httpPort = process.env.HTTP_PORT || 8080;
-const httpsPort = process.env.HTTPS_PORT || 8081;
 const { join } = require("path");
 const { TOKEN, PREFIX, TRUSTED_BOTS, HTTPS } = require("./util/EvobotUtil");
 
@@ -36,24 +31,6 @@ function handleSignal(signal) {
 
 process.on('SIGTERM', handleSignal);
 process.on('SIGINT', handleSignal);
-
-/**
- * HTTP Server
- */
-if (HTTPS) {
-  try {
-    const cert = {
-      key: HTTPS.private_key,
-      cert: HTTPS.certificate
-    }
-    https.createServer(cert, (req, res) => api.handleRequest(client, req, res)).listen(httpsPort);
-    console.log(`HTTPS Server listening on port ${httpsPort}`);
-  } catch (err) {
-    console.warn(`Failed to  start HTTPS server: ${err}`)
-  }
-}
-http.createServer((req, res) => api.handleRequest(client, req, res)).listen(httpPort);
-console.log(`HTTP Server listening on port ${httpPort}`);
 
 /**
  * Client Events
