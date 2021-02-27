@@ -55,17 +55,8 @@ client.on("ready", () => {
   voiceChannels.forEach(vc => {
 
     vc.members.forEach(m => console.log(m.user.username))
-    console.log('----_!!!------')
-    console.log(vc)
   })
 
-
-  // console.log(client.channels.cache.filter(channel => {
-  //   channel.members.forEach(member => {
-  //     // console.log(member)
-  //   })
-  //   return true
-  // }))
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
 });
 client.on("warn", (info) => console.log(info));
@@ -81,9 +72,6 @@ for (const file of commandFiles) {
 }
 
 client.on("message", async (message) => {
-  // console.log(message)
-
-
   if (message.webhookID) {
     const msg = message.content;
     const voiceChannels = client.channels.cache.filter(c => c.type == 'voice');

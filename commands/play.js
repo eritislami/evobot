@@ -15,12 +15,10 @@ module.exports = {
   aliases: ["p"],
   description: i18n.__("play.description"),
   async execute(message, args, voice) {
-    console.log('teste', voice)
-    console.log(args);
     let channel;
     let search;
     try {
-      channel = message.member.voice
+      channel = message.member.voice.channel;
 
       const permissions = channel.permissionsFor(message.client.user);
       if (!permissions.has("CONNECT")) return message.reply(i18n.__("play.missingPermissionConnect"));
@@ -30,8 +28,6 @@ module.exports = {
       channel = voice
       search = args;
     }
-    console.log('channel')
-    console.log(channel)
 
     const serverQueue = message.client.queue.get(message.guild.id);
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
