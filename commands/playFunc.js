@@ -1,67 +1,40 @@
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader").default
 const https = require("https");
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, LOCALE, DEFAULT_VOLUME } = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY } = require("../util/MusicCore.js");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
 
 module.exports = {
-  name: "play",
-  cooldown: 3,
-  aliases: ["p"],
-  description: i18n.__("play.description"),
+  name: "playFunc",
   async execute(message, args) {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
+    if (!channel) return message.reply("你必須要先加入一個語音頻道！").catch(console.error);
     if (serverQueue && channel !== message.guild.me.voice.channel)
-      return message
-        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
-        .catch(console.error);
+      return message.reply(`你必須要與 ${message.client.user} 在同一個語音頻道！`).catch(console.error);
 
     if (!args.length)
       return message
-        .reply(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
+        .reply(`格式錯誤！請輸入指令： ${message.client.prefix}播放 <YouTube 鏈接/影片關鍵字>`)
         .catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT")) return message.reply(i18n.__("play.missingPermissionConnect"));
-    if (!permissions.has("SPEAK")) return message.reply(i18n.__("play.missingPermissionSpeak"));
+    if (!permissions.has("CONNECT"))
+      return message.reply("權限不足！無法連接至語音頻道！");
+    if (!permissions.has("SPEAK"))
+      return message.reply("權限不足！無法在頻道内播放音樂！");
 
     const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
-    const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
-    const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
     // Start the playlist if playlist url was provided
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      return message.client.commands.get("playlist").execute(message, args);
-    } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
-      return message.client.commands.get("playlist").execute(message, args);
-    }
-
-    if (mobileScRegex.test(url)) {
-      try {
-        https.get(url, function (res) {
-          if (res.statusCode == "302") {
-            return message.client.commands.get("play").execute(message, [res.headers.location]);
-          } else {
-            return message.reply("No content could be found at that url.").catch(console.error);
-          }
-        });
-      } catch (error) {
-        console.error(error);
-        return message.reply(error.message).catch(console.error);
-      }
-      return message.reply("Following url redirection...").catch(console.error);
+      return message.client.commands.get("youtube列表").execute(message, args);
     }
 
     const queueConstruct = {
@@ -70,7 +43,7 @@ module.exports = {
       connection: null,
       songs: [],
       loop: false,
-      volume: DEFAULT_VOLUME || 100,
+      volume: 100,
       playing: true
     };
 
@@ -84,18 +57,6 @@ module.exports = {
           title: songInfo.videoDetails.title,
           url: songInfo.videoDetails.video_url,
           duration: songInfo.videoDetails.lengthSeconds
-        };
-      } catch (error) {
-        console.error(error);
-        return message.reply(error.message).catch(console.error);
-      }
-    } else if (scRegex.test(url)) {
-      try {
-        const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
-        song = {
-          title: trackInfo.title,
-          url: trackInfo.permalink_url,
-          duration: Math.ceil(trackInfo.duration / 1000)
         };
       } catch (error) {
         console.error(error);
@@ -119,7 +80,7 @@ module.exports = {
     if (serverQueue) {
       serverQueue.songs.push(song);
       return serverQueue.textChannel
-        .send(i18n.__mf("play.queueAdded", { title: song.title, author: message.author }))
+        .send(`✅ ${message.author} 將 **${song.title}** 加入列隊`)
         .catch(console.error);
     }
 
@@ -134,7 +95,7 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send(i18n.__('play.cantJoinChannel', {error: error})).catch(console.error);
+      return message.channel.send(`無法加入語音頻道: ${error}`).catch(console.error);
     }
   }
 };
