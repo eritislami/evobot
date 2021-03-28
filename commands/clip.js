@@ -1,15 +1,17 @@
-const { PREFIX } = require("../util/EvobotUtil");
+const { PREFIX, LOCALE } = require("../util/EvobotUtil");
+const i18n = require("i18n");
+i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "clip",
-  description: "Plays a clip sound",
+  description: i18n.__('clip.description'),
   async execute(message, args) {
     const { channel } = message.member.voice;
     const queue = message.client.queue.get(message.guild.id);
 
-    if (!args.length) return message.reply(`Usage: ${PREFIX}clip <name>`).catch(console.error);
-    if (queue) return message.reply("Can't play clip because there is an active queue.");
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
+    if (!args.length) return message.reply(i18n.__("clip.usagesReply")).catch(console.error);
+    if (queue) return message.reply(i18n.__("clip.errorQueue"));
+    if (!channel) return message.reply(i18n.__("clip.errorNotChannel")).catch(console.error);
 
     const queueConstruct = {
       textChannel: message.channel,

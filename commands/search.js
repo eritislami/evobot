@@ -1,26 +1,28 @@
 const { MessageEmbed } = require("discord.js");
 const YouTubeAPI = require("simple-youtube-api");
-const { YOUTUBE_API_KEY } = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY, LOCALE } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const i18n = require("i18n");
+
+i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "search",
-  description: "Search and select videos to play",
+  description: i18n.__("search.description"),
   async execute(message, args) {
     if (!args.length)
       return message
-        .reply(`Usage: ${message.client.prefix}${module.exports.name} <Video Name>`)
+        .reply(i18n.__mf("search.usageReply", { prefix: message.client.prefix, name: module.exports.name }))
         .catch(console.error);
-    if (message.channel.activeCollector)
-      return message.reply("A message collector is already active in this channel.");
+    if (message.channel.activeCollector) return message.reply(i18n.__("search.errorAlreadyCollector"));
     if (!message.member.voice.channel)
-      return message.reply("You need to join a voice channel first!").catch(console.error);
+      return message.reply(i18n.__("search.errorNotChannel")).catch(console.error);
 
     const search = args.join(" ");
 
     let resultsEmbed = new MessageEmbed()
-      .setTitle(`**Reply with the song number you want to play**`)
-      .setDescription(`Results for: ${search}`)
+      .setTitle(i18n.__("search.resultEmbedTtile"))
+      .setDescription(i18n.__mf("search.resultEmbedDesc", { search: search }))
       .setColor("#F8AA2A");
 
     try {
@@ -30,7 +32,7 @@ module.exports = {
       let resultsMessage = await message.channel.send(resultsEmbed);
 
       function filter(msg) {
-        const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/g;
+        const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
         return pattern.test(msg.content);
       }
 
