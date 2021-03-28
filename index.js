@@ -4,9 +4,14 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, TRUSTED_BOTS, HTTPS } = require("./util/EvobotUtil");
+const { TOKEN, PREFIX, LOCALE, TRUSTED_BOTS } = require("./util/EvobotUtil");
+const path = require("path");
+const i18n = require("i18n");
 
-const client = new Client({ disableMentions: "everyone" });
+const client = new Client({ 
+  disableMentions: "everyone",
+  restTimeOffset: 0
+});
 
 client.login(TOKEN);
 client.commands = new Collection();
@@ -15,6 +20,31 @@ client.queue = new Map();
 exports.discordClient = client;
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+i18n.configure({
+  locales: ["en", "es", "ko", "fr", "tr", "pt_br", "zh_cn", "zh_tw"],
+  directory: path.join(__dirname, "locales"),
+  defaultLocale: "en",
+  objectNotation: true,
+  register: global,
+
+  logWarnFn: function (msg) {
+    console.log("warn", msg);
+  },
+
+  logErrorFn: function (msg) {
+    console.log("error", msg);
+  },
+
+  missingKeyFn: function (locale, value) {
+    return value;
+  },
+
+  mustacheConfig: {
+    tags: ["{{", "}}"],
+    disable: false
+  }
+});
 
 /**
  * Process Events
@@ -96,7 +126,7 @@ client.on("message", async (message) => {
     if (now < expirationTime) {
       const timeLeft = (expirationTime - now) / 1000;
       return message.reply(
-        `please wait ${timeLeft.toFixed(1)} more second(s) before reusing the \`${command.name}\` command.`
+        i18n.__mf("common.cooldownMessage", { time: timeLeft.toFixed(1), name: command.name })
       );
     }
   }
@@ -109,6 +139,6 @@ client.on("message", async (message) => {
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply("There was an error executing that command.").catch(console.error);
+    message.reply(i18n.__("common.errorCommend")).catch(console.error);
   }
 });

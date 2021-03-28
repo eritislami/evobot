@@ -3,7 +3,6 @@ exports.canModifyQueue = (member) => {
   const botChannel = member.guild.voice.channelID;
 
   if (channelID !== botChannel) {
-    member.send("You need to join the voice channel first!").catch(console.error);
     return;
   }
 
@@ -30,3 +29,4 @@ exports.DEFAULT_VOLUME = config ? config.DEFAULT_VOLUME: process.env.DEFAULT_VOL
 exports.FIREBASE_CONFIG = config ? config.FIREBASE_CONFIG : process.env.FIREBASE_CONFIG;
 exports.HTTPS = config ? config.HTTPS : process.env.HTTPS;
 exports.DISCORD_SERVER_ID = config ? config.DISCORD_SERVER_ID : process.env.DISCORD_SERVER_ID;
+exports.LOCALE = config ? config.LOCALE : process.env.LOCALE;
