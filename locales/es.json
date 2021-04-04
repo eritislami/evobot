@@ -142,7 +142,7 @@
   },
   "uptime": {
     "description": "Comprueba el tiempo desde que se inició el bot",
-    "result": "Tiempo funcionando: `{days} día(s),{hours} horas, {minutes} minutos, {seconds} segundos`"
+    "result": "Tiempo en linea: `{days} día(s),{hours} horas, {minutes} minutos, {seconds} segundos`"
   },
   "volume": {
     "description": "Cambia el volumen de reproducción actual",
