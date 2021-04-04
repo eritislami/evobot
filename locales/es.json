@@ -30,7 +30,7 @@
   "move": {
     "description": "Mueve canciones en la cola",
     "errorNotQueue": "No hay una cola.",
-    "usagesReply": "Cómo usarlo: {prefix}move <Queue Number>",
+    "usagesReply": "Uso correcto: {prefix}move <Queue Number>",
     "result": "<@{author}> 🚚 movío **{title}** al puesto {index} en la cola."
   },
   "nowplaying": {
@@ -56,7 +56,7 @@
     "usageReply": "Uso correcto: {prefix}play <URL YouTube | Nombre del vídeo | URL Soundcloud>",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
     "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal, comprueba los permisos!",
-    "queueAdded": "✅ Se ha añadido **{title}** a la cola de reproducción por <@{author}>",
+    "queueAdded": "✅ <@{author}> ha añadido **{title}** a la cola de reproducción",
     "cantJoinChannel": "No se pudo conectar al canal: {error}",
     "queueEnded": "❌ Cola de música finalizada.",
     "queueError": "Error: {error}",
@@ -101,7 +101,7 @@
   "remove": {
     "description": "Elimina canciones de la cola de reproducción",
     "errorNotQueue": "No hay una cola de reproduccón.",
-    "usageReply": "Uso correcto: {prefix}remove <Queue Number>",
+    "usageReply": "Uso correcto: {prefix}remove <Número en la cola>",
     "result": "<@{author}> ❌ Eliminó **{title}** de la cola de reproducción."
   },
   "resume": {
@@ -130,7 +130,7 @@
   },
   "skipto": {
     "description": "Salta a la posición seleccionada en la cola",
-    "usageReply": "Cómo usarlo: {prefix}{name} <Número en la Lista>",
+    "usageReply": "Cómo usarlo: {prefix}{name} <Número en la Cola>",
     "errorNotQueue": "No hay una cola de reproduccón.",
     "errorNotValid": "¡La cola solo tiene {length} canciones!",
     "result": "<@{author}> ⏭ Saltó {arg} canciones"
