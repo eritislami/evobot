@@ -66,8 +66,8 @@
     "resumeSong": "<@{author}> ▶ ¡Continuar la reproducción!",
     "unmutedSong": "<@{author}> 🔊 ¡Desilenció la musica!",
     "mutedSong": "<@{author}> 🔇 Silenció la música!",
-    "decreasedVolume": "<@{author}> 🔉 Bajó el volumen de la música, volumen actual {volume}%",
-    "increasedVolume": "<@{author}> 🔊 Subió el volumen de la música, volumen actual {volume}%",
+    "decreasedVolume": "<@{author}> 🔉 Bajó el volumen de la música, el volumen actual ahora es {volume}%",
+    "increasedVolume": "<@{author}> 🔊 Subió el volumen de la música, el volumen actual ahora es {volume}%",
     "loopSong": "<@{author}> El bucle actual es {loop}",
     "stopSong": "<@{author}> ⏹ ¡Paró la música!",
     "leaveChannel": "Saliendo del chat de voz..."
