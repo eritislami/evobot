@@ -30,7 +30,7 @@
   "move": {
     "description": "Mueve canciones en la cola",
     "errorNotQueue": "No hay una cola.",
-    "usagesReply": "Uso correcto: {prefix}move <Queue Number>",
+    "usagesReply": "Uso correcto: {prefix}move <Número en la Cola>",
     "result": "<@{author}> 🚚 movío **{title}** al puesto {index} en la cola."
   },
   "nowplaying": {
@@ -53,7 +53,7 @@
     "description": "Reproduce música de Youtube o Soundcloud",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estár en el mismo canal de voz que {user}",
-    "usageReply": "Uso correcto: {prefix}play <URL YouTube | Nombre del vídeo | URL Soundcloud>",
+    "usageReply": "Uso correcto: {prefix}play <URL de YouTube | Nombre del vídeo | URL de Soundcloud>",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
     "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal, comprueba los permisos!",
     "queueAdded": "✅ <@{author}> ha añadido **{title}** a la cola de reproducción",
@@ -74,7 +74,7 @@
   },
   "playlist": {
     "description": "Reproduce una lista de reproducción de youtube",
-    "usagesReply": "Uso correcto: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
+    "usagesReply": "Uso correcto: {prefix}playlist <URL de la Lista de Reproducción en YouTube | Nombre de la Lista de Reproducción>",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estár en el mismo canal de voz que {user}",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
