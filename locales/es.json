@@ -1,6 +1,6 @@
 {
   "clip": {
-    "description": "Reproduce un sounido .mp3 dentro de la carpeta sonido",
+    "description": "Reproduce un audio .mp3 dentro de la carpeta sonido",
     "usagesReply": "Cómo usarlo: /clip <nombre_clip.mp3>",
     "errorQueue": "No se puede reproducir el clip porque hay una cola activa",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!"
