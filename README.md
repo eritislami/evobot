@@ -1,3 +1,7 @@
+## Este projeto é um fork do [evobot](https://github.com/eritislami/evobot).
+
+A motivação deste projeto foi de integrar a assistente virtual Alexa à bots no discord permitindo o controle de playlists via voz sem interromper a gameplay. Para isso o bot processa mensagens enviadas através de um webhook e adiciona as músicas ao canal de voz. Além dos comandos padrões de bots explicados abaixo é possível enviar requisições HTTP POST para tocar música. O código da skill Alexa que permite colocar músicas no discord por voz está em [Troca musica](github.com/GuiSanches/Troca_musica)
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/eritislami/evobot)
 
 ![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
