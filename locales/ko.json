@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "주어진 클립을 재생합니다.",
-    "usagesReply": "Usage: /clip <name>",
+    "usageReply": "Usage: /clip <name>",
     "errorQueue": "대기열에 음악이 있을 경우 클립을 재생할 수 없습니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다."
   },
@@ -30,7 +30,7 @@
   "move": {
     "description": "대기열에서 음악을 이동합니다.",
     "errorNotQueue": "대기열에 음악이 없습니다.",
-    "usagesReply": "사용 방법: {prefix}move <Queue Number>",
+    "usageReply": "사용 방법: {prefix}move <Queue Number>",
     "result": "<@{author}> 🚚 **{title}** 를 대기열에서 {index}번째로 옮겼습니다."
   },
   "nowplaying": {
@@ -74,7 +74,7 @@
   },
   "playlist": {
     "description": "Youtube 부터 재생목록을 재생합니다.",
-    "usagesReply": "사용 방법: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
+    "usageReply": "사용 방법: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "errorNotInSameChannel": "{user} 와 같은 음성 채널에 들어와 있어야 합니다.",
     "missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",

@@ -3,7 +3,7 @@ const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default
 const https = require("https");
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, LOCALE, DEFAULT_VOLUME } = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, LOCALE, DEFAULT_VOLUME, PREFIX } = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const i18n = require("i18n");
 
@@ -14,6 +14,14 @@ module.exports = {
   cooldown: 3,
   aliases: ["p"],
   description: i18n.__("play.description"),
+  slashargs: [
+    {
+      "name": "url",
+      "description": i18n.__mf("play.usageReply", { prefix: PREFIX }), 
+      "type": 3,
+      "required": true
+    }
+  ],
   async execute(message, args) {
     const { channel } = message.member.voice;
 

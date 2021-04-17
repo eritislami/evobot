@@ -1,4 +1,4 @@
-const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
+const { canModifyQueue, LOCALE, PREFIX } = require("../util/EvobotUtil");
 const i18n = require("i18n");
 
 i18n.setLocale(LOCALE);
@@ -7,6 +7,14 @@ module.exports = {
   name: "skipto",
   aliases: ["st"],
   description: i18n.__("skipto.description"),
+  slashargs: [
+    {
+      "name": "queue-number",
+      "description": i18n.__mf("skipto.usageReply", { prefix: PREFIX }), 
+      "type": 3,
+      "required": true
+    }
+  ],
   execute(message, args) {
     if (!args.length || isNaN(args[0]))
       return message
