@@ -1,7 +1,7 @@
 {
   "clip": {
-    "description": "Ecoute le son d'un clip",
-    "usagesReply": "Usage: /clip <name>",
+    "description": "Écoute le son d'un clip",
+    "usagesReply": "Utilisation: /clip <nom>",
     "errorQueue": "Impossible d'écouter le clip car une file d'attente est active.",
     "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!"
   },
@@ -44,17 +44,17 @@
     "result": "📈 Ping vers l'API: {ping} ms"
   },
   "play": {
-    "description": "Ecoute de la musqiue depuis YouTube ou Soundcloud",
-    "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!",
-    "errorNotInSameChannel": "Vous devez être dans le même canal que {user}",
-    "usageReply": "Usage: {prefix}play <YouTube URL | Nom Vidéo | Soundcloud URL>",
-    "missingPermissionConnect": "Impossible de se connecter au canal vocal, autorisations manquantes",
-    "missingPermissionSpeak": "Je ne peux pas parler dans ce canal vocal, assurez-vous que j'ai les autorisations appropriées!",
+    "description": "Écoute de la musique depuis YouTube ou SoundCloud",
+    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
+    "errorNotInSameChannel": "Vous devez être dans le même salon que {user}",
+    "usageReply": "Utilisation: {prefix}play <URL YouTube | Nom de la vidéo | URL SoundCloud>",
+    "missingPermissionConnect": "Impossible de se connecter au salon vocal, autorisations manquantes",
+    "missingPermissionSpeak": "Je ne peux pas parler dans ce salon vocal, assurez-vous que j'ai les autorisations!",
     "queueAdded": "✅ **{title}** a été ajouté à la file d'attente par <@{author}>",
-    "cantJoinChannel": "Impossible de rejoindre le channel: {error}",
+    "cantJoinChannel": "Impossible de rejoindre le salon: {error}",
     "queueEnded": "❌ La file d'attente est terminée.",
     "queueError": "Erreur: {error}",
-    "startedPlaying": "🎶 A commencé à jouer: **{title}** {url}",
+    "startedPlaying": "🎶 Commence à jouer: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ a skip la musique.",
     "pauseSong": "<@{author}> ⏸ a mis en pause la musique.",
     "resumeSong": "<@{author}> ▶ repris la musique!",
@@ -64,20 +64,20 @@
     "increasedVolume": "<@{author}> 🔊 augmente le volume, le volume est maintenant {volume}%",
     "loopSong": "<@{author}> Loop est maintenant {loop}",
     "stopSong": "<@{author}> ⏹ arrête la musique!",
-    "leaveChannel": "Quitte le canal vocal..."
+    "leaveChannel": "Quitte le salon vocal..."
   },
   "playlist": {
-    "description": "Ecoute une playlist venant de youtube",
-    "usagesReply": "Usage: {prefix}playlist <URL Playlist Youtube | Nom Playlist>",
-    "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!",
-    "errorNotInSameChannel": "Vous devez être dans le même canal que {user}",
-    "missingPermissionConnect": "Impossible de se connecter au canal vocal, autorisations manquantes",
-    "missingPermissionSpeak": "Je ne peux pas parler dans ce canal vocal, assurez-vous que j'ai les autorisations appropriées!",
+    "description": "Écoute une playlist venant de YouTube",
+    "usagesReply": "Utilisation: {prefix}playlist <URL de la playlist YouTube | Nom de la playlist>",
+    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
+    "errorNotInSameChannel": "Vous devez être dans le même salon que {user}",
+    "missingPermissionConnect": "Impossible de se connecter au salon vocal, autorisations manquantes",
+    "missingPermissionSpeak": "Je ne peux pas parler dans ce salon vocal, assurez-vous que j'ai les autorisations!",
     "errorNotFoundPlaylist": "Playlist introuvable :(",
-    "fetchingPlaylist": "⌛ récupére la playlist...",
+    "fetchingPlaylist": "⌛ récupère la playlist...",
     "playlistCharLimit": "\nListe de lecture supérieure à la limite de caractères...",
     "startedPlaylist": "<@{author}> a commencé une playlist",
-    "cantJoinChannel": "Impossible de rejoindre le channel: {error}"
+    "cantJoinChannel": "Impossible de rejoindre le salon: {error}"
   },
   "pruning": {
     "description": "Possibilité de supprimer les messages du bot",
@@ -95,7 +95,7 @@
   "remove": {
     "description": "Supprimer la chanson de la file d'attente",
     "errorNotQueue": "Il n'y a pas de file d'attente.",
-    "usageReply": "Usage: {prefix}remove <nombre de la musique dans la file d'attente>",
+    "usageReply": "Utilisation: {prefix}remove <Nombre de la musique dans la file d'attente>",
     "result": "<@{author}> ❌ a rétiré **{title}** de la file d'attente."
   },
   "resume": {
@@ -106,9 +106,9 @@
   },
   "search": {
     "description": "Recherchez et sélectionnez des vidéos à écouter",
-    "usageReply": "Usage: {prefix}{name} <Nom Vidéo>",
-    "errorAlreadyCollector": "Un collecteur de messages est déjà actif dans ce canal.",
-    "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!",
+    "usageReply": "Utilisation: {prefix}{name} <Nom de la vidéo>",
+    "errorAlreadyCollector": "Un collecteur de messages est déjà actif dans ce salon.",
+    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
     "resultEmbedTtile": "**Répondez avec le numéro de la chanson que vous souhaitez écouter**",
     "resultEmbedDesc": "Résultat pour: {search}"
   },
@@ -124,7 +124,7 @@
   },
   "skipto": {
     "description": "Passer au numéro de file d'attente sélectionné",
-    "usageReply": "Usage: {prefix}{name} <Nombre dans la file d'attente>",
+    "usageReply": "Utilisation: {prefix}{name} <Nombre dans la file d'attente>",
     "errorNotQueue": "Il n'y a pas de file d'attente.",
     "errorNotValid": "La file d'attente contient seulement {length} chansons!",
     "result": "<@{author}> ⏭ skip {arg} musiques"
@@ -141,7 +141,7 @@
   "volume": {
     "description": "Changer le volume de la musique en cours de lecture",
     "errorNotQueue": "Il n'y a rien à jouer.",
-    "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!",
+    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
     "currentVolume": "🔊 Le volume actuelle est de: **{volume}%**",
     "errorNotNumber": "Veuillez utiliser un nombre pour régler le volume.",
     "errorNotValid": "Veuillez utiliser un nombre compris entre 0 et 100.",
@@ -152,14 +152,14 @@
     "off": "**off**",
     "enabled": "**activer**",
     "disabled": "**désactiver**",
-    "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!",
+    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
     "cooldownMessage": "S'il vous plaît, attendez {time} secondes avant de réutiliser la commande `{name}`.",
     "errorCommend": "Une erreur s'est produite lors de l'exécution de cette commande."
   },
   "move": {
     "description": "Déplacez les chansons de la file d'attente",
     "errorNotQueue": "Il n'y a pas de file d'attente.",
-    "usagesReply": "Usage: {prefix}move <Nombre dans la file d'attente>",
+    "usagesReply": "Utilisation: {prefix}move <Nombre dans la file d'attente>",
     "result": "<@{author}> 🚚 a déplacé **{title}** vers {index} dans la file d'attente."
   }
 }
