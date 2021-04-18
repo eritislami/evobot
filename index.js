@@ -8,7 +8,7 @@ const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
 const path = require("path");
 const i18n = require("i18n");
 
-const client = new Client({ 
+const client = new Client({
   disableMentions: "everyone",
   restTimeOffset: 0
 });
@@ -21,7 +21,7 @@ const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 i18n.configure({
-  locales: ["de", "en", "es", "fr", "it", "ko", "pt_br", "ru", "tr", "zh_cn", "zh_tw"],
+  locales: ["de", "en", "es", "fr", "it", "ko", "nl", "pt_br", "ru", "tr", "zh_cn", "zh_tw"],
   directory: path.join(__dirname, "locales"),
   defaultLocale: "en",
   objectNotation: true,
