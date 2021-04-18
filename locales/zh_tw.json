@@ -9,7 +9,7 @@
     "description": "列出所有本地音樂"
   },
   "help": {
-    "description": "列出所有的指令已經詳細資訊",
+    "description": "列出所有指令的詳細資訊",
     "embedTitle": "{botname} 幫助",
     "embedDescription": "所有的指令清單"
   },
