@@ -60,6 +60,7 @@
     "cantJoinChannel": "No se pudo conectar al canal: {error}",
     "queueEnded": "❌ Cola de música finalizada.",
     "queueError": "Error: {error}",
+    "streamNotAllowed": "¡La transmisión de audio en vivo no está habilitada!",
     "startedPlaying": "🎶 Ahora reproduciendo: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ ¡Saltó la canción!",
     "pauseSong": "<@{author}> ⏸ ¡Pausó la música!",

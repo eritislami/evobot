@@ -60,6 +60,7 @@
     "cantJoinChannel": "Impossibile unirsi al canale: {error}",
     "queueEnded": "❌ Coda di musica terminata.",
     "queueError": "Errore: {error}",
+    "streamNotAllowed": "Lo streaming audio dal vivo non è abilitato!",
     "startedPlaying": "🎶 Ha iniziato a giocare: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ ha saltato la canzone",
     "pauseSong": "<@{author}> ⏸ Musica in pausa.",

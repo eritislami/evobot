@@ -60,6 +60,7 @@
     "cantJoinChannel": "Could not join the channel: {error}",
     "queueEnded": "❌ Music queue ended.",
     "queueError": "Error: {error}",
+    "streamNotAllowed": "Streaming live audio is not enabled!",
     "startedPlaying": "🎶 Started playing: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ skipped the song",
     "pauseSong": "<@{author}> ⏸ paused the music.",

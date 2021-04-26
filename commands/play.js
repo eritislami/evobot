@@ -1,9 +1,15 @@
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader").default
+const scdl = require("soundcloud-downloader").default;
 const https = require("https");
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, LOCALE, DEFAULT_VOLUME } = require("../util/EvobotUtil");
+const {
+  YOUTUBE_API_KEY,
+  SOUNDCLOUD_CLIENT_ID,
+  LOCALE,
+  DEFAULT_VOLUME,
+  ALLOW_AUDIO_STREAM
+} = require("../util/EvobotUtil");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const i18n = require("i18n");
 
@@ -37,6 +43,7 @@ module.exports = {
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
+    const streamRegex = /^https?:\/\/.*(mp3)$/gi;
     const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
@@ -101,6 +108,16 @@ module.exports = {
         console.error(error);
         return message.reply(error.message).catch(console.error);
       }
+    } else if (streamRegex.test(url)) {
+      if (ALLOW_AUDIO_STREAM) {
+        song = {
+          title: "Audio Stream",
+          url: url,
+          duration: 86400 // 24 hours
+        };
+      } else {
+        return message.reply(i18n.__mf("play.streamNotAllowed")).catch(console.error);
+      }
     } else {
       try {
         const results = await youtube.searchVideos(search, 1, { part: "snippet" });
@@ -134,7 +151,7 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send(i18n.__('play.cantJoinChannel', {error: error})).catch(console.error);
+      return message.channel.send(i18n.__("play.cantJoinChannel", { error: error })).catch(console.error);
     }
   }
 };

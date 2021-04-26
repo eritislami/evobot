@@ -60,6 +60,7 @@
     "cantJoinChannel": "无法加入语音频道: {error}",
     "queueEnded": "❌ 音乐队列完结",
     "queueError": "错误: {error}",
+    "streamNotAllowed": "流音频直播未启用",
     "startedPlaying": "🎶 开始播放: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ 跳过了歌曲",
     "pauseSong": "<@{author}> ⏸ 暂停了歌曲 music.",

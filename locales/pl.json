@@ -60,6 +60,7 @@
     "cantJoinChannel": "Brak możliwości dołączenia na kanał: {error}",
     "queueEnded": "❌ Kolejka odtwarzania skończona.",
     "queueError": "Błąd: {error}",
+    "streamNotAllowed": "Przesyłanie strumieniowe dźwięku na żywo nie jest włączone!",
     "startedPlaying": "🎶 Zaczęto odtwarzanie: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ pominął",
     "pauseSong": "<@{author}> ⏸ zatrzymał odtwarzanie.",

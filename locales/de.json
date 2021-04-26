@@ -60,6 +60,7 @@
     "cantJoinChannel": "Konnte dem Channel nicht joinen, Fehlercode: {error}",
     "queueEnded": "❌ Music-Queue beended.",
     "queueError": "Error: {error}",
+    "streamNotAllowed": "Das Streamen von Live-Audio ist nicht aktiviert!",
     "startedPlaying": "🎶 Spiele jetzt: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ hat den Song übersprungen.",
     "pauseSong": "<@{author}> ⏸ hat die Musik pausiert.",
