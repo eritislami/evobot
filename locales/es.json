@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 Subió el volumen de la música, el volumen actual ahora es {volume}%",
     "loopSong": "<@{author}> El bucle actual es {loop}",
     "stopSong": "<@{author}> ⏹ ¡Paró la música!",
-    "leaveChannel": "Saliendo del chat de voz..."
+    "leaveChannel": "Saliendo del chat de voz...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Reproduce una lista de reproducción de youtube",

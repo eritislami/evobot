@@ -64,7 +64,8 @@
     "increasedVolume": "<@{author}> 🔊 augmente le volume, le volume est maintenant {volume}%",
     "loopSong": "<@{author}> Loop est maintenant {loop}",
     "stopSong": "<@{author}> ⏹ arrête la musique!",
-    "leaveChannel": "Quitte le salon vocal..."
+    "leaveChannel": "Quitte le salon vocal...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Écoute une playlist venant de YouTube",

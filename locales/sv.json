@@ -70,7 +70,8 @@
       "increasedVolume": "<@{author}> 🔊 ökade volymen, volymen är nu {volume}%",
       "loopSong": "<@{author}> Loop är nu {loop}",
       "stopSong": "<@{author}> ⏹ stoppade musiken!",
-      "leaveChannel": "Lämna röstkanal..."
+      "leaveChannel": "Lämna röstkanal...",
+      "songNotFound": "Audio Not Found"
     },
     "playlist": {
       "description": "Spela en spellista från youtube",

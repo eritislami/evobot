@@ -104,6 +104,12 @@ module.exports = {
     } else {
       try {
         const results = await youtube.searchVideos(search, 1, { part: "snippet" });
+        // PATCH 1 : avoid cases when there are nothing on the search results.
+        if (results.length <= 0) {
+          // No video results.
+          message.reply(i18n.__mf("play.songNotFound")).catch(console.error);
+          return;
+        }
         songInfo = await ytdl.getInfo(results[0].url);
         song = {
           title: songInfo.videoDetails.title,

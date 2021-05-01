@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 verhoogde het volume, het volume is nu {volume}%",
     "loopSong": "<@{author}> Herhaling is nu {loop}",
     "stopSong": "<@{author}> ⏹ stopte de muziek!",
-    "leaveChannel": "Voice channel verlaten..."
+    "leaveChannel": "Voice channel verlaten...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Speel een playlist af van youtube",

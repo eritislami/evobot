@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 podniósł poziom głośności, wynosi teraz: {volume}%",
     "loopSong": "<@{author}> Przełączył pętlę na: {loop}",
     "stopSong": "<@{author}> ⏹ Zatrzymał odtwarzanie!",
-    "leaveChannel": "Opuszczanie kanału głosowego..."
+    "leaveChannel": "Opuszczanie kanału głosowego...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Odtwarza listę odtwarzania z youtuba",
