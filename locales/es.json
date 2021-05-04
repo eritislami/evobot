@@ -1,6 +1,6 @@
 {
   "clip": {
-    "description": "Reproduce un sounido .mp3 dentro de la carpeta sonido",
+    "description": "Reproduce un sonido .mp3 dentro de la carpeta sonido",
     "usagesReply": "Cómo usarlo: /clip <nombre_clip.mp3>",
     "errorQueue": "No se puede reproducir el clip porque hay una cola activa",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!"
@@ -9,7 +9,7 @@
     "description": "Lista todos los clips"
   },
   "help": {
-    "description": "Muestratodos los comandos y descripciones",
+    "description": "Muestra todos los comandos y descripciones",
     "embedTitle": "Ayuda con {botname} ",
     "embedDescription": "Listado de comandos"
   },
@@ -24,13 +24,13 @@
   "lyrics": {
     "description": "Obtén la letra de la canción actual",
     "errorNotQueue": "No se está reproduciendo nada.",
-    "lyricsNotFound": "No se encontraron letras para {title}.",
+    "lyricsNotFound": "No se encontró la letra de {title}.",
     "embedTitle": "{title} - Letra"
   },
   "move": {
     "description": "Mueve canciones en la cola",
     "errorNotQueue": "No hay una cola.",
-    "usagesReply": "Cómo usarlo: {prefix}move <Queue Number>",
+    "usagesReply": "Uso correcto: {prefix}move <Número en la Cola>",
     "result": "<@{author}> 🚚 movío **{title}** al puesto {index} en la cola."
   },
   "nowplaying": {
@@ -43,7 +43,7 @@
   "pause": {
     "description": "Pausa la canción que se está reproduciendo actualmente",
     "errorNotQueue": "No se está reproduciendo nada.",
-    "result": "<@{author}> ⏸ pauso la música."
+    "result": "<@{author}> ⏸ Pausó la música."
   },
   "ping": {
     "description": "Muestra la latencia media del bot (ping)",
@@ -53,41 +53,42 @@
     "description": "Reproduce música de Youtube o Soundcloud",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estár en el mismo canal de voz que {user}",
-    "usageReply": "Cómo usarlo: {prefix}play <URL YouTube | Nombre del vídeo | URL Soundcloud>",
+    "usageReply": "Uso correcto: {prefix}play <URL de YouTube | Nombre del vídeo | URL de Soundcloud>",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
-    "missingPermissionSpeak": "¡No se pudo reproducir sonidos en este canal, comprueba los permisos!",
-    "queueAdded": "✅ Se ha añadido **{title}** a la cola de reproducción por <@{author}>",
+    "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal, comprueba los permisos!",
+    "queueAdded": "✅ <@{author}> ha añadido **{title}** a la cola de reproducción",
     "cantJoinChannel": "No se pudo conectar al canal: {error}",
     "queueEnded": "❌ Cola de música finalizada.",
     "queueError": "Error: {error}",
     "startedPlaying": "🎶 Ahora reproduciendo: **{title}** {url}",
-    "skipSong": "<@{author}> ⏩ Canción salteada.",
-    "pauseSong": "<@{author}> ⏸ Musica pausada.",
-    "resumeSong": "<@{author}> ▶ ¡Continuar con la reproducción!",
-    "unmutedSong": "<@{author}> 🔊 ¡Desmuteo la musica!",
-    "mutedSong": "<@{author}> 🔇 Muteo la música!",
-    "decreasedVolume": "<@{author}> 🔉 Bajó la música, volumen actual {volume}%",
-    "increasedVolume": "<@{author}> 🔊 Subió la música, volumen actual {volume}%",
+    "skipSong": "<@{author}> ⏩ ¡Saltó la canción!",
+    "pauseSong": "<@{author}> ⏸ ¡Pausó la música!",
+    "resumeSong": "<@{author}> ▶ ¡Continuó la reproducción!",
+    "unmutedSong": "<@{author}> 🔊 ¡Desilenció la musica!",
+    "mutedSong": "<@{author}> 🔇 ¡Silenció la música!",
+    "decreasedVolume": "<@{author}> 🔉 Bajó el volumen de la música, el volumen actual ahora es {volume}%",
+    "increasedVolume": "<@{author}> 🔊 Subió el volumen de la música, el volumen actual ahora es {volume}%",
     "loopSong": "<@{author}> El bucle actual es {loop}",
     "stopSong": "<@{author}> ⏹ ¡Paró la música!",
-    "leaveChannel": "Abandonando chat de voz..."
+    "leaveChannel": "Saliendo del chat de voz...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Reproduce una lista de reproducción de youtube",
-    "usagesReply": "Cómo usarlo: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
+    "usagesReply": "Uso correcto: {prefix}playlist <URL de la Lista de Reproducción en YouTube | Nombre de la Lista de Reproducción>",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estár en el mismo canal de voz que {user}",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
-    "missingPermissionSpeak": "¡No se pudo reproducir sonidos en este canal, comprueba los permisos!",
+    "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal, comprueba los permisos!",
     "errorNotFoundPlaylist": "No se encontró la lista de reproducción :(",
-    "fetchingPlaylist": "⌛ Capturando la lista de reproducción...",
+    "fetchingPlaylist": "⌛ Obteniendo la lista de reproducción...",
     "playlistCharLimit": "\nLista de reproducción más larga que el límite de caracteres por mensaje...",
     "startedPlaylist": "<@{author}> Comenzó a reproducir una lista de reproducción",
     "cantJoinChannel": "No se pudo conectar al canal: {error}"
   },
   "pruning": {
     "description": "Activa la eliminación de los mensajes del bot",
-    "errorWritingFile": "Se produjo un error de escritura en el archivo.",
+    "errorWritingFile": "Se produjo un error escribiendo el archivo.",
     "result": "El modo actual es {result}"
   },
   "queue": {
@@ -101,7 +102,7 @@
   "remove": {
     "description": "Elimina canciones de la cola de reproducción",
     "errorNotQueue": "No hay una cola de reproduccón.",
-    "usageReply": "Cómo usarlo: {prefix}remove <Queue Number>",
+    "usageReply": "Uso correcto: {prefix}remove <Número en la Cola>",
     "result": "<@{author}> ❌ Eliminó **{title}** de la cola de reproducción."
   },
   "resume": {
@@ -112,28 +113,28 @@
   },
   "search": {
     "description": "Busca y selecciona vídeos para reproducir.",
-    "usageReply": "Cómo usarlo: {prefix}{name} <Video Name>",
+    "usageReply": "Uso correcto: {prefix}{name} <Nombre del Vídeo>",
     "errorAlreadyCollector": "Un recolector de mensajes ya está activo en el servidor actualmente.",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
-    "resultEmbedTtile": "**Responde con el número de la canción que quieres**",
+    "resultEmbedTtile": "**Responde con el número de la canción que quieras**",
     "resultEmbedDesc": "Resultados para: {search}"
   },
   "shuffle": {
-    "description": "Desordenar la cola de reproducción",
-    "errorNotQueue": "No hay una cola de reproduccón.",
-    "result": "<@{author}> 🔀 shuffled the queue"
+    "description": "Randomizar la cola de reproducción",
+    "errorNotQueue": "No hay una cola de reproducción.",
+    "result": "<@{author}> 🔀 ha randomizado la cola"
   },
   "skip": {
     "description": "Salta a la sigiente canción en la cola de reproducción",
-    "errorNotQueue": "No se está reproduciendo nada que pueda saltear para ti.",
-    "result": "<@{author}> ⏭ Salteo la canción"
+    "errorNotQueue": "No se está reproduciendo nada que pueda saltar para ti.",
+    "result": "<@{author}> ⏭ Saltó la canción"
   },
   "skipto": {
     "description": "Salta a la posición seleccionada en la cola",
-    "usageReply": "Cómo usarlo: {prefix}{name} <Queue Number>",
+    "usageReply": "Cómo usarlo: {prefix}{name} <Número en la Cola>",
     "errorNotQueue": "No hay una cola de reproduccón.",
     "errorNotValid": "¡La cola solo tiene {length} canciones!",
-    "result": "<@{author}> ⏭ Salteo {arg} canciones"
+    "result": "<@{author}> ⏭ Saltó {arg} canciones"
   },
   "stop": {
     "description": "Para la música",
@@ -142,7 +143,7 @@
   },
   "uptime": {
     "description": "Comprueba el tiempo desde que se inició el bot",
-    "result": "Tiempo funcionando: `{days} day(s),{hours} hours, {minutes} minutes, {seconds} seconds`"
+    "result": "Tiempo en linea: `{days} día(s),{hours} horas, {minutes} minutos, {seconds} segundos`"
   },
   "volume": {
     "description": "Cambia el volumen de reproducción actual",

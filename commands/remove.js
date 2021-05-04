@@ -26,12 +26,18 @@ module.exports = {
       });
 
       queue.textChannel.send(
-        `${message.author} ❌ removed **${removed.map((song) => song.title).join("\n")}** from the queue.`
+        i18n.__mf("remove.result", {
+          title: removed.map((song) => song.title).join("\n"),
+          author: message.author.id
+        })
       );
     } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= queue.songs.length) {
       console.log("we got elsed!");
       return queue.textChannel.send(
-        `${message.author} ❌ removed **${queue.songs.splice(args[0] - 1, 1)[0].title}** from the queue.`
+        i18n.__mf("remove.result", {
+          title: queue.songs.splice(args[0] - 1, 1)[0].title,
+          author: message.author.id
+        })
       );
     } else {
       console.log("we got the last one");
