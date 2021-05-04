@@ -70,7 +70,8 @@
       "increasedVolume": "<@{author}> 🔊 sesi artırdı ses seviyesi {volume}%",
       "loopSong": "<@{author}> Döngü şuan {loop}",
       "stopSong": "<@{author}> ⏹ müziği durdurdu!",
-      "leaveChannel": "Sesli kanaldan çıkıyor..."
+      "leaveChannel": "Sesli kanaldan çıkıyor...",
+      "songNotFound": "Audio Not Found"
     },
     "playlist": {
       "description": "Youtubeden bir çalma listesi oynat",

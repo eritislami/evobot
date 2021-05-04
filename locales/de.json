@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 hat die Lautstärke erhöht, sie ist jetzt auf {volume}%",
     "loopSong": "<@{author}> Musikschleife ist nun auf {loop}",
     "stopSong": "<@{author}> ⏹ hat die Musik gestoppt!",
-    "leaveChannel": "Verlasse den Voice-Channel..."
+    "leaveChannel": "Verlasse den Voice-Channel...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Spielt eine Playlist von Youtube ab",
