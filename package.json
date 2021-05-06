@@ -26,5 +26,6 @@
   },
   "scripts": {
     "start": "node index.js"
+    "shard": "node shard.js"
   }
 }
