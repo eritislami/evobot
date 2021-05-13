@@ -28,7 +28,7 @@ module.exports = {
       return message.channel
         .send(
           i18n.__("pruning.result", {
-            loop: config.PRUNING ? i18n.__("common.enabled") : i18n.__("common.disabled")
+            result: config.PRUNING ? i18n.__("common.enabled") : i18n.__("common.disabled")
           })
         )
         .catch(console.error);
