@@ -60,6 +60,7 @@
     "cantJoinChannel": "Ik kon de channel niet betreden: {error}",
     "queueEnded": "❌ Muziek wachtrij afgelopen.",
     "queueError": "Foutmelding: {error}",
+    "streamNotAllowed": "Het streamen van live audio is niet ingeschakeld!",
     "startedPlaying": "🎶 Gestart met afspelen: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ skipte het liedje",
     "pauseSong": "<@{author}> ⏸ pauzeerde de muziek!.",

@@ -1,166 +1,167 @@
 {
-    "clip": {
-      "description": "Klip oynatılıyor.",
-      "usagesReply": "Kullanım: /clip <isim>",
-      "errorQueue": "Sırada klip olduğu için oynatılamıyor.",
-      "errorNotChannel": "Bir sesli kanala girmelisiniz !"
-    },
-    "clips": {
-      "description": "Tüm klipleri listele"
-    },
-    "help": {
-      "description": "Tüm komutları ve açıklamaları görüntüle",
-      "embedTitle": "{botname} Yardım",
-      "embedDescription": "Tüm komutlar"
-    },
-    "invite": {
-      "description": "Bot davet bağlantısı gönder"
-    },
-    "loop": {
-      "description": "Müzik döngüsünü aç/kapa",
-      "errorNotQueue": "Hiçbir şey oynatılmıyor.",
-      "result": "Döngü {loop}"
-    },
-    "lyrics": {
-      "description": "Çalan şarkının sözlerini getir.",
-      "errorNotQueue": "Hiçbir şey oynatılmıyor.",
-      "lyricsNotFound": "Şarkı sözü bulunamadı {title}.",
-      "embedTitle": "{title} - Sözleri"
-    },
-    "move": {
-      "description": "Şarkıyı sırada taşı",
-      "errorNotQueue": "Liste bulunamadı.",
-      "usagesReply": "Kullanım: {prefix} taşı <Liste numarası>",
-      "result": "<@{author}> 🚚  **{title}** klibini {index}.sıraya taşıdı."
-    },
-    "nowplaying": {
-      "description": "Şimdi çalan şarkıyı göster",
-      "errorNotQueue": "Hiçbir şey oynatılmıyor.",
-      "embedTitle": "Şimdi oynatılıyor.",
-      "live": " ◉ Canlı",
-      "timeRemaining": "Kalan süre: {time}"
-    },
-    "pause": {
-      "description": "Oynatılan klibi durdur.",
-      "errorNotQueue": "Hiçbir şey oynatılmıyor.",
-      "result": "<@{author}> ⏸ müziği durdurdu."
-    },
-    "ping": {
-      "description": "Bot ping testi",
-      "result": "📈 Ortalama Ping: {ping} ms"
-    },
-    "play": {
-      "description": "YouTube veya Soundcloud'dan ses çalar",
-      "errorNotChannel": "Bir sesli kanala girmelisiniz !",
-      "errorNotInSameChannel": "Aynı kanalda olmalısınız {user}",
-      "usageReply": "Kullanım: {prefix}oynat <YouTube URL | Video İsmi | Soundcloud URL>",
-      "missingPermissionConnect": "Kanala katılınamadı,gerekli izinler yok.",
-      "missingPermissionSpeak": "Bu ses kanalında konuşamıyorum, uygun izinlere sahip olduğumdan emin olun!",
-      "queueAdded": "✅ **{title}** <@{author}> tarafından kuyruğa eklendi.",
-      "cantJoinChannel": "Kanala katılamadı: {error}",
-      "queueEnded": "❌ Müzik listesi bitti.",
-      "queueError": "Hata: {error}",
-      "startedPlaying": "🎶 Oynatmaya başladı: **{title}** {url}",
-      "skipSong": "<@{author}> ⏩ şarkıyı atladı",
-      "pauseSong": "<@{author}> ⏸ müziği durdurdu.",
-      "resumeSong": "<@{author}> ▶ müziği yeniden oynattı!",
-      "unmutedSong": "<@{author}> 🔊 şarkının sesini açtı!",
-      "mutedSong": "<@{author}> 🔇 şarkıyı susturdu!",
-      "decreasedVolume": "<@{author}> 🔉 sesi azalttı ses seviyesi {volume}%",
-      "increasedVolume": "<@{author}> 🔊 sesi artırdı ses seviyesi {volume}%",
-      "loopSong": "<@{author}> Döngü şuan {loop}",
-      "stopSong": "<@{author}> ⏹ müziği durdurdu!",
-      "leaveChannel": "Sesli kanaldan çıkıyor...",
-      "songNotFound": "Audio Not Found"
-    },
-    "playlist": {
-      "description": "Youtubeden bir çalma listesi oynat",
-      "usagesReply": "Kullanım: {prefix}şarkı listesi <YouTube Çalma listesi linki | Liste adı>",
-      "errorNotChannel": "Önce sesli kanala girmelisiniz",
-      "errorNotInSameChannel": "Aynı kanalda olmalısınız {user}",
-      "missingPermissionConnect": "Kanala katılınamadı,gerekli izinler yok.",
-      "missingPermissionSpeak": "Bu ses kanalında konuşamıyorum, uygun izinlere sahip olduğumdan emin olun!",
-      "errorNotFoundPlaylist": "Çalma listesi bulunamadı :(",
-      "fetchingPlaylist": "⌛ Oynatma listesi getiriliyor...",
-      "playlistCharLimit": "\nOynatma listesi karakter sınırından büyük...",
-      "startedPlaylist": "<@{author}> çalma listesini açtı",
-      "cantJoinChannel": "Kanala katılamadı: {error}"
-    },
-    "pruning": {
-      "description": "Bot mesajlarının budamasını değiştir",
-      "errorWritingFile": "Dosyaya yazılırken bir hata oluştu.",
-      "result": "Mesaj kısaltma {result}"
-    },
-    "queue": {
-      "description": "Müzik listesini ve şuan çalan şarkıyı göster.",
-      "missingPermissionMessage": "Mesaj yönetimi ve reaksiyon yapılamadı izinler eksik.",
-      "errorNotQueue": "❌ **Bu sunucuda hiçbir şey oynatılmıyor**",
-      "currentPage": "Mevcut sayfa - ",
-      "embedTitle": "Şarkı listesi\n",
-      "embedCurrentSong": "**Çalan şarkı - [{title}]({url})**\n\n{info}"
-    },
-    "remove": {
-      "description": "Şarkı listeden kaldırıldı",
-      "errorNotQueue": "Bir liste yok.",
-      "usageReply": "Kullanım: {prefix}kaldır <Liste numarası>",
-      "result": "<@{author}> ❌ listeden kaldırdı **{title}**"
-    },
-    "resume": {
-      "description": "Şarkıyı devam ettir",
-      "errorNotQueue": "Hiçbir şey çalınmıyor.",
-      "resultNotPlaying": "<@{author}> ▶ şarkıyı devam ettirdi!",
-      "errorPlaying": "Liste durdurulmadı."
-    },
-    "search": {
-      "description": "Oynatmak için klip arayın ve seçin",
-      "usageReply": "Kullanım: {prefix}{name} <Video İsmi>",
-      "errorAlreadyCollector": "Bu kanalda zaten aktif bir mesaj toplayıcı var.",
-      "errorNotChannel": "Önce bir sesli kanala katılmalısınız!",
-      "resultEmbedTtile": "**Oynatmak istediğiniz şarkının numarasını yazınız**",
-      "resultEmbedDesc": "Sonuçlar: {search}"
-    },
-    "shuffle": {
-      "description": "Listeyi karıştır",
-      "errorNotQueue": "Bir liste yok.",
-      "result": "<@{author}> 🔀 listeyi karıştırdı"
-    },
-    "skip": {
-      "description": "Çalan şarkıyı atla",
-      "errorNotQueue": "Sırada başka şarkı olmadığından atlayamıyorum.",
-      "result": "<@{author}> ⏭ şarkıyı geçti"
-    },
-    "skipto": {
-      "description": "Seçili liste numarasına atla",
-      "usageReply": "Kullanım: {prefix}{name} <Liste numarası>",
-      "errorNotQueue": "Bir liste yok.",
-      "errorNotValid": "Listede sadece {length} şarkı var!",
-      "result": "<@{author}> ⏭ şarkıyı {arg} atladı"
-    },
-    "stop": {
-      "description": "Şarkıyı durdurur",
-      "errorNotQueue": "Şuan hiçbir şey çalınmıyor.",
-      "result": "<@{author}> ⏹ müziği durdurdu"
-    },
-    "uptime": {
-      "description": "Ne kadar süredir online ",
-      "result": "Online süresi: `{days} gün,{hours} saat, {minutes} dakika, {seconds} saniye`"
-    },
-    "volume": {
-      "description": "Çalan şarkının ses seviyesini değiştirin",
-      "errorNotQueue": "Şuan hiçbir şey çalınmıyor.",
-      "errorNotChannel": "Önce sesli sohbet kanalına girmelisiniz!",
-      "currentVolume": "🔊 Mevcut ses yüksekliği: **{volume}%**",
-      "errorNotNumber": "Lütfen ses seviyesini ayarlamak için sayı giriniz.",
-      "errorNotValid": "Lütfen 0-100 arasında bir sayı giriniz",
-      "result": "Ses seviyesi: **{arg}%**"
-    },
-    "common": {
-      "on": "**açık**",
-      "off": "**kapalı**",
-      "enabled": "**etkinleştirildi**",
-      "disabled": "**devre dışı bırakıldı**",
-      "errorNotChannel": "Önce sesli sohbet kanalına girmelisiniz!",
-      "cooldownMessage": "`{name}` komutunu kullanmak için {time} saniye beklemelisiniz .",
-      "errorCommend": "Komutu gerçekleştirirken bir hata oluştu."
-    }
+  "clip": {
+    "description": "Klip oynatılıyor.",
+    "usagesReply": "Kullanım: /clip <isim>",
+    "errorQueue": "Sırada klip olduğu için oynatılamıyor.",
+    "errorNotChannel": "Bir sesli kanala girmelisiniz !"
+  },
+  "clips": {
+    "description": "Tüm klipleri listele"
+  },
+  "help": {
+    "description": "Tüm komutları ve açıklamaları görüntüle",
+    "embedTitle": "{botname} Yardım",
+    "embedDescription": "Tüm komutlar"
+  },
+  "invite": {
+    "description": "Bot davet bağlantısı gönder"
+  },
+  "loop": {
+    "description": "Müzik döngüsünü aç/kapa",
+    "errorNotQueue": "Hiçbir şey oynatılmıyor.",
+    "result": "Döngü {loop}"
+  },
+  "lyrics": {
+    "description": "Çalan şarkının sözlerini getir.",
+    "errorNotQueue": "Hiçbir şey oynatılmıyor.",
+    "lyricsNotFound": "Şarkı sözü bulunamadı {title}.",
+    "embedTitle": "{title} - Sözleri"
+  },
+  "move": {
+    "description": "Şarkıyı sırada taşı",
+    "errorNotQueue": "Liste bulunamadı.",
+    "usagesReply": "Kullanım: {prefix} taşı <Liste numarası>",
+    "result": "<@{author}> 🚚  **{title}** klibini {index}.sıraya taşıdı."
+  },
+  "nowplaying": {
+    "description": "Şimdi çalan şarkıyı göster",
+    "errorNotQueue": "Hiçbir şey oynatılmıyor.",
+    "embedTitle": "Şimdi oynatılıyor.",
+    "live": " ◉ Canlı",
+    "timeRemaining": "Kalan süre: {time}"
+  },
+  "pause": {
+    "description": "Oynatılan klibi durdur.",
+    "errorNotQueue": "Hiçbir şey oynatılmıyor.",
+    "result": "<@{author}> ⏸ müziği durdurdu."
+  },
+  "ping": {
+    "description": "Bot ping testi",
+    "result": "📈 Ortalama Ping: {ping} ms"
+  },
+  "play": {
+    "description": "YouTube veya Soundcloud'dan ses çalar",
+    "errorNotChannel": "Bir sesli kanala girmelisiniz !",
+    "errorNotInSameChannel": "Aynı kanalda olmalısınız {user}",
+    "usageReply": "Kullanım: {prefix}oynat <YouTube URL | Video İsmi | Soundcloud URL>",
+    "missingPermissionConnect": "Kanala katılınamadı,gerekli izinler yok.",
+    "missingPermissionSpeak": "Bu ses kanalında konuşamıyorum, uygun izinlere sahip olduğumdan emin olun!",
+    "queueAdded": "✅ **{title}** <@{author}> tarafından kuyruğa eklendi.",
+    "cantJoinChannel": "Kanala katılamadı: {error}",
+    "queueEnded": "❌ Müzik listesi bitti.",
+    "queueError": "Hata: {error}",
+    "streamNotAllowed": "ʻOku ʻikai lava ʻo fakaʻata ʻa e streaming Live!",
+    "startedPlaying": "🎶 Oynatmaya başladı: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ şarkıyı atladı",
+    "pauseSong": "<@{author}> ⏸ müziği durdurdu.",
+    "resumeSong": "<@{author}> ▶ müziği yeniden oynattı!",
+    "unmutedSong": "<@{author}> 🔊 şarkının sesini açtı!",
+    "mutedSong": "<@{author}> 🔇 şarkıyı susturdu!",
+    "decreasedVolume": "<@{author}> 🔉 sesi azalttı ses seviyesi {volume}%",
+    "increasedVolume": "<@{author}> 🔊 sesi artırdı ses seviyesi {volume}%",
+    "loopSong": "<@{author}> Döngü şuan {loop}",
+    "stopSong": "<@{author}> ⏹ müziği durdurdu!",
+    "leaveChannel": "Sesli kanaldan çıkıyor...",
+    "songNotFound": "Audio Not Found"
+  },
+  "playlist": {
+    "description": "Youtubeden bir çalma listesi oynat",
+    "usagesReply": "Kullanım: {prefix}şarkı listesi <YouTube Çalma listesi linki | Liste adı>",
+    "errorNotChannel": "Önce sesli kanala girmelisiniz",
+    "errorNotInSameChannel": "Aynı kanalda olmalısınız {user}",
+    "missingPermissionConnect": "Kanala katılınamadı,gerekli izinler yok.",
+    "missingPermissionSpeak": "Bu ses kanalında konuşamıyorum, uygun izinlere sahip olduğumdan emin olun!",
+    "errorNotFoundPlaylist": "Çalma listesi bulunamadı :(",
+    "fetchingPlaylist": "⌛ Oynatma listesi getiriliyor...",
+    "playlistCharLimit": "\nOynatma listesi karakter sınırından büyük...",
+    "startedPlaylist": "<@{author}> çalma listesini açtı",
+    "cantJoinChannel": "Kanala katılamadı: {error}"
+  },
+  "pruning": {
+    "description": "Bot mesajlarının budamasını değiştir",
+    "errorWritingFile": "Dosyaya yazılırken bir hata oluştu.",
+    "result": "Mesaj kısaltma {result}"
+  },
+  "queue": {
+    "description": "Müzik listesini ve şuan çalan şarkıyı göster.",
+    "missingPermissionMessage": "Mesaj yönetimi ve reaksiyon yapılamadı izinler eksik.",
+    "errorNotQueue": "❌ **Bu sunucuda hiçbir şey oynatılmıyor**",
+    "currentPage": "Mevcut sayfa - ",
+    "embedTitle": "Şarkı listesi\n",
+    "embedCurrentSong": "**Çalan şarkı - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Şarkı listeden kaldırıldı",
+    "errorNotQueue": "Bir liste yok.",
+    "usageReply": "Kullanım: {prefix}kaldır <Liste numarası>",
+    "result": "<@{author}> ❌ listeden kaldırdı **{title}**"
+  },
+  "resume": {
+    "description": "Şarkıyı devam ettir",
+    "errorNotQueue": "Hiçbir şey çalınmıyor.",
+    "resultNotPlaying": "<@{author}> ▶ şarkıyı devam ettirdi!",
+    "errorPlaying": "Liste durdurulmadı."
+  },
+  "search": {
+    "description": "Oynatmak için klip arayın ve seçin",
+    "usageReply": "Kullanım: {prefix}{name} <Video İsmi>",
+    "errorAlreadyCollector": "Bu kanalda zaten aktif bir mesaj toplayıcı var.",
+    "errorNotChannel": "Önce bir sesli kanala katılmalısınız!",
+    "resultEmbedTtile": "**Oynatmak istediğiniz şarkının numarasını yazınız**",
+    "resultEmbedDesc": "Sonuçlar: {search}"
+  },
+  "shuffle": {
+    "description": "Listeyi karıştır",
+    "errorNotQueue": "Bir liste yok.",
+    "result": "<@{author}> 🔀 listeyi karıştırdı"
+  },
+  "skip": {
+    "description": "Çalan şarkıyı atla",
+    "errorNotQueue": "Sırada başka şarkı olmadığından atlayamıyorum.",
+    "result": "<@{author}> ⏭ şarkıyı geçti"
+  },
+  "skipto": {
+    "description": "Seçili liste numarasına atla",
+    "usageReply": "Kullanım: {prefix}{name} <Liste numarası>",
+    "errorNotQueue": "Bir liste yok.",
+    "errorNotValid": "Listede sadece {length} şarkı var!",
+    "result": "<@{author}> ⏭ şarkıyı {arg} atladı"
+  },
+  "stop": {
+    "description": "Şarkıyı durdurur",
+    "errorNotQueue": "Şuan hiçbir şey çalınmıyor.",
+    "result": "<@{author}> ⏹ müziği durdurdu"
+  },
+  "uptime": {
+    "description": "Ne kadar süredir online ",
+    "result": "Online süresi: `{days} gün,{hours} saat, {minutes} dakika, {seconds} saniye`"
+  },
+  "volume": {
+    "description": "Çalan şarkının ses seviyesini değiştirin",
+    "errorNotQueue": "Şuan hiçbir şey çalınmıyor.",
+    "errorNotChannel": "Önce sesli sohbet kanalına girmelisiniz!",
+    "currentVolume": "🔊 Mevcut ses yüksekliği: **{volume}%**",
+    "errorNotNumber": "Lütfen ses seviyesini ayarlamak için sayı giriniz.",
+    "errorNotValid": "Lütfen 0-100 arasında bir sayı giriniz",
+    "result": "Ses seviyesi: **{arg}%**"
+  },
+  "common": {
+    "on": "**açık**",
+    "off": "**kapalı**",
+    "enabled": "**etkinleştirildi**",
+    "disabled": "**devre dışı bırakıldı**",
+    "errorNotChannel": "Önce sesli sohbet kanalına girmelisiniz!",
+    "cooldownMessage": "`{name}` komutunu kullanmak için {time} saniye beklemelisiniz .",
+    "errorCommend": "Komutu gerçekleştirirken bir hata oluştu."
   }
+}

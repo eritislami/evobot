@@ -54,6 +54,7 @@
     "cantJoinChannel": "Impossible de rejoindre le salon: {error}",
     "queueEnded": "❌ La file d'attente est terminée.",
     "queueError": "Erreur: {error}",
+    "streamNotAllowed": "Le streaming audio en direct n'est pas activé!",
     "startedPlaying": "🎶 Commence à jouer: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ a skip la musique.",
     "pauseSong": "<@{author}> ⏸ a mis en pause la musique.",

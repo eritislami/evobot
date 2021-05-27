@@ -60,6 +60,7 @@
     "cantJoinChannel": "채널에 진입할 수 없습니다.: {error}",
     "queueEnded": "❌ 모든 대기열 재생을 완료했습니다.",
     "queueError": "에러가 발생했습니다.: {error}",
+    "streamNotAllowed": "라이브 오디오 스트리밍이 활성화되지 않았습니다!",
     "startedPlaying": "🎶 **{title}** 재생을 시작합니다. {url}",
     "skipSong": "<@{author}> ⏩ 음악을 넘겼습니다.",
     "pauseSong": "<@{author}> ⏸ 음악을 일시중지 했습니다.",

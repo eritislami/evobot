@@ -1,167 +1,167 @@
 {
-    "clip": {
-      "description": "Spelar upp ett klippljud",
-      "usagesReply": "Användning: /klipp <namn>",
-      "errorQueue": "Det går inte att spela upp klipp eftersom det finns en aktiv kö.",
-      "errorNotChannel": "Du måste gå med i en röstkanal först!"
-    },
-    "clips": {
-      "description": "Lista alla klipp"
-    },
-    "help": {
-      "description": "Visa alla kommandon och beskrivningar",
-      "embedTitle": "{botname} Hjälp",
-      "embedDescription": "Lista över alla kommandon"
-    },
-    "invite": {
-      "description": "Skicka länk till botinbjudan"
-    },
-    "loop": {
-      "description": "Växla musikslinga",
-      "errorNotQueue": "Det är inget i kön",
-      "result": "Musikslinga {loop}"
-    },
-    "lyrics": {
-      "description": "Hämta texter till den spelade låten",
-      "errorNotQueue": "Det spelar ingenting.",
-      "lyricsNotFound": "Inga texter hittades för {title}.",
-      "embedTitle": "{title} - Text"
-    },
-    "move": {
-      "description": "Flytta låtar i kön",
-      "errorNotQueue": "Det finns inget i kön.",
-      "usagesReply": "Användning: {prefix} flytta <Könummer>",
-      "result": "<@{author}> 🚚 flyttade **{title}** till {index} i kön."
-    },
-    "nowplaying": {
-      "description": "Visa nu spelande låt",
-      "errorNotQueue": "Det finns inget i kön.",
-      "embedTitle": "Nu spelas",
-      "live": " ◉ LIVE",
-      "timeRemaining": "Återstående tid: {time}"
-    },
-    "pause": {
-      "description": "Pausa den musik som för närvarande spelas",
-      "errorNotQueue": "Det finns inget i kön.",
-      "result": "<@{author}> ⏸ pausade musiken."
-    },
-    "ping": {
-      "description": "Visa botens genomsnittliga ping",
-      "result": "📈 Genomsnittlig ping till API: {ping} ms"
-    },
-    "play": {
-      "description": "Spelar upp ljud från YouTube eller Soundcloud",
-      "errorNotChannel": "Du måste gå med i en röstkanal först!",
-      "errorNotInSameChannel": "Du måste vara i samma kanal som {user}",
-      "usageReply": "Användning: {prefix}spela <YouTube URL | Videonamn | Soundcloud URL>",
-      "missingPermissionConnect": "Det går inte att ansluta till röstkanal, behörighet saknas",
-      "missingPermissionSpeak": "Jag kan inte prata i den här röstkanalen, se till att jag har rätt behörighet!",
-      "queueAdded": "✅ ** {title} ** har lagts till i kön av <@{author}>",
-      "cantJoinChannel": "Det gick inte att gå med i kanalen: {error}",
-      "queueEnded": "❌ Musikkön avslutades.",
-      "queueError": "Error: {error}",
-      "startedPlaying": "🎶 Började spela: **{title}** {url}",
-      "skipSong": "<@{author}> ⏩ hoppade över låten",
-      "pauseSong": "<@{author}> ⏸ pausade musiken.",
-      "resumeSong": "<@{author}> ▶ återupptog musiken!",
-      "unmutedSong": "<@{author}> 🔊 tystnade på musiken!",
-      "mutedSong": "<@{author}> 🔇 stängde av musiken!",
-      "decreasedVolume": "<@{author}> 🔉 minskade volymen, volymen är nu {volume}%",
-      "increasedVolume": "<@{author}> 🔊 ökade volymen, volymen är nu {volume}%",
-      "loopSong": "<@{author}> Loop är nu {loop}",
-      "stopSong": "<@{author}> ⏹ stoppade musiken!",
-      "leaveChannel": "Lämna röstkanal...",
-      "songNotFound": "Audio Not Found"
-    },
-    "playlist": {
-      "description": "Spela en spellista från youtube",
-      "usagesReply": "Användning: {prefix} spellista <YouTube-spellistans URL | Spellistans namn>",
-      "errorNotChannel": "Du måste gå med i en röstkanal först!",
-      "errorNotInSameChannel": "Du måste vara i samma kanal som {user}",
-      "missingPermissionConnect": "Det går inte att ansluta till röstkanal, behörighet saknas",
-      "missingPermissionSpeak": "Jag kan inte prata i den här röstkanalen, se till att jag har rätt behörighet!",
-      "errorNotFoundPlaylist": "Spellistan hittades inte :(",
-      "fetchingPlaylist": "⌛ hämtar spellistan...",
-      "playlistCharLimit": "\nSpellista större än teckenbegränsning...",
-      "startedPlaylist": "<@{author}> Startade en spellista",
-      "cantJoinChannel": "Det gick inte att gå med i kanalen: {error}"
-    },
-    "pruning": {
-      "description": "Växla beskärning av bot-meddelanden",
-      "errorWritingFile": "Det gick inte att skriva till filen.",
-      "result": "Beskärning av meddelanden är {result}"
-    },
-    "queue": {
-      "description": "Visa musikkön och spelar nu.",
-      "missingPermissionMessage": "Saknar behörighet att hantera meddelanden eller lägga till reaktioner",
-      "errorNotQueue": "❌ **Ingenting spelas på den här servern**",
-      "currentPage": "Nuvarande sida -",
-      "embedTitle": "Låtkö\n",
-      "embedCurrentSong": "**Aktuell låt - [{title}]({url})**\n\n{info}"
-    },
-    "remove": {
-      "description": "Ta bort låten från kön",
-      "errorNotQueue": "Det finns inget i kön.",
-      "usageReply": "Användning: {prefix}ta bort <Könummer>",
-      "result": "<@{author}>❌ **{title}** borttagen från kön."
-    },
-    "resume": {
-      "description": "Fortsätt spela musik",
-      "errorNotQueue": "Det finns inget i kön.",
-      "resultNotPlaying": "<@{author}> ▶ återupptog musiken!",
-      "errorPlaying": "Kön är inte pausad."
-    },
-    "search": {
-      "description": "Sök och välj videor att spela",
-      "usageReply": "Användande: {prefix}{name} <Video Name>",
-      "errorAlreadyCollector": "En meddelandesamlare är redan aktiv i den här kanalen.",
-      "errorNotChannel": "Du måste gå med i en röstkanal först!",
-      "resultEmbedTtile": "**Svara med sångnumret du vill spela**",
-      "resultEmbedDesc": "Resultat för: {search}"
-    },
-    "shuffle": {
-      "description": "Blanda kö",
-      "errorNotQueue": "Det finns inget i kön.",
-      "result": "<@{author}> 🔀 blandade kön"
-    },
-    "skip": {
-      "description": "Hoppa över låten",
-      "errorNotQueue": "Det finns inget som jag kan hoppa över för dig.",
-      "result": "<@{author}> ⏭ hoppade över låten"
-    },
-    "skipto": {
-      "description": "Hoppa till valt könummer",
-      "usageReply": "Användande: {prefix}{name} <Queue Number>",
-      "errorNotQueue": "Det finns inget i kön.",
-      "errorNotValid": "Kön är bara {length} låtar lång!",
-      "result": "<@{author}> ⏭ hoppade över {arg} låtar"
-    },
-    "stop": {
-      "description": "Stoppar musiken",
-      "errorNotQueue": "Det finns inget i kön.",
-      "result": "<@{author}> ⏹ stoppade musiken!"
-    },
-    "uptime": {
-      "description": "Kontrollera driftstiden",
-      "result": "Upptid: '{days} dag(ar), {hours} timmar, {minutes} minuter, {seconds} sekunder`"
-    },
-    "volume": {
-      "description": "Ändra volymen",
-      "errorNotQueue": "Det spelar ingenting.",
-      "errorNotChannel": "Du måste gå med i en röstkanal först!",
-      "currentVolume": "🔊 Den aktuella volymen är: **{volume}%**",
-      "errorNotNumber": "Använd ett nummer för att ställa in volymen.",
-      "errorNotValid": "Använd ett nummer mellan 0 - 100.",
-      "result": "Volym inställd på: **{arg}%**"
-    },
-    "common": {
-      "on": "**på**",
-      "off": "**av**",
-      "enabled": "**aktiverad**",
-      "disabled": "**Inaktiverad**",
-      "errorNotChannel": "Du måste gå med i en röstkanal först!",
-      "cooldownMessage": "vänta {time} sekunder till innan du återanvänder kommandot `{name}`.",
-      "errorCommend": "Det uppstod ett fel vid körningen av kommandot."
-    }
+  "clip": {
+    "description": "Spelar upp ett klippljud",
+    "usagesReply": "Användning: /klipp <namn>",
+    "errorQueue": "Det går inte att spela upp klipp eftersom det finns en aktiv kö.",
+    "errorNotChannel": "Du måste gå med i en röstkanal först!"
+  },
+  "clips": {
+    "description": "Lista alla klipp"
+  },
+  "help": {
+    "description": "Visa alla kommandon och beskrivningar",
+    "embedTitle": "{botname} Hjälp",
+    "embedDescription": "Lista över alla kommandon"
+  },
+  "invite": {
+    "description": "Skicka länk till botinbjudan"
+  },
+  "loop": {
+    "description": "Växla musikslinga",
+    "errorNotQueue": "Det är inget i kön",
+    "result": "Musikslinga {loop}"
+  },
+  "lyrics": {
+    "description": "Hämta texter till den spelade låten",
+    "errorNotQueue": "Det spelar ingenting.",
+    "lyricsNotFound": "Inga texter hittades för {title}.",
+    "embedTitle": "{title} - Text"
+  },
+  "move": {
+    "description": "Flytta låtar i kön",
+    "errorNotQueue": "Det finns inget i kön.",
+    "usagesReply": "Användning: {prefix} flytta <Könummer>",
+    "result": "<@{author}> 🚚 flyttade **{title}** till {index} i kön."
+  },
+  "nowplaying": {
+    "description": "Visa nu spelande låt",
+    "errorNotQueue": "Det finns inget i kön.",
+    "embedTitle": "Nu spelas",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Återstående tid: {time}"
+  },
+  "pause": {
+    "description": "Pausa den musik som för närvarande spelas",
+    "errorNotQueue": "Det finns inget i kön.",
+    "result": "<@{author}> ⏸ pausade musiken."
+  },
+  "ping": {
+    "description": "Visa botens genomsnittliga ping",
+    "result": "📈 Genomsnittlig ping till API: {ping} ms"
+  },
+  "play": {
+    "description": "Spelar upp ljud från YouTube eller Soundcloud",
+    "errorNotChannel": "Du måste gå med i en röstkanal först!",
+    "errorNotInSameChannel": "Du måste vara i samma kanal som {user}",
+    "usageReply": "Användning: {prefix}spela <YouTube URL | Videonamn | Soundcloud URL>",
+    "missingPermissionConnect": "Det går inte att ansluta till röstkanal, behörighet saknas",
+    "missingPermissionSpeak": "Jag kan inte prata i den här röstkanalen, se till att jag har rätt behörighet!",
+    "queueAdded": "✅ ** {title} ** har lagts till i kön av <@{author}>",
+    "cantJoinChannel": "Det gick inte att gå med i kanalen: {error}",
+    "queueEnded": "❌ Musikkön avslutades.",
+    "queueError": "Error: {error}",
+    "streamNotAllowed": "Streaming live-ljud är inte aktiverat!",
+    "startedPlaying": "🎶 Började spela: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ hoppade över låten",
+    "pauseSong": "<@{author}> ⏸ pausade musiken.",
+    "resumeSong": "<@{author}> ▶ återupptog musiken!",
+    "unmutedSong": "<@{author}> 🔊 tystnade på musiken!",
+    "mutedSong": "<@{author}> 🔇 stängde av musiken!",
+    "decreasedVolume": "<@{author}> 🔉 minskade volymen, volymen är nu {volume}%",
+    "increasedVolume": "<@{author}> 🔊 ökade volymen, volymen är nu {volume}%",
+    "loopSong": "<@{author}> Loop är nu {loop}",
+    "stopSong": "<@{author}> ⏹ stoppade musiken!",
+    "leaveChannel": "Lämna röstkanal...",
+    "songNotFound": "Audio Not Found"
+  },
+  "playlist": {
+    "description": "Spela en spellista från youtube",
+    "usagesReply": "Användning: {prefix} spellista <YouTube-spellistans URL | Spellistans namn>",
+    "errorNotChannel": "Du måste gå med i en röstkanal först!",
+    "errorNotInSameChannel": "Du måste vara i samma kanal som {user}",
+    "missingPermissionConnect": "Det går inte att ansluta till röstkanal, behörighet saknas",
+    "missingPermissionSpeak": "Jag kan inte prata i den här röstkanalen, se till att jag har rätt behörighet!",
+    "errorNotFoundPlaylist": "Spellistan hittades inte :(",
+    "fetchingPlaylist": "⌛ hämtar spellistan...",
+    "playlistCharLimit": "\nSpellista större än teckenbegränsning...",
+    "startedPlaylist": "<@{author}> Startade en spellista",
+    "cantJoinChannel": "Det gick inte att gå med i kanalen: {error}"
+  },
+  "pruning": {
+    "description": "Växla beskärning av bot-meddelanden",
+    "errorWritingFile": "Det gick inte att skriva till filen.",
+    "result": "Beskärning av meddelanden är {result}"
+  },
+  "queue": {
+    "description": "Visa musikkön och spelar nu.",
+    "missingPermissionMessage": "Saknar behörighet att hantera meddelanden eller lägga till reaktioner",
+    "errorNotQueue": "❌ **Ingenting spelas på den här servern**",
+    "currentPage": "Nuvarande sida -",
+    "embedTitle": "Låtkö\n",
+    "embedCurrentSong": "**Aktuell låt - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Ta bort låten från kön",
+    "errorNotQueue": "Det finns inget i kön.",
+    "usageReply": "Användning: {prefix}ta bort <Könummer>",
+    "result": "<@{author}>❌ **{title}** borttagen från kön."
+  },
+  "resume": {
+    "description": "Fortsätt spela musik",
+    "errorNotQueue": "Det finns inget i kön.",
+    "resultNotPlaying": "<@{author}> ▶ återupptog musiken!",
+    "errorPlaying": "Kön är inte pausad."
+  },
+  "search": {
+    "description": "Sök och välj videor att spela",
+    "usageReply": "Användande: {prefix}{name} <Video Name>",
+    "errorAlreadyCollector": "En meddelandesamlare är redan aktiv i den här kanalen.",
+    "errorNotChannel": "Du måste gå med i en röstkanal först!",
+    "resultEmbedTtile": "**Svara med sångnumret du vill spela**",
+    "resultEmbedDesc": "Resultat för: {search}"
+  },
+  "shuffle": {
+    "description": "Blanda kö",
+    "errorNotQueue": "Det finns inget i kön.",
+    "result": "<@{author}> 🔀 blandade kön"
+  },
+  "skip": {
+    "description": "Hoppa över låten",
+    "errorNotQueue": "Det finns inget som jag kan hoppa över för dig.",
+    "result": "<@{author}> ⏭ hoppade över låten"
+  },
+  "skipto": {
+    "description": "Hoppa till valt könummer",
+    "usageReply": "Användande: {prefix}{name} <Queue Number>",
+    "errorNotQueue": "Det finns inget i kön.",
+    "errorNotValid": "Kön är bara {length} låtar lång!",
+    "result": "<@{author}> ⏭ hoppade över {arg} låtar"
+  },
+  "stop": {
+    "description": "Stoppar musiken",
+    "errorNotQueue": "Det finns inget i kön.",
+    "result": "<@{author}> ⏹ stoppade musiken!"
+  },
+  "uptime": {
+    "description": "Kontrollera driftstiden",
+    "result": "Upptid: '{days} dag(ar), {hours} timmar, {minutes} minuter, {seconds} sekunder`"
+  },
+  "volume": {
+    "description": "Ändra volymen",
+    "errorNotQueue": "Det spelar ingenting.",
+    "errorNotChannel": "Du måste gå med i en röstkanal först!",
+    "currentVolume": "🔊 Den aktuella volymen är: **{volume}%**",
+    "errorNotNumber": "Använd ett nummer för att ställa in volymen.",
+    "errorNotValid": "Använd ett nummer mellan 0 - 100.",
+    "result": "Volym inställd på: **{arg}%**"
+  },
+  "common": {
+    "on": "**på**",
+    "off": "**av**",
+    "enabled": "**aktiverad**",
+    "disabled": "**Inaktiverad**",
+    "errorNotChannel": "Du måste gå med i en röstkanal först!",
+    "cooldownMessage": "vänta {time} sekunder till innan du återanvänder kommandot `{name}`.",
+    "errorCommend": "Det uppstod ett fel vid körningen av kommandot."
   }
-  
+}

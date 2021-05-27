@@ -32,6 +32,7 @@ module.exports = {
 
     let stream = null;
     let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
+    let streamRegex = /^.*(mp3)$/gi;
 
     try {
       if (song.url.includes("youtube.com")) {
@@ -43,6 +44,9 @@ module.exports = {
           stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID);
           streamType = "unknown";
         }
+      } else if (streamRegex.test(song.url)) {
+        stream = song.url;
+        streamType = "unknown";
       }
     } catch (error) {
       if (queue) {

@@ -60,6 +60,7 @@
     "cantJoinChannel": "無法加入語音頻道: {error}",
     "queueEnded": "❌ 音樂隊列完結",
     "queueError": "錯誤: {error}",
+    "streamNotAllowed": "流音頻直播未啟用",
     "startedPlaying": "🎶 開始播放: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ 跳過了歌曲",
     "pauseSong": "<@{author}> ⏸ 暫停了歌曲 music.",

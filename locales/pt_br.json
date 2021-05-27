@@ -60,6 +60,7 @@
     "cantJoinChannel": "Não pude entrar no canal: {error}",
     "queueEnded": "❌ Fim da playlist.",
     "queueError": "Erro: {error}",
+    "streamNotAllowed": "A transmissão de áudio ao vivo não está habilitada!",
     "startedPlaying": "🎶 Tocando: **{title}** {url}",
     "skipSong": "<@{author}> ⏩ pulou a música.",
     "pauseSong": "<@{author}> ⏸ pausou a música.",
