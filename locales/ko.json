@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 볼륨을 높어, 현재 {volume}% 로 설정되어 있습니다",
     "loopSong": "<@{author}> 음악 반복 상태: {loop}",
     "stopSong": "<@{author}> ⏹ 음악을 중지했습니다.",
-    "leaveChannel": "채널을 떠나는 중입니다."
+    "leaveChannel": "채널을 떠나는 중입니다.",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Youtube 부터 재생목록을 재생합니다.",

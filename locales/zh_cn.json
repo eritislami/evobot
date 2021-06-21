@@ -9,7 +9,7 @@
     "description": "列出所有本地音乐"
   },
   "help": {
-    "description": "列出所有的指令已经详细资讯",
+    "description": "列出所有指令的详细资讯",
     "embedTitle": "{botname} 帮助",
     "embedDescription": "所有的指令清单"
   },
@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 增加了音量, 目前音量为 {volume}%",
     "loopSong": "<@{author}> 重複播放目前是 {loop}",
     "stopSong": "<@{author}> ⏹ 停止了歌曲!",
-    "leaveChannel": "正在离开语音频道..."
+    "leaveChannel": "正在离开语音频道...",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "播放 YouTube 的播放清单",

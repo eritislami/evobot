@@ -70,7 +70,8 @@
     "increasedVolume": "<@{author}> 🔊 aumentou o volume, o volume agora é {volume}%",
     "loopSong": "<@{author}> Repetir está {loop}",
     "stopSong": "<@{author}> ⏹ parou a música!",
-    "leaveChannel": "Deixando o canal de voz!"
+    "leaveChannel": "Deixando o canal de voz!",
+    "songNotFound": "Audio Not Found"
   },
   "playlist": {
     "description": "Reproduz uma playlist do youtube",
