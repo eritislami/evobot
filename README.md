@@ -46,14 +46,20 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 Currently available locales are:
 - English (en)
-- German (de)
-- French (fr)
-- Spanish (es)
-- Turkish (tr)
-- Korean (ko)
+- Arabic (ar)
 - Brazilian Portuguese (pt_br)
+- Dutch (nl)
+- French (fr)
+- German (de)
+- Italian (it)
+- Korean (ko)
+- Polish (pl)
+- Russian (ru)
 - Simplified Chinese (zh_cn)
+- Spanish (es)
+- Swedish (sv)
 - Traditional Chinese (zh_tw)
+- Turkish (tr)
 - Check [Contributing](#-contributing) if you wish to help add more languages!
 
 ## 📝 Features & Commands
