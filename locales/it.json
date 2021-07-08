@@ -161,6 +161,6 @@
     "disabled": "**disabilitato**",
     "errorNotChannel": "Devi prima entrare in un canale vocale!",
     "cooldownMessage": "attendi {time} secondo(i) prima di riutilizzare il comando `{name}`.",
-    "errorCommend": "Si è verificato un errore durante l'esecuzione del comando."
+    "errorCommand": "Si è verificato un errore durante l'esecuzione del comando."
   }
 }

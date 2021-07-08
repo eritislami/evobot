@@ -161,6 +161,6 @@
     "disabled": "**關閉**",
     "errorNotChannel": "你必須先加入語音頻道!",
     "cooldownMessage": "請等待 {time} 秒後再使用 `{name}` 指令",
-    "errorCommend": "執行指令時發生錯誤"
+    "errorCommand": "執行指令時發生錯誤"
   }
 }

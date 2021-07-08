@@ -4,8 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, LOCALE } = require("./util/EvobotUtil");
-const path = require("path");
+const { TOKEN, PREFIX } = require("./util/EvobotUtil");
 const i18n = require("i18n");
 
 const client = new Client({
@@ -22,8 +21,9 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 i18n.configure({
   locales: ["ar", "de", "en", "es", "fr", "it", "ko", "nl", "pl", "pt_br", "ru", "sv", "tr", "zh_cn", "zh_tw"],
-  directory: path.join(__dirname, "locales"),
+  directory: join(__dirname, "locales"),
   defaultLocale: "en",
+  retryInDefaultLocale: true,
   objectNotation: true,
   register: global,
 
@@ -108,6 +108,6 @@ client.on("message", async (message) => {
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply(i18n.__("common.errorCommend")).catch(console.error);
+    message.reply(i18n.__("common.errorCommand")).catch(console.error);
   }
 });

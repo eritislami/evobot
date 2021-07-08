@@ -155,7 +155,7 @@
     "disabled": "**désactiver**",
     "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
     "cooldownMessage": "S'il vous plaît, attendez {time} secondes avant de réutiliser la commande `{name}`.",
-    "errorCommend": "Une erreur s'est produite lors de l'exécution de cette commande."
+    "errorCommand": "Une erreur s'est produite lors de l'exécution de cette commande."
   },
   "move": {
     "description": "Déplacez les chansons de la file d'attente",

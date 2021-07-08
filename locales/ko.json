@@ -161,6 +161,6 @@
     "disabled": "**비활성화**",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "cooldownMessage": "`{name}` 명령어를 실행하기 전 {time} 초 만큼 기다려주세요.",
-    "errorCommend": "명령어 실행에 실패했습니다."
+    "errorCommand": "명령어 실행에 실패했습니다."
   }
 }
