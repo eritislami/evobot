@@ -157,6 +157,6 @@
     "disabled": "**vô hiệu hóa**",
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
     "cooldownMessage": "xin vui lòng chờ {time} giây trước khi sử dụng lại lệnh `{name}`.",
-    "errorCommend": "Có lỗi xảy ra khi đang cố gắng thực hiện yêu cầu của bạn, vui lòng thử lại sau ít phút."
+    "errorCommand": "Có lỗi xảy ra khi đang cố gắng thực hiện yêu cầu của bạn, vui lòng thử lại sau ít phút."
   }
 }
