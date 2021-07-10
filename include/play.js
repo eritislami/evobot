@@ -69,6 +69,9 @@ module.exports = {
           let lastSong = queue.songs.shift();
           queue.songs.push(lastSong);
           module.exports.play(queue.songs[0], message);
+        } else if (queue.loopSong) {
+          // repeat the current song endlessly
+          module.exports.play(queue.songs[0], message);
         } else {
           // Recursively play the next song
           queue.songs.shift();
@@ -92,6 +95,7 @@ module.exports = {
       await playingMessage.react("🔉");
       await playingMessage.react("🔊");
       await playingMessage.react("🔁");
+      await playingMessage.react("🔂");
       await playingMessage.react("⏹");
     } catch (error) {
       console.error(error);
@@ -171,12 +175,28 @@ module.exports = {
         case "🔁":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
+          queue.loopSong = false;
           queue.loop = !queue.loop;
           queue.textChannel
             .send(
               i18n.__mf("play.loopSong", {
                 author: user,
                 loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off")
+              })
+            )
+            .catch(console.error);
+          break;
+
+        case "🔂":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
+          queue.loop = false;
+          queue.loopSong = !queue.loopSong;
+          queue.textChannel
+            .send(
+              i18n.__mf("play.loopSong", {
+                author: user,
+                loop: queue.loopSong ? i18n.__("common.on") : i18n.__("common.off")
               })
             )
             .catch(console.error);
