@@ -1,3 +1,17 @@
+Note: 1) If you want to deploy to heruko or repl.it, don't make config.js file, make .env and
+put the follows 
+
+TOKEN=YOUR_DISCORD_BOT_TOKEN
+YOUTUBE_API_KEY=API KEY
+SOUNDCLOUD_CLIENT_ID=CLIENT_ID
+PREFIX=YOUR_CHOICE 
+
+//default is <@${bot.user.id}> i.e. bot ping
+
+2) delete Index.js and rename "Index1.js" to "Index.js" (for repl.it or heruko) OR start with node index1.js to start the bot (for repl.it)
+
+On deploying your bot through Index1.js you'll see on your bot website/webserver "your bot is online!"
+
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/eritislami/evobot)
 
 ![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
