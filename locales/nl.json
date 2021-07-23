@@ -161,6 +161,6 @@
     "disabled": "**uitgeschakeld**",
     "errorNotChannel": "Je moet eerst een voice channel joinen!",
     "cooldownMessage": "Wacht nog {time} seconden voor je `{name}` hergebruikt.",
-    "errorCommend": "Er was een error tijdens het uitvoeren van deze command."
+    "errorCommand": "Er was een error tijdens het uitvoeren van deze command."
   }
 }

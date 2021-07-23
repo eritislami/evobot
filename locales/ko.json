@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "주어진 클립을 재생합니다.",
-    "usagesReply": "Usage: /clip <name>",
+    "usagesReply": "사용 방법: {prefix}clip <name>",
     "errorQueue": "대기열에 음악이 있을 경우 클립을 재생할 수 없습니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다."
   },
@@ -67,11 +67,11 @@
     "unmutedSong": "<@{author}> 🔊 음소거를 해제했습니다.",
     "mutedSong": "<@{author}> 🔇 음악을 음소거 했습니다.",
     "decreasedVolume": "<@{author}> 🔉 볼륨을 낮추어, 현재 {volume}% 로 설정되어 있습니다.",
-    "increasedVolume": "<@{author}> 🔊 볼륨을 높어, 현재 {volume}% 로 설정되어 있습니다",
+    "increasedVolume": "<@{author}> 🔊 볼륨을 높여, 현재 {volume}% 로 설정되어 있습니다",
     "loopSong": "<@{author}> 음악 반복 상태: {loop}",
     "stopSong": "<@{author}> ⏹ 음악을 중지했습니다.",
     "leaveChannel": "채널을 떠나는 중입니다.",
-    "songNotFound": "Audio Not Found"
+    "songNotFound": "오디오를 찾을 수 없음"
   },
   "playlist": {
     "description": "Youtube 부터 재생목록을 재생합니다.",
@@ -108,7 +108,7 @@
   "resume": {
     "description": "현재 재생중인 음악을 재개합니다.",
     "errorNotQueue": "재생할 음악이 없습니다.",
-    "resultNotPlaying": "<@{author}> ▶ 음악을 재개헸습니다.",
+    "resultNotPlaying": "<@{author}> ▶ 음악을 재개했습니다.",
     "errorPlaying": "대기열이 일시중지 되어있지 않습니다."
   },
   "search": {
@@ -161,6 +161,6 @@
     "disabled": "**비활성화**",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
     "cooldownMessage": "`{name}` 명령어를 실행하기 전 {time} 초 만큼 기다려주세요.",
-    "errorCommend": "명령어 실행에 실패했습니다."
+    "errorCommand": "명령어 실행에 실패했습니다."
   }
 }

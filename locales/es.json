@@ -161,6 +161,6 @@
     "disabled": "**desactivado**",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "cooldownMessage": "Por favor espera {time} segundos antes de volver a usar el comando `{name}`.",
-    "errorCommend": "Se produjo un error con ese comando."
+    "errorCommand": "Se produjo un error con ese comando."
   }
 }

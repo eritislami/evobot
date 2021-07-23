@@ -161,6 +161,6 @@
     "disabled": "**wyłączone**",
     "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
     "cooldownMessage": "Proszę zaczekaj {time} przed kolejny użyciem komendy `{name}`.",
-    "errorCommend": "Podczas wykonywania tej komendy pojawił się błąd."
+    "errorCommand": "Podczas wykonywania tej komendy pojawił się błąd."
   }
 }

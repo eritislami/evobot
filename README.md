@@ -60,6 +60,7 @@ Currently available locales are:
 - Swedish (sv)
 - Traditional Chinese (zh_tw)
 - Turkish (tr)
+- Vietnamese (vi)
 - Check [Contributing](#-contributing) if you wish to help add more languages!
 
 ## 📝 Features & Commands

@@ -161,6 +161,6 @@
     "disabled": "**deaktiviert**",
     "errorNotChannel": "Betrete zuerst einen Voice-Channel!",
     "cooldownMessage": "Bitte warte noch {time} Sekunde(n) bevor du wieder den Command `{name}` nuzten kannst.",
-    "errorCommend": "Da war ein Fehler beim ausführen des Commands."
+    "errorCommand": "Da war ein Fehler beim ausführen des Commands."
   }
 }

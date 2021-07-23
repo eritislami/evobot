@@ -161,6 +161,6 @@
       "disabled": "**devre dışı bırakıldı**",
       "errorNotChannel": "Önce sesli sohbet kanalına girmelisiniz!",
       "cooldownMessage": "`{name}` komutunu kullanmak için {time} saniye beklemelisiniz .",
-      "errorCommend": "Komutu gerçekleştirirken bir hata oluştu."
+      "errorCommand": "Komutu gerçekleştirirken bir hata oluştu."
     }
   }
