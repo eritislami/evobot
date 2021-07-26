@@ -29,7 +29,7 @@
   },
   "move": {
     "description": "移动歌曲到队列的其他位置",
-    "errorNotQueue": "There is no queue.",
+    "errorNotQueue": "队列中没有歌曲",
     "usagesReply": "用法: {prefix}move <歌曲队列编号>",
     "result": "<@{author}> 🚚 从音乐队列中移动 **{title}** 至 {index}"
   },
