@@ -111,7 +111,7 @@ Examples: `1` or `1,2,3`
 * Show api ping (/ping)
 * Show bot uptime (/uptime)
 * Toggle pruning of bot messages (/pruning)
-* Localization in 6 languages
+* Localization in 16 languages
 * Help (/help, /h)
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Media Controls via Reactions
