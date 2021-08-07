@@ -3,5 +3,44 @@
   "description": "🤖 Discord Music Bot built with discord.js",
   "repository": "https://github.com/eritislami/evobot",
   "logo": "https://i.imgur.com/JFxgbWH.png",
-  "keywords": ["discord", "discordjs", "music", "bot"]
+  "keywords": ["discord", "discordjs", "music", "bot"],
+  "buildpacks": [
+    "heroku/nodejs"
+  ],
+  "env": {
+    "TOKEN": {
+      "description": "Discord bot token, see: https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot"
+    },
+    "YOUTUBE_API_KEY": {
+      "description": "YouTube data v3 API key, see: https://developers.google.com/youtube/v3/getting-started"
+    },
+    "SOUNDCLOUD_CLIENT_ID": {
+      "description": "SoundCloud client ID, see: https://github.com/zackradisic/node-soundcloud-downloader#client-id",
+      "required": false
+    },
+    "MAX_PLAYLIST_SIZE": {
+      "description": "Maximum playlist size that your bot can load",
+      "value": "10"
+    },
+    "PREFIX": {
+      "description": "Discord bot command prefix",
+      "value": "/"
+    },
+    "PRUNING": {
+      "description": "Send less information",
+      "value": "false"
+    },
+    "LOCALE": {
+      "description": "Language",
+      "value": "en"
+    },
+    "DEFAULT_VOLUME": {
+      "description": "Default music volume",
+      "value": "100"
+    },
+    "STAY_TIME": {
+      "description": "Stay time after music ended, in seconds",
+      "value": "30"
+    }
+  }
 }
