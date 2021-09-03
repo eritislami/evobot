@@ -63,6 +63,8 @@ module.exports = {
       .on("finish", () => {
         if (collector && !collector.ended) collector.stop();
 
+        queue.connection.removeAllListeners("disconnect");
+
         if (queue.loop) {
           // if loop is on, push the song back at the end of the queue
           // so it can repeat endlessly
