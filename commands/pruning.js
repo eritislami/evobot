@@ -27,7 +27,7 @@ module.exports = {
 
       return message.channel
         .send(
-          i18n.__("pruning.result", {
+          i18n.__mf("pruning.result", {
             result: config.PRUNING ? i18n.__("common.enabled") : i18n.__("common.disabled")
           })
         )
