@@ -1,5 +1,3 @@
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/eritislami/evobot)
-
 ![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
 
 # 🤖 EvoBot (Discord Music Bot)
@@ -12,9 +10,7 @@
 2.1 **(Optional)** Soundcloud Client ID **[Guide](https://github.com/zackradisic/node-soundcloud-downloader#client-id)**
 3. Node.js v14.0.0 or newer
 
-## 🚀 Getting Started
-
-If deploying to Heroku make sure to create config variables
+## 🚀 Getting Started 
 
 ```
 git clone https://github.com/eritislami/evobot.git
@@ -110,7 +106,7 @@ Examples: `1` or `1,2,3`
 * Remove song # from queue (/remove, /rm)
 * Play an mp3 clip (/clip song.mp3) (put the file in sounds folder)
 * List all clips (/clips)
-* Show api ping (/ping)
+* Show ping to Discord API (/ping)
 * Show bot uptime (/uptime)
 * Toggle pruning of bot messages (/pruning)
 * Help (/help, /h)
