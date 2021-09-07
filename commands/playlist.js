@@ -1,19 +1,10 @@
+const i18n = require("../util/i18n");
 const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
-
-const {
-  YOUTUBE_API_KEY,
-  SOUNDCLOUD_CLIENT_ID,
-  MAX_PLAYLIST_SIZE,
-  DEFAULT_VOLUME,
-  LOCALE
-} = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "playlist",

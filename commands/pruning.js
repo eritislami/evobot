@@ -1,8 +1,5 @@
 const fs = require("fs");
-const { LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
+const i18n = require("../util/i18n");
 
 let config;
 
@@ -14,7 +11,7 @@ try {
 
 module.exports = {
   name: "pruning",
-  description: i18n.__('pruning.description'),
+  description: i18n.__("pruning.description"),
   execute(message) {
     if (!config) return;
     config.PRUNING = !config.PRUNING;

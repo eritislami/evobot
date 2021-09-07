@@ -1,12 +1,9 @@
-const { LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
+const i18n = require("../util/i18n");
 
 module.exports = {
   name: "uptime",
   aliases: ["u"],
-  description: i18n.__('uptime.description'),
+  description: i18n.__("uptime.description"),
   execute(message) {
     let seconds = Math.floor(message.client.uptime / 1000);
     let minutes = Math.floor(seconds / 60);
@@ -18,7 +15,7 @@ module.exports = {
     hours %= 24;
 
     return message
-      .reply(i18n.__mf('uptime.result', {days: days, hours: hours, minutes: minutes, seconds: seconds}))
+      .reply(i18n.__mf("uptime.result", { days: days, hours: hours, minutes: minutes, seconds: seconds }))
       .catch(console.error);
   }
 };

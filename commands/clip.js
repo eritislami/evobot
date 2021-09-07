@@ -1,10 +1,8 @@
-const { PREFIX, LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-i18n.setLocale(LOCALE);
+const i18n = require("../util/i18n");
 
 module.exports = {
   name: "clip",
-  description: i18n.__('clip.description'),
+  description: i18n.__("clip.description"),
   async execute(message, args) {
     const { channel } = message.member.voice;
     const queue = message.client.queue.get(message.guild.id);
@@ -33,7 +31,7 @@ module.exports = {
           message.client.queue.delete(message.guild.id);
           channel.leave();
         })
-        .on("error", err => {
+        .on("error", (err) => {
           message.client.queue.delete(message.guild.id);
           channel.leave();
           console.error(err);

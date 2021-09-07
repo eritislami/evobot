@@ -1,13 +1,11 @@
+const i18n = require("../util/i18n");
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
 const https = require("https");
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, LOCALE, DEFAULT_VOLUME } = require("../util/EvobotUtil");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
 
 module.exports = {
   name: "play",

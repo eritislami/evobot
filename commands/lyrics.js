@@ -1,9 +1,6 @@
 const { MessageEmbed } = require("discord.js");
 const lyricsFinder = require("lyrics-finder");
-const { LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
+const i18n = require("../util/i18n");
 
 module.exports = {
   name: "lyrics",
