@@ -50,6 +50,7 @@ Currently available locales are:
 - French (fr)
 - German (de)
 - Italian (it)
+- Japanese (ja)
 - Korean (ko)
 - Polish (pl)
 - Russian (ru)
