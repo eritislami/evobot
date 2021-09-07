@@ -41,7 +41,7 @@ module.exports = {
       connection: null,
       songs: [],
       loop: false,
-      volume: DEFAULT_VOLUME || 100,
+      volume: DEFAULT_VOLUME,
       playing: true
     };
 
@@ -70,7 +70,7 @@ module.exports = {
       try {
         const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });
         playlist = results[0];
-        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
+        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE, { part: "snippet" });
       } catch (error) {
         console.error(error);
         return message.reply(error.message).catch(console.error);
