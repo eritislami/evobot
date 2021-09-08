@@ -162,5 +162,8 @@
     "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
     "cooldownMessage": "Proszę zaczekaj {time} przed kolejny użyciem komendy `{name}`.",
     "errorCommand": "Podczas wykonywania tej komendy pojawił się błąd."
+  },
+  "disconnect": {
+    "description": "Odłącz bota od serwera"
   }
 }

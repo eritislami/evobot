@@ -162,6 +162,9 @@
       "errorNotChannel": "你必须先加入语音频道!",
       "cooldownMessage": "请等待 {time} 秒后再使用 `{name}` 指令",
       "errorCommand": "执行指令时發生错误"
+    },
+    "disconnect": {
+      "description": "断开机器人与服务器的连接"
     }
   }
   

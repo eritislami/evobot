@@ -162,5 +162,8 @@
     "errorNotChannel": "先にボイスチャンネルに参加してください！",
     "cooldownMessage": "`{name}` コマンドの実行中のため、あと {time} 秒お待ち下さい。",
     "errorCommand": "コマンド実行時にエラーが発生しました。"
+  },
+  "disconnect": {
+    "description": "ボットをサーバーから切断します"
   }
 }

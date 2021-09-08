@@ -162,6 +162,9 @@
       "errorNotChannel": "Du måste gå med i en röstkanal först!",
       "cooldownMessage": "vänta {time} sekunder till innan du återanvänder kommandot `{name}`.",
       "errorCommand": "Det uppstod ett fel vid körningen av kommandot."
+    },
+    "disconnect": {
+      "description": "Koppla bort boten från servern"
     }
   }
   

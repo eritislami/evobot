@@ -162,5 +162,8 @@
     "errorNotChannel": "Betrete zuerst einen Voice-Channel!",
     "cooldownMessage": "Bitte warte noch {time} Sekunde(n) bevor du wieder den Command `{name}` nuzten kannst.",
     "errorCommand": "Da war ein Fehler beim ausführen des Commands."
+  },
+  "disconnect": {
+    "description": "Trennen Sie den Bot vom Server"
   }
 }

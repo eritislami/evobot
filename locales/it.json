@@ -162,5 +162,8 @@
     "errorNotChannel": "Devi prima entrare in un canale vocale!",
     "cooldownMessage": "attendi {time} secondo(i) prima di riutilizzare il comando `{name}`.",
     "errorCommand": "Si è verificato un errore durante l'esecuzione del comando."
+  },
+  "disconnect": {
+    "description": "Disconnetti il bot dal server"
   }
 }

@@ -162,5 +162,8 @@
     "errorNotChannel": "Je moet eerst een voice channel joinen!",
     "cooldownMessage": "Wacht nog {time} seconden voor je `{name}` hergebruikt.",
     "errorCommand": "Er was een error tijdens het uitvoeren van deze command."
+  },
+  "disconnect": {
+    "description": "Koppel de bot los van de server"
   }
 }

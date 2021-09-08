@@ -162,5 +162,8 @@
       "errorNotChannel": "Önce sesli sohbet kanalına girmelisiniz!",
       "cooldownMessage": "`{name}` komutunu kullanmak için {time} saniye beklemelisiniz .",
       "errorCommand": "Komutu gerçekleştirirken bir hata oluştu."
+    },
+    "disconnect": {
+      "description": "Botun sunucuyla bağlantısını kesin"
     }
   }

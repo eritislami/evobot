@@ -162,5 +162,8 @@
     "errorNotQueue": "Il n'y a pas de file d'attente.",
     "usagesReply": "Utilisation: {prefix}move <Nombre dans la file d'attente>",
     "result": "<@{author}> 🚚 a déplacé **{title}** vers {index} dans la file d'attente."
+  },
+  "disconnect": {
+    "description": "Déconnecter le bot du serveur"
   }
 }
