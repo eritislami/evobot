@@ -4,6 +4,7 @@ daysUntilClose: 7
 exemptLabels:
   - "bug: confirmed"
   - "in progress"
+  - "enhancement"
   - "dependencies"
 staleLabel: stale
 markComment: >
