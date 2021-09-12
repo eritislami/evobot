@@ -134,14 +134,13 @@ module.exports = {
         case "🔇":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (queue.volume <= 0) {
-            queue.volume = 100;
-            queue.connection.dispatcher.setVolumeLogarithmic(100 / 100);
-            queue.textChannel.send(i18n.__mf("play.unmutedSong", { author: user })).catch(console.error);
-          } else {
-            queue.volume = 0;
+          queue.muted = !queue.muted;
+          if (queue.muted) {
             queue.connection.dispatcher.setVolumeLogarithmic(0);
             queue.textChannel.send(i18n.__mf("play.mutedSong", { author: user })).catch(console.error);
+          } else {
+            queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
+            queue.textChannel.send(i18n.__mf("play.unmutedSong", { author: user })).catch(console.error);
           }
           break;
 
@@ -149,8 +148,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (queue.volume == 0) return;
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (queue.volume - 10 <= 0) queue.volume = 0;
-          else queue.volume = queue.volume - 10;
+          queue.volume = Math.max(queue.volume - 10, 0);
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
           queue.textChannel
             .send(i18n.__mf("play.decreasedVolume", { author: user, volume: queue.volume }))
@@ -161,8 +159,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (queue.volume == 100) return;
           if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
-          if (queue.volume + 10 >= 100) queue.volume = 100;
-          else queue.volume = queue.volume + 10;
+          queue.volume = Math.min(queue.volume + 10, 100);
           queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
           queue.textChannel
             .send(i18n.__mf("play.increasedVolume", { author: user, volume: queue.volume }))

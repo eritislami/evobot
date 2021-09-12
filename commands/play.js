@@ -71,6 +71,7 @@ module.exports = {
       songs: [],
       loop: false,
       volume: DEFAULT_VOLUME,
+      muted: false,
       playing: true
     };
 
