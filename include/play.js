@@ -140,7 +140,7 @@ module.exports = {
             queue.textChannel.send(i18n.__mf("play.mutedSong", { author: user })).catch(console.error);
           } else {
             queue.connection.dispatcher.setVolumeLogarithmic(queue.volume / 100);
-            ueue.textChannel.send(i18n.__mf("play.unmutedSong", { author: user })).catch(console.error);
+            queue.textChannel.send(i18n.__mf("play.unmutedSong", { author: user })).catch(console.error);
           }
           break;
 
