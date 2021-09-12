@@ -15,10 +15,10 @@ RUN groupadd -r ${USER} && \
 USER ${USER}
 WORKDIR /home/evobot
 
-COPY package*.json ./
+COPY --chown=${USER}:${USER} package*.json ./
 RUN npm install
 VOLUME [ "/home/evobot" ]
 
-COPY . .
+COPY --chown=${USER}:${USER}  . .
 
 ENTRYPOINT [ "node", "index.js" ]
