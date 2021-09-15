@@ -1,7 +1,12 @@
 {
-  "name": "EvoBot",
-  "description": "🤖 Discord Music Bot built with discord.js",
-  "repository": "https://github.com/eritislami/evobot",
-  "logo": "https://i.imgur.com/JFxgbWH.png",
-  "keywords": ["discord", "discordjs", "music", "bot"]
+  "name": "Klaas1",
+  "description": "🤖 Musicbot made for the SS server",
+  "repository": "https://github.com/jacobkapitein/klaas1",
+  "logo": "https://i1.wp.com/finofilipino.org/wp-content/uploads/2019/09/qaSDFQWERFGWERG.jpg",
+  "keywords": [
+    "discord",
+    "discordjs",
+    "music",
+    "bot"
+  ]
 }
