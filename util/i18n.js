@@ -4,25 +4,8 @@ const i18n = require("i18n");
 
 i18n.configure({
   locales: [
-    "ar",
-    "de",
     "en",
-    "es",
-    "fr",
-    "it",
-    "ja",
-    "ko",
     "nl",
-    "pl",
-    "pt_br",
-    "ru",
-    "sv",
-    "th",
-    "tr",
-    "vi",
-    "zh_cn",
-    "zh_sg",
-    "zh_tw"
   ],
   directory: join(__dirname, "..", "locales"),
   defaultLocale: "en",
