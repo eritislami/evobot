@@ -14,13 +14,13 @@
 
 ## 🚀 Getting Started 
 
-```
+```sh
 git clone https://github.com/eritislami/evobot.git
 cd evobot
 npm install
 ```
 
-After installation finishes you can use `node index.js` to start the bot.
+After installation finishes follow configuration instructions then run `node index.js` to start the bot.
 
 ## ⚙️ Configuration
 
