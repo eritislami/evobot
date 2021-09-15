@@ -1,9 +1,5 @@
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
-![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
-
-# 🤖 EvoBot (Discord Music Bot)
-> EvoBot is a Discord Music Bot built with discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide)
+# 🤖 Klaas1 (Discord Music Bot)
+> Klaas is a Discord Music Bot built with discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide). This project is a fork from [EvoBot](https://github.com/eritislami/evobot). This project is a customization of the bot for our own Discord server
 
 ## Requirements
 
@@ -15,8 +11,8 @@
 ## 🚀 Getting Started 
 
 ```sh
-git clone https://github.com/eritislami/evobot.git
-cd evobot
+git clone https://github.com/jacobkapitein/klaas1.git
+cd klaas1
 npm install
 ```
 
@@ -34,7 +30,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
   "YOUTUBE_API_KEY": "",
   "SOUNDCLOUD_CLIENT_ID": "",
   "MAX_PLAYLIST_SIZE": 10,
-  "PREFIX": "/",
+  "PREFIX": "!",
   "PRUNING": false,
   "LOCALE": "en",
   "DEFAULT_VOLUME": 100,
@@ -44,25 +40,9 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 Currently available locales are:
 - English (en)
-- Arabic (ar)
-- Brazilian Portuguese (pt_br)
 - Dutch (nl)
-- French (fr)
-- German (de)
-- Italian (it)
-- Japanese (ja)
-- Korean (ko)
-- Polish (pl)
-- Russian (ru)
-- Simplified Chinese (zh_cn)
-- Singaporean Mandarin (zh_sg)
-- Spanish (es)
-- Swedish (sv)
-- Traditional Chinese (zh_tw)
-- Thai (th)
-- Turkish (tr)
-- Vietnamese (vi)
-- Check [Contributing](#-contributing) if you wish to help add more languages!
+
+[EvoBot](https://github.com/eritislami/evobot) has more locales available, but as we don't need them, they are not included in this project.
 
 ## 📝 Features & Commands
 
@@ -70,19 +50,19 @@ Currently available locales are:
 
 * 🎶 Play music from YouTube via url
 
-`/play https://www.youtube.com/watch?v=GLvohMXgcBo`
+`!play https://www.youtube.com/watch?v=GLvohMXgcBo`
 
 * 🔎 Play music from YouTube via search query
 
-`/play under the bridge red hot chili peppers`
+`!play under the bridge red hot chili peppers`
 
 * 🎶 Play music from Soundcloud via url
 
-`/play https://soundcloud.com/blackhorsebrigade/pearl-jam-alive`
+`!play https://soundcloud.com/blackhorsebrigade/pearl-jam-alive`
 
 * 🔎 Search and select music to play
 
-`/search Pearl Jam`
+`!search Pearl Jam`
 
 Reply with song number or numbers seperated by comma that you wish to play
 
@@ -90,38 +70,39 @@ Examples: `1` or `1,2,3`
 
 * 📃 Play youtube playlists via url
 
-`/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
+`!playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
 
 * 🔎 Play youtube playlists via search query
 
-`/playlist linkin park meteora`
-* Now Playing (/np)
-* Queue system (/queue, /q)
-* Loop / Repeat (/loop)
-* Shuffle (/shuffle)
-* Volume control (/volume, /v)
-* Lyrics (/lyrics, /ly)
-* Pause (/pause)
-* Resume (/resume, /r)
-* Skip (/skip, /s)
-* Skip to song # in queue (/skipto, /st)
-* Move a song in the queue (/move, /mv)
-* Remove song # from queue (/remove, /rm)
-* Play an mp3 clip (/clip song.mp3) (put the file in sounds folder)
-* List all clips (/clips)
-* Show ping to Discord API (/ping)
-* Show bot uptime (/uptime)
-* Toggle pruning of bot messages (/pruning)
-* Help (/help, /h)
+`!playlist linkin park meteora`
+* Now Playing (!np)
+* Queue system (!queue, !q)
+* Loop ! Repeat (!loop)
+* Shuffle (!shuffle)
+* Volume control (!volume, !v)
+* Lyrics (!lyrics, !ly)
+* Pause (!pause)
+* Resume (!resume, !r)
+* Skip (!skip, !s)
+* Skip to song # in queue (!skipto, !st)
+* Move a song in the queue (!move, !mv)
+* Remove song # from queue (!remove, !rm)
+* Play an mp3 clip (!clip song.mp3) (put the file in sounds folder)
+* List all clips (!clips)
+* Show ping to Discord API (!ping)
+* Show bot uptime (!uptime)
+* Toggle pruning of bot messages (!pruning)
+* Help (!help, !h)
 * Command Handler from [discordjs.guide](https://discordjs.guide/)
 * Media Controls via Reactions
 
 ![reactions](https://i.imgur.com/9S7Omf9.png)
 
 ## 🤝 Contributing
+Contributing to this fork is not really a thing, but members of the server wish for custom functions and contribute them, feel free to fork this project. If you wish to contribute these features to the original author, please refer to [his project](https://github.com/eritislami/evobot).
 
-1. [Fork the repository](https://github.com/eritislami/evobot/fork)
-2. Clone your fork: `git clone https://github.com/your-username/evobot.git`
+1. [Fork the repository](https://github.com/jacobkapitein/klaas1/fork)
+2. Clone your fork: `git clone https://github.com/your-username/klaas1.git`
 3. Create your feature branch: `git checkout -b my-new-feature`
 4. Stage changes `git add .`
 5. Commit your changes: `cz` OR `npm run commit` do not use `git commit`
@@ -130,4 +111,5 @@ Examples: `1` or `1,2,3`
 
 ## 📝 Credits
 
-[@iCrawl](https://github.com/iCrawl) For the queue system used in this application which was adapted from [@iCrawl/discord-music-bot](https://github.com/iCrawl/discord-music-bot)
+- [@iCrawl](https://github.com/iCrawl) For the queue system used in this application which was adapted from [@iCrawl/discord-music-bot](https://github.com/iCrawl/discord-music-bot)
+- [Jacob Kapitein](https://github.com/jacobkapitein) for this fork.
