@@ -1,13 +1,13 @@
 {
-  "name": "evobot",
+  "name": "bootleg-rythm",
   "version": "0.14.0",
   "description": "Discord music bot built with discord.js",
   "main": "index.js",
-  "author": "Erit Islami <eritislami@gmail.com>",
+  "author": "Jacob Kapitein <jacob.kapitein@protonmail.com>",
   "private": true,
-  "homepage": "https://github.com/eritislami/evobot",
-  "repository": "github:eritislami/evobot",
-  "bugs": "https://github.com/eritislami/evobot/issues",
+  "homepage": "https://github.com/jacobkapitein/bootleg-rythm",
+  "repository": "github:jacobkapitein:bootleg-rythm",
+  "bugs": "https://github.com/jacobkapitein/bootleg-rythm/issues",
   "engines": {
     "node": ">=14.0.0"
   },

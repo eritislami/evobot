@@ -1,23 +1,23 @@
 FROM node:14.16.1-slim
 
-ENV USER=klaas1
+ENV USER=bootleg-rythm
 
 # install python and make
 RUN apt-get update && \
 	apt-get install -y python3 build-essential && \
 	apt-get purge -y --auto-remove
 
-# create klaas1 user
+# create bootleg-rythm user
 RUN groupadd -r ${USER} && \
-	useradd --create-home --home /home/klaas1 -r -g ${USER} ${USER}
+	useradd --create-home --home /home/bootleg-rythm -r -g ${USER} ${USER}
 
 # set up volume and user
 USER ${USER}
-WORKDIR /home/klaas1
+WORKDIR /home/bootleg-rythm
 
 COPY --chown=${USER}:${USER} package*.json ./
 RUN npm install
-VOLUME [ "/home/klaas1" ]
+VOLUME [ "/home/bootleg-rythm" ]
 
 COPY --chown=${USER}:${USER}  . .
 

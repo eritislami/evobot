@@ -1,5 +1,5 @@
-# 🤖 Klaas1 (Discord Music Bot)
-> Klaas is a Discord Music Bot built with discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide). This project is a fork from [EvoBot](https://github.com/eritislami/evobot). This project is a customization of the bot for our own Discord server
+# 🤖 Bootleg Rythm (Discord Music Bot)
+> Bootleg Rythm is a Discord Music Bot built with discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide). This project is a fork from [EvoBot](https://github.com/eritislami/evobot). This project is a customization of the bot for our own Discord server
 
 ## Requirements
 
@@ -11,8 +11,8 @@
 ## 🚀 Getting Started 
 
 ```sh
-git clone https://github.com/jacobkapitein/klaas1.git
-cd klaas1
+git clone https://github.com/jacobkapitein/bootleg-rythm.git
+cd bootleg-rythm
 npm install
 ```
 
@@ -101,8 +101,8 @@ Examples: `1` or `1,2,3`
 ## 🤝 Contributing
 Contributing to this fork is not really a thing, but members of the server wish for custom functions and contribute them, feel free to fork this project. If you wish to contribute these features to the original author, please refer to [his project](https://github.com/eritislami/evobot).
 
-1. [Fork the repository](https://github.com/jacobkapitein/klaas1/fork)
-2. Clone your fork: `git clone https://github.com/your-username/klaas1.git`
+1. [Fork the repository](https://github.com/jacobkapitein/bootleg-rythm/fork)
+2. Clone your fork: `git clone https://github.com/your-username/bootleg-rythm.git`
 3. Create your feature branch: `git checkout -b my-new-feature`
 4. Stage changes `git add .`
 5. Commit your changes: `cz` OR `npm run commit` do not use `git commit`
