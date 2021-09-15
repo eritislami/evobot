@@ -1,3 +1,4 @@
+![Build status](https://github.com/eritislami/evobot/actions/workflows/node.yml/badge.svg)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
