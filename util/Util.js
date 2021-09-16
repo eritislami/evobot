@@ -1,13 +1,4 @@
-exports.canModifyQueue = (member) => {
-  const { channelID } = member.voice;
-  const botChannel = member.guild.voice.channelID;
-
-  if (channelID !== botChannel) {
-    return;
-  }
-
-  return true;
-};
+exports.canModifyQueue = (member) => member.voice.channelID === member.guild.voice.channelID;
 
 let config;
 
