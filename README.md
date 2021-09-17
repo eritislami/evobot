@@ -44,29 +44,7 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 }
 ```
 
-Currently available locales are:
-- English (en)
-- Arabic (ar)
-- Brazilian Portuguese (pt_br)
-- Dutch (nl)
-- French (fr)
-- German (de)
-- Italian (it)
-- Japanese (ja)
-- Korean (ko)
-- Polish (pl)
-- Russian (ru)
-- Simplified Chinese (zh_cn)
-- Singaporean Mandarin (zh_sg)
-- Spanish (es)
-- Swedish (sv)
-- Traditional Chinese (zh_tw)
-- Thai (th)
-- Turkish (tr)
-- Vietnamese (vi)
-- Check [Contributing](#-contributing) if you wish to help add more languages!
-
-## Docker Configuration
+## 🐬 Docker Configuration
 
 For those who would prefer to use our [Docker container](https://hub.docker.com/repository/docker/eritislami/evobot), you may provide values from `config.json` as environment variables.
 
@@ -127,6 +105,30 @@ Examples: `1` or `1,2,3`
 * Media Controls via Reactions
 
 ![reactions](https://i.imgur.com/9S7Omf9.png)
+
+## 🌎 Locales
+
+Currently available locales are:
+- English (en)
+- Arabic (ar)
+- Brazilian Portuguese (pt_br)
+- Dutch (nl)
+- French (fr)
+- German (de)
+- Italian (it)
+- Japanese (ja)
+- Korean (ko)
+- Polish (pl)
+- Russian (ru)
+- Simplified Chinese (zh_cn)
+- Singaporean Mandarin (zh_sg)
+- Spanish (es)
+- Swedish (sv)
+- Traditional Chinese (zh_tw)
+- Thai (th)
+- Turkish (tr)
+- Vietnamese (vi)
+- Check [Contributing](#-contributing) if you wish to help add more languages!
 
 ## 🤝 Contributing
 
