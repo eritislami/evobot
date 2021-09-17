@@ -65,6 +65,14 @@ Currently available locales are:
 - Vietnamese (vi)
 - Check [Contributing](#-contributing) if you wish to help add more languages!
 
+## Docker Configuration
+
+For those who would prefer to use our [Docker container](https://hub.docker.com/repository/docker/eritislami/evobot), you may provide values from `config.json` as environment variables.
+
+```shell
+docker run -e "TOKEN=<discord-token>" -e "YOUTUBE_API_KEY=<youtube-key>" eritislami/evobot
+```
+
 ## 📝 Features & Commands
 
 > Note: The default prefix is '/'
