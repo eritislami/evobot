@@ -69,7 +69,7 @@ module.exports = {
       }
     } else {
       try {
-        const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });
+        const results = await youtube.searchPlaylists(search, 1, { part: "id" });
         playlist = results[0];
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE, { part: "snippet" });
       } catch (error) {
