@@ -2,6 +2,7 @@ const i18n = require("../util/i18n");
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
+const YTKeyless = require("youtube-search-without-api-key");
 const scdl = require("soundcloud-downloader").default;
 const https = require("https");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/Util");
@@ -104,7 +105,7 @@ module.exports = {
       }
     } else {
       try {
-        const results = await youtube.searchVideos(search, 1, { part: "id" });
+        const results = await YTKeyless.search(search);
 
         if (!results.length) {
           message.reply(i18n.__("play.songNotFound")).catch(console.error);
