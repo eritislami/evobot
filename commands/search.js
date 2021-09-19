@@ -1,7 +1,5 @@
 const { MessageEmbed } = require("discord.js");
-const YouTubeAPI = require("simple-youtube-api");
-const { YOUTUBE_API_KEY } = require("../util/Util");
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const YTKeyless = require("youtube-search-without-api-key");
 const i18n = require("../util/i18n");
 
 module.exports = {
@@ -24,8 +22,9 @@ module.exports = {
       .setColor("#F8AA2A");
 
     try {
-      const results = await youtube.searchVideos(search, 10);
-      results.map((video, index) => resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`));
+      const results = await YTKeyless.search(search);
+	  results.length -= 10;
+      results.map((video, index) => resultsEmbed.addField("https://youtu.be/"+video.id.videoId, `${index + 1}. ${video.title}`));
 
       let resultsMessage = await message.channel.send(resultsEmbed);
 
