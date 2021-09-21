@@ -115,6 +115,7 @@ Currently available locales are:
 - Dutch (nl)
 - French (fr)
 - German (de)
+- Greek (el)
 - Italian (it)
 - Japanese (ja)
 - Korean (ko)
