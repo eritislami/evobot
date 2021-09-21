@@ -6,6 +6,7 @@ i18n.configure({
   locales: [
     "ar",
     "de",
+    "el",
     "en",
     "es",
     "fr",
