@@ -12,7 +12,7 @@ module.exports = {
       return message.reply(i18n.__("queue.missingPermissionMessage"));
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send(i18n.__("queue.errorNotQueue"));
+    if (!queue || !queue.songs.length) return message.channel.send(i18n.__("queue.errorNotQueue"));
 
     let currentPage = 0;
     const embeds = generateQueueEmbed(message, queue.songs);

@@ -1,4 +1,5 @@
 const i18n = require("../util/i18n");
+const fs = require("fs");
 
 module.exports = {
   name: "clip",
@@ -10,6 +11,10 @@ module.exports = {
     if (!args.length) return message.reply(i18n.__("clip.usagesReply")).catch(console.error);
     if (queue) return message.reply(i18n.__("clip.errorQueue"));
     if (!channel) return message.reply(i18n.__("clip.errorNotChannel")).catch(console.error);
+
+    if (args[0].includes(".mp3")) args[0] = args[0].replace(".mp3", "");
+
+    if (!fs.existsSync(`./sounds/${args[0]}.mp3`)) return message.reply(i18n.__("common.errorCommand")).catch(console.error);
 
     const queueConstruct = {
       textChannel: message.channel,
@@ -37,6 +42,11 @@ module.exports = {
           channel.leave();
           console.error(err);
         });
+      dispatcher.setVolumeLogarithmic(queueConstruct.volume / 100);
+
+      await queueConstruct.textChannel.send(
+        i18n.__mf("play.startedPlaying", { title: `${args[0]}.mp3`, url: "" })
+      );
     } catch (error) {
       console.error(error);
     }
