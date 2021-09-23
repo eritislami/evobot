@@ -132,6 +132,7 @@ Currently available locales are:
 - Ukrainian (uk)
 - Vietnamese (vi)
 - Check [Contributing](#-contributing) if you wish to help add more languages!
+- For languages please use [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) two letter format
 
 ## 🤝 Contributing
 
