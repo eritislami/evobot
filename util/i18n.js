@@ -21,6 +21,7 @@ i18n.configure({
     "sv",
     "th",
     "tr",
+    "uk_ua",
     "vi",
     "zh_cn",
     "zh_sg",
