@@ -129,6 +129,7 @@ Currently available locales are:
 - Traditional Chinese (zh_tw)
 - Thai (th)
 - Turkish (tr)
+- Ukrainian (uk)
 - Vietnamese (vi)
 - Check [Contributing](#-contributing) if you wish to help add more languages!
 
