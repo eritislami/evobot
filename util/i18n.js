@@ -10,6 +10,7 @@ i18n.configure({
     "en",
     "es",
     "fr",
+    "id",
     "it",
     "ja",
     "ko",
