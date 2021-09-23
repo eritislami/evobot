@@ -116,7 +116,7 @@ Currently available locales are:
 - French (fr)
 - German (de)
 - Greek (el)
-- Bahasa Indonesia (id)
+- Indonesian (id)
 - Italian (it)
 - Japanese (ja)
 - Korean (ko)
