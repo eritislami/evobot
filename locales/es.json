@@ -116,7 +116,7 @@
     "usageReply": "Uso correcto: {prefix}{name} <Nombre del Vídeo>",
     "errorAlreadyCollector": "Un recolector de mensajes ya está activo en el servidor actualmente.",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
-    "resultEmbedTtile": "**Responde con el número de la música que quieras**",
+    "resultEmbedTitle": "**Responde con el número de la música que quieras**",
     "resultEmbedDesc": "Resultados para: {search}"
   },
   "shuffle": {

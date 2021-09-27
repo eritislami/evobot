@@ -116,7 +116,7 @@
     "usageReply": "사용방법`: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "해당 채널에 메세지 컬렉터가 이미 존재합니다.",
     "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
-    "resultEmbedTtile": "**재생할 음악 번호를 답장으로 보내주세요.**",
+    "resultEmbedTitle": "**재생할 음악 번호를 답장으로 보내주세요.**",
     "resultEmbedDesc": "검색 결과: {search}"
   },
   "shuffle": {

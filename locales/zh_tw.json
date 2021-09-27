@@ -116,7 +116,7 @@
     "usageReply": "用法: {prefix}{name} <影片名稱>",
     "errorAlreadyCollector": "訊息接收器已經在這個頻道上啟用",
     "errorNotChannel": "你必須先加入語音頻道!",
-    "resultEmbedTtile": "**回覆你想要播放的歌曲代碼**",
+    "resultEmbedTitle": "**回覆你想要播放的歌曲代碼**",
     "resultEmbedDesc": "搜尋{search}的結果"
   },
   "shuffle": {

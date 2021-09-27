@@ -116,7 +116,7 @@
     "usageReply": "Usage: {prefix}{name} <Nome Video>",
     "errorAlreadyCollector": "Un raccoglitore di messaggi è già attivo in questo canale.",
     "errorNotChannel": "Devi prima entrare in un canale vocale!",
-    "resultEmbedTtile": "**Rispondi con il numero del brano che desideri riprodurre**",
+    "resultEmbedTitle": "**Rispondi con il numero del brano che desideri riprodurre**",
     "resultEmbedDesc": "Risultati per: {search}"
   },
   "shuffle": {

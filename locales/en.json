@@ -116,7 +116,7 @@
     "usageReply": "Usage: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "A message collector is already active in this channel.",
     "errorNotChannel": "You need to join a voice channel first!",
-    "resultEmbedTtile": "**Reply with the song number you want to play**",
+    "resultEmbedTitle": "**Reply with the song number you want to play**",
     "resultEmbedDesc": "Results for: {search}"
   },
   "shuffle": {

@@ -116,7 +116,7 @@
     "usageReply": "استعمال: {prefix}{name} <اسم مقطع>",
     "errorAlreadyCollector": "مُجمع الرسائل نشط بالفعل في هذه القناة.",
     "errorNotChannel": "تحتاج إلى الانضمام إلى قناة صوتية أولاً!",
-    "resultEmbedTtile": "**رد برقم الأغنية التي تريد تشغيلها**",
+    "resultEmbedTitle": "**رد برقم الأغنية التي تريد تشغيلها**",
     "resultEmbedDesc": "{search} نتائج لـ"
   },
   "shuffle": {

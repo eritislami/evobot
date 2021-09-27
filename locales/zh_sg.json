@@ -116,7 +116,7 @@
       "usageReply": "用法: {prefix}{name} <影片名称>",
       "errorAlreadyCollector": "讯息接收器已经在这个频道上启用",
       "errorNotChannel": "你必须先加入语音频道!",
-      "resultEmbedTtile": "**回复你想要播放的歌曲代码**",
+      "resultEmbedTitle": "**回复你想要播放的歌曲代码**",
       "resultEmbedDesc": "搜寻{search}的结果"
     },
     "shuffle": {

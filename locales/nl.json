@@ -116,7 +116,7 @@
     "usageReply": "Gebruik: {prefix}{name} <Video Naam>",
     "errorAlreadyCollector": "Er is al een berichten verzamelaar actief in dit kanaal.",
     "errorNotChannel": "Je moet eerst een voice channel joinen!",
-    "resultEmbedTtile": "**Reageer met het nummer die u wilt afspelen**",
+    "resultEmbedTitle": "**Reageer met het nummer die u wilt afspelen**",
     "resultEmbedDesc": "Resultaten voor: {search}"
   },
   "shuffle": {
