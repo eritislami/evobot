@@ -116,7 +116,7 @@
       "usageReply": "Kullanım: {prefix}{name} <Video İsmi>",
       "errorAlreadyCollector": "Bu kanalda zaten aktif bir mesaj toplayıcı var.",
       "errorNotChannel": "Önce bir sesli kanala katılmalısınız!",
-      "resultEmbedTtile": "**Oynatmak istediğiniz şarkının numarasını yazınız**",
+      "resultEmbedTitle": "**Oynatmak istediğiniz şarkının numarasını yazınız**",
       "resultEmbedDesc": "Sonuçlar: {search}"
     },
     "shuffle": {

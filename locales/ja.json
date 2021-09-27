@@ -116,7 +116,7 @@
     "usageReply": "使い方: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "このチャンネルにはすでにメッセージコレクターが存在しています",
     "errorNotChannel": "先にボイスチャンネルに参加してください！",
-    "resultEmbedTtile": "**再生したい曲の番号を返信してください**",
+    "resultEmbedTitle": "**再生したい曲の番号を返信してください**",
     "resultEmbedDesc": "検索結果: {search}"
   },
   "shuffle": {

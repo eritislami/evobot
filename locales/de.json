@@ -116,7 +116,7 @@
     "usageReply": "Nutzung: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "In diesem Kanal ist bereits ein Nachrichtensammler aktiv.",
     "errorNotChannel": "Betrete zuerst einen Voice-Channel!",
-    "resultEmbedTtile": "**Antworte mit der Songnummer, die du spielen möchten**",
+    "resultEmbedTitle": "**Antworte mit der Songnummer, die du spielen möchten**",
     "resultEmbedDesc": "Ergebnisse für: {search}"
   },
   "shuffle": {

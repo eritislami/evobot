@@ -116,7 +116,7 @@
       "usageReply": "การใช้งาน: {prefix}{name} <ชื่อวิดีโอ>",
       "errorAlreadyCollector": "ตัวรวบรวมข้อความใช้งานอยู่ในช่องนี้แล้ว.",
       "errorNotChannel": "คุณต้องเข้าร่วมช่องเสียงก่อน!",
-      "resultEmbedTtile": "**ตอบกลับด้วยหมายเลขเพลงที่คุณต้องการเล่น**",
+      "resultEmbedTitle": "**ตอบกลับด้วยหมายเลขเพลงที่คุณต้องการเล่น**",
       "resultEmbedDesc": "ผลลัพธ์สำหรับ: {search}"
     },
     "shuffle": {

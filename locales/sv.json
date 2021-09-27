@@ -116,7 +116,7 @@
       "usageReply": "Användande: {prefix}{name} <Video Name>",
       "errorAlreadyCollector": "En meddelandesamlare är redan aktiv i den här kanalen.",
       "errorNotChannel": "Du måste gå med i en röstkanal först!",
-      "resultEmbedTtile": "**Svara med sångnumret du vill spela**",
+      "resultEmbedTitle": "**Svara med sångnumret du vill spela**",
       "resultEmbedDesc": "Resultat för: {search}"
     },
     "shuffle": {

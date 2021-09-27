@@ -116,7 +116,7 @@
     "usageReply": "Penggunaan: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "Kolektor pesan sudah aktif di saluran ini.",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!",
-    "resultEmbedTtile": "**Balas dengan nomor lagu yang ingin kamu putar**",
+    "resultEmbedTitle": "**Balas dengan nomor lagu yang ingin kamu putar**",
     "resultEmbedDesc": "Hasil untuk: {search}"
   },
   "shuffle": {

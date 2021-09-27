@@ -116,7 +116,7 @@
     "SkładniaReply": "Składnia: {prefix}{name} <nazwa nagrania>",
     "errorAlreadyCollector": "Wyszukiwacz muzyki jest już aktywny na tym kanale.",
     "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
-    "resultEmbedTtile": "**Odpowiedz numerem utoworu który chcesz odtworzyć**",
+    "resultEmbedTitle": "**Odpowiedz numerem utoworu który chcesz odtworzyć**",
     "resultEmbedDesc": "Wyniki dla: {search}"
   },
   "shuffle": {

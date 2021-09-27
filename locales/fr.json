@@ -110,7 +110,7 @@
     "usageReply": "Utilisation: {prefix}{name} <Nom de la vidéo>",
     "errorAlreadyCollector": "Un collecteur de messages est déjà actif dans ce salon.",
     "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
-    "resultEmbedTtile": "**Répondez avec le numéro de la chanson que vous souhaitez écouter**",
+    "resultEmbedTitle": "**Répondez avec le numéro de la chanson que vous souhaitez écouter**",
     "resultEmbedDesc": "Résultat pour: {search}"
   },
   "shuffle": {

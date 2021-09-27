@@ -116,7 +116,7 @@
     "usageReply": "Cách sử dụng: {prefix}{name} <tên video>",
     "errorAlreadyCollector": "Hiện đang có một người dùng khác đang tìm kiếm trong kênh này.",
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "resultEmbedTtile": "**Gửi số bài hát mà bạn chọn trong danh sách ở trên**",
+    "resultEmbedTitle": "**Gửi số bài hát mà bạn chọn trong danh sách ở trên**",
     "resultEmbedDesc": "Kết quả tìm kiểm cho: {search}"
   },
   "shuffle": {
