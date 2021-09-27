@@ -35,25 +35,31 @@ module.exports = {
       }
 
       message.channel.activeCollector = true;
-      const response = await message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ["time"] });
-      const reply = response.first().content;
+      message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ["time"] })
+        .then(async (collected) => {
+          const reply = collected.first().content
 
-      if (reply.includes(",")) {
-        let songs = reply.split(",").map((str) => str.trim());
+          if (reply.includes(",")) {
+            let songs = reply.split(",").map((str) => str.trim());
 
-        for (let song of songs) {
-          await message.client.commands
-            .get("play")
-            .execute(message, [resultsEmbed.fields[parseInt(song) - 1].name]);
-        }
-      } else {
-        const choice = resultsEmbed.fields[parseInt(response.first()) - 1].name;
-        message.client.commands.get("play").execute(message, [choice]);
-      }
+            for (let song of songs) {
+              await message.client.commands
+                .get("play")
+                .execute(message, [resultsEmbed.fields[parseInt(song) - 1].name]);
+            }
+          } else {
+            const choice = resultsEmbed.fields[parseInt(reply) - 1].name;
+            message.client.commands.get("play").execute(message, [choice]);
+          }
 
-      message.channel.activeCollector = false;
-      resultsMessage.delete().catch(console.error);
-      response.first().delete().catch(console.error);
+          message.channel.activeCollector = false;
+          resultsMessage.delete().catch(console.error);
+          collected.first().delete().catch(console.error);
+        })
+        .catch(() => {
+          message.channel.activeCollector = false;
+          resultsMessage.edit(`${message.author}, Unfortunately, I didn't receive your response **within 30 seconds**`);
+        });
     } catch (error) {
       console.error(error);
       message.channel.activeCollector = false;
