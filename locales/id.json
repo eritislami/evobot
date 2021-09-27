@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Memutar suara klip",
-    "usagesReply": "Penggunaan: /clip <name>",
+    "usagesReply": "Penggunaan: /clip <nama klip>",
     "errorQueue": "Tidak dapat memutar klip karena ada antrian yang sedang aktif.",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!"
   },
@@ -143,7 +143,7 @@
   },
   "uptime": {
     "description": "Melihat waktu aktif (Uptime)",
-    "result": "Uptime: `{days} Hari, {hours} Jam, {minutes} Menit, {seconds} Detik`"
+    "result": "Waktu aktif: `{days} Hari, {hours} Jam, {minutes} Menit, {seconds} Detik`"
   },
   "volume": {
     "description": "Mengubah volume musik yang sedang diputar",
