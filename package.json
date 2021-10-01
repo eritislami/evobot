@@ -1,7 +1,7 @@
 {
-  "name": "evobot",
+  "name": "evobots",
   "version": "0.15.2",
-  "description": "Discord music bot built with discord.js",
+  "description": "Discord music bot built with discord.js and typescript",
   "main": "index.js",
   "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
@@ -12,8 +12,10 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "@babel/plugin-transform-typescript": "^7.15.4",
     "@discordjs/opus": "^0.5.3",
     "array-move": "^3.0.1",
+    "axios": "^0.21.4",
     "discord.js": "^12.5.1",
     "ffmpeg-static": "^4.4.0",
     "i18n": "^0.13.3",
@@ -25,11 +27,14 @@
     "ytdl-core-discord": "^1.3.1"
   },
   "scripts": {
-    "start": "node index.js",
-    "commit": "cz"
+    "start": "node dist/index.js",
+    "build": "tsc --outdir dist"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^3.3.0"
+    "@swc/cli": "^0.1.51",
+    "@swc/core": "^1.2.92",
+    "cz-conventional-changelog": "^3.3.0",
+    "typescript": "^4.4.3"
   },
   "config": {
     "commitizen": {
