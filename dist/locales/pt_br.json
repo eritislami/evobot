@@ -1,0 +1,166 @@
+{
+  "clip": {
+    "description": "Reproduz um clipe de música.",
+    "usagesReply": "Uso: /clip <nome>",
+    "errorQueue": "Não é possível reproduzir este clipe porque há uma playlist ativa.",
+    "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!"
+  },
+  "clips": {
+    "description": "Lista todos os clipes"
+  },
+  "help": {
+    "description": "Mostra todos os comandos e descrições.",
+    "embedTitle": "{botname} Ajuda",
+    "embedDescription": "Lista de todos os comandos."
+  },
+  "invite": {
+    "description": "Envia o link de convite do bot."
+  },
+  "loop": {
+    "description": "Ativa o modo de repetição.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "result": "Repetir está {loop}"
+  },
+  "lyrics": {
+    "description": "Mostra a letra da música que está reproduzindo.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "lyricsNotFound": "Nenhuma letra encontrada para {title}.",
+    "embedTitle": "{title} - Letra"
+  },
+  "move": {
+    "description": "Troca a música de posição na playlist.",
+    "errorNotQueue": "Não há playlist.",
+    "usagesReply": "Uso: {prefix}move <Posição na playlist>",
+    "result": "<@{author}> 🚚 moveu **{title}** para {index} na playlist."
+  },
+  "nowplaying": {
+    "description": "Mostra música em reprodução.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "embedTitle": "Reproduzindo",
+    "live": " ◉ AO VIVO",
+    "timeRemaining": "Tempo restante: {time}"
+  },
+  "pause": {
+    "description": "Pausa a música reproduzindo.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "result": "<@{author}> ⏸ pausou a música."
+  },
+  "ping": {
+    "description": "Mostra o ping médio do bot.",
+    "result": "📈 Ping médio da API: {ping} ms"
+  },
+  "play": {
+    "description": "Reproduz áudio do Youtube ou Soundcloud",
+    "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!",
+    "errorNotInSameChannel": "Você precisa está no mesmo canal que {user}",
+    "usageReply": "Uso: {prefix}play <URL do Youtube | Nome do Vídeo | URL do Soundcloud>",
+    "missingPermissionConnect": "Não posso conectar a canais de voz, falta permissão!",
+    "missingPermissionSpeak": "Não posso tocar neste canal de voz, falta permissão!",
+    "queueAdded": "✅ **{title}** foi adicionado na playlist por <@{author}>",
+    "cantJoinChannel": "Não pude entrar no canal: {error}",
+    "queueEnded": "❌ Fim da playlist.",
+    "queueError": "Erro: {error}",
+    "startedPlaying": "🎶 Tocando: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ pulou a música.",
+    "pauseSong": "<@{author}> ⏸ pausou a música.",
+    "resumeSong": "<@{author}> ▶ resumiu a música!",
+    "unmutedSong": "<@{author}> 🔊 desmutou a música!",
+    "mutedSong": "<@{author}> 🔇 mutou a música!",
+    "decreasedVolume": "<@{author}> 🔉 baixou o volume, o volume agora é {volume}%",
+    "increasedVolume": "<@{author}> 🔊 aumentou o volume, o volume agora é {volume}%",
+    "loopSong": "<@{author}> Repetir está {loop}",
+    "stopSong": "<@{author}> ⏹ parou a música!",
+    "leaveChannel": "Deixando o canal de voz!",
+    "songNotFound": "Audio Not Found"
+  },
+  "playlist": {
+    "description": "Reproduz uma playlist do youtube",
+    "usagesReply": "Uso: {prefix}playlist <URL da Playlist do Youtube | Nome da Playlist>",
+    "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!",
+    "errorNotInSameChannel": "Você precisa está no mesmo canal que {user}",
+    "missingPermissionConnect": "Não posso conectar a canais de voz, falta permissão!",
+    "missingPermissionSpeak": "Não posso tocar neste canal de voz, falta permissão!",
+    "errorNotFoundPlaylist": "Playlist não encontrada :(",
+    "fetchingPlaylist": "⌛ importando playlist...",
+    "playlistCharLimit": "\nPlaylist maior que o permitido...",
+    "startedPlaylist": "<@{author}> reproduzindo uma playlist.",
+    "cantJoinChannel": "Não pude entrar no canal: {error}"
+  },
+  "pruning": {
+    "description": "Ativa a remoção de mensagem após fim da música.",
+    "errorWritingFile": "Houve um erro ao escrever no arquivo.",
+    "result": "Remoção de mensagem {result}"
+  },
+  "queue": {
+    "description": "Mostra a playlist atual.",
+    "missingPermissionMessage": "Falta permissão para adicionar reações!",
+    "errorNotQueue": "❌ **Nada reproduzindo neste servidor.**",
+    "currentPage": "Pagina atual - ",
+    "embedTitle": "Playlist\n",
+    "embedCurrentSong": "**Música atual - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Remove música da playlist",
+    "errorNotQueue": "Não há playlist.",
+    "usageReply": "Uso: {prefix}remove <Número da música>",
+    "result": "<@{author}> ❌ removido **{title}** da playlist."
+  },
+  "resume": {
+    "description": "Reproduz novamente a música pausada.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "resultNotPlaying": "<@{author}> ▶ resumiu a música!",
+    "errorPlaying": "A playlist não está pausada."
+  },
+  "search": {
+    "description": "Procura e seleciona vídeo para tocar",
+    "usageReply": "Uso: {prefix}{name} <Nome do Vídeo>",
+    "errorAlreadyCollector": "Uma busca ainda está ativa.",
+    "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!",
+    "resultEmbedTitle": "**Você precisa enviar um número para tocar.**",
+    "resultEmbedDesc": "Resultador para: {search}"
+  },
+  "shuffle": {
+    "description": "Ativa o modo aleatório",
+    "errorNotQueue": "Não há nada na playlist.",
+    "result": "<@{author}> 🔀 colocou a playlist no aleatório."
+  },
+  "skip": {
+    "description": "Pula a música atual.",
+    "errorNotQueue": "Não há nada tocando que eu possa pular.",
+    "result": "<@{author}> ⏭ pulou a música"
+  },
+  "skipto": {
+    "description": "Pula para uma determinada posição na fila.",
+    "usageReply": "Uso: {prefix}{name} <Número da playlist>",
+    "errorNotQueue": "Não há nada na playlist.",
+    "errorNotValid": "A playlist tem {length} música apenas!",
+    "result": "<@{author}> ⏭ pulou para música {arg}"
+  },
+  "stop": {
+    "description": "Para a música.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "result": "<@{author}> ⏹ parou a música!"
+  },
+  "uptime": {
+    "description": "Verifica o tempo ativo",
+    "result": "Tempo online: `{days} dia(s),{hours} hora(s), {minutes} minuto(s), {seconds} segundo(s)`"
+  },
+  "volume": {
+    "description": "Muda o volume da música atual.",
+    "errorNotQueue": "Não há nada reproduzindo.",
+    "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!",
+    "currentVolume": "🔊 O volume atual é: **{volume}%**",
+    "errorNotNumber": "Por-favor utilize números para mudar o volume.",
+    "errorNotValid": "Por-favor utilize números entre 0 - 100.",
+    "result": "Volume alterado para: **{arg}%**"
+  },
+  "common": {
+    "on": "**ligado**",
+    "off": "**desligado**",
+    "enabled": "**ativado**",
+    "disabled": "**desativado**",
+    "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!",
+    "cooldownMessage": "Por favor espere {time} segundo(s) mais antes de usar o comando `{name}` novamente.",
+    "errorCommand": "Houve um erro ao executar este comando."
+  }
+}

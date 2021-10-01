@@ -1,0 +1,166 @@
+{
+  "clip": {
+    "description": "Παίζει έναν ήχο ενός κλίπ",
+    "usagesReply": "Χρήση: /clip <name>",
+    "errorQueue": "Αδύνατη αναπαραγωγή κλίπ καθώς υπάρχει ενεργή ουρά.",
+    "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!"
+  },
+  "clips": {
+    "description": "Εμφάνιση όλων των κλίπς σε λίστα"
+  },
+  "help": {
+    "description": "Εμφάνιση όλων των εντολών και περιγραφών",
+    "embedTitle": "{botname} Βοήθεια",
+    "embedDescription": "Εμφάνιση όλων των εντολών σε λίστα"
+  },
+  "invite": {
+    "description": "Στείλε στο bot σύνδεσμο πρόσκλησης"
+  },
+  "loop": {
+    "description": "Εναλλαγή του βρόγχου μουσικής",
+    "errorNotQueue": "Δεν αναπαράγεται κάτι.",
+    "result": "Ο βρόγχος τώρα είναι {loop}"
+  },
+  "lyrics": {
+    "description": "Στίχοι του τραγουδιού που παίζει τώρα",
+    "errorNotQueue": "There is nothing playing.",
+    "lyricsNotFound": "Δεν αναπαράγεται κάτι..",
+    "embedTitle": "{title} - Στίχοι"
+  },
+  "move": {
+    "description": "Μετακίνησε τα ταργούδια στην ουρά",
+    "errorNotQueue": "Δεν υπάρχει ουρά αναπαραγωγής.",
+    "usagesReply": "Χρήση: {prefix}move <Νούμερο Ουράς>",
+    "result": "<@{author}> 🚚 μετακίνησε **{title}** ως {index}ο στην ουρά."
+  },
+  "nowplaying": {
+    "description": "Εμφάνιση του τραγουδιού που παίζει τώρα",
+    "errorNotQueue": "Δεν αναπαράγεται κάτι.",
+    "embedTitle": "Τώρα παίζει",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Χρόνος που υπολείπεται: {time}"
+  },
+  "pause": {
+    "description": "Παύση του τραγουδιού που παίζει τώρα",
+    "errorNotQueue": "Δεν αναπαράγεται κάτι.",
+    "result": "<@{author}> ⏸ σταμάτησε την αναπαραγωγή μουσικής."
+  },
+  "ping": {
+    "description": "Εμφάνισε το μέσο όρο ping του bot",
+    "result": "📈 Μέσος όρος ping στο API: {ping} ms"
+  },
+  "play": {
+    "description": "Αναπαραγωγή ήχου από το YouTube ή το Soundcloud",
+    "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!",
+    "errorNotInSameChannel": "Θα πρέπει να είσαι στο κανάλι κανάλι ομιλίας όπως ο χρήστης {user}",
+    "usageReply": "Χρήση: {prefix}play <URL του YouTubeYouTube | Όνομα Video | URL του Soundcloud>",
+    "missingPermissionConnect": "Αδύνατη σύνδεση στο κανάλι ομιλίας, λείπουν άδειες",
+    "missingPermissionSpeak": "Δε μπορώ να μιλήσω στο κανάλι ομιλίας, έλεγξε αν έχω τις σωστές άδειες!",
+    "queueAdded": "✅ **{title}** Προστέθηκε στην ουρά από <@{author}>",
+    "cantJoinChannel": "Αδύνατη σύνδεση στο κανάλι: {error}",
+    "queueEnded": "❌ Η ουρά αναπαραγωγής τελείωσε.",
+    "queueError": "Σφάλμα: {error}",
+    "startedPlaying": "🎶 Ξεκίνησε να παίζει τώρα: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ Παράλειψη τραγουδιού",
+    "pauseSong": "<@{author}> ⏸ Παύση τραγουδιού.",
+    "resumeSong": "<@{author}> ▶ Επανέναρξη αναπαραγωγής τραγουδιού!",
+    "unmutedSong": "<@{author}> 🔊 Διακοπή σίγασης μουσικής!",
+    "mutedSong": "<@{author}> 🔇 Σίγαση μουσικής!",
+    "decreasedVolume": "<@{author}> 🔉 χαμήλωσε την ένταση, η ένταση τώρα είναι {volume}%",
+    "increasedVolume": "<@{author}> 🔊 αύξησε την ένταση, η ένταση τώρα είναι  {volume}%",
+    "loopSong": "<@{author}> Ο βρόγχος τώρα είναι {loop}",
+    "stopSong": "<@{author}> ⏹ σταμάτησε την αναπαραγωγή!",
+    "leaveChannel": "Έξοδος από το κανάλι ομιλίας...",
+    "songNotFound": "Δε βρέθηκε ήχος"
+  },
+  "playlist": {
+    "description": "Αναπαραγωγή playlist από το youtube",
+    "usagesReply": "Χρήση: {prefix}playlist < URL του Playlist του YouTube | Όνομα του Playlist >",
+    "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!",
+    "errorNotInSameChannel": "Θα πρέπει να είσαι στο κανάλι κανάλι ομιλίας όπως ο χρήστης {user}",
+    "missingPermissionConnect": "Αδύνατη σύνδεση στο κανάλι ομιλίας, λείπουν άδειες",
+    "missingPermissionSpeak": "Δε μπορώ να μιλήσω στο κανάλι ομιλίας, έλεγξε αν έχω τις σωστές άδειες!",
+    "errorNotFoundPlaylist": "Το Playlist δε βρέθηκε :(",
+    "fetchingPlaylist": "⌛ Το playlist έρχεται...",
+    "playlistCharLimit": "\nPlaylist μεγαλύτερο από το όριο χαρακτήρων...",
+    "startedPlaylist": "<@{author}> Ξεκίνησε ένα playlist",
+    "cantJoinChannel": "Αδύνατη σύνδεση στο κανάλι: {error}"
+  },
+  "pruning": {
+    "description": "Εναλλαγή περικοπής μηνυμάτων του bot",
+    "errorWritingFile": "Υπήρξε σφάλμα γράφοντας στο αρχείο.",
+    "result": "Η περικοπή μηνήματος είναι {result}"
+  },
+  "queue": {
+    "description": "Εμφάνιση της ουράς αναπαραγωγής και του τραγουδιού που παίζει τώρα.",
+    "missingPermissionMessage": "Λείπει άδεια διαχείρισης μηνυμάτων ή προσθήκης αντιδράσεων",
+    "errorNotQueue": "❌ **Δεν αναπαράγεται κάτι στο server**",
+    "currentPage": "Τωρινή Σελίδα - ",
+    "embedTitle": "Ουρά τραγουδιών\n",
+    "embedCurrentSong": "**Παίζει τώρα - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Αφαίρεση τραγουδιού από την ουρά αναπαραγωγής",
+    "errorNotQueue": "Δεν υπάρχει ουρά αναπαραγωγής.",
+    "usageReply": "Χρήση: {prefix}αφαίρεση <Νούμερο ουράς αναπαραγωγής>",
+    "result": "<@{author}> ❌ αφαίρεσε **{title}** από την ουρά αναπαραγωγής."
+  },
+  "resume": {
+    "description": "Επανέναρξη της μουσικής που παίζει τώρα",
+    "errorNotQueue": "Δεν αναπαράγεται κάτι.",
+    "resultNotPlaying": "<@{author}> ▶ ξεκίνησε πάλι τη μοσυική!",
+    "errorPlaying": "Η ουρά αναπαραγωγής δεν είναι σε παύση."
+  },
+  "search": {
+    "description": "Αναζήτηση και επιλογή αναπαραγωγής video",
+    "usageReply": "Χρήση: {prefix}{name} <Όνομα του Video>",
+    "errorAlreadyCollector": "Ένας συλλέκτης μηνυμάτων είναι ήδη ενεργός σ' αυτό το κανάλι.",
+    "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!",
+    "resultEmbedTitle": "**Απάντησε με το νούμερο τραγουδιού που θέλεις να παίξει**",
+    "resultEmbedDesc": "Αποτελέσματα για: {search}"
+  },
+  "shuffle": {
+    "description": "Ανάμιξη ουράς αναπαραγωγής",
+    "errorNotQueue": "Δεν υπάρχει ουρά αναπαραγωγής.",
+    "result": "<@{author}> 🔀 ανακάτεψε την ουρά αναπαραγωγής"
+  },
+  "skip": {
+    "description": "Πάράλειψη κομματιού που παίζει τώρα",
+    "errorNotQueue": "Δεν υπάρχει κάτι να παίζει για να παραληφθεί.",
+    "result": "<@{author}> ⏭ παρέλειψε το τραγούδι"
+  },
+  "skipto": {
+    "description": "Πάράλειψη στο συγκεκριμένο αριθμό ουράς αναπαραγωγής",
+    "usageReply": "Χρήση: {prefix}{name} <Αριθμός Ουράς Αναπαραγωγής>",
+    "errorNotQueue": "Δεν υπάρχει ουρά αναπαραγωγής.",
+    "errorNotValid": "Η ουρά αναπαραγωγής έχει διάρκεια αναπαραγωγής μόνο {length} !",
+    "result": "<@{author}> ⏭ παρέλειψε {arg} ταργούδια"
+  },
+  "stop": {
+    "description": "Παύση μουσικής",
+    "errorNotQueue": "Δεν αναπαράγεται κάτι.",
+    "result": "<@{author}> ⏹ σταμάτησε τη μουσική!"
+  },
+  "uptime": {
+    "description": "Έλεγχος χρόνου διαθεσιμότητας",
+    "result": "Χρόνος Διαθεσιμότητας: `{days} μέρες,{hours} ώρες, {minutes} λεπτά, {seconds} δευτερόλεπτα`"
+  },
+  "volume": {
+    "description": "Αλλαγή έντασης μουσικής που παίζει",
+    "errorNotQueue": "Δεν αναπαράγεται κάτι.",
+    "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!",
+    "currentVolume": "🔊 Η ένταση τώρα είναι: **{volume}%**",
+    "errorNotNumber": "Παρακαλώ χρησιμοποιήστε έναν αριθμό για ρύθμιση έντασης.",
+    "errorNotValid": "Παρακαλώ χρησιμοποιήστε έναν αριθμόΠαρακαλώ χρησιμοποιήστε έναν αριθμό από το 0 - 100.",
+    "result": "Η ένταση ρυθμίστηκε σε: **{arg}%**"
+  },
+  "common": {
+    "on": "**on**",
+    "off": "**off**",
+    "enabled": "**ενεργοποιημένος/-η/-ο**",
+    "disabled": "**απενεργοποιημένος/-η/-ο**",
+    "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!",
+    "cooldownMessage": "Παρακαλώ περιμένετε {time} δευτερόλεπτα ακόμη πριν ξαναχρησιμοποιήσετε την εντολή `{name}`.",
+    "errorCommand": "Υπήρξε σφάλμα στην εκτέλεση εντολής."
+  }
+}

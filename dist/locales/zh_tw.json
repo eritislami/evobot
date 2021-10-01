@@ -1,0 +1,166 @@
+{
+  "clip": {
+    "description": "播放本地音樂",
+    "usagesReply": "用法: /clip <名稱>",
+    "errorQueue": "無法播放本地音樂，因為目前已經有有效的音樂隊列",
+    "errorNotChannel": "你必須先加入語音頻道!"
+  },
+  "clips": {
+    "description": "列出所有本地音樂"
+  },
+  "help": {
+    "description": "列出所有指令的詳細資訊",
+    "embedTitle": "{botname} 幫助",
+    "embedDescription": "所有的指令清單"
+  },
+  "invite": {
+    "description": "傳送邀請連結"
+  },
+  "loop": {
+    "description": "變更音樂重複設定",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "result": "重複播放已經 {loop}"
+  },
+  "lyrics": {
+    "description": "取得當前播放的歌曲歌詞",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "lyricsNotFound": "沒有找到 {title} 的歌詞",
+    "embedTitle": "{title} - 歌詞"
+  },
+  "move": {
+    "description": "移動歌曲到隊列的其他位置",
+    "errorNotQueue": "隊列中沒有歌曲",
+    "usagesReply": "用法: {prefix}move <歌曲隊列編號>",
+    "result": "<@{author}> 🚚 從音樂隊列中移動 **{title}** 至 {index}"
+  },
+  "nowplaying": {
+    "description": "顯示現在播放什麼",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "embedTitle": "現正播放",
+    "live": " ◉ 直播",
+    "timeRemaining": "剩餘時間: {time}"
+  },
+  "pause": {
+    "description": "暫停當前歌曲",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "result": "<@{author}> ⏸ 暫停了歌曲"
+  },
+  "ping": {
+    "description": "查看機器人延遲平均值",
+    "result": "📈 API延遲平均值: {ping} 毫秒"
+  },
+  "play": {
+    "description": "播放 YouTube 或 Soundcloud 的音樂",
+    "errorNotChannel": "你必須先加入語音頻道!",
+    "errorNotInSameChannel": "你必須跟 {user} 在同一個頻道裡",
+    "usageReply": "Usage: {prefix}play <YouTube 網址 | 影片名稱 | Soundcloud 網址>",
+    "missingPermissionConnect": "無法連結至語音頻道，沒有權限",
+    "missingPermissionSpeak": "我無法在語音頻道裡說話，請確定我有相關的權限!",
+    "queueAdded": "✅ **{title}** 已經被 <@{author}> 加入音樂隊列",
+    "cantJoinChannel": "無法加入語音頻道: {error}",
+    "queueEnded": "❌ 音樂隊列完結",
+    "queueError": "錯誤: {error}",
+    "startedPlaying": "🎶 開始播放: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ 跳過了歌曲",
+    "pauseSong": "<@{author}> ⏸ 暫停了歌曲 music.",
+    "resumeSong": "<@{author}> ▶ 恢復了音樂!",
+    "unmutedSong": "<@{author}> 🔊 解除靜音了音樂!",
+    "mutedSong": "<@{author}> 🔇 靜音了音樂!",
+    "decreasedVolume": "<@{author}> 🔉 降低了音量, 目前音量為 {volume}%",
+    "increasedVolume": "<@{author}> 🔊 增加了音量, 目前音量為 {volume}%",
+    "loopSong": "<@{author}> 重複播放目前是 {loop}",
+    "stopSong": "<@{author}> ⏹ 停止了歌曲!",
+    "leaveChannel": "正在離開語音頻道...",
+    "songNotFound": "沒有找到曲目"
+  },
+  "playlist": {
+    "description": "播放 YouTube 的播放清單",
+    "usagesReply": "用法: {prefix}playlist <YouTube 播放清單網址 | 播放清單名稱>",
+    "errorNotChannel": "你必須先加入語音頻道!",
+    "errorNotInSameChannel": "你必須跟 {user} 在同一個頻道裡",
+    "missingPermissionConnect": "無法加入語音頻道，沒有訊息",
+    "missingPermissionSpeak": "我無法在語音頻道裡說話，請確定我有相關的權限!",
+    "errorNotFoundPlaylist": "沒有找到播放清單 :(",
+    "fetchingPlaylist": "⌛ 正在取得播放清單...",
+    "playlistCharLimit": "\n播放清單大於限制的歌曲數目...",
+    "startedPlaylist": "<@{author}> 開始播放播放清單",
+    "cantJoinChannel": "無法加入語音頻道: {error}"
+  },
+  "pruning": {
+    "description": "變更機器人精簡模式",
+    "errorWritingFile": "在寫入檔案時發生錯誤",
+    "result": "訊息精簡模式為 {result}"
+  },
+  "queue": {
+    "description": "列出音樂隊列",
+    "missingPermissionMessage": "沒有權限管理訊息或新增反應",
+    "errorNotQueue": "❌ **現在沒有任何歌曲正在播放**",
+    "currentPage": "目前頁面 - ",
+    "embedTitle": "伺服器音樂隊列\n",
+    "embedCurrentSong": "**當前歌曲 - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "從音樂隊列移除歌曲",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "usageReply": "用法: {prefix}remove <歌曲隊列編號>",
+    "result": "<@{author}> ❌ 從音樂隊列移除了 **{title}**"
+  },
+  "resume": {
+    "description": "恢復播放音樂",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "resultNotPlaying": "<@{author}> ▶ 恢復了音樂!",
+    "errorPlaying": "音樂隊列沒有被暫停"
+  },
+  "search": {
+    "description": "搜尋以及選擇歌曲",
+    "usageReply": "用法: {prefix}{name} <影片名稱>",
+    "errorAlreadyCollector": "訊息接收器已經在這個頻道上啟用",
+    "errorNotChannel": "你必須先加入語音頻道!",
+    "resultEmbedTitle": "**回覆你想要播放的歌曲代碼**",
+    "resultEmbedDesc": "搜尋{search}的結果"
+  },
+  "shuffle": {
+    "description": "隨機排序音樂隊列",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "result": "<@{author}> 🔀 隨機排序了音樂隊列"
+  },
+  "skip": {
+    "description": "跳過當前歌曲",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "result": "<@{author}> ⏭ 跳過了歌曲"
+  },
+  "skipto": {
+    "description": "跳到指定的歌曲",
+    "usageReply": "用法: {prefix}{name} <歌曲隊列編號>",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "errorNotValid": "音樂隊列只有 {length} 個歌曲!",
+    "result": "<@{author}> ⏭ 跳過了 {arg} 歌曲"
+  },
+  "stop": {
+    "description": "停止音樂隊列",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "result": "<@{author}> ⏹ 停止了隊列!"
+  },
+  "uptime": {
+    "description": "查看機器人上線時間",
+    "result": "上線時間: `{days} 天,{hours} 小時, {minutes} 分鐘, {seconds} 秒`"
+  },
+  "volume": {
+    "description": "變更目前歌曲音量",
+    "errorNotQueue": "現在沒有任何歌曲正在播放",
+    "errorNotChannel": "你必須先加入語音頻道!",
+    "currentVolume": "🔊 當前音量為: **{volume}%**",
+    "errorNotNumber": "請使用數字來變更音量",
+    "errorNotValid": "請使用 0 - 100 的數字!",
+    "result": "音量設置為: **{arg}%**"
+  },
+  "common": {
+    "on": "**啟動**",
+    "off": "**關閉**",
+    "enabled": "**開啟**",
+    "disabled": "**關閉**",
+    "errorNotChannel": "你必須先加入語音頻道!",
+    "cooldownMessage": "請等待 {time} 秒後再使用 `{name}` 指令",
+    "errorCommand": "執行指令時發生錯誤"
+  }
+}

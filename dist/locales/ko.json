@@ -1,0 +1,166 @@
+{
+  "clip": {
+    "description": "주어진 클립을 재생합니다.",
+    "usagesReply": "사용 방법: {prefix}clip <name>",
+    "errorQueue": "대기열에 음악이 있을 경우 클립을 재생할 수 없습니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다."
+  },
+  "clips": {
+    "description": "모든 클립을 재생합니다."
+  },
+  "help": {
+    "description": "모든 명령어와 설명을 표시합니다.",
+    "embedTitle": "{botname} 도움말",
+    "embedDescription": "명령어 리스트"
+  },
+  "invite": {
+    "description": "봇에 대한 초대 링크를 생성합니다."
+  },
+  "loop": {
+    "description": "음악 반복을 실행/해제 합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "result": "음악 반복 상태: {loop}"
+  },
+  "lyrics": {
+    "description": "현재 재생중인 음악의 가사를 가져옵니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "lyricsNotFound": "{title} 에 대한 가사를 찾을 수 없습니다.",
+    "embedTitle": "{title} 가사"
+  },
+  "move": {
+    "description": "대기열에서 음악을 이동합니다.",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "usagesReply": "사용 방법: {prefix}move <Queue Number>",
+    "result": "<@{author}> 🚚 **{title}** 를 대기열에서 {index}번째로 옮겼습니다."
+  },
+  "nowplaying": {
+    "description": "현재 재생중인 음악을 표시합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "embedTitle": "현재 재생중",
+    "live": " ◉ 스트리밍",
+    "timeRemaining": "남은 재생시간은 {time} 입니다."
+  },
+  "pause": {
+    "description": "현재 재생중인 음악을 일시 중지합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "result": "<@{author}> ⏸ 음악을 일시 중지했습니다."
+  },
+  "ping": {
+    "description": "봇의 평균 핑 수치를 보여줍니다.",
+    "result": "📈 현재 평균 핑 수치는 {ping} ms 입니다."
+  },
+  "play": {
+    "description": "YouTube 또는 Soundcloud 부터 음악을 재생합니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "errorNotInSameChannel": "{user} 와 같은 음성 채널에 들어와 있어야 합니다.",
+    "usageReply": "사용 방법: {prefix}play <YouTube URL | Video Name | Soundcloud URL>",
+    "missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",
+    "missingPermissionSpeak": "음성 채널에서 말할 수 없습니다. 권한을 확인해 주세요.",
+    "queueAdded": "✅ **{title}** 가 <@{author}>에 의해 대기열에 추가되었습니다.",
+    "cantJoinChannel": "채널에 진입할 수 없습니다.: {error}",
+    "queueEnded": "❌ 모든 대기열 재생을 완료했습니다.",
+    "queueError": "에러가 발생했습니다.: {error}",
+    "startedPlaying": "🎶 **{title}** 재생을 시작합니다. {url}",
+    "skipSong": "<@{author}> ⏩ 음악을 넘겼습니다.",
+    "pauseSong": "<@{author}> ⏸ 음악을 일시중지 했습니다.",
+    "resumeSong": "<@{author}> ▶ 음악을 재개했습니다.",
+    "unmutedSong": "<@{author}> 🔊 음소거를 해제했습니다.",
+    "mutedSong": "<@{author}> 🔇 음악을 음소거 했습니다.",
+    "decreasedVolume": "<@{author}> 🔉 볼륨을 낮추어, 현재 {volume}% 로 설정되어 있습니다.",
+    "increasedVolume": "<@{author}> 🔊 볼륨을 높여, 현재 {volume}% 로 설정되어 있습니다",
+    "loopSong": "<@{author}> 음악 반복 상태: {loop}",
+    "stopSong": "<@{author}> ⏹ 음악을 중지했습니다.",
+    "leaveChannel": "채널을 떠나는 중입니다.",
+    "songNotFound": "오디오를 찾을 수 없음"
+  },
+  "playlist": {
+    "description": "Youtube 부터 재생목록을 재생합니다.",
+    "usagesReply": "사용 방법: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "errorNotInSameChannel": "{user} 와 같은 음성 채널에 들어와 있어야 합니다.",
+    "missingPermissionConnect": "음성 채널에 들어갈 수 없습니다. 권한을 확인해 주세요.",
+    "missingPermissionSpeak": "음성 채널에서 말할 수 없습니다. 권한을 확인해 주세요.",
+    "errorNotFoundPlaylist": "재생목록을 찾지 못했습니다. :(",
+    "fetchingPlaylist": "⌛ 재생목록을 가져오고 있습니다...",
+    "playlistCharLimit": "\n재생목록 생략...",
+    "startedPlaylist": "<@{author}> 재생목록을 시작합니다.",
+    "cantJoinChannel": "채널에 진입할 수 없습니다.: {error}"
+  },
+  "pruning": {
+    "description": "봇이 발행하는 메세지의 삭제 여부를 결정합니다.",
+    "errorWritingFile": "파일 작성에 실패했습니다.",
+    "result": "메세지 자동 삭제가 {result} 되었습니다."
+  },
+  "queue": {
+    "description": "현재 재생중인 음악과 대기열을 표시합니다.",
+    "missingPermissionMessage": "메세지를 관리하는 권한이 없습니다. 권한을 확인해 주세요.",
+    "errorNotQueue": "❌ **대기열에 어떤 항목도 존재하지 않습니다.**",
+    "currentPage": "현재 페이지 - ",
+    "embedTitle": "대기열\n",
+    "embedCurrentSong": "**현재 재생중인 음악 - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "대기열부터 음악을 제거합니다.",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "usageReply": "사용 방법: {prefix}remove <Queue Number>",
+    "result": "<@{author}> ❌ **{title}** 를 대기열부터 제거했습니다."
+  },
+  "resume": {
+    "description": "현재 재생중인 음악을 재개합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "resultNotPlaying": "<@{author}> ▶ 음악을 재개했습니다.",
+    "errorPlaying": "대기열이 일시중지 되어있지 않습니다."
+  },
+  "search": {
+    "description": "영상을 검색하고 재생할 영상을 선택합니다.",
+    "usageReply": "사용방법`: {prefix}{name} <Video Name>",
+    "errorAlreadyCollector": "해당 채널에 메세지 컬렉터가 이미 존재합니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "resultEmbedTitle": "**재생할 음악 번호를 답장으로 보내주세요.**",
+    "resultEmbedDesc": "검색 결과: {search}"
+  },
+  "shuffle": {
+    "description": "대기열 섞기",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "result": "<@{author}> 🔀 대기열을 섞었습니다."
+  },
+  "skip": {
+    "description": "현재 재생중인 음악을 넘깁니다.",
+    "errorNotQueue": "넘길 음악이 존재하지 않습니다.",
+    "result": "<@{author}> ⏭ 음악을 넘겼습니다."
+  },
+  "skipto": {
+    "description": "설정한 대기열 번호까지 음악을 넘깁니다.",
+    "usageReply": "사용 방법: {prefix}{name} <Queue Number>",
+    "errorNotQueue": "대기열에 음악이 없습니다.",
+    "errorNotValid": "대기열에 {length} 개의 음악이 존재합니다.",
+    "result": "<@{author}> ⏭ {arg} 개의 음악을 넘겼습니다."
+  },
+  "stop": {
+    "description": "모든 음악을 멈춥니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "result": "<@{author}> ⏹ 음악을 멈췄습니다."
+  },
+  "uptime": {
+    "description": "가동 시간 확인",
+    "result": "가동 시간: `{days} 일,{hours} 시간, {minutes} 분, {seconds} 초`"
+  },
+  "volume": {
+    "description": "현재 재생중인 음악의 볼륨을 설정합니다.",
+    "errorNotQueue": "재생할 음악이 없습니다.",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "currentVolume": "🔊 현재 볼륨은 **{volume}%** 입니다.",
+    "errorNotNumber": "설정할 볼륨을 입력해 주세요.",
+    "errorNotValid": "0 과 100 사이의 볼륨을 사용해 주세요.",
+    "result": "볼륨이 **{arg}%**로 설정되었습니다."
+  },
+  "common": {
+    "on": "**켜짐**",
+    "off": "**꺼짐**",
+    "enabled": "**활성화**",
+    "disabled": "**비활성화**",
+    "errorNotChannel": "음성 채널에 들어와 있지 않습니다.",
+    "cooldownMessage": "`{name}` 명령어를 실행하기 전 {time} 초 만큼 기다려주세요.",
+    "errorCommand": "명령어 실행에 실패했습니다."
+  }
+}
