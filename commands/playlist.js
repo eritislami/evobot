@@ -17,7 +17,7 @@ module.exports = {
 
     if (!args.length)
       return message
-        .reply(i18n.__mf("playlist.usageReply", { prefix: message.client.prefix }))
+        .reply(i18n.__mf("playlist.usagesReply", { prefix: message.client.prefix }))
         .catch(console.error);
     if (!channel) return message.reply(i18n.__("playlist.errorNotChannel")).catch(console.error);
 
