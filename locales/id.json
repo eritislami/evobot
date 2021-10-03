@@ -30,7 +30,7 @@
   "move": {
     "description": "Memindahkan lagu ke dalam antrian",
     "errorNotQueue": "Tidak ada antrian.",
-    "usagesReply": "Penggunaan: {prefix}move <Queue Number>",
+    "usagesReply": "Penggunaan: {prefix}move <Nomor Antrian>",
     "result": "<@{author}> 🚚 memindahkan **{title}** ke {index} untuk masuk ke dalam antrian."
   },
   "nowplaying": {
@@ -53,8 +53,8 @@
     "description": "Memutar audio dari YouTube atau Soundcloud",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!",
     "errorNotInSameChannel": "Kamu harus berada di saluran yang sama dengan {user}",
-    "usageReply": "Penggunaan: {prefix}play <YouTube URL | Video Name | Soundcloud URL>",
-    "missingPermissionConnect": "Tidak dapat terhubung ke saluran suara, karena tidak diberikan izin.",
+    "usageReply": "Penggunaan: {prefix}play <YouTube URL | Nama Video | Soundcloud URL>",
+    "missingPermissionConnect": "Tidak dapat terhubung ke saluran suara, karena tidak diberikan izin",
     "missingPermissionSpeak": "Saya tidak dapat berbicara di saluran suara ini, pastikan saya sudah diberikan izin!",
     "queueAdded": "✅ **{title}** telah ditambahkan ke antrian oleh <@{author}>",
     "cantJoinChannel": "Tidak dapat bergabung ke saluran: {error}",
@@ -74,8 +74,8 @@
     "songNotFound": "Audio Tidak Ditemukan"
   },
   "playlist": {
-    "description": "Memutar playlist youtube",
-    "usagesReply": "Penggunaan: {prefix}playlist <YouTube Playlist URL | Playlist Name>",
+    "description": "Memutar playlist dari youtube",
+    "usagesReply": "Penggunaan: {prefix}playlist <YouTube Playlist URL | Nama Playlist>",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!",
     "errorNotInSameChannel": "Kamu harus berada di saluran yang sama dengan {user}",
     "missingPermissionConnect": "tidak dapat terhubung ke saluran suara, karena tidak diberi izin",
@@ -92,7 +92,7 @@
     "result": "Pesan pemangkasan adalah {result}"
   },
   "queue": {
-    "description": "Menampilkan antrian musik dan yang sedang di putar",
+    "description": "Menampilkan antrian musik dan yang sedang diputar",
     "missingPermissionMessage": "Tidak ada izin untuk mengelola pesan atau menambahkan emoji",
     "errorNotQueue": "❌ **Tidak ada yang diputar di server ini**",
     "currentPage": "Halaman saat ini - ",
@@ -102,7 +102,7 @@
   "remove": {
     "description": "Menghapus lagu dari antrian",
     "errorNotQueue": "Tidak ada antrian.",
-    "usageReply": "Penggunaan: {prefix}remove <Queue Number>",
+    "usageReply": "Penggunaan: {prefix}remove <Nomor Antrian>",
     "result": "<@{author}> ❌ menghapus **{title}** dari antrian lagu."
   },
   "resume": {
@@ -113,7 +113,7 @@
   },
   "search": {
     "description": "Cari dan pilih video untuk diputar",
-    "usageReply": "Penggunaan: {prefix}{name} <Video Name>",
+    "usageReply": "Penggunaan: {prefix}{name} <Nama Video>",
     "errorAlreadyCollector": "Kolektor pesan sudah aktif di saluran ini.",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!",
     "resultEmbedTitle": "**Balas dengan nomor lagu yang ingin kamu putar**",
@@ -125,13 +125,13 @@
     "result": "<@{author}> 🔀 telah mengacak antrian"
   },
   "skip": {
-    "description": "Melewati lagu yang sedang di putar",
+    "description": "Melewati lagu yang sedang diputar",
     "errorNotQueue": "Tidak ada musik yang sedang diputar untuk di lewati.",
     "result": "<@{author}> ⏭ telah melewatkan lagu"
   },
   "skipto": {
     "description": "Lewati ke nomor antrian yang dipilih",
-    "usageReply": "Penggunaan: {prefix}{name} <Queue Number>",
+    "usageReply": "Penggunaan: {prefix}{name} <Nomor Antrian>",
     "errorNotQueue": "Tidak ada antrian.",
     "errorNotValid": "Hanya terdapat {length} antrian lagu!",
     "result": "<@{author}> ⏭ telah melewatkan {arg} lagu"
@@ -160,7 +160,7 @@
     "enabled": "**diaktifkan**",
     "disabled": "**dinonaktifkan**",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!",
-    "cooldownMessage": "mohon tunggu {time} lagi sebelum menggunakan perintah `{name}` ini kembali.",
+    "cooldownMessage": "Mohon tunggu {time} lagi sebelum menggunakan perintah `{name}` ini kembali.",
     "errorCommand": "Terjadi kesalahan saat menjalankan perintah ini."
   }
 }
