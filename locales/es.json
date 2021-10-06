@@ -86,6 +86,10 @@
     "startedPlaylist": "<@{author}> Comenzó a reproducir una lista de reproducción",
     "cantJoinChannel": "No se pudo conectar al canal: {error}"
   },
+  "rudy": {
+    "description": "Reproduce LA LISTA de reproducción de Rudy",
+    "usagesReply": "Uso correcto: {prefix}rudy"
+  },
   "pruning": {
     "description": "Activa la eliminación de los mensajes del bot",
     "errorWritingFile": "Se produjo un error escribiendo el archivo.",
