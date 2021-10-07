@@ -43,13 +43,11 @@ let channelsToPrune = [];
 client.on("voiceStateUpdate", (oldVoiceState, newVoiceState) => {
   if (newVoiceState.channel) {
     if (newVoiceState.channel.members.size > 1) {
-      console.log("NO ME BORRES");
       channelsToPrune = channelsToPrune.filter((v) => v.who != newVoiceState.guild.id);
     }
   }
   if (oldVoiceState.channel && !newVoiceState.channel) {
     if (oldVoiceState.channel.members.size === 1) {
-      console.log("Desconectate de ", oldVoiceState.guild.id, `en ${STAY_TIME} segundos`);
       channelsToPrune.push({
         who: oldVoiceState.guild.id,
         when: new Date().valueOf() + STAY_TIME * 1000
@@ -60,13 +58,11 @@ client.on("voiceStateUpdate", (oldVoiceState, newVoiceState) => {
 
 setInterval(() => {
   channelsToPrune.forEach(({ who, when }, i) => {
-    console.log(when, new Date().valueOf(), "de", who);
     if (new Date().valueOf() > when) {
       const connection = client.queue.get(who);
       connection.textChannel.send(i18n.__("play.leaveEmptyChannel"));
       connection.connection.disconnect();
       channelsToPrune[i].deleted = true;
-      console.log("Desconectando", who);
     }
   });
 
