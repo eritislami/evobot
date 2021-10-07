@@ -4,7 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX } = require("./util/Util");
+const { TOKEN, PREFIX, STAY_TIME } = require("./util/Util");
 const i18n = require("./util/i18n");
 
 const client = new Client({
@@ -37,6 +37,51 @@ for (const file of commandFiles) {
   const command = require(join(__dirname, "commands", `${file}`));
   client.commands.set(command.name, command);
 }
+
+let channelsToPrune = [];
+
+client.on("voiceStateUpdate", (oldVoiceState, newVoiceState) => {
+  if (newVoiceState.channel) {
+    if (newVoiceState.channel.members.size > 1) {
+      console.log("NO ME BORRES");
+      channelsToPrune = channelsToPrune.filter((v) => v.who != newVoiceState.guild.id);
+    }
+  }
+  if (oldVoiceState.channel && !newVoiceState.channel) {
+    if (oldVoiceState.channel.members.size === 1) {
+      console.log("Desconectate de ", oldVoiceState.guild.id, `en ${STAY_TIME} segundos`);
+      channelsToPrune.push({
+        who: oldVoiceState.guild.id,
+        when: new Date().valueOf() + STAY_TIME * 1000
+      });
+    }
+  }
+});
+
+setInterval(() => {
+  channelsToPrune.forEach(({ who, when }, i) => {
+    console.log(when, new Date().valueOf(), "de", who);
+    if (new Date().valueOf() > when) {
+      const connection = client.queue.get(who);
+      connection.textChannel.send(i18n.__("play.leaveEmptyChannel"));
+      connection.connection.disconnect();
+      channelsToPrune[i].deleted = true;
+      console.log("Desconectando", who);
+    }
+  });
+
+  channelsToPrune = channelsToPrune.filter((v) => !v.deleted);
+}, 1000);
+
+// /* Check if someone still on voice channel */
+// setInterval(() => {
+//   if (client.queue.size > 0) {
+//     client.queue.forEach((value, key) => {
+//       const membersManager = value.channel.guild.members.cache;
+//       console.log(`Hay ${membersManager.size - 1} personas escuchando`);
+//     });
+//   }
+// }, 1 * 1000);
 
 client.on("message", async (message) => {
   if (message.author.bot) return;
