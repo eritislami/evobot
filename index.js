@@ -6,6 +6,7 @@ const { readdirSync } = require("fs");
 const { join } = require("path");
 const { TOKEN, PREFIX, STAY_TIME } = require("./util/Util");
 const i18n = require("./util/i18n");
+const spotify = require("./include/spotify");
 
 const client = new Client({
   disableMentions: "everyone",
@@ -13,6 +14,7 @@ const client = new Client({
 });
 
 client.login(TOKEN);
+spotify.login();
 client.commands = new Collection();
 client.prefix = PREFIX;
 client.queue = new Map();
@@ -60,6 +62,7 @@ setInterval(() => {
   channelsToPrune.forEach(({ who, when }, i) => {
     if (new Date().valueOf() > when) {
       const connection = client.queue.get(who);
+      if (!connection) return;
       connection.textChannel.send(i18n.__("play.leaveEmptyChannel"));
       connection.connection.disconnect();
       channelsToPrune[i].deleted = true;

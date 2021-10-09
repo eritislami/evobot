@@ -1,7 +1,9 @@
 const ytdl = require("ytdl-core-discord");
 const scdl = require("soundcloud-downloader").default;
-const { canModifyQueue, STAY_TIME } = require("../util/Util");
+const { YOUTUBE_API_KEY, canModifyQueue, STAY_TIME } = require("../util/Util");
 const i18n = require("../util/i18n");
+const YouTubeAPI = require("simple-youtube-api");
+const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   async play(song, message) {
@@ -29,6 +31,22 @@ module.exports = {
       return message.client.queue.delete(message.guild.id);
     }
 
+    if (song.spotify) {
+      const results = await youtube.searchVideos(song.search, 1, { part: "id" });
+
+      if (!results.length) {
+        message.reply(i18n.__("play.songNotFound")).catch(console.error);
+        return;
+      }
+
+      songInfo = await ytdl.getInfo(results[0].url);
+      song = {
+        title: songInfo.videoDetails.title,
+        url: songInfo.videoDetails.video_url,
+        duration: songInfo.videoDetails.lengthSeconds
+      };
+    }
+
     let stream = null;
     let streamType = song.url.includes("youtube.com") ? "opus" : "ogg/opus";
 
@@ -42,6 +60,7 @@ module.exports = {
           stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID);
           streamType = "unknown";
         }
+      } else if (song.url.includes("spotify.com")) {
       }
     } catch (error) {
       if (queue) {

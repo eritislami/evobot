@@ -4,6 +4,7 @@ const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
+const spotify = require("../include/spotify");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
@@ -67,6 +68,15 @@ module.exports = {
           duration: track.duration / 1000
         }));
       }
+    } else if (spotify.validator.url(url)) {
+      playlist = await spotify.getInfo(url);
+      videos = playlist.items.map((v) => ({
+        spotify: true,
+        search: [v.artist, v.title, "official"].join(" "),
+        title: [v.artist, v.title].join(" - "),
+        url: null,
+        duration: null
+      }));
     } else {
       try {
         const results = await youtube.searchPlaylists(search, 1, { part: "id" });
@@ -82,6 +92,8 @@ module.exports = {
       .filter((video) => video.title != "Private video" && video.title != "Deleted video")
       .map((video) => {
         return (song = {
+          spotify: video.spotify || false,
+          search: video.search || video.title,
           title: video.title,
           url: video.url,
           duration: video.durationSeconds

@@ -1,10 +1,13 @@
 const i18n = require("../util/i18n");
 const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
-const YouTubeAPI = require("simple-youtube-api");
+
 const scdl = require("soundcloud-downloader").default;
 const https = require("https");
+const spotify = require("../include/spotify");
+
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/Util");
+const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
@@ -33,18 +36,23 @@ module.exports = {
     if (!permissions.has("CONNECT")) return message.reply(i18n.__("play.missingPermissionConnect"));
     if (!permissions.has("SPEAK")) return message.reply(i18n.__("play.missingPermissionSpeak"));
 
-    const search = args.join(" ");
+    let search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
     const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
+    const isSpotifyPlaylist =
+      (spotify.validator.album(url) || spotify.validator.artist(url) || spotify.validator.playlist(url)) &&
+      spotify.validator.url(url);
 
     // Start the playlist if playlist url was provided
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
       return message.client.commands.get("playlist").execute(message, args);
     } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
+      return message.client.commands.get("playlist").execute(message, args);
+    } else if (isSpotifyPlaylist) {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
@@ -104,6 +112,11 @@ module.exports = {
       }
     } else {
       try {
+        if (spotify.validator.url(url)) {
+          const trackInfo = await spotify.getInfo(url);
+          search = [trackInfo.artist, trackInfo.album, trackInfo.title].join(" ");
+        }
+
         const results = await youtube.searchVideos(search, 1, { part: "id" });
 
         if (!results.length) {
