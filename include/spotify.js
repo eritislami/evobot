@@ -57,7 +57,7 @@ const spotify = (() => {
   const getTrackInfo = async (url) => {
     let newURL = url.replace("https://open.spotify.com/track/", "https://api.spotify.com/v1/tracks/");
 
-    newURL = removeSearchParams(newURL);
+    newURL = removeSearchParams(newURL).toString();
     const headers = await getHeaders();
     return axios
       .get(newURL, {

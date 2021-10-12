@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> ⏹ ¡Paró la música!",
     "leaveChannel": "Saliendo del chat de voz...",
     "songNotFound": "Audio no encontrado",
-    "leaveEmptyChannel": "Saliendo del chat de voz porque no hay nadie..."
+    "leaveEmptyChannel": "Saliendo del chat de voz porque no hay nadie...Siempre lo mismo CSM"
   },
   "playlist": {
     "description": "Reproduce una lista de reproducción de youtube",
@@ -167,5 +167,9 @@
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "cooldownMessage": "Por favor espera {time} segundos antes de volver a usar el comando `{name}`.",
     "errorCommand": "Se produjo un error con ese comando."
+  },
+  "clear": {
+    "description": "Limpia la cola de reproduccion",
+    "result": "<@{author}> ¡Limpio la cola de reproduccion!"
   }
 }
