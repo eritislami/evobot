@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTube = require("youtube-sr").default;
 const scdl = require("soundcloud-downloader").default;
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
+const { SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
 
 module.exports = {
   name: "playlist",
