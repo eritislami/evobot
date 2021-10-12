@@ -1,10 +1,9 @@
 const i18n = require("../util/i18n");
 const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
-const YouTubeAPI = require("simple-youtube-api");
+const YouTube = require("youtube-sr").default;
 const scdl = require("soundcloud-downloader").default;
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
   name: "playlist",
@@ -51,8 +50,8 @@ module.exports = {
 
     if (urlValid) {
       try {
-        playlist = await youtube.getPlaylist(url, { part: "snippet" });
-        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
+        playlist = await YouTube.getPlaylist(url);
+        videos = await playlist.fetch();
       } catch (error) {
         console.error(error);
         return message.reply(i18n.__("playlist.errorNotFoundPlaylist")).catch(console.error);
@@ -69,22 +68,22 @@ module.exports = {
       }
     } else {
       try {
-        const results = await youtube.searchPlaylists(search, 1, { part: "id" });
+        const results = await YouTube.getPlaylist(url);
         playlist = results[0];
-        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE, { part: "snippet" });
+        videos = await playlist.next();
       } catch (error) {
         console.error(error);
         return message.reply(error.message).catch(console.error);
       }
     }
 
-    const newSongs = videos
-      .filter((video) => video.title != "Private video" && video.title != "Deleted video")
+    const newSongs = videos.videos
+      .filter((Video) => Video.title != "Private video" && Video.title != "Deleted video")
       .map((video) => {
         return (song = {
           title: video.title,
-          url: video.url,
-          duration: video.durationSeconds
+          url: `https://www.youtube.com/watch?v=${video.id}`,
+          duration: video.duration
         });
       });
 
