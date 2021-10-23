@@ -96,8 +96,13 @@ module.exports = {
       [newSongs[i], newSongs[j]] = [newSongs[j], newSongs[i]];
     }
 
-    serverQueue.loop = true;
-    serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
+    if (serverQueue) {
+      serverQueue.songs.push(...newSongs);
+      serverQueue.loop = true;
+    } else {
+      queueConstruct.songs.push(...newSongs);
+      queueConstruct.loop = true;
+    }
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
