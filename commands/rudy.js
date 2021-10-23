@@ -81,7 +81,7 @@ module.exports = {
       }
     }
 
-    const newSongs = videos
+    let newSongs = videos
       .filter((video) => video.title != "Private video" && video.title != "Deleted video")
       .map((video) => {
         return (song = {
@@ -91,6 +91,12 @@ module.exports = {
         });
       });
 
+    for (let i = newSongs.length - 1; i > 1; i--) {
+      let j = 1 + Math.floor(Math.random() * i);
+      [newSongs[i], newSongs[j]] = [newSongs[j], newSongs[i]];
+    }
+
+    serverQueue.loop = true;
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
 
     let playlistEmbed = new MessageEmbed()
