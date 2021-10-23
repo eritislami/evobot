@@ -17,7 +17,7 @@ WORKDIR /home/evobot
 
 COPY --chown=${USER}:${USER} package*.json ./
 RUN npm install
-VOLUME [ "/home/evobot" ]
+VOLUME [ "/home/evobot/sounds" ]
 
 COPY --chown=${USER}:${USER}  . .
 
