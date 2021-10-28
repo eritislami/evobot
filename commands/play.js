@@ -118,7 +118,12 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        return message.reply(error.message).catch(console.error);
+        
+        if (error.message.includes("410")) {
+          return message.reply("Video is age restricted, private or unavailable").catch(console.error);
+        } else {
+          return message.reply(error.message).catch(console.error);
+        }
       }
     }
 
