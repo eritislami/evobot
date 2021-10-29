@@ -4,7 +4,7 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX } = require("./util/Util");
+const { TOKEN, PREFIX, DISCORD_STATUS, DISCORD_STATUS_TYPE } = require("./util/Util");
 const i18n = require("./util/i18n");
 
 const client = new Client({
@@ -24,7 +24,7 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
  */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+  client.user.setActivity(`${DISCORD_STATUS}`, { type: `${DISCORD_STATUS_TYPE}` });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);

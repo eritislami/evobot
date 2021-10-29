@@ -17,3 +17,5 @@ exports.PRUNING = (config ? config.PRUNING : (process.env.PRUNING === 'true' ? t
 exports.STAY_TIME = (config ? config.STAY_TIME : parseInt(process.env.STAY_TIME)) || 30;
 exports.DEFAULT_VOLUME = (config ? config.DEFAULT_VOLUME : parseInt(process.env.DEFAULT_VOLUME)) || 100;
 exports.LOCALE = (config ? config.LOCALE : process.env.LOCALE) || "en";
+exports.DISCORD_STATUS = (config ? config.DISCORD_STATUS : process.env.DISCORD_STATUS) || (exports.PREFIX + 'help and ' + exports.PREFIX + 'play');
+exports.DISCORD_STATUS_TYPE = (config ? config.DISCORD_STATUS_TYPE : process.env.DISCORD_STATUS_TYPE) || "LISTENING";
