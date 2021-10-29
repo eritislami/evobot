@@ -1,8 +1,10 @@
 const i18n = require("../util/i18n");
 const { MessageEmbed } = require("discord.js");
+const ytdl = require("ytdl-core");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
+const spotifyToYt = require("spotify-to-yt");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
@@ -32,8 +34,10 @@ module.exports = {
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
+    const spotifyRegex = /^(?:spotify:|(?:https?:\/\/(?:open|play)\.spotify\.com\/))(?:embed)?\/?(playlist)(?::|\/)((?:[0-9a-zA-Z]){22})/gm;
     const url = args[0];
     const urlValid = pattern.test(args[0]);
+    const spotifyUrlValid = spotifyRegex.test(args[0]);
 
     const queueConstruct = {
       textChannel: message.channel,
@@ -66,6 +70,33 @@ module.exports = {
           url: track.permalink_url,
           duration: track.duration / 1000
         }));
+      }
+    } else if (spotifyUrlValid) {
+      message.channel.send(i18n.__("playlist.convertingSpotifyPlaylist"));
+      try {
+        let convertedSongs = await spotifyToYt.playListGet(url)
+
+        //Set the playlist attributes
+        playlist = {
+          title: convertedSongs.info.name,
+          url: convertedSongs.info.external_urls.spotify,
+        };
+        //Get the details of the videos in youtube
+        var convertedSongsYTDetails = new Array();
+        for (let i = 0; i < convertedSongs.songs.length; i++) {
+          convertedSongsYT = await ytdl.getInfo(convertedSongs.songs[i])
+          convertedSongsYTDetails[i] = convertedSongsYT.videoDetails
+        }
+        //Set the details of the songs
+        videos = convertedSongsYTDetails.map((videoDetails) => ({
+          title: videoDetails.title,
+          url: videoDetails.video_url,
+          duration: videoDetails.lengthSeconds
+        }));
+
+      } catch (error) {
+        console.error(error);
+        return message.reply(i18n.__("playlist.errorNotFoundPlaylist")).catch(console.error);
       }
     } else {
       try {
