@@ -9,6 +9,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.reply(i18n.__("skip.errorNotQueue")).catch(console.error);
     if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
+    if (!message.member.roles.cache.has('740630695373963334')) return i18n.__("common.permissionError");
 
     queue.playing = true;
     queue.connection.dispatcher.end();
