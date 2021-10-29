@@ -82,6 +82,7 @@
     "missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
     "errorNotFoundPlaylist": "Playlist not found :(",
     "fetchingPlaylist": "⌛ fetching the playlist...",
+    "convertingSpotifyPlaylist": "⌛ [BETA] Converting the Spotify playlist, this may take a up to a minute depending on the size of your playlist!",
     "playlistCharLimit": "\nPlaylist larger than character limit...",
     "startedPlaylist": "<@{author}> Started a playlist",
     "cantJoinChannel": "Could not join the channel: {error}"

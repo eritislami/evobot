@@ -3,6 +3,7 @@ const { play } = require("../include/play");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
+const spotifyToYt = require("spotify-to-yt");
 const https = require("https");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
@@ -35,9 +36,11 @@ module.exports = {
 
     const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(m\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
+    const spotifyPlaylistRegex = /^(?:spotify:|(?:https?:\/\/(?:open|play)\.spotify\.com\/))(?:embed)?\/?(playlist)(?::|\/)((?:[0-9a-zA-Z]){22})/gm;
     const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
     const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
     const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
+    const spotifyRegex = /^(?:spotify:|(?:https?:\/\/(?:open|play)\.spotify\.com\/))(?:embed)?\/?(track)(?::|\/)((?:[0-9a-zA-Z]){22})/gm;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
@@ -45,6 +48,8 @@ module.exports = {
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
       return message.client.commands.get("playlist").execute(message, args);
     } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
+      return message.client.commands.get("playlist").execute(message, args);
+    } else if (spotifyPlaylistRegex.test(args[0])) {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
@@ -102,6 +107,20 @@ module.exports = {
         console.error(error);
         return message.reply(error.message).catch(console.error);
       }
+    } else if (spotifyRegex.test(url)) {
+      try {
+        let youtubeURL = await spotifyToYt.trackGet(url);
+        console.log(youtubeURL);
+        songInfo = await ytdl.getInfo(youtubeURL.url);
+        song = {
+          title: songInfo.videoDetails.title,
+          url: songInfo.videoDetails.video_url,
+          duration: songInfo.videoDetails.lengthSeconds
+        };
+      } catch (error) {
+        console.error(error);
+        return message.reply(error.message).catch(console.error);
+      }
     } else {
       try {
         const results = await youtube.searchVideos(search, 1, { part: "id" });
@@ -119,7 +138,7 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        
+
         if (error.message.includes("410")) {
           return message.reply("Video is age restricted, private or unavailable").catch(console.error);
         } else {
