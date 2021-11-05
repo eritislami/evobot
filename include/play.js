@@ -15,7 +15,7 @@ module.exports = {
       config = null;
     }
 
-    const PRUNING = config ? config.PRUNING : process.env.PRUNING;
+    const PRUNING = config ? config.PRUNING : process.env.PRUNING === "true";
 
     const queue = message.client.queue.get(message.guild.id);
 
