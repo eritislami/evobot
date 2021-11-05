@@ -21,7 +21,7 @@ module.exports = {
 
     if (serverQueue && channel !== message.guild.me.voice.channel)
       return message
-        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
+        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user.username }))
         .catch(console.error);
 
     if (!args.length)
@@ -119,7 +119,7 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        
+
         if (error.message.includes("410")) {
           return message.reply("Video is age restricted, private or unavailable").catch(console.error);
         } else {

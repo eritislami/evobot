@@ -27,7 +27,7 @@ module.exports = {
 
     if (serverQueue && channel !== message.guild.me.voice.channel)
       return message
-        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
+        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user.username }))
         .catch(console.error);
 
     const search = args.join(" ");
