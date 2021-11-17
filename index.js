@@ -22,6 +22,20 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 /**
  * Client Events
  */
+client.on('voiceStateUpdate', (oldState, newState) => {
+    if (oldState.channelID !==  oldState.guild.me.voice.channelID || newState.channel) return;
+              if (!(oldState.channel.members.size - 1))
+                  setTimeout(() => {
+                  if (!(oldState.channel.members.size - 1)){
+                      const queue = client.queue.get(oldState.guild.id);
+                      if(queue) {
+                         queue.songs = [];
+                         queue.connection.dispatcher.end();
+                         queue.textChannel.send("⏹️ stop").catch(console.error); 
+                    } 
+                   }
+                  }, 120000); //1000 = 1s
+});
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
