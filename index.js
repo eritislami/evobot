@@ -6,8 +6,9 @@ const { readdirSync } = require("fs");
 const { join } = require("path");
 const { TOKEN, PREFIX } = require("./util/Util");
 const i18n = require("./util/i18n");
-
+const { onReady, addRole, removeRole } = require("./AutoRole");
 const client = new Client({
+  partials: ["MESSAGE"],
   disableMentions: "everyone",
   restTimeOffset: 0
 });
@@ -25,7 +26,10 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
+  onReady(client);
 });
+client.on("messageReactionAdd", addRole);
+client.on("messageReactionRemove", removeRole);
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 

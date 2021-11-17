@@ -62,3 +62,4 @@ typings/
 
 # Temp ignore 
 config.json
+autoRoleConfig.json
