@@ -93,6 +93,7 @@ module.exports = {
       await playingMessage.react("🔉");
       await playingMessage.react("🔊");
       await playingMessage.react("🔁");
+      await playingMessage.react("🔀");
       await playingMessage.react("⏹");
     } catch (error) {
       console.error(error);
@@ -176,6 +177,22 @@ module.exports = {
                 author: user,
                 loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off")
               })
+            )
+            .catch(console.error);
+          break;
+
+        case "🔀":
+          reaction.users.remove(user).catch(console.error);
+          if (!canModifyQueue(member)) return i18n.__("common.errorNotChannel");
+
+          let songs = queue.songs;
+          for (let i = songs.length - 1; i > 1; i--) {
+            let j = 1 + Math.floor(Math.random() * i);
+            [songs[i], songs[j]] = [songs[j], songs[i]];
+          }
+          queue.songs = songs;
+          
+          queue.textChannel.send(i18n.__mf("shuffle.result", {author: user})
             )
             .catch(console.error);
           break;
