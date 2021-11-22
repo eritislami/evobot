@@ -1,3 +1,15 @@
+const {
+  TOKEN,
+  YOUTUBE_API_KEY,
+  SOUNDCLOUD_CLIENT_ID,
+  PREFIX,
+  MAX_PLAYLIST_SIZE,
+  PRUNING,
+  STAY_TIME,
+  DEFAULT_VOLUME,
+  LOCALE
+} = process.env;
+
 exports.canModifyQueue = (member) => member.voice.channelID === member.guild.voice.channelID;
 
 let config;
@@ -8,13 +20,12 @@ try {
   config = null;
 }
 
-exports.TOKEN = config ? config.TOKEN : process.env.TOKEN;
-exports.YOUTUBE_API_KEY = config ? config.YOUTUBE_API_KEY : process.env.YOUTUBE_API_KEY;
-exports.SOUNDCLOUD_CLIENT_ID = config ? config.SOUNDCLOUD_CLIENT_ID : process.env.SOUNDCLOUD_CLIENT_ID;
-exports.PREFIX = (config ? config.PREFIX : process.env.PREFIX) || "/";
-exports.MAX_PLAYLIST_SIZE =
-  (config ? config.MAX_PLAYLIST_SIZE : parseInt(process.env.MAX_PLAYLIST_SIZE)) || 10;
-exports.PRUNING = config ? config.PRUNING : process.env.PRUNING === "true";
-exports.STAY_TIME = (config ? config.STAY_TIME : parseInt(process.env.STAY_TIME)) || 30;
-exports.DEFAULT_VOLUME = (config ? config.DEFAULT_VOLUME : parseInt(process.env.DEFAULT_VOLUME)) || 100;
-exports.LOCALE = (config ? config.LOCALE : process.env.LOCALE) || "en";
+exports.TOKEN = config?.TOKEN ?? TOKEN;
+exports.YOUTUBE_API_KEY = config?.YOUTUBE_API_KEY ?? YOUTUBE_API_KEY;
+exports.SOUNDCLOUD_CLIENT_ID = config?.SOUNDCLOUD_CLIENT_ID ?? SOUNDCLOUD_CLIENT_ID;
+exports.PREFIX = (config?.PREFIX ?? PREFIX) || "/";
+exports.MAX_PLAYLIST_SIZE = (config?.MAX_PLAYLIST_SIZE ?? parseInt(MAX_PLAYLIST_SIZE)) || 10;
+exports.PRUNING = config?.PRUNING ?? PRUNING === "true";
+exports.STAY_TIME = (config?.STAY_TIME ?? parseInt(STAY_TIME)) || 30;
+exports.DEFAULT_VOLUME = (config?.DEFAULT_VOLUME ?? parseInt(DEFAULT_VOLUME)) || 100;
+exports.LOCALE = (config?.LOCALE ?? LOCALE) || "en";
