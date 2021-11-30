@@ -22,26 +22,37 @@ const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 /**
  * Client Events
  */
-client.on('voiceStateUpdate', (oldState, newState) => {
-    if (oldState.channelID !==  oldState.guild.me.voice.channelID || newState.channel) return;
-              if (!(oldState.channel.members.size - 1))
-                  setTimeout(() => {
-                  if (!(oldState.channel.members.size - 1)){
-                      const queue = client.queue.get(oldState.guild.id);
-                      if(queue) {
-                         queue.songs = [];
-                         queue.connection.dispatcher.end();
-                         queue.textChannel.send("⏹️ stop").catch(console.error); 
-                    } 
-                   }
-                  }, 120000); //1000 = 1s
-});
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
+
+let timeOut = null;
+client.on("voiceStateUpdate", async (oldVoice, newVoice) => {
+if(newVoice.guild.me.voice.channel && newVoice.guild.me.voice.channel.members.map(m => m.id).length == 1 && newVoice.guild.me.voice.channel.members.map(m => m.id)[0] == client.user.id) {
+  const queue = client.queue.get(oldVoice.guild.id);
+  if (!queue) return console.log("error");
+  if (!oldVoice.channel) return console.log("error")
+    if(timeOut) {
+        return console.log("i'm alone :((")
+    } else {
+        console.log("timeout start")
+        timeOut = setTimeout(() => {
+            console.log("timeout end: out channel!!!")
+            queue.songs = [];
+            queue.connection.dispatcher.end();
+            queue.textChannel.send("⏹ stop").catch(console.error); 
+        }, 120000);
+    }
+}
+if(newVoice.guild.me.voice.channel && newVoice.guild.me.voice.channel.members.map(m => m.id).length > 1 && timeOut) {
+    console.log("is back: keep playing")
+    clearTimeout(timeOut);
+    timeOut = null;
+}
+});
 
 /**
  * Import all commands
