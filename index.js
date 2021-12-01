@@ -31,10 +31,13 @@ client.on("error", console.error);
 
 let timeOut = null;
 client.on("voiceStateUpdate", async (oldVoice, newVoice) => {
+
+const queue = client.queue.get(oldVoice.guild.id);
+
 if(newVoice.guild.me.voice.channel && newVoice.guild.me.voice.channel.members.map(m => m.id).length == 1 && newVoice.guild.me.voice.channel.members.map(m => m.id)[0] == client.user.id) {
-  const queue = client.queue.get(oldVoice.guild.id);
-  if (!queue) return console.log("error");
-  if (!oldVoice.channel) return console.log("error")
+  
+if (!oldVoice.channel) return console.log("error");
+
     if(timeOut) {
         return console.log("i'm alone :((")
     } else {
@@ -42,13 +45,23 @@ if(newVoice.guild.me.voice.channel && newVoice.guild.me.voice.channel.members.ma
         timeOut = setTimeout(() => {
             console.log("timeout end: out channel!!!")
             queue.songs = [];
+            try {
             queue.connection.dispatcher.end();
+          } catch (error) {
+            console.error(error);
+            queue.connection.disconnect();
+          }
             queue.textChannel.send("⏹ stop").catch(console.error); 
         }, 120000);
     }
 }
 if(newVoice.guild.me.voice.channel && newVoice.guild.me.voice.channel.members.map(m => m.id).length > 1 && timeOut) {
     console.log("is back: keep playing")
+    clearTimeout(timeOut);
+    timeOut = null;
+}
+if(!queue) {
+    console.log("error");
     clearTimeout(timeOut);
     timeOut = null;
 }
