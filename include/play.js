@@ -4,7 +4,7 @@ const { canModifyQueue, STAY_TIME } = require("../util/Util");
 const i18n = require("../util/i18n");
 
 module.exports = {
-  async play(song, message) {
+  async play(song, message, quiet = false) {
     const { SOUNDCLOUD_CLIENT_ID } = require("../util/Util");
 
     let config;
@@ -69,7 +69,8 @@ module.exports = {
           // so it can repeat endlessly
           let lastSong = queue.songs.shift();
           queue.songs.push(lastSong);
-          module.exports.play(queue.songs[0], message);
+          // Don't send messages when it plays the same song again.
+          module.exports.play(queue.songs[0], message, queue.songs[0] == lastSong);
         } else {
           // Recursively play the next song
           queue.songs.shift();
@@ -82,6 +83,8 @@ module.exports = {
         module.exports.play(queue.songs[0], message);
       });
     dispatcher.setVolumeLogarithmic(queue.volume / 100);
+
+    if (quiet) return;
 
     try {
       var playingMessage = await queue.textChannel.send(
