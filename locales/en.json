@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Loop is now {loop}",
     "stopSong": "<@{author}> ⏹ stopped the music!",
     "leaveChannel": "Leaving voice channel...",
-    "songNotFound": "Audio Not Found"
+    "songNotFound": "Audio Not Found",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Play a playlist from youtube",

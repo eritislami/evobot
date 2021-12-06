@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Il loop è ora {loop}",
     "stopSong": "<@{author}> ⏹ ha fermato la riproduzione!",
     "leaveChannel": "Esco dal canale vocale...",
-    "songNotFound": "Brano non trovato"
+    "songNotFound": "Brano non trovato",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Riproduce una playlist da YouTube",

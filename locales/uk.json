@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Зараз повторюється {loop}",
     "stopSong": "<@{author}> ⏹ зупинив музику!",
     "leaveChannel": "Вихід из голосового каналу...",
-    "songNotFound": "Пісню не знайдено"
+    "songNotFound": "Пісню не знайдено",
+    "songAccessErr": "Відео недоступне, приватне або має вікові обмеження"
   },
   "playlist": {
     "description": "Відтворити плейлист з YouTube",

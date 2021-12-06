@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Herhaling is nu {loop}",
     "stopSong": "<@{author}> ⏹ stopte de muziek!",
     "leaveChannel": "Voice channel verlaten...",
-    "songNotFound": "Audio Not Found"
+    "songNotFound": "Audio Not Found",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Speel een playlist af van youtube",
