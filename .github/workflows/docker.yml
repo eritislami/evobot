@@ -14,8 +14,6 @@ on:
       - .prettierrc
       - .replit
       - Procfile
-  pull_request:
-    branches: [master]
 
 env:
   # Use docker.io for Docker Hub if empty
