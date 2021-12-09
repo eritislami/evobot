@@ -32,7 +32,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2i
+        uses: actions/checkout@v2
       # QEMU for emulation
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
