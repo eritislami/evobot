@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> 重複播放目前是 {loop}",
     "stopSong": "<@{author}> ⏹ 停止了歌曲!",
     "leaveChannel": "正在离开语音频道...",
-    "songNotFound": "没有找到曲目"
+    "songNotFound": "没有找到曲目",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "播放 YouTube 的播放清单",

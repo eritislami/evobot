@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Memutar ulang lagu {loop}",
     "stopSong": "<@{author}> ⏹ Menghentikan musik!",
     "leaveChannel": "Keluar dari saluran suara...",
-    "songNotFound": "Audio Tidak Ditemukan"
+    "songNotFound": "Audio Tidak Ditemukan",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Memutar playlist dari youtube",

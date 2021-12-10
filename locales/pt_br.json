@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Repetir está {loop}",
     "stopSong": "<@{author}> ⏹ parou a música!",
     "leaveChannel": "Deixando o canal de voz!",
-    "songNotFound": "Audio Not Found"
+    "songNotFound": "Audio Not Found",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Reproduz uma playlist do youtube",

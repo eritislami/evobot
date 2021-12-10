@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> El bucle actual esta {loop}",
     "stopSong": "<@{author}> ⏹ ¡Paró la música!",
     "leaveChannel": "Saliendo del chat de voz...",
-    "songNotFound": "Audio no encontrado"
+    "songNotFound": "Audio no encontrado",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Reproduce una lista de reproducción de youtube",

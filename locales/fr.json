@@ -65,7 +65,8 @@
     "loopSong": "<@{author}> Loop est maintenant {loop}",
     "stopSong": "<@{author}> ⏹ arrête la musique!",
     "leaveChannel": "Quitte le salon vocal...",
-    "songNotFound": "Audio Not Found"
+    "songNotFound": "Audio Not Found",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Écoute une playlist venant de YouTube",
