@@ -71,8 +71,8 @@
     "loopSong": "<@{author}> Przełączył pętlę na: {loop}",
     "stopSong": "<@{author}> ⏹ Zatrzymał odtwarzanie!",
     "leaveChannel": "Opuszczanie kanału głosowego...",
-    "songNotFound": "Utwór nie znaleziony.",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songNotFound": "Utwór nieznaleziony.",
+    "songAccessErr": "Film jest ograniczony wiekowo, prywatny lub niedostępny."
   },
   "playlist": {
     "description": "Odtwarza listę odtwarzania z youtuba",
