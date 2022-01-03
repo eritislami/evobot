@@ -15,7 +15,7 @@
     "@discordjs/opus": "^0.7.0",
     "array-move": "^3.0.1",
     "discord.js": "^12.5.1",
-    "ffmpeg-static": "^4.4.0",
+    "ffmpeg-static": "^4.4.1",
     "i18n": "^0.13.3",
     "lyrics-finder": "^21.0.5",
     "simple-youtube-api": "^5.1.1",
