@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> 음악 반복 상태: {loop}",
     "stopSong": "<@{author}> ⏹ 음악을 중지했습니다.",
     "leaveChannel": "채널을 떠나는 중입니다.",
-    "songNotFound": "오디오를 찾을 수 없음"
+    "songNotFound": "오디오를 찾을 수 없음",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Youtube 부터 재생목록을 재생합니다.",

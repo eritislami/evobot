@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> ลูปคือตอนนี้ {loop}",
     "stopSong": "<@{author}> ⏹ หยุดเพลง!",
     "leaveChannel": "ออกจากช่องเสียง...",
-    "songNotFound": "ไม่พบเสียง"
+    "songNotFound": "ไม่พบเสียง",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "เล่นเพลย์ลิสต์จาก YouTube",

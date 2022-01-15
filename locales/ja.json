@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> がループ再生を {loop} にしました",
     "stopSong": "<@{author}> が ⏹ 停止しました！",
     "leaveChannel": "ボイスチャンネルを退出します",
-    "songNotFound": "音声が見つかりません"
+    "songNotFound": "音声が見つかりません",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "YouTube プレイリストから再生",

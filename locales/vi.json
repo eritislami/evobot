@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> chế độ lặp lại hiện đang {loop}",
     "stopSong": "<@{author}> ⏹ đã dừng phát nhạc!",
     "leaveChannel": "Đang rời khỏi kênh thoại...",
-    "songNotFound": "Không thể tìm thấy đoạn âm thanh"
+    "songNotFound": "Không thể tìm thấy đoạn âm thanh",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Phát danh sách nhạc từ link YouTube",

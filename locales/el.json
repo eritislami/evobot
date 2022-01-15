@@ -71,7 +71,8 @@
     "loopSong": "<@{author}> Ο βρόγχος τώρα είναι {loop}",
     "stopSong": "<@{author}> ⏹ σταμάτησε την αναπαραγωγή!",
     "leaveChannel": "Έξοδος από το κανάλι ομιλίας...",
-    "songNotFound": "Δε βρέθηκε ήχος"
+    "songNotFound": "Δε βρέθηκε ήχος",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Αναπαραγωγή playlist από το youtube",
