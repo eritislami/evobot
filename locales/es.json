@@ -28,7 +28,7 @@
     "embedTitle": "{title} - Letra"
   },
   "move": {
-    "description": "Mueve canciones en la cola",
+    "description": "Mueve canciones a la cola",
     "errorNotQueue": "No hay una cola.",
     "usagesReply": "Uso correcto: {prefix}move <Número en la Cola>",
     "result": "<@{author}> 🚚 movío **{title}** al puesto {index} en la cola."
@@ -50,12 +50,12 @@
     "result": "📈 Latencia media a la API: {ping} ms"
   },
   "play": {
-    "description": "Reproduce música de Youtube o Soundcloud",
+    "description": "Reproduciendo música de Youtube o Soundcloud",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estár en el mismo canal de voz que {user}",
     "usageReply": "Uso correcto: {prefix}play <URL de YouTube | Nombre del vídeo | URL de Soundcloud>",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
-    "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal, comprueba los permisos!",
+    "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal de voz, comprueba los permisos!",
     "queueAdded": "✅ <@{author}> ha añadido **{title}** a la cola de reproducción",
     "cantJoinChannel": "No se pudo conectar al canal: {error}",
     "queueEnded": "❌ Cola de música finalizada.",
@@ -71,16 +71,16 @@
     "loopSong": "<@{author}> El bucle actual esta {loop}",
     "stopSong": "<@{author}> ⏹ ¡Paró la música!",
     "leaveChannel": "Saliendo del chat de voz...",
-    "songNotFound": "Audio no encontrado",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songNotFound": "Musica no encontrada",
+    "songAccessErr": "El video tiene restricción de edad, es privado o no está disponible"
   },
   "playlist": {
-    "description": "Reproduce una lista de reproducción de youtube",
+    "description": "Reproduce una lista de reproducción de Youtube",
     "usagesReply": "Uso correcto: {prefix}playlist <URL de la Lista de Reproducción en YouTube | Nombre de la Lista de Reproducción>",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estár en el mismo canal de voz que {user}",
     "missingPermissionConnect": "No se puede conectar al canal de voz, permisos insuficientes.",
-    "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal, comprueba los permisos!",
+    "missingPermissionSpeak": "¡No se puede reproducir sonidos en este canal de voz, comprueba los permisos!",
     "errorNotFoundPlaylist": "No se encontró la lista de reproducción :(",
     "fetchingPlaylist": "⌛ Obteniendo la lista de reproducción...",
     "playlistCharLimit": "\nLista de reproducción más larga que el límite de caracteres por mensaje...",
@@ -121,9 +121,9 @@
     "resultEmbedDesc": "Resultados para: {search}"
   },
   "shuffle": {
-    "description": "Randomizar la cola de reproducción",
+    "description": "Reproduccion aleatoriamente de la cola",
     "errorNotQueue": "No hay una cola de reproducción.",
-    "result": "<@{author}> 🔀 ha randomizado la cola"
+    "result": "<@{author}> 🔀 ha activado la reproduccion aleatoria de la cola"
   },
   "skip": {
     "description": "Salta a la sigiente música en la cola de reproducción",
@@ -156,10 +156,10 @@
     "result": "Volumen al: **{arg}%**"
   },
   "common": {
-    "on": "**encendido**",
-    "off": "**apagado**",
-    "enabled": "**activado**",
-    "disabled": "**desactivado**",
+    "on": "**Encendido**",
+    "off": "**Apagado**",
+    "enabled": "**Activado**",
+    "disabled": "**Desactivado**",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "cooldownMessage": "Por favor espera {time} segundos antes de volver a usar el comando `{name}`.",
     "errorCommand": "Se produjo un error con ese comando."
