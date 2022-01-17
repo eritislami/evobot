@@ -120,6 +120,7 @@ Currently available locales are:
 - Italian (it)
 - Japanese (ja)
 - Korean (ko)
+- Persian (fa)
 - Polish (pl)
 - Russian (ru)
 - Simplified Chinese (zh_cn)
