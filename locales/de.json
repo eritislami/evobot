@@ -71,8 +71,8 @@
     "loopSong": "<@{author}> Musikschleife ist nun auf {loop}",
     "stopSong": "<@{author}> ⏹ hat die Musik gestoppt!",
     "leaveChannel": "Verlasse den Voice-Channel...",
-    "songNotFound": "Audio Not Found",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songNotFound": "Audio nicht gefunden",
+    "songAccessErr": "Das Video ist altersbeschränkt, privat oder nicht verfügbar"
   },
   "playlist": {
     "description": "Spielt eine Playlist von Youtube ab",
