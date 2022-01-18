@@ -1,0 +1,167 @@
+{
+  "clip": {
+    "description": "Kop a pul suka",
+    "usagesReply": "Hug: /clip <nomba>",
+    "errorQueue": "Takan hopa pul feguin bada tis nan sixpoh tic.",
+    "errorNotChannel": "To mo da nut a vola fagtit prima!"
+  },
+  "clips": {
+    "description": "Listo tadda clips"
+  },
+  "help": {
+    "description": "Mobpsi tadda kamod yee foxwot",
+    "embedTitle": "{botname} Hep",
+    "embedDescription": "Listo de tadda kamod"
+  },
+  "invite": {
+    "description": "Si bot invite ami"
+  },
+  "loop": {
+    "description": "Toggle bocami wab",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "result": "Wab tis prompo {loop}"
+  },
+  "lyrics": {
+    "description": "Linda lyrics nunu ta pryers maenae amu",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "lyricsNotFound": "No lyrics polo nunu {title}.",
+    "embedTitle": "{title} - Lyrics"
+  },
+  "move": {
+    "description": "Mova rob woeod een ta tic",
+    "errorNotQueue": "Bada tis no tic.",
+    "usagesReply": "Hug: {prefix}move <Tic Nobam>",
+    "result": "<@{author}> 🚚 ono **{title}** da {index} een ta tic."
+  },
+  "nowplaying": {
+    "description": "Ta daa prompo maenae amu",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "embedTitle": "Prompo maenae",
+    "live": " ◉ VIVO",
+    "timeRemaining": "Veela Fudivy: {time}"
+  },
+  "pause": {
+    "description": "Pause ta pryers maenae bocami",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "result": "<@{author}> ⏸ paused ta bocami."
+  },
+  "ping": {
+    "description": "Ta daa ta bot's picmet ping",
+    "result": "📈 Picmet ping da VAU: {ping} ms"
+  },
+  "play": {
+    "description": "Plays sow da YouTube sif Soundcloud",
+    "errorNotChannel": "To mo da nut a vola fagtit prima!",
+    "errorNotInSameChannel": "To miklo be een ta mismo fagtit sim {user}",
+    "usageReply": "Hug: {prefix}play <YouTube URL | Hit Nomba | Soundcloud URL>",
+    "missingPermissionConnect": "Oeput ladami da vola fagtit, bidlev permissions",
+    "missingPermissionSpeak": "Ka oeput dub een ba vola fagtit, haga udo Ka kaylay ta zagass permissions!",
+    "queueAdded": "✅ **{title}** hego bem koa da ta tic bey <@{author}>",
+    "cantJoinChannel": "Tup non nut ta fagtit: {error}",
+    "queueEnded": "❌ Bocami tic moc.",
+    "queueError": "Via: {error}",
+    "startedPlaying": "🎶 Capley maenae: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ skipped ta amug",
+    "pauseSong": "<@{author}> ⏸ paused ta bocami.",
+    "resumeSong": "<@{author}> ▶ rapson ta bocami!",
+    "unmutedSong": "<@{author}> 🔊 unmuted ta bocami!",
+    "mutedSong": "<@{author}> 🔇 muted ta bocami!",
+    "decreasedVolume": "<@{author}> 🔉 ohmraj ta nogarc, ta nogarc tis prompo {volume}%",
+    "increasedVolume": "<@{author}> 🔊 yagcru ta nogarc, ta nogarc tis prompo {volume}%",
+    "loopSong": "<@{author}> Wab tis prompo {loop}",
+    "stopSong": "<@{author}> ⏹ haka ta bocami!",
+    "leaveChannel": "Etayin vola fagtit...",
+    "songNotFound": "Sow Non Polo",
+    "songAccessErr": "Hit tis shh hugrig, defoxy sif letbig"
+  },
+  "playlist": {
+    "description": "Hopa a playlist da youtube",
+    "usagesReply": "Hug: {prefix}playlist <YouTube Playlist URL | Playlist Nomba>",
+    "errorNotChannel": "To mo da nut a vola fagtit prima!",
+    "errorNotInSameChannel": "To miklo be een ta mismo fagtit sim {user}",
+    "missingPermissionConnect": "Oeput ladami da vola fagtit, bidlev permissions",
+    "missingPermissionSpeak": "Ka oeput dub een ba vola fagtit, haga udo Ka kaylay ta zagass permissions!",
+    "errorNotFoundPlaylist": "Playlist non polo :(",
+    "fetchingPlaylist": "⌛ fetching ta playlist...",
+    "playlistCharLimit": "\nPlaylist ditho pan kinhoy cay...",
+    "startedPlaylist": "<@{author}> Capley a playlist",
+    "cantJoinChannel": "Could non nut ta fagtit: {error}"
+  },
+  "pruning": {
+    "description": "Toggle pruning de bot beif",
+    "errorWritingFile": "Bada tos nan via scriba da ta sad.",
+    "result": "Dogjay pruning tis {result}"
+  },
+  "queue": {
+      "description": "Ta daa ta bocami tic yee prompo maenae.",
+    "missingPermissionMessage": "Bidlev ryapeh da godhit beif sif tokali voxaby",
+    "errorNotQueue": "❌ **Secmop maenae een ba patohs**",
+    "currentPage": "Hodski Piplo - ",
+    "embedTitle": "Amu Tic\n",
+    "embedCurrentSong": "**Hodski Amu - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Absdot amu da ta tic",
+    "errorNotQueue": "Bada tis no tic.",
+    "usageReply": "Hug: {prefix}remove <Tic Nobam>",
+    "result": "<@{author}> ❌ oftsos **{title}** da ta tic."
+  },
+  "resume": {
+    "description": "Skatil pryers maenae bocami",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "resultNotPlaying": "<@{author}> ▶ rapson ta bocami!",
+    "errorPlaying": "Ta tic tis non paused."
+  },
+  "search": {
+    "description": "Yukjug yee regbo videos da hopa",
+    "usageReply": "Hug: {prefix}{name} <Hit Nomba>",
+    "errorAlreadyCollector": "A dogjay askrho tis bedy sixpoh een ba fagtit.",
+    "errorNotChannel": "To mo da nut a vola fagtit prima!",
+    "resultEmbedTitle": "**Ave com ta amu nobam to quer da hopa**",
+    "resultEmbedDesc": "Fouwos nunu: {search}"
+  },
+  "shuffle": {
+    "description": "Shuffle tic",
+    "errorNotQueue": "Bada tis no tic.",
+    "result": "<@{author}> 🔀 shuffled ta tic"
+  },
+  "skip": {
+    "description": "Skip ta pryers maenae amu",
+    "errorNotQueue": "Bada tis secmop maenae pak Ka tup skip nunu to.",
+    "result": "<@{author}> ⏭ skipped ta amu"
+  },
+  "skipto": {
+    "description": "Skip da ta sirsei tic nobam",
+    "usageReply": "Hug: {prefix}{name} <Tic Nobam>",
+    "errorNotQueue": "Bada tis no tic.",
+    "errorNotValid": "Ta tic tis solo {length} rob lugol!",
+    "result": "<@{author}> ⏭ skipped {arg} rob"
+  },
+  "stop": {
+    "description": "Buy ta bocami",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "result": "<@{author}> ⏹ haka ta bocami!"
+  },
+  "uptime": {
+    "description": "Bada ta uptime",
+    "result": "Uptime: `{days} dex,{hours} als, {minutes} sacwad, {seconds} emebid`"
+  },
+  "volume": {
+    "description": "Greebo nogarc de pryers maenae bocami",
+    "errorNotQueue": "Bada tis secmop maenae.",
+    "errorNotChannel": "To mo da nut a vola fagtit prima!",
+    "currentVolume": "🔊 Ta hodski nogarc tis: **{volume}%**",
+    "errorNotNumber": "Radbad uso a nobam da ka kow nogarc.",
+    "errorNotValid": "Radbad uso a nobam squee 0 - 100.",
+    "result": "Nogarc ka kow da: **{arg}%**"
+  },
+  "common": {
+    "on": "**en**",
+    "off": "**dak**",
+    "enabled": "**dubduh**",
+    "disabled": "**norhex**",
+    "errorNotChannel": "To mo da nut a vola fagtit prima!",
+    "cooldownMessage": "radbad sky {time} mas emebid bidom reusing ta `{name}` dogpun.",
+    "errorCommand": "Bada tos nan via unhod pak dogpun."
+  }
+}
