@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> ⏹ หยุดเพลง!",
     "leaveChannel": "ออกจากช่องเสียง...",
     "songNotFound": "ไม่พบเสียง",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "วิดีโอมีการจำกัดอายุ เป็นส่วนตัวหรือไม่พร้อมใช้งาน"
   },
   "playlist": {
     "description": "เล่นเพลย์ลิสต์จาก YouTube",
