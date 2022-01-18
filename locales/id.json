@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> ⏹ Menghentikan musik!",
     "leaveChannel": "Keluar dari saluran suara...",
     "songNotFound": "Audio Tidak Ditemukan",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "Video dibatasi usia, pribadi atau tidak tersedia"
   },
   "playlist": {
     "description": "Memutar playlist dari youtube",
