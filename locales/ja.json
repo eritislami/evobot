@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> が ⏹ 停止しました！",
     "leaveChannel": "ボイスチャンネルを退出します",
     "songNotFound": "音声が見つかりません",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "動画は年齢制限あり、非公開、または利用できません"
   },
   "playlist": {
     "description": "YouTube プレイリストから再生",

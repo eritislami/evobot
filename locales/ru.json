@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> ⏹ остановил музыку!",
     "leaveChannel": "Выход из голосового канала...",
     "songNotFound": "Песня не найдена",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "Видео ограничено по возрасту, закрыто или недоступно"
   },
   "playlist": {
     "description": "Воспроизвести плейлист с YouTube",

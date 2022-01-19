@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> ⏹ đã dừng phát nhạc!",
     "leaveChannel": "Đang rời khỏi kênh thoại...",
     "songNotFound": "Không thể tìm thấy đoạn âm thanh",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "Video bị giới hạn độ tuổi, ở chế độ riêng tư hoặc không khả dụng!"
   },
   "playlist": {
     "description": "Phát danh sách nhạc từ link YouTube",
@@ -149,7 +149,7 @@
     "currentVolume": "🔊 Âm lượng hiện tại là: **{volume}%**",
     "errorNotNumber": "Vui lòng chỉ sử dụng giá trị là số để chỉnh âm lượng.",
     "errorNotValid": "Vui lòng chỉ sử dụng số trong phạm vi từ 0 đến 100.",
-    "result": "Âm lượng được chỉnh thành: **{arg}%**"
+    "result": "Âm lượng được đặt thành: **{arg}%**"
   },
   "common": {
     "on": "**bật**",
@@ -157,7 +157,7 @@
     "enabled": "**kích hoạt*",
     "disabled": "**vô hiệu hóa**",
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "cooldownMessage": "xin vui lòng chờ {time} giây trước khi sử dụng lại lệnh `{name}`.",
+    "cooldownMessage": "Xin vui lòng chờ {time} giây trước khi sử dụng lại lệnh `{name}`.",
     "errorCommand": "Có lỗi xảy ra khi đang cố gắng thực hiện yêu cầu của bạn, vui lòng thử lại sau ít phút."
   }
 }

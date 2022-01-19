@@ -72,7 +72,7 @@
     "stopSong": "<@{author}> ⏹ 停止了歌曲!",
     "leaveChannel": "正在离开语音频道...",
     "songNotFound": "没有找到曲目",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "视频有年龄限制、私人或不可用"
   },
   "playlist": {
     "description": "播放 YouTube 的播放清单",
