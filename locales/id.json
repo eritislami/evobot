@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Memutar suara klip",
-    "usagesReply": "Penggunaan: /clip <nama klip>",
+    "usagesReply": "Penggunaan: {prefix}clip <nama klip>",
     "errorQueue": "Tidak dapat memutar klip karena ada antrian yang sedang aktif.",
     "errorNotChannel": "Kamu harus bergabung dengan saluran suara terlebih dahulu!"
   },

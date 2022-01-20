@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "クリップ音声の再生",
-    "usagesReply": "使い方: /clip <名>",
+    "usagesReply": "使い方: {prefix}clip <名>",
     "errorQueue": "キューが残っているためクリップ音声を再生出来ません",
     "errorNotChannel": "先にボイスチャンネルに参加してください！"
   },

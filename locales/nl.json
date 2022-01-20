@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Speelt een clip af.",
-    "usagesReply": "Gebruik: /clip <naam>",
+    "usagesReply": "Gebruik: {prefix}clip <naam>",
     "errorQueue": "Kan clip niet afspelen omdat er een actieve wachtrij is.",
     "errorNotChannel": "Je moet eerst een voice channel joinen!"
   },

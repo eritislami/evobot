@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Riproduce una clip audio",
-    "usagesReply": "Utilizzo: /clip <nome>",
+    "usagesReply": "Utilizzo: {prefix}clip <nome>",
     "errorQueue": "Impossibile riprodurre la clip perché è presente una coda attiva.",
     "errorNotChannel": "Devi prima entrare in un canale vocale!"
   },

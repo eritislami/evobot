@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "เล่นคลิปเสียง",
-    "usagesReply": "การใช้งาน: /clip <ขื่อ>",
+    "usagesReply": "การใช้งาน: {prefix}clip <ขื่อ>",
     "errorQueue": "ไม่สามารถเล่นคลิปเพราะมีคิวที่ใช้งานอยู่.",
     "errorNotChannel": "คุณต้องเข้าร่วมช่องเสียงก่อน!"
   },

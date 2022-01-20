@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Odtwarza klip",
-    "SkładniasReply": "Składnia: /clip <nazwa>",
+    "SkładniasReply": "Składnia: {prefix}clip <nazwa>",
     "errorQueue": "Nie można odtworzyć klipu, ponieważ jest aktywna kolejka.",
     "errorNotChannel": "Musisz dołączyć na kanał głosowy!"
   },

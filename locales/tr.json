@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Klip oynatılıyor.",
-    "usagesReply": "Kullanım: /clip <isim>",
+    "usagesReply": "Kullanım: {prefix}clip <isim>",
     "errorQueue": "Sırada klip olduğu için oynatılamıyor.",
     "errorNotChannel": "Bir sesli kanala girmelisiniz !"
   },

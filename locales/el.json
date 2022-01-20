@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Παίζει έναν ήχο ενός κλίπ",
-    "usagesReply": "Χρήση: /clip <name>",
+    "usagesReply": "Χρήση: {prefix}clip <name>",
     "errorQueue": "Αδύνατη αναπαραγωγή κλίπ καθώς υπάρχει ενεργή ουρά.",
     "errorNotChannel": "Θα πρέπει να συνδεθείς σε ένα κανάλι ομιλίας πρώτα!"
   },

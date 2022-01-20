@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "تشغيل مقطع صوتي",
-    "usagesReply": "إستعمال: /clip <اسم>",
+    "usagesReply": "إستعمال: {prefix}clip <اسم>",
     "errorQueue": "لا يمكن تشغيل المقطع نظرًا لوجود قائمة اغاني تعمل...",
     "errorNotChannel": "تحتاج إلى الانضمام إلى قناة صوتية أولاً!"
   },

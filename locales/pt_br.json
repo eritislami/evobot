@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Reproduz um clipe de música.",
-    "usagesReply": "Uso: /clip <nome>",
+    "usagesReply": "Uso: {prefix}clip <nome>",
     "errorQueue": "Não é possível reproduzir este clipe porque há uma playlist ativa.",
     "errorNotChannel": "Você precisa entrar em um canal de voz primeiro!"
   },

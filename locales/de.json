@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Spielt eine Kurz-Schnitt Audio Datei ab",
-    "usagesReply": "Nutzung: /clip <name>",
+    "usagesReply": "Nutzung: {prefix}clip <name>",
     "errorQueue": "Ich kann den Kurz-Schnitt nicht abspielen, da die derzeitige Queue inaktiv ist.",
     "errorNotChannel": "Betrete zuerst einen Voice-Channel!"
   },
