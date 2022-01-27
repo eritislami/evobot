@@ -10,6 +10,7 @@ module.exports = {
     if (!queue) return message.reply(i18n.__("stop.errorNotQueue")).catch(console.error);
     if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
+    queue.loop = false;
     queue.songs = [];
     queue.connection.dispatcher.end();
     queue.textChannel.send(i18n.__mf("stop.result", { author: message.author })).catch(console.error);
