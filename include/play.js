@@ -64,7 +64,7 @@ module.exports = {
 
         queue.connection.removeAllListeners("disconnect");
 
-        if (queue.loop) {
+        if (queue.loop && queue.songs.length > 0) {
           // if loop is on, push the song back at the end of the queue
           // so it can repeat endlessly
           let lastSong = queue.songs.shift();
