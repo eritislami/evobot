@@ -1,0 +1,167 @@
+{
+  "clip": {
+    "description": "Riproduce una clip audio",
+    "usagesReply": "Utilizzo: {prefix}clip <nome>",
+    "errorQueue": "Impossibile riprodurre la clip perché è presente una coda attiva.",
+    "errorNotChannel": "Devi prima entrare in un canale vocale!"
+  },
+  "clips": {
+    "description": "Elenca tutte le clip"
+  },
+  "help": {
+    "description": "Visualizza tutti i comandi e le descrizioni",
+    "embedTitle": "Aiuto di {botname}",
+    "embedDescription": "Elenco di tutti i comandi"
+  },
+  "invite": {
+    "description": "Invia link di invito del bot"
+  },
+  "loop": {
+    "description": "Attiva / disattiva loop brano",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "result": "Il loop è ora {loop}"
+  },
+  "lyrics": {
+    "description": "Ottieni il testo per il brano attualmente in riproduzione",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "lyricsNotFound": "Nessun testo trovato per {title}.",
+    "embedTitle": "{title} - Testo"
+  },
+  "move": {
+    "description": "Sposta il brano nella coda",
+    "errorNotQueue": "Non c'è nessuna coda attiva.",
+    "usagesReply": "Utilizzo: {prefix}move <Numero in Coda>",
+    "result": "<@{author}> 🚚 ha spostato **{title}** a {index} nella coda."
+  },
+  "nowplaying": {
+    "description": "Mostra il brano in riproduzione",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "embedTitle": "Ora in riproduzione",
+    "live": " ◉ IN DIRETTA",
+    "timeRemaining": "Tempo rimanente: {time}"
+  },
+  "pause": {
+    "description": "Mette in pausa il brano attualmente in riproduzione",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "result": "<@{author}> ⏸ ha messo in pausa il brano."
+  },
+  "ping": {
+    "description": "Mostra il ping medio del bot",
+    "result": "📈 Ping medio all'API: {ping} ms"
+  },
+  "play": {
+    "description": "Riproduce un brano da YouTube o Soundcloud",
+    "errorNotChannel": "Devi prima entrare in un canale vocale!",
+    "errorNotInSameChannel": "Devi essere nello stesso canale di {user}",
+    "usageReply": "Utilizzo: {prefix}play <URL video di YouTube | Nome video | URL di Soundcloud>",
+    "missingPermissionConnect": "Non posso connettermi al canale vocale, permessi mancanti",
+    "missingPermissionSpeak": "Non posso parlare in questo canale vocale, assicurati di avermi dato i permessi appropriati!",
+    "queueAdded": "✅ **{title}** è stato aggiunto nella coda da <@{author}>",
+    "cantJoinChannel": "Non posso connettermi al canale: {error}",
+    "queueEnded": "❌ Coda di riproduzione terminata.",
+    "queueError": "Errore: {error}",
+    "startedPlaying": "🎶 Iniziata riproduzione: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ ha saltato il brano",
+    "pauseSong": "<@{author}> ⏸ ha messo in pausa la riproduzione.",
+    "resumeSong": "<@{author}> ▶ ha ripreso la riproduzione!",
+    "unmutedSong": "<@{author}> 🔊 ha smutato la riproduzione!",
+    "mutedSong": "<@{author}> 🔇 ha mutato la riproduzione!",
+    "decreasedVolume": "<@{author}> 🔉 ha abbassato il volume, il volume è ora al {volume}%",
+    "increasedVolume": "<@{author}> 🔊 ha aumentato il volume, il volume è ora al {volume}%",
+    "loopSong": "<@{author}> Il loop è ora {loop}",
+    "stopSong": "<@{author}> ⏹ ha fermato la riproduzione!",
+    "leaveChannel": "Esco dal canale vocale...",
+    "songNotFound": "Brano non trovato",
+    "songAccessErr": "Video is age restricted, private or unavailable"
+  },
+  "playlist": {
+    "description": "Riproduce una playlist da YouTube",
+    "usagesReply": "Utilizzo: {prefix}playlist <URL Playlist di YouTube | Nome Playlist>",
+    "errorNotChannel": "Devi prima entrare in un canale vocale!",
+    "errorNotInSameChannel": "Devi essere nello stesso canale di {user}",
+    "missingPermissionConnect": "Non posso connettermi al canale vocale, permessi mancanti",
+    "missingPermissionSpeak": "Non posso parlare in questo canale vocale, assicurati di avermi dato i permessi appropriati!",
+    "errorNotFoundPlaylist": "Playlist non trovata :(",
+    "fetchingPlaylist": "⌛ recupero info della playlist...",
+    "playlistCharLimit": "\nPlaylist maggiore del limite di caratteri...",
+    "startedPlaylist": "<@{author}> Ha avviato una playlist",
+    "cantJoinChannel": "Non posso connettermi al canale: {error}"
+  },
+  "pruning": {
+    "description": "Attiva o disattiva l'eliminazione dei messaggi dei bot",
+    "errorWritingFile": "Si è verificato un errore durante la scrittura del file.",
+    "result": "L'eliminazione dei messaggi è {result}"
+  },
+  "queue": {
+    "description": "Mostra la coda di riproduzione e il brano in corso.",
+    "missingPermissionMessage": "Manca il permesso per gestire i messaggi o aggiungere reazioni",
+    "errorNotQueue": "❌ **Non c'è niente in riproduzione in questo server**",
+    "currentPage": "Pagina corrente - ",
+    "embedTitle": "Coda di riproduzione\n",
+    "embedCurrentSong": "**Brano corrente - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Rimuovi brano dalla coda",
+    "errorNotQueue": "Non c'è nessuna coda attiva.",
+    "usageReply": "Utilizzo: {prefix}remove <Numero in Coda>",
+    "result": "<@{author}> ❌ ha rimosso **{title}** dalla coda."
+  },
+  "resume": {
+    "description": "Riprendi la riproduzione del brano",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "resultNotPlaying": "<@{author}> ▶ ha ripreso la riproduzione!",
+    "errorPlaying": "La coda non è in pausa."
+  },
+  "search": {
+    "description": "Cerca e seleziona i video da riprodurre",
+    "usageReply": "Usage: {prefix}{name} <Nome Video>",
+    "errorAlreadyCollector": "Un raccoglitore di messaggi è già attivo in questo canale.",
+    "errorNotChannel": "Devi prima entrare in un canale vocale!",
+    "resultEmbedTitle": "**Rispondi con il numero del brano che desideri riprodurre**",
+    "resultEmbedDesc": "Risultati per: {search}"
+  },
+  "shuffle": {
+    "description": "Coda mischiata",
+    "errorNotQueue": "Non c'è nessuna coda attiva.",
+    "result": "<@{author}> 🔀 ha mischiato la coda"
+  },
+  "skip": {
+    "description": "Salta il brano attualmente in riproduzione",
+    "errorNotQueue": "Non c'è niente che io possa saltare per te.",
+    "result": "<@{author}> ⏭ ha saltato il brano"
+  },
+  "skipto": {
+    "description": "Passa al numero di coda selezionato",
+    "usageReply": "Utilizzo: {prefix}{name} <Numero in Coda>",
+    "errorNotQueue": "Non c'è nessuna coda attiva.",
+    "errorNotValid": "La coda è lunga solo {length} brani!",
+    "result": "<@{author}> ⏭ ha saltato {arg} brani"
+  },
+  "stop": {
+    "description": "Ferma la riproduzione",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "result": "<@{author}> ⏹ ha fermato la riproduzione!"
+  },
+  "uptime": {
+    "description": "Controlla il tempo di attività",
+    "result": "Tempo di attività: `{days} giorno(i), {hours} ora(e), {minutes} minuto(i), {seconds} secondo(i)`"
+  },
+  "volume": {
+    "description": "Cambia il volume del brano attualmente in riproduzione",
+    "errorNotQueue": "Non c'è niente in riproduzione.",
+    "errorNotChannel": "Devi prima entrare in un canale vocale!",
+    "currentVolume": "🔊 Il volume attuale è: **{volume}%**",
+    "errorNotNumber": "Utilizzare un numero per impostare il volume.",
+    "errorNotValid": "Si prega di utilizzare un numero compreso tra 0 e 100.",
+    "result": "Volume impostato su: **{arg}%**"
+  },
+  "common": {
+    "on": "**acceso**",
+    "off": "**spento**",
+    "enabled": "**abilitato**",
+    "disabled": "**disabilitato**",
+    "errorNotChannel": "Devi prima entrare in un canale vocale!",
+    "cooldownMessage": "attendi {time} secondo(i) prima di riutilizzare il comando `{name}`.",
+    "errorCommand": "Si è verificato un errore durante l'esecuzione del comando."
+  }
+}

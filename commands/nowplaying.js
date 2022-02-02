@@ -1,17 +1,13 @@
-const createBar = require("string-progressbar");
+const { splitBar } = require("string-progressbar");
 const { MessageEmbed } = require("discord.js");
-
-const { LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
+const i18n = require("../util/i18n");
 
 module.exports = {
   name: "np",
   description: i18n.__("nowplaying.description"),
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.reply(i18n.__("nowplaying.errorNotQueue")).catch(console.error);
+    if (!queue || !queue.songs.length) return message.reply(i18n.__("nowplaying.errorNotQueue")).catch(console.error);
 
     const song = queue.songs[0];
     const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
@@ -28,7 +24,7 @@ module.exports = {
         "\u200b",
         new Date(seek * 1000).toISOString().substr(11, 8) +
           "[" +
-          createBar(song.duration == 0 ? seek : song.duration, seek, 20)[0] +
+          splitBar(song.duration == 0 ? seek : song.duration, seek, 20)[0] +
           "]" +
           (song.duration == 0 ? " ◉ LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)),
         false

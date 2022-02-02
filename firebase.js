@@ -1,5 +1,5 @@
 var admin = require("firebase-admin");
-const { FIREBASE_CONFIG, DISCORD_SERVER_ID } = require("./util/EvobotUtil");
+const { FIREBASE_CONFIG, DISCORD_SERVER_ID } = require("./util/Util");
 const songHistoryDb = FIREBASE_CONFIG.song_history_collection;
 const songAggregateDb = FIREBASE_CONFIG.song_aggregate_collection;
 const fredSessionDb = FIREBASE_CONFIG.fred_session_collection;

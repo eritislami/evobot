@@ -1,12 +1,10 @@
-const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
+const { canModifyQueue } = require("../util/Util");
+const i18n = require("../util/i18n");
 
 module.exports = {
   name: "resume",
   aliases: ["r"],
-  description: i18n.__('resume.description'),
+  description: i18n.__("resume.description"),
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
     if (!queue) return message.reply(i18n.__("resume.errorNotQueue")).catch(console.error);

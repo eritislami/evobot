@@ -1,6 +1,5 @@
-const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-i18n.setLocale(LOCALE);
+const { canModifyQueue } = require("../util/Util");
+const i18n = require("../util/i18n");
 
 const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
 
@@ -26,12 +25,18 @@ module.exports = {
       });
 
       queue.textChannel.send(
-        `${message.author} ❌ removed **${removed.map((song) => song.title).join("\n")}** from the queue.`
+        i18n.__mf("remove.result", {
+          title: removed.map((song) => song.title).join("\n"),
+          author: message.author.id
+        })
       );
     } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= queue.songs.length) {
       console.log("we got elsed!");
       return queue.textChannel.send(
-        `${message.author} ❌ removed **${queue.songs.splice(args[0] - 1, 1)[0].title}** from the queue.`
+        i18n.__mf("remove.result", {
+          title: queue.songs.splice(args[0] - 1, 1)[0].title,
+          author: message.author.id
+        })
       );
     } else {
       console.log("we got the last one");

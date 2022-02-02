@@ -1,2 +1,13 @@
 webclient/**
 webclient-vue/**
+.vscode
+.github
+node_modules
+.env
+.gitignore
+.node-version
+.prettierrc
+.replit
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+Procfile

@@ -1,0 +1,167 @@
+{
+  "clip": {
+    "description": "Odtwarza klip",
+    "SkładniasReply": "Składnia: {prefix}clip <nazwa>",
+    "errorQueue": "Nie można odtworzyć klipu, ponieważ jest aktywna kolejka.",
+    "errorNotChannel": "Musisz dołączyć na kanał głosowy!"
+  },
+  "clips": {
+    "description": "Wyświetla wszyskie klipy"
+  },
+  "help": {
+    "description": "Wyświetla listę wszystkich komend",
+    "embedTitle": "{botname} Help",
+    "embedDescription": "Lista wszystkich komend"
+  },
+  "invite": {
+    "description": "Wysyła link do zaproszenia bota"
+  },
+  "loop": {
+    "description": "Przełączenie pętli",
+    "errorNotQueue": "Nie ma aktywnej kolejki na tym serwerze.",
+    "result": "Pętla jest teraz: {loop}"
+  },
+  "lyrics": {
+    "description": "Wyświetla słowa dla aktualnie odtwarzanego utworu",
+    "errorNotQueue": "Nie ma aktywnej kolejki na tym serwerze.",
+    "lyricsNotFound": "Brak słów dla: {title}.",
+    "embedTitle": "{title} - Lyrics"
+  },
+  "move": {
+    "description": "Przenosi utwory w kolejce",
+    "errorNotQueue": "Nie ma kolejki na tym serwerze.",
+    "SkładniasReply": "Składnia: {prefix}move <Numer w kolejce>",
+    "result": "<@{author}> 🚚 przeniósł **{title}** na miejsce {index} w kolejce."
+  },
+  "nowplaying": {
+    "description": "Wyświetla aktualnie odtwarzany utwór",
+    "errorNotQueue": "Nie ma aktywnej kolejki na tym serwerze.",
+    "embedTitle": "Teraz Odtwarzane",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Pozostały Czas: {time}"
+  },
+  "pause": {
+    "description": "Zatrzymaj aktualnie odtwarzaną muzykę",
+    "errorNotQueue": "Nie ma aktywnej kolejki na tym serwerze.",
+    "result": "<@{author}> ⏸ zatrzymano odtwarzanie."
+  },
+  "ping": {
+    "description": "Pokazuje średni ping bot'a",
+    "result": "📈 Średni ping do API: {ping} ms"
+  },
+  "play": {
+    "description": "Odtwarza utwory z Youtube lub Soundcloud!",
+    "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
+    "errorNotInSameChannel": "Musisz być na tym samym kanale co {user}",
+    "SkładniaReply": "Składnia: {prefix}play <YouTube URL | Nazwa Nagrania | Soundcloud URL>",
+    "missingPermissionConnect": "Nie mogę połączyć się z tym kanałem, sprawdź uprawnienia!",
+    "missingPermissionSpeak": "Nie mogę odtwarzać w tym kanale, sprawdź uprawnienia!",
+    "queueAdded": "✅ Utwór **{title}** został dodany do kolejki przez <@{author}>",
+    "cantJoinChannel": "Brak możliwości dołączenia na kanał: {error}",
+    "queueEnded": "❌ Kolejka odtwarzania skończona.",
+    "queueError": "Błąd: {error}",
+    "startedPlaying": "🎶 Rozpoczęto odtwarzanie: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ pominął",
+    "pauseSong": "<@{author}> ⏸ zatrzymał odtwarzanie.",
+    "resumeSong": "<@{author}> ▶ wznowił odtwarzanie!",
+    "unmutedSong": "<@{author}> 🔊 odciszył odtwarzanie!",
+    "mutedSong": "<@{author}> 🔇 wyciszył odtwarzanie!",
+    "decreasedVolume": "<@{author}> 🔉 podniósł poziom głośności, wynosi teraz: {volume}%",
+    "increasedVolume": "<@{author}> 🔊 podniósł poziom głośności, wynosi teraz: {volume}%",
+    "loopSong": "<@{author}> Przełączył pętlę na: {loop}",
+    "stopSong": "<@{author}> ⏹ Zatrzymał odtwarzanie!",
+    "leaveChannel": "Opuszczanie kanału głosowego...",
+    "songNotFound": "Utwór nieznaleziony.",
+    "songAccessErr": "Film jest ograniczony wiekowo, prywatny lub niedostępny."
+  },
+  "playlist": {
+    "description": "Odtwarza listę odtwarzania z youtuba",
+    "SkładniasReply": "Składnia: {prefix}playlist <URL Listy Odtwarzania Youtube| Nazwa listy odtwarzania>",
+    "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
+    "errorNotInSameChannel": "Musisz być na tym samym kanale głosowym co: {user}",
+    "missingPermissionConnect": "Nie mogę połączyć się z tym kanałem, sprawdź uprawnienia!",
+    "missingPermissionSpeak": "Nie mogę odtwarzać w tym kanale, sprawdź uprawnienia!",
+    "errorNotFoundPlaylist": "Lista odtwarzania nie znaleziona. :(",
+    "fetchingPlaylist": "⌛ przetwarzanie listy odtwarzania...",
+    "playlistCharLimit": "\nLista odtwarzania jest większa niż dozowlony limit znaków...",
+    "startedPlaylist": "<@{author}> Uruchomniono Listę odtwarzania",
+    "cantJoinChannel": "Nie mogę dołączyć do kanału: {error}"
+  },
+  "pruning": {
+    "description": "Przełącza usuwanie czyszczenie wiadomości bota",
+    "errorWritingFile": "Był problem w zapisywaniu ustawienia.",
+    "result": "Czyszczenie wiadomości jest: {result}"
+  },
+  "queue": {
+    "description": "Wyświetla aktualną kolejkę utworów, oraz właśnie odtwarzany.",
+    "missingPermissionMessage": "Brakujące uprawnienia: Zarządzanie Wiadomościami i/lub Dodawanie Reakcji",
+    "errorNotQueue": "❌ **Nic nie jest odtwarzane na tym serwerze**",
+    "currentPage": "Aktualna Strona - ",
+    "embedTitle": "Kolejka utworów\n",
+    "embedCurrentSong": "**Aktualnie odtwarzany utwór - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Usuń utwór z kolejki",
+    "errorNotQueue": "Nie ma kolejki na tym serwerze.",
+    "SkładniaReply": "Składnia: {prefix}remove <Numer w kolejce>",
+    "result": "<@{author}> ❌ usunięto **{title}** z kolejki."
+  },
+  "resume": {
+    "description": "Wznów odtwarzanie muzyki",
+    "errorNotQueue": "Nie ma aktywnej kolejki na tym serwerze.",
+    "resultNotPlaying": "<@{author}> ▶ wznowił odtwarzanie!",
+    "errorPlaying": "Kolejka nie jest zatrzymana."
+  },
+  "search": {
+    "description": "Wyszukaj i wybierz utwór do odtworzenia",
+    "SkładniaReply": "Składnia: {prefix}{name} <nazwa nagrania>",
+    "errorAlreadyCollector": "Wyszukiwacz muzyki jest już aktywny na tym kanale.",
+    "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
+    "resultEmbedTitle": "**Odpowiedz numerem utoworu który chcesz odtworzyć**",
+    "resultEmbedDesc": "Wyniki dla: {search}"
+  },
+  "shuffle": {
+    "description": "Pomieszaj kolejkę",
+    "errorNotQueue": "Nie ma kolejki na tym serwerze.",
+    "result": "<@{author}> 🔀 pomieszaj kolejkę"
+  },
+  "skip": {
+    "description": "Przewiń aktualnie odtwarzany utwór",
+    "errorNotQueue": "Nie mam czego pominąć.",
+    "result": "<@{author}> ⏭ pominął utwór"
+  },
+  "skipto": {
+    "description": "Przewiń do wybranego numeru w kolejce",
+    "SkładniaReply": "Składnia: {prefix}{name} <Numer w kolejce>",
+    "errorNotQueue": "Nie ma kolejki na tym serwerze.",
+    "errorNotValid": "Kolejka ma tylko {length} utworów!",
+    "result": "<@{author}> ⏭ pominął {arg} utowórw"
+  },
+  "stop": {
+    "description": "Zatrzymuje muzykę",
+    "errorNotQueue": "Nic nie jest odtwarzane.",
+    "result": "<@{author}> ⏹ Zatrzymano odtwarzanie!"
+  },
+  "uptime": {
+    "description": "Sprawdź czas online bot'a",
+    "result": "Czas online: `{days}dni ,{hours} godzin, {minutes} minut, {seconds} sekund`"
+  },
+  "volume": {
+    "description": "Zmień głośność odtwarzania utworu",
+    "errorNotQueue": "Nic nie jest odtwarzane.",
+    "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
+    "currentVolume": "🔊 Aktualna głośność: **{volume}%**",
+    "errorNotNumber": "Proszę, użyj numeru by ustawić głośność.",
+    "errorNotValid": "Proszę, użyj numeru z zakresu 0 - 100.",
+    "result": "Głośność ustawiona na: **{arg}%**"
+  },
+  "common": {
+    "on": "**włączone**",
+    "off": "**wyłączone**",
+    "enabled": "**włączone**",
+    "disabled": "**wyłączone**",
+    "errorNotChannel": "Musisz dołączyć do kanału głosowego!",
+    "cooldownMessage": "Proszę zaczekaj {time} przed kolejny użyciem komendy `{name}`.",
+    "errorCommand": "Podczas wykonywania tej komendy pojawił się błąd."
+  }
+}
