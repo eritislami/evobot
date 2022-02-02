@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Plays a clip sound",
-    "usagesReply": "Usage: /clip <name>",
+    "usagesReply": "Usage: {prefix}clip <name>",
     "errorQueue": "Can't play clip because there is an active queue.",
     "errorNotChannel": "You need to join a voice channel first!"
   },
@@ -70,7 +70,9 @@
     "increasedVolume": "<@{author}> 🔊 increased the volume, the volume is now {volume}%",
     "loopSong": "<@{author}> Loop is now {loop}",
     "stopSong": "<@{author}> ⏹ stopped the music!",
-    "leaveChannel": "Leaving voice channel..."
+    "leaveChannel": "Leaving voice channel...",
+    "songNotFound": "Audio Not Found",
+    "songAccessErr": "Video is age restricted, private or unavailable"
   },
   "playlist": {
     "description": "Play a playlist from youtube",
@@ -115,7 +117,7 @@
     "usageReply": "Usage: {prefix}{name} <Video Name>",
     "errorAlreadyCollector": "A message collector is already active in this channel.",
     "errorNotChannel": "You need to join a voice channel first!",
-    "resultEmbedTtile": "**Reply with the song number you want to play**",
+    "resultEmbedTitle": "**Reply with the song number you want to play**",
     "resultEmbedDesc": "Results for: {search}"
   },
   "shuffle": {
@@ -160,6 +162,6 @@
     "disabled": "**disabled**",
     "errorNotChannel": "You need to join a voice channel first!",
     "cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
-    "errorCommend": "There was an error executing that command."
+    "errorCommand": "There was an error executing that command."
   }
 }

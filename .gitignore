@@ -1,6 +1,7 @@
 /config.json
-/.idea
-**/.vscode
+/.vscode
+/sounds/**
+!/sounds/putmusichere.mp3
 
 # Logs
 logs

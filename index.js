@@ -4,11 +4,10 @@
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
-const { TOKEN, PREFIX, LOCALE, TRUSTED_BOTS } = require("./util/EvobotUtil");
-const path = require("path");
-const i18n = require("i18n");
+const { TOKEN, PREFIX, TRUSTED_BOTS } = require("./util/Util");
+const i18n = require("./util/i18n");
 
-const client = new Client({ 
+const client = new Client({
   disableMentions: "everyone",
   restTimeOffset: 0
 });
@@ -17,50 +16,12 @@ client.login(TOKEN);
 client.commands = new Collection();
 client.prefix = PREFIX;
 client.queue = new Map();
+
+/* Export discordClient for Firebase */
 exports.discordClient = client;
+
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-i18n.configure({
-  locales: ["en", "es", "ko", "fr", "tr", "pt_br", "zh_cn", "zh_tw"],
-  directory: path.join(__dirname, "locales"),
-  defaultLocale: "en",
-  objectNotation: true,
-  register: global,
-
-  logWarnFn: function (msg) {
-    console.log("warn", msg);
-  },
-
-  logErrorFn: function (msg) {
-    console.log("error", msg);
-  },
-
-  missingKeyFn: function (locale, value) {
-    return value;
-  },
-
-  mustacheConfig: {
-    tags: ["{{", "}}"],
-    disable: false
-  }
-});
-
-/**
- * Process Events
- */
-function handleSignal(signal) {
-  const firebase = require('./firebase');
-  firebase.stopSession().then(() => {
-    console.log("Stopped Firebase session");
-  });
-  client.destroy();
-  console.log(`Received ${signal}`);
-  process.exit(0);
-}
-
-process.on('SIGTERM', handleSignal);
-process.on('SIGINT', handleSignal);
 
 /**
  * Client Events
@@ -71,7 +32,7 @@ client.on("ready", () => {
   } else {
     console.log(`${client.user.username} ready!`);
   }
-  client.user.setActivity('some neighborhood jams', { type : "PLAYING" });
+  client.user.setActivity(`some neighborhood jams`, { type: "PLAYING" });
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
@@ -86,10 +47,15 @@ for (const file of commandFiles) {
 }
 
 client.on("message", async (message) => {
+  if (!message.guild) return;
+
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
   if (!prefixRegex.test(message.content)) return;
+
   const [, matchedPrefix] = message.content.match(prefixRegex);
+
   const args = message.content.slice(matchedPrefix.length).trim().split(/ +/);
+
   if (message.author.bot) {
     if (TRUSTED_BOTS.includes(message.author.id)) {
       const realAuthorId = args.pop().slice(1, -1);
@@ -101,8 +67,6 @@ client.on("message", async (message) => {
       return;
     }
   }
-
-  if (!message.guild || !message.author) return; // TODO: Return error
 
   const commandName = args.shift().toLowerCase();
 
@@ -135,10 +99,25 @@ client.on("message", async (message) => {
   setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
   try {
-    console.log(`Executing command from ${message.author.id} (${message.author.username}): ${message.content}`)
     command.execute(message, args);
   } catch (error) {
     console.error(error);
-    message.reply(i18n.__("common.errorCommend")).catch(console.error);
+    message.reply(i18n.__("common.errorCommand")).catch(console.error);
   }
 });
+
+/**
+ * Process Events
+ */
+ function handleSignal(signal) {
+  const firebase = require('./firebase');
+  firebase.stopSession().then(() => {
+    console.log("Stopped Firebase session");
+  });
+  client.destroy();
+  console.log(`Received ${signal}`);
+  process.exit(0);
+}
+
+process.on('SIGTERM', handleSignal);
+process.on('SIGINT', handleSignal);

@@ -1,7 +1,5 @@
-const { canModifyQueue, LOCALE } = require("../util/EvobotUtil");
-const i18n = require("i18n");
-
-i18n.setLocale(LOCALE);
+const { canModifyQueue } = require("../util/Util");
+const i18n = require("../util/i18n");
 
 module.exports = {
   name: "volume",
@@ -14,7 +12,8 @@ module.exports = {
     if (!canModifyQueue(message.member))
       return message.reply(i18n.__("volume.errorNotChannel")).catch(console.error);
 
-    if (!args[0]) return message.reply(i18n.__mf("volume.currentVolume", { volume: queue.volume })).catch(console.error);
+    if (!args[0])
+      return message.reply(i18n.__mf("volume.currentVolume", { volume: queue.volume })).catch(console.error);
     if (isNaN(args[0])) return message.reply(i18n.__("volume.errorNotNumber")).catch(console.error);
     if (Number(args[0]) > 100 || Number(args[0]) < 0)
       return message.reply(i18n.__("volume.errorNotValid")).catch(console.error);

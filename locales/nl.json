@@ -1,0 +1,167 @@
+{
+  "clip": {
+    "description": "Speelt een clip af.",
+    "usagesReply": "Gebruik: {prefix}clip <naam>",
+    "errorQueue": "Kan clip niet afspelen omdat er een actieve wachtrij is.",
+    "errorNotChannel": "Je moet eerst een voice channel joinen!"
+  },
+  "clips": {
+    "description": "Lijst van alle clips"
+  },
+  "help": {
+    "description": "Vertoon alle comamnds en beschrijvingen",
+    "embedTitle": "{botname} Help",
+    "embedDescription": "Lijst van alle commands"
+  },
+  "invite": {
+    "description": "Verstuur bot invite link"
+  },
+  "loop": {
+    "description": "Toggle music loop",
+    "errorNotQueue": "Er speelt niets af.",
+    "result": "Loop is nu {loop}"
+  },
+  "lyrics": {
+    "description": "Haal de lyrics op voor het nummer dat momenteel wordt afgespeeld.",
+    "errorNotQueue": "Er is niks aan het afspelen.",
+    "lyricsNotFound": "Geen lyrics gevonden voor {title}.",
+    "embedTitle": "{title} - Lyrics"
+  },
+  "move": {
+    "description": "Verplaats nummers in de wachtrij",
+    "errorNotQueue": "Er is geen wachtrij.",
+    "usagesReply": "Gebruik: {prefix}move <Wachtrij Nummer>",
+    "result": "<@{author}> 🚚 verplaatst **{title}** naar {index} in de wachtrij."
+  },
+  "nowplaying": {
+    "description": "Toon het spelende nummer",
+    "errorNotQueue": "Er is niks aan het afspelen.",
+    "embedTitle": "Nu aan het afspelen",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Tijd resterend: {time}"
+  },
+  "pause": {
+    "description": "Pauzeer de muziek die aan het afspelen is",
+    "errorNotQueue": "Er is niks aan het afspelen.",
+    "result": "<@{author}> ⏸ heeft de muziek gepauzeerd."
+  },
+  "ping": {
+    "description": "Laat de gemiddelde ping van de bot zien",
+    "result": "📈 Gemiddelde Ping naar API: {ping} ms"
+  },
+  "play": {
+    "description": "Speel geluid af van YouTube of Soundcloud",
+    "errorNotChannel": "Je moet eerst een voice channel joinen!",
+    "errorNotInSameChannel": "Je moet in dezelfde channel zitten als {user}",
+    "usageReply": "Gebruik: {prefix}play <YouTube URL | Video Naam | Soundcloud URL>",
+    "missingPermissionConnect": "Kan geen verbinding maken met voice channel, missing permissions",
+    "missingPermissionSpeak": "Ik kan niet spreken in de voice channel, Zorg ervoor dat ik de juiste permissions heb!",
+    "queueAdded": "✅ **{title}** is toegevoegd aan de wachtrij door <@{author}>",
+    "cantJoinChannel": "Ik kon de channel niet betreden: {error}",
+    "queueEnded": "❌ Muziek wachtrij afgelopen.",
+    "queueError": "Foutmelding: {error}",
+    "startedPlaying": "🎶 Gestart met afspelen: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ skipte het liedje",
+    "pauseSong": "<@{author}> ⏸ pauzeerde de muziek!.",
+    "resumeSong": "<@{author}> ▶ hervatte de muziek!",
+    "unmutedSong": "<@{author}> 🔊 unmuted de muziek!",
+    "mutedSong": "<@{author}> 🔇 muted de muziek!",
+    "decreasedVolume": "<@{author}> 🔉 verlaagde het volume, het volume is nu {volume}%",
+    "increasedVolume": "<@{author}> 🔊 verhoogde het volume, het volume is nu {volume}%",
+    "loopSong": "<@{author}> Herhaling is nu {loop}",
+    "stopSong": "<@{author}> ⏹ stopte de muziek!",
+    "leaveChannel": "Voice channel verlaten...",
+    "songNotFound": "Audio Not Found",
+    "songAccessErr": "Video is age restricted, private or unavailable"
+  },
+  "playlist": {
+    "description": "Speel een playlist af van youtube",
+    "usagesReply": "Gebruik: {prefix}playlist <YouTube Playlist URL | Playlist Naam>",
+    "errorNotChannel": "Je moet eerst een voice channel joinen!",
+    "errorNotInSameChannel": "Je moet in dezelfde channel zitten als {user}",
+    "missingPermissionConnect": "Kan geen verbinding maken met voice channel, missing permissions",
+    "missingPermissionSpeak": "Ik kan niet spreken in de voice channel, Zorg ervoor dat ik de juiste permissions heb!",
+    "errorNotFoundPlaylist": "Playlist niet gevonden :(",
+    "fetchingPlaylist": "⌛ playlist aan het ophalen...",
+    "playlistCharLimit": "\nAfspeellijst groter dan tekenlimiet...",
+    "startedPlaylist": "<@{author}> Starte een playlist",
+    "cantJoinChannel": "Ik kon de channel niet betreden: {error}"
+  },
+  "pruning": {
+    "description": "Toggle pruning van bot berichten",
+    "errorWritingFile": "Er is een fout opgetreden bij het schrijven naar het bestand.",
+    "result": "bericht pruning is {result}"
+  },
+  "queue": {
+    "description": "Toon de muziekwachtrij en het huidige liedje.",
+    "missingPermissionMessage": "Ik heb geen permissies voor manage messages en add reactions.",
+    "errorNotQueue": "❌ **Er wordt niets afgespeeld op deze server**",
+    "currentPage": "Huidige pagina - ",
+    "embedTitle": "Muziek Wachtrij\n",
+    "embedCurrentSong": "**Huidig lied - [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Verwijder liedje van de wachrij",
+    "errorNotQueue": "Er is geen wachtrij.",
+    "usageReply": "Gebruik: {prefix}remove <Wachtrij nummer>",
+    "result": "<@{author}> ❌ heeft **{title}** verwijderd van de wachtrij."
+  },
+  "resume": {
+    "description": "Hervat de muziek die momenteel wordt afgespeeld",
+    "errorNotQueue": "Er speelt niets af.",
+    "resultNotPlaying": "<@{author}> ▶ hervatte de muziek!",
+    "errorPlaying": "De wachtrij is niet gepauzeerd."
+  },
+  "search": {
+    "description": "Zoek en selecteer videos om af te spelen.",
+    "usageReply": "Gebruik: {prefix}{name} <Video Naam>",
+    "errorAlreadyCollector": "Er is al een berichten verzamelaar actief in dit kanaal.",
+    "errorNotChannel": "Je moet eerst een voice channel joinen!",
+    "resultEmbedTitle": "**Reageer met het nummer die u wilt afspelen**",
+    "resultEmbedDesc": "Resultaten voor: {search}"
+  },
+  "shuffle": {
+    "description": "Wachtrij in willekeurige volgorde",
+    "errorNotQueue": "Er is geen wachtrij.",
+    "result": "<@{author}> 🔀 de wachtrij is in een willekeurige volgorde geplaatst."
+  },
+  "skip": {
+    "description": "Sla het huidige nummer over.",
+    "errorNotQueue": "Er is niks aan het afspelen dat ik kan overslaan.",
+    "result": "<@{author}> ⏭ Sloeg het huidige nummer over"
+  },
+  "skipto": {
+    "description": "Ga naar het geselecteerde wachtrijnummer",
+    "usageReply": "Gebruik: {prefix}{name} <Wachtrij Nummer>",
+    "errorNotQueue": "Er is geen wachtrij.",
+    "errorNotValid": "De wachtrij is {length} liedjes lang!",
+    "result": "<@{author}> ⏭ sloeg {arg} liedjes over!"
+  },
+  "stop": {
+    "description": "Stopt de muziek",
+    "errorNotQueue": "Er is niks aan het afspelen.",
+    "result": "<@{author}> ⏹ stopte de muziek!"
+  },
+  "uptime": {
+    "description": "Controleer de uptime",
+    "result": "Uptime: `{days} dagen,{hours} uren, {minutes} minuten, {seconds} seconden`"
+  },
+  "volume": {
+    "description": "Verander het volume van het huidige nummer",
+    "errorNotQueue": "Er is niks aan het afspelen.",
+    "errorNotChannel": "Je moet eerst een voice channel joinen!",
+    "currentVolume": "🔊 Het huidige volume is: **{volume}%**",
+    "errorNotNumber": "Gebruik een nummer of het volume te veranderen.",
+    "errorNotValid": "Gebruik een nummer tussen 0 - 100.",
+    "result": "Volume veranderd naar: **{arg}%**"
+  },
+  "common": {
+    "on": "**aan**",
+    "off": "**uit**",
+    "enabled": "**ingeschakeld**",
+    "disabled": "**uitgeschakeld**",
+    "errorNotChannel": "Je moet eerst een voice channel joinen!",
+    "cooldownMessage": "Wacht nog {time} seconden voor je `{name}` hergebruikt.",
+    "errorCommand": "Er was een error tijdens het uitvoeren van deze command."
+  }
+}
