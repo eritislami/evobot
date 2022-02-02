@@ -12,6 +12,7 @@ try {
 exports.FIREBASE_CONFIG = config ? config.FIREBASE_CONFIG : process.env.FIREBASE_CONFIG;
 exports.HTTPS = config ? config.HTTPS : process.env.HTTPS;
 exports.DISCORD_SERVER_ID = config ? config.DISCORD_SERVER_ID : process.env.DISCORD_SERVER_ID;
+exports.TRUSTED_BOTS = config ? config.TRUSTED_BOTS : process.env.TRUSTED_BOTS;
 
 
 exports.TOKEN = config ? config.TOKEN : process.env.TOKEN;
