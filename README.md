@@ -112,6 +112,7 @@ Currently available locales are:
 - English (en)
 - Arabic (ar)
 - Brazilian Portuguese (pt_br)
+- Czech (cs)
 - Dutch (nl)
 - French (fr)
 - German (de)
