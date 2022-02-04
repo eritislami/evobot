@@ -5,6 +5,7 @@ const i18n = require("i18n");
 i18n.configure({
   locales: [
     "ar",
+    "cs",
     "de",
     "el",
     "en",
