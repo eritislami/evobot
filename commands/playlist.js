@@ -3,6 +3,7 @@ const { MessageEmbed } = require("discord.js");
 const { play } = require("../include/play");
 const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
+const { queueSongs } = require("../firebase");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
@@ -45,6 +46,28 @@ module.exports = {
       muted: false,
       playing: true
     };
+    queueConstruct.songs.fairPush = function() {
+      let lastIndex;
+      for(const arg of arguments) {
+        for (lastIndex = this.length-1; lastIndex>-1; lastIndex--) {
+          if (this[lastIndex].user.id == arg.user.id) {
+            break;
+          }
+        }
+
+        lastIndex++;
+        const set = new Set();
+        for (;lastIndex<this.length;lastIndex++) {
+          if (set.has(this[lastIndex].user.id)) {
+            break;
+          }
+          set.add(this[lastIndex].user.id);
+        }
+        this.splice(lastIndex, 0, arg);
+      }
+
+      queueSongs(...arguments);
+    }
 
     let playlist = null;
     let videos = [];
@@ -84,11 +107,12 @@ module.exports = {
         return (song = {
           title: video.title,
           url: video.url,
-          duration: video.durationSeconds
+          duration: video.durationSeconds,
+          user: message.author
         });
       });
 
-    serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
+    serverQueue ? serverQueue.songs.fairPush(...newSongs) : queueConstruct.songs.fairPush(...newSongs);
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)

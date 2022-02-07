@@ -168,4 +168,10 @@ module.exports = {
     await updateCurrentSessionDoc();
     console.info(`${song.user.username} (${song.user.id}) queued ${song.title} with document id ${songHistoryDocRef.id}`);
   },
+
+  async queueSongs() {
+    for (song of arguments) {
+      await module.exports.queueSong(song);
+    }
+  }
 }
