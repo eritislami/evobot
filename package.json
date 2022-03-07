@@ -16,7 +16,7 @@
     "array-move": "^3.0.1",
     "discord.js": "^12.5.1",
     "ffmpeg-static": "^4.4.1",
-    "i18n": "^0.14.1",
+    "i18n": "^0.14.2",
     "lyrics-finder": "^21.0.5",
     "simple-youtube-api": "^5.1.1",
     "soundcloud-downloader": "^0.2.3",
