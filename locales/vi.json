@@ -52,7 +52,7 @@
   "play": {
     "description": "Phát nhạc từ YouTube hoặc Soundcloud",
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "errorNotInSameChannel": "Bạn phải ở cùng kênh thoại với {user}",
+    "errorNotInSameChannel": "Bạn phải ở cùng kênh thoại với @<{user}>",
     "usageReply": "Cách sử dụng: {prefix}play <Link YouTube | Tên Video | Link Soundcloud>",
     "missingPermissionConnect": "Không thể kết nối đến kênh thoại, không có đủ quyền hạn",
     "missingPermissionSpeak": "Không thể phát nhạc vì không có quyền nói!",
@@ -78,7 +78,7 @@
     "description": "Phát danh sách nhạc từ link YouTube",
     "usagesReply": "Cách sử dụng: {prefix}playlist <Link danh sách nhạc từ YouTube | Tên danh sách nhạc>",
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "errorNotInSameChannel": "Bạn phải ở cùng kênh thoại với {user}",
+    "errorNotInSameChannel": "Bạn phải ở cùng kênh thoại với @<{user}>",
     "missingPermissionConnect": "Không thể kết nối đến kênh thoại, không có đủ quyền hạn",
     "missingPermissionSpeak": "Không thể phát nhạc vì không có quyền nói!",
     "errorNotFoundPlaylist": "Không thể tìm thấy danh sách nhạc :(",
