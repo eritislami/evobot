@@ -150,7 +150,7 @@
     "description": "Ändere die Lautstärke vom jetzigem Song",
     "errorNotQueue": "Es wird gerade nichts gespielt.",
     "errorNotChannel": "Betrete zuerst einen Voice-Channel!",
-    "currentVolume": "🔊 Die Lautstärke ist: **{volume}%**",
+    "currentVolume": "📢 Die Lautstärke ist: **{volume}%**",
     "errorNotNumber": "Bitte nutze eine Number um die Lautstärke zu ändern.",
     "errorNotValid": "Bitte nutze eine Number zwischen 0 - 100.",
     "result": "Lautstärke wurde auf **{arg}%** gesetzt."
