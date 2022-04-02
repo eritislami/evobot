@@ -163,5 +163,13 @@
     "errorNotChannel": "You need to join a voice channel first!",
     "cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
     "errorCommand": "There was an error executing that command."
+  },
+  "kick": {
+	  "description" : "Kick users from server.",
+	  "noPermission" : "has no permission to kick user",
+	  "errorNoId" : "Please enter the user's id",
+	  "kickUserMessage" : "{user} has been kicked",
+	  "kickUserErrorMessage" : "can not kick this user",
+	  "notFoundUser" : "not foud this user"
   }
 }
