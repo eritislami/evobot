@@ -8,19 +8,20 @@ module.exports = {
         if (!message.member.hasPermission('KICK_MEMBERS')) {
             return message.reply(i18n.__("kick.noPermission")).catch(console.error);
         }
-        if (args === 0) {
+
+        if (args.length === 0) {
             return message.reply(i18n.__("kick.errorNoId")).catch(console.error);
         }
-        
-        let member = message.mentions.members.first() || await message.guild.members.fetch(args[0])
 
-        if (member) {
-            member
-                .kick()
-                .then((member) => message.channel.send(i18n.__mf("kick.kickUserMessage" , {user : member})))
-                .catch((error) => message.channel.send(i18n.__("kick.kickUserErrorMessage")));
+        try {
+            const member = message.mentions.members.first() || await message.guild.members.fetch(args[0]);
+                member
+                    .kick()
+                    .then((member) => message.channel.send(i18n.__mf("kick.kickUserMessage" , {user : member})))
+                    .catch((error) => message.channel.send(i18n.__("kick.kickUserErrorMessage")));
+            
         }
-        else {
+        catch (err) {
             message.reply(i18n.__("kick.notFoundUser")).catch(console.error);
         }
     }
