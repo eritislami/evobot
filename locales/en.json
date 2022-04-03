@@ -171,5 +171,13 @@
 	  "kickUserMessage" : "{user} has been kicked",
 	  "kickUserErrorMessage" : "can not kick this user",
 	  "notFoundUser" : "not foud this user"
+  },
+  "ban": {
+	  "description" : "Ban users from server.",
+	  "noPermission" : "has no permission to Ban user",
+	  "errorNoId" : "Please enter the user's id",
+	  "kickUserMessage" : "{user} has been baned",
+	  "kickUserErrorMessage" : "can not ban this user",
+	  "notFoundUser" : "not foud this user"
   }
 }

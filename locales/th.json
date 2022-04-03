@@ -171,5 +171,13 @@
 		"kickUserMessage" : "{user} ถูกเตะออก",
 		"kickUserErrorMessage" : "ไม่สามารถเตะ user คนนี้ได้",
 		"notFoundUser" : "ไม่พบ user นี้"
+	},
+	"ban": {
+		"description": "แบนผู้ใช้งานออกจากเซอเวอร์",
+		"noPermission" : "ไม่ถูกอนุญาตให้แบน user นี้",
+		"errorNoId" : "กรุณากรอก user id",
+		"kickUserMessage" : "{user} ถูกแบน",
+		"kickUserErrorMessage" : "ไม่สามารถแบน user คนนี้ได้",
+		"notFoundUser" : "ไม่พบ user นี้"
 	}
 }
