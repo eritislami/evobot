@@ -27,7 +27,7 @@ module.exports = {
       const results = await youtube.searchVideos(search, 10);
       results.map((video, index) => resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`));
 
-      let resultsMessage = await message.channel.send(resultsEmbed);
+      let resultsMessage = await message.channel.send({ embeds: [resultsEmbed] });
 
       function filter(msg) {
         const pattern = /^[1-9][0]?(\s*,\s*[1-9][0]?)*$/;
@@ -35,7 +35,8 @@ module.exports = {
       }
 
       message.channel.activeCollector = true;
-      const response = await message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ["time"] });
+
+      const response = await message.channel.awaitMessages({ filter, max: 1, time: 30000, errors: ["time"] });
       const reply = response.first().content;
 
       if (reply.includes(",")) {

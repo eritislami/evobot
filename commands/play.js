@@ -5,6 +5,12 @@ const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
 const https = require("https");
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/Util");
+const {
+  getVoiceConnection,
+  joinVoiceChannel,
+  createAudioPlayer,
+  NoSubscriberBehavior
+} = require("@discordjs/voice");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 
 module.exports = {
@@ -19,7 +25,7 @@ module.exports = {
 
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
 
-    if (serverQueue && channel !== message.guild.me.voice.channel)
+    if (serverQueue && channel !== serverQueue.channel.id)
       return message
         .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
         .catch(console.error);
@@ -68,6 +74,8 @@ module.exports = {
       textChannel: message.channel,
       channel,
       connection: null,
+      player: null,
+      resource: null,
       songs: [],
       loop: false,
       volume: DEFAULT_VOLUME,
@@ -119,7 +127,7 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        
+
         if (error.message.includes("410")) {
           return message.reply(i18n.__("play.songAccessErr")).catch(console.error);
         } else {
@@ -139,13 +147,25 @@ module.exports = {
     message.client.queue.set(message.guild.id, queueConstruct);
 
     try {
-      queueConstruct.connection = await channel.join();
-      await queueConstruct.connection.voice.setSelfDeaf(true);
+      queueConstruct.player = createAudioPlayer({
+        behaviors: {
+          noSubscriber: NoSubscriberBehavior.Pause
+        }
+      });
+
+      queueConstruct.connection = joinVoiceChannel({
+        channelId: channel.id,
+        guildId: channel.guild.id,
+        adapterCreator: channel.guild.voiceAdapterCreator
+      });
+
       play(queueConstruct.songs[0], message);
     } catch (error) {
       console.error(error);
       message.client.queue.delete(message.guild.id);
-      await channel.leave();
+
+      getVoiceConnection(channel.guild.id).destroy();
+
       return message.channel.send(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
     }
   }
