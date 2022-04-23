@@ -5,6 +5,12 @@ const YouTubeAPI = require("simple-youtube-api");
 const scdl = require("soundcloud-downloader").default;
 const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const {
+  joinVoiceChannel,
+  createAudioPlayer,
+  getVoiceConnection,
+  NoSubscriberBehavior
+} = require("@discordjs/voice");
 
 module.exports = {
   name: "playlist",
@@ -25,7 +31,7 @@ module.exports = {
     if (!permissions.has("CONNECT")) return message.reply(i18n.__("playlist.missingPermissionConnect"));
     if (!permissions.has("SPEAK")) return message.reply(i18n.__("missingPermissionSpeak"));
 
-    if (serverQueue && channel !== message.guild.me.voice.channel)
+    if (serverQueue && channel !== serverQueue.channel.id)
       return message
         .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
         .catch(console.error);
@@ -39,6 +45,8 @@ module.exports = {
       textChannel: message.channel,
       channel,
       connection: null,
+      player: null,
+      resource: null,
       songs: [],
       loop: false,
       volume: DEFAULT_VOLUME,
@@ -92,7 +100,7 @@ module.exports = {
 
     let playlistEmbed = new MessageEmbed()
       .setTitle(`${playlist.title}`)
-      .setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`))
+      .setDescription(newSongs.map((song, index) => `${index + 1}. ${song.title}`).join("\n"))
       .setURL(playlist.url)
       .setColor("#F8AA2A")
       .setTimestamp();
@@ -101,19 +109,34 @@ module.exports = {
       playlistEmbed.description =
         playlistEmbed.description.substr(0, 2007) + i18n.__("playlist.playlistCharLimit");
 
-    message.channel.send(i18n.__mf("playlist.startedPlaylist", { author: message.author }), playlistEmbed);
+    message.channel.send({
+      content: i18n.__mf("playlist.startedPlaylist", { author: message.author }),
+      embeds: [playlistEmbed]
+    });
 
     if (!serverQueue) {
       message.client.queue.set(message.guild.id, queueConstruct);
 
       try {
-        queueConstruct.connection = await channel.join();
-        await queueConstruct.connection.voice.setSelfDeaf(true);
+        queueConstruct.player = createAudioPlayer({
+          behaviors: {
+            noSubscriber: NoSubscriberBehavior.Pause
+          }
+        });
+
+        queueConstruct.connection = joinVoiceChannel({
+          channelId: channel.id,
+          guildId: channel.guild.id,
+          adapterCreator: channel.guild.voiceAdapterCreator
+        });
+
         play(queueConstruct.songs[0], message);
       } catch (error) {
         console.error(error);
         message.client.queue.delete(message.guild.id);
-        await channel.leave();
+
+        getVoiceConnection(channel.guild.id).destroy();
+
         return message.channel.send(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
       }
     }

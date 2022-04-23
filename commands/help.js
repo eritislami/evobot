@@ -6,7 +6,7 @@ module.exports = {
   aliases: ["h"],
   description: i18n.__("help.description"),
   execute(message) {
-    let commands = message.client.commands.array();
+    let commands = message.client.commands;
 
     let helpEmbed = new MessageEmbed()
       .setTitle(i18n.__mf("help.embedTitle", { botname: message.client.user.username }))
@@ -23,6 +23,6 @@ module.exports = {
 
     helpEmbed.setTimestamp();
 
-    return message.channel.send(helpEmbed).catch(console.error);
+    return message.channel.send({ embeds: [helpEmbed] }).catch(console.error);
   }
 };

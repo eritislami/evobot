@@ -1,21 +1,29 @@
 /**
  * Module Imports
  */
-const { Client, Collection } = require("discord.js");
+const { Client, Intents } = require("discord.js");
+const { Collection } = require("@discordjs/collection");
 const { readdirSync } = require("fs");
 const { join } = require("path");
 const { TOKEN, PREFIX } = require("./util/Util");
 const i18n = require("./util/i18n");
 
 const client = new Client({
-  disableMentions: "everyone",
-  restTimeOffset: 0
+  restTimeOffset: 0,
+  intents: [
+    Intents.FLAGS.GUILDS,
+    Intents.FLAGS.GUILD_VOICE_STATES,
+    Intents.FLAGS.GUILD_MESSAGES,
+    Intents.FLAGS.GUILD_MESSAGE_REACTIONS,
+    Intents.FLAGS.DIRECT_MESSAGES
+  ]
 });
 
 client.login(TOKEN);
 client.commands = new Collection();
 client.prefix = PREFIX;
 client.queue = new Map();
+
 const cooldowns = new Collection();
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -38,9 +46,8 @@ for (const file of commandFiles) {
   client.commands.set(command.name, command);
 }
 
-client.on("message", async (message) => {
-  if (message.author.bot) return;
-  if (!message.guild) return;
+client.on("messageCreate", async (message) => {
+  if (message.author.bot || !message.guild) return;
 
   const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(PREFIX)})\\s*`);
   if (!prefixRegex.test(message.content)) return;

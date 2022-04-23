@@ -7,10 +7,11 @@ module.exports = {
   description: i18n.__("nowplaying.description"),
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue || !queue.songs.length) return message.reply(i18n.__("nowplaying.errorNotQueue")).catch(console.error);
+    if (!queue || !queue.songs.length)
+      return message.reply(i18n.__("nowplaying.errorNotQueue")).catch(console.error);
 
     const song = queue.songs[0];
-    const seek = (queue.connection.dispatcher.streamTime - queue.connection.dispatcher.pausedTime) / 1000;
+    const seek = queue.resource.playbackDuration;
     const left = song.duration - seek;
 
     let nowPlaying = new MessageEmbed()
@@ -19,7 +20,7 @@ module.exports = {
       .setColor("#F8AA2A")
       .setAuthor(message.client.user.username);
 
-    if (song.duration > 0) {
+    /* if (song.duration > 0) {
       nowPlaying.addField(
         "\u200b",
         new Date(seek * 1000).toISOString().substr(11, 8) +
@@ -32,8 +33,8 @@ module.exports = {
       nowPlaying.setFooter(
         i18n.__mf("nowplaying.timeRemaining", { time: new Date(left * 1000).toISOString().substr(11, 8) })
       );
-    }
+    } */
 
-    return message.channel.send(nowPlaying);
+    return message.channel.send({ embeds: [nowPlaying] });
   }
 };

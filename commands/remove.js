@@ -11,7 +11,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!queue) return message.channel.send(i18n.__("remove.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
+    if (!canModifyQueue(message.member, queue)) return i18n.__("common.errorNotChannel");
     if (!args.length) return message.reply(i18n.__mf("remove.usageReply", { prefix: message.client.prefix }));
 
     const arguments = args.join("");
@@ -31,7 +31,6 @@ module.exports = {
         })
       );
     } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= queue.songs.length) {
-      console.log("we got elsed!");
       return queue.textChannel.send(
         i18n.__mf("remove.result", {
           title: queue.songs.splice(args[0] - 1, 1)[0].title,
@@ -39,7 +38,6 @@ module.exports = {
         })
       );
     } else {
-      console.log("we got the last one");
       return message.reply(i18n.__mf("remove.usageReply", { prefix: message.client.prefix }));
     }
   }
