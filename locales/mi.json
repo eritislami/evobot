@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Kop a pul suka",
-    "usagesReply": "Hug: /clip <nomba>",
+    "usagesReply": "Hug: {prefix}clip <nomba>",
     "errorQueue": "Takan hopa pul feguin bada tis nan sixpoh tic.",
     "errorNotChannel": "To mo da nut a vola fagtit prima!"
   },
@@ -93,7 +93,7 @@
     "result": "Dogjay pruning tis {result}"
   },
   "queue": {
-      "description": "Ta daa ta bocami tic yee prompo maenae.",
+    "description": "Ta daa ta bocami tic yee prompo maenae.",
     "missingPermissionMessage": "Bidlev ryapeh da godhit beif sif tokali voxaby",
     "errorNotQueue": "❌ **Secmop maenae een ba patohs**",
     "currentPage": "Hodski Piplo - ",
