@@ -11,7 +11,7 @@ module.exports = {
 
     if (queue.playing) {
       queue.playing = false;
-      queue.connection.dispatcher.pause(true);
+      queue.player.pause();
 
       return queue.textChannel
         .send(i18n.__mf("pause.result", { author: message.author }))
