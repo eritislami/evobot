@@ -18,7 +18,7 @@ module.exports = {
       .setTitle(i18n.__("nowplaying.embedTitle"))
       .setDescription(`${song.title}\n${song.url}`)
       .setColor("#F8AA2A")
-      .setAuthor(message.client.user.username);
+      .setAuthor({ name: message.client.user.username });
 
     /* if (song.duration > 0) {
       nowPlaying.addField(
