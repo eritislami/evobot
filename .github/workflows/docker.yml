@@ -1,19 +1,8 @@
 name: Docker Hub
 
 on:
-  push:
-    # Publish changes to the master branch.
-    branches: [master]
-    # Publish semver tags as releases.
-    tags: ["*.*.*"]
-    # Ignore
-    paths-ignore:
-      - .github/
-      - README.md
-      - app.json
-      - .prettierrc
-      - .replit
-      - Procfile
+  release:
+    types: [published]
 
 env:
   # Use docker.io for Docker Hub if empty
@@ -37,7 +26,6 @@ jobs:
       # Docker Buildx for creating multi arch docker images
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
-
 
       # Login against a Docker registry when not a PR
       # https://github.com/docker/login-action
