@@ -25,7 +25,7 @@ module.exports = {
 
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
 
-    if (serverQueue && channel !== serverQueue.channel.id)
+    if (serverQueue && channel.id !== serverQueue.channel.id)
       return message
         .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
         .catch(console.error);
