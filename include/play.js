@@ -22,7 +22,7 @@ module.exports = {
 
     if (!song) {
       setTimeout(function () {
-        if (message.guild.me.voice.channel) return;
+        // if (message.guild.me.voice.channel) return;
         queue.connection.destroy();
         !PRUNING && queue.textChannel.send(i18n.__("play.leaveChannel"));
       }, STAY_TIME * 1000);
