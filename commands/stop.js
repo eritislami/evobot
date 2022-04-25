@@ -1,14 +1,14 @@
-const { canModifyQueue } = require("../util/Util");
-const i18n = require("../util/i18n");
+import { i18n } from "../utils/i18n.js";
+import { canModifyQueue } from "../utils/queue.js";
 
-module.exports = {
+export default {
   name: "stop",
   description: i18n.__("stop.description"),
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!queue) return message.reply(i18n.__("stop.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member, queue)) return i18n.__("common.errorNotChannel");
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
     queue.loop = false;
     queue.songs = [];

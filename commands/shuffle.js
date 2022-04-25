@@ -1,14 +1,14 @@
-const { canModifyQueue } = require("../util/Util");
-const i18n = require("../util/i18n");
+import { canModifyQueue } from "../utils/queue.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "shuffle",
   description: i18n.__("shuffle.description"),
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
 
-    if (!queue) return message.channel.send(i18n.__("shuffle.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member, queue)) return i18n.__("common.errorNotChannel");
+    if (!queue) return message.reply(i18n.__("shuffle.errorNotQueue")).catch(console.error);
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
     let songs = queue.songs;
 
@@ -18,7 +18,6 @@ module.exports = {
     }
 
     queue.songs = songs;
-    message.client.queue.set(message.guild.id, queue);
 
     queue.textChannel.send(i18n.__mf("shuffle.result", { author: message.author })).catch(console.error);
   }

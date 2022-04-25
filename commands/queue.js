@@ -1,23 +1,24 @@
-const { MessageEmbed } = require("discord.js");
-const i18n = require("../util/i18n");
+import { MessageEmbed } from "discord.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "queue",
   cooldown: 5,
   aliases: ["q"],
   description: i18n.__("queue.description"),
   async execute(message) {
     const permissions = message.channel.permissionsFor(message.client.user);
+
     if (!permissions.has(["MANAGE_MESSAGES", "ADD_REACTIONS"]))
       return message.reply(i18n.__("queue.missingPermissionMessage"));
 
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue || !queue.songs.length) return message.channel.send(i18n.__("queue.errorNotQueue"));
+    if (!queue || !queue.songs.length) return message.reply(i18n.__("queue.errorNotQueue"));
 
     let currentPage = 0;
     const embeds = generateQueueEmbed(message, queue.songs);
 
-    const queueEmbed = await message.channel.send({
+    const queueEmbed = await message.reply({
       content: `**${i18n.__mf("queue.currentPage")} ${currentPage + 1}/${embeds.length}**`,
       embeds: [embeds[currentPage]]
     });
@@ -28,7 +29,7 @@ module.exports = {
       await queueEmbed.react("➡️");
     } catch (error) {
       console.error(error);
-      message.channel.send(error.message).catch(console.error);
+      message.reply(error.message).catch(console.error);
     }
 
     const filter = (reaction, user) =>
@@ -61,7 +62,7 @@ module.exports = {
         await reaction.users.remove(message.author.id);
       } catch (error) {
         console.error(error);
-        return message.channel.send(error.message).catch(console.error);
+        return message.reply(error.message).catch(console.error);
       }
     });
   }

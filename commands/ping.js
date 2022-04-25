@@ -1,6 +1,6 @@
-const i18n = require("../util/i18n");
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "ping",
   cooldown: 10,
   description: i18n.__("ping.description"),

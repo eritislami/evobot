@@ -1,7 +1,7 @@
-const { canModifyQueue } = require("../util/Util");
-const i18n = require("../util/i18n");
+import { i18n } from "../utils/i18n.js";
+import { canModifyQueue } from "../utils/queue.js";
 
-module.exports = {
+export default {
   name: "volume",
   aliases: ["v"],
   description: i18n.__("volume.description"),
@@ -9,7 +9,7 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!queue) return message.reply(i18n.__("volume.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member, queue))
+    if (!canModifyQueue(message.member))
       return message.reply(i18n.__("volume.errorNotChannel")).catch(console.error);
 
     if (!args[0])
@@ -23,6 +23,6 @@ module.exports = {
     queue.volume = args[0];
     queue.resource.volume?.setVolumeLogarithmic(args[0] / 100);
 
-    return queue.textChannel.send(i18n.__mf("volume.result", { arg: args[0] })).catch(console.error);
+    return message.reply(i18n.__mf("volume.result", { arg: args[0] })).catch(console.error);
   }
 };

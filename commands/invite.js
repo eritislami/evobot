@@ -1,6 +1,6 @@
-const i18n = require("../util/i18n");
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "invite",
   description: i18n.__("invite.description"),
   execute(message) {

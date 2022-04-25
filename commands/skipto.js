@@ -1,7 +1,7 @@
-const { canModifyQueue } = require("../util/Util");
-const i18n = require("../util/i18n");
+import { canModifyQueue } from "../utils/queue.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "skipto",
   aliases: ["st"],
   description: i18n.__("skipto.description"),
@@ -13,16 +13,14 @@ module.exports = {
 
     const queue = message.client.queue.get(message.guild.id);
 
-    if (!queue) return message.channel.send(i18n.__("skipto.errorNotQueue")).catch(console.error);
+    if (!queue) return message.reply(i18n.__("skipto.errorNotQueue")).catch(console.error);
 
-    if (!canModifyQueue(message.member, queue)) return i18n.__("common.errorNotChannel");
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
     if (args[0] > queue.songs.length)
       return message
         .reply(i18n.__mf("skipto.errorNotValid", { length: queue.songs.length }))
         .catch(console.error);
-
-    queue.playing = true;
 
     if (queue.loop) {
       for (let i = 0; i < args[0] - 2; i++) {

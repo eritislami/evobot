@@ -1,7 +1,7 @@
-const { canModifyQueue } = require("../util/Util");
-const i18n = require("../util/i18n");
+import { canModifyQueue } from "../utils/queue.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "skip",
   aliases: ["s"],
   description: i18n.__("skip.description"),
@@ -9,9 +9,8 @@ module.exports = {
     const queue = message.client.queue.get(message.guild.id);
 
     if (!queue) return message.reply(i18n.__("skip.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member, queue)) return i18n.__("common.errorNotChannel");
+    if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
-    queue.playing = true;
     queue.player.stop();
 
     queue.textChannel.send(i18n.__mf("skip.result", { author: message.author })).catch(console.error);

@@ -1,18 +1,22 @@
-const i18n = require("../util/i18n");
-const { MessageEmbed } = require("discord.js");
-const { play } = require("../include/play");
-const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader").default;
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, MAX_PLAYLIST_SIZE, DEFAULT_VOLUME } = require("../util/Util");
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const {
-  joinVoiceChannel,
+import {
   createAudioPlayer,
   getVoiceConnection,
+  joinVoiceChannel,
   NoSubscriberBehavior
-} = require("@discordjs/voice");
+} from "@discordjs/voice";
+import { MessageEmbed } from "discord.js";
+import YouTubeAPI from "simple-youtube-api";
+import Scdl from "soundcloud-downloader";
+import { play } from "../include/play.js";
+import { generateQueue } from "../utils/queue.js";
+import { config } from "../utils/config.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+const { MAX_PLAYLIST_SIZE, SOUNDCLOUD_CLIENT_ID, YOUTUBE_API_KEY } = config;
+const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const scdl = Scdl.create();
+
+export default {
   name: "playlist",
   cooldown: 5,
   aliases: ["pl"],
@@ -25,15 +29,16 @@ module.exports = {
       return message
         .reply(i18n.__mf("playlist.usagesReply", { prefix: message.client.prefix }))
         .catch(console.error);
+
     if (!channel) return message.reply(i18n.__("playlist.errorNotChannel")).catch(console.error);
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT")) return message.reply(i18n.__("playlist.missingPermissionConnect"));
     if (!permissions.has("SPEAK")) return message.reply(i18n.__("missingPermissionSpeak"));
 
-    if (serverQueue && channel !== serverQueue.channel.id)
+    if (serverQueue && channel.id !== serverQueue.channel.id)
       return message
-        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
+        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user.username }))
         .catch(console.error);
 
     const search = args.join(" ");
@@ -41,18 +46,7 @@ module.exports = {
     const url = args[0];
     const urlValid = pattern.test(args[0]);
 
-    const queueConstruct = {
-      textChannel: message.channel,
-      channel,
-      connection: null,
-      player: null,
-      resource: null,
-      songs: [],
-      loop: false,
-      volume: DEFAULT_VOLUME,
-      muted: false,
-      playing: true
-    };
+    const queueConstruct = generateQueue(message.channel, channel);
 
     let playlist = null;
     let videos = [];
@@ -67,7 +61,7 @@ module.exports = {
       }
     } else if (scdl.isValidUrl(args[0])) {
       if (args[0].includes("/sets/")) {
-        message.channel.send(i18n.__("playlist.fetchingPlaylist"));
+        message.reply(i18n.__("playlist.fetchingPlaylist"));
         playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID);
         videos = playlist.tracks.map((track) => ({
           title: track.title,
@@ -89,11 +83,11 @@ module.exports = {
     const newSongs = videos
       .filter((video) => video.title != "Private video" && video.title != "Deleted video")
       .map((video) => {
-        return (song = {
+        return {
           title: video.title,
           url: video.url,
           duration: video.durationSeconds
-        });
+        };
       });
 
     serverQueue ? serverQueue.songs.push(...newSongs) : queueConstruct.songs.push(...newSongs);
@@ -109,7 +103,7 @@ module.exports = {
       playlistEmbed.description =
         playlistEmbed.description.substr(0, 2007) + i18n.__("playlist.playlistCharLimit");
 
-    message.channel.send({
+    message.reply({
       content: i18n.__mf("playlist.startedPlaylist", { author: message.author }),
       embeds: [playlistEmbed]
     });
@@ -137,7 +131,7 @@ module.exports = {
 
         getVoiceConnection(channel.guild.id).destroy();
 
-        return message.channel.send(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
+        return message.reply(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
       }
     }
   }

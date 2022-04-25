@@ -1,22 +1,24 @@
-const fs = require("fs");
-const i18n = require("../util/i18n");
+import { writeFile } from "fs";
+import { readFile } from "fs/promises";
+import { i18n } from "../utils/i18n.js";
 
-let config;
-
-try {
-  config = require("../config.json");
-} catch (error) {
-  config = null;
-}
-
-module.exports = {
+export default {
   name: "pruning",
   description: i18n.__("pruning.description"),
-  execute(message) {
+  async execute(message) {
+    let config;
+
+    try {
+      config = JSON.parse(await readFile(new URL("../config.json", import.meta.url)));
+    } catch (error) {
+      config = undefined;
+    }
+
     if (!config) return;
+
     config.PRUNING = !config.PRUNING;
 
-    fs.writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {
+    writeFile("./config.json", JSON.stringify(config, null, 2), (err) => {
       if (err) {
         console.log(err);
         return message.channel.send(i18n.__("pruning.errorWritingFile")).catch(console.error);
