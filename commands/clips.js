@@ -1,11 +1,11 @@
-const i18n = require("../util/i18n");
-const fs = require("fs");
+import { i18n } from "../utils/i18n.js";
+import { readdir } from "fs";
 
-module.exports = {
+export default {
   name: "clips",
   description: i18n.__("clips.description"),
   execute(message) {
-    fs.readdir("./sounds", function (err, files) {
+    readdir("./sounds", function (err, files) {
       if (err) return console.log("Unable to read directory: " + err);
 
       let clips = [];

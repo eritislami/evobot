@@ -1,17 +1,19 @@
-const move = require("array-move");
-const { canModifyQueue } = require("../util/Util");
-const i18n = require("../util/i18n");
+import move from "array-move";
+import { i18n } from "../utils/i18n.js";
+import { canModifyQueue } from "../utils/queue.js";
 
-module.exports = {
+export default {
   name: "move",
   aliases: ["mv"],
   description: i18n.__("move.description"),
   execute(message, args) {
     const queue = message.client.queue.get(message.guild.id);
-    if (!queue) return message.channel.send(i18n.__("move.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member, queue)) return;
+
+    if (!queue) return message.reply(i18n.__("move.errorNotQueue")).catch(console.error);
+    if (!canModifyQueue(message.member)) return;
 
     if (!args.length) return message.reply(i18n.__mf("move.usagesReply", { prefix: message.client.prefix }));
+
     if (isNaN(args[0]) || args[0] <= 1)
       return message.reply(i18n.__mf("move.usagesReply", { prefix: message.client.prefix }));
 

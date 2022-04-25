@@ -1,7 +1,7 @@
-const { MessageEmbed } = require("discord.js");
-const i18n = require("../util/i18n");
+import { MessageEmbed } from "discord.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+export default {
   name: "help",
   aliases: ["h"],
   description: i18n.__("help.description"),
@@ -23,6 +23,6 @@ module.exports = {
 
     helpEmbed.setTimestamp();
 
-    return message.channel.send({ embeds: [helpEmbed] }).catch(console.error);
+    return message.reply({ embeds: [helpEmbed] }).catch(console.error);
   }
 };

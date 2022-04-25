@@ -1,10 +1,10 @@
-const { MessageEmbed } = require("discord.js");
-const YouTubeAPI = require("simple-youtube-api");
-const { YOUTUBE_API_KEY } = require("../util/Util");
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
-const i18n = require("../util/i18n");
+import { MessageEmbed } from "discord.js";
+import YouTubeAPI from "simple-youtube-api";
+import { config } from "../utils/config.js";
+import { i18n } from "../utils/i18n.js";
+const youtube = new YouTubeAPI(config.YOUTUBE_API_KEY);
 
-module.exports = {
+export default {
   name: "search",
   description: i18n.__("search.description"),
   async execute(message, args) {
@@ -12,8 +12,9 @@ module.exports = {
       return message
         .reply(i18n.__mf("search.usageReply", { prefix: message.client.prefix, name: module.exports.name }))
         .catch(console.error);
+
     if (message.channel.activeCollector) return message.reply(i18n.__("search.errorAlreadyCollector"));
-    if (!message.member.voice.channel)
+    if (!message.member?.voice.channel)
       return message.reply(i18n.__("search.errorNotChannel")).catch(console.error);
 
     const search = args.join(" ");

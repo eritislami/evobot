@@ -1,33 +1,36 @@
-const i18n = require("../util/i18n");
-const { play } = require("../include/play");
-const ytdl = require("ytdl-core");
-const YouTubeAPI = require("simple-youtube-api");
-const scdl = require("soundcloud-downloader").default;
-const https = require("https");
-const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID, DEFAULT_VOLUME } = require("../util/Util");
-const {
+import {
+  createAudioPlayer,
   getVoiceConnection,
   joinVoiceChannel,
-  createAudioPlayer,
   NoSubscriberBehavior
-} = require("@discordjs/voice");
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+} from "@discordjs/voice";
+import https from "https";
+import YouTubeAPI from "simple-youtube-api";
+import Scdl from "soundcloud-downloader";
+import ytdl from "ytdl-core";
+import { play } from "../include/play.js";
+import { generateQueue } from "../utils/queue.js";
+import { config } from "../utils/config.js";
+import { i18n } from "../utils/i18n.js";
 
-module.exports = {
+const { SOUNDCLOUD_CLIENT_ID, YOUTUBE_API_KEY } = config;
+const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const scdl = Scdl.create();
+
+export default {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
   description: i18n.__("play.description"),
   async execute(message, args) {
     const { channel } = message.member.voice;
-
-    const serverQueue = message.client.queue.get(message.guild.id);
-
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
 
-    if (serverQueue && channel.id !== serverQueue.channel.id)
+    const queue = message.client.queue.get(message.guild.id);
+
+    if (queue && channel.id !== queue.channel.id)
       return message
-        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user }))
+        .reply(i18n.__mf("play.errorNotInSameChannel", { user: message.client.user.username }))
         .catch(console.error);
 
     if (!args.length)
@@ -48,9 +51,10 @@ module.exports = {
     const urlValid = videoPattern.test(args[0]);
 
     // Start the playlist if playlist url was provided
-    if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      return message.client.commands.get("playlist").execute(message, args);
-    } else if (scdl.isValidUrl(url) && url.includes("/sets/")) {
+    if (
+      (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) ||
+      (scdl.isValidUrl(url) && url.includes("/sets/"))
+    ) {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
@@ -67,21 +71,9 @@ module.exports = {
         console.error(error);
         return message.reply(error.message).catch(console.error);
       }
+
       return message.reply("Following url redirection...").catch(console.error);
     }
-
-    const queueConstruct = {
-      textChannel: message.channel,
-      channel,
-      connection: null,
-      player: null,
-      resource: null,
-      songs: [],
-      loop: false,
-      volume: DEFAULT_VOLUME,
-      muted: false,
-      playing: true
-    };
 
     let songInfo = null;
     let song = null;
@@ -136,12 +128,15 @@ module.exports = {
       }
     }
 
-    if (serverQueue) {
-      serverQueue.songs.push(song);
-      return serverQueue.textChannel
-        .send(i18n.__mf("play.queueAdded", { title: song.title, author: message.author }))
+    if (queue) {
+      queue.songs.push(song);
+
+      return message
+        .reply(i18n.__mf("play.queueAdded", { title: song.title, author: message.author }))
         .catch(console.error);
     }
+
+    const queueConstruct = generateQueue(message.channel, channel);
 
     queueConstruct.songs.push(song);
     message.client.queue.set(message.guild.id, queueConstruct);
@@ -166,7 +161,7 @@ module.exports = {
 
       getVoiceConnection(channel.guild.id).destroy();
 
-      return message.channel.send(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
+      return message.reply(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
     }
   }
 };
