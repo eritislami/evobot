@@ -1,12 +1,9 @@
-/**
- * Module Imports
- */
-const { Client, Intents } = require("discord.js");
-const { Collection } = require("@discordjs/collection");
-const { readdirSync } = require("fs");
-const { join } = require("path");
-const { TOKEN, PREFIX } = require("./util/Util");
-const i18n = require("./util/i18n");
+import { Client, Collection, Intents } from "discord.js";
+import { config } from "./utils/config.js";
+import { i18n } from "./utils/i18n.js";
+import { importCommands } from "./utils/importCommands.js";
+
+const { TOKEN, PREFIX } = config;
 
 const client = new Client({
   restTimeOffset: 0,
@@ -34,17 +31,14 @@ client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help and ${PREFIX}play`, { type: "LISTENING" });
 });
+
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 
 /**
- * Import all commands
+ * Import commands
  */
-const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) => file.endsWith(".js"));
-for (const file of commandFiles) {
-  const command = require(join(__dirname, "commands", `${file}`));
-  client.commands.set(command.name, command);
-}
+importCommands(client);
 
 client.on("messageCreate", async (message) => {
   if (message.author.bot || !message.guild) return;
@@ -58,8 +52,7 @@ client.on("messageCreate", async (message) => {
   const commandName = args.shift().toLowerCase();
 
   const command =
-    client.commands.get(commandName) ||
-    client.commands.find((cmd) => cmd.aliases && cmd.aliases.includes(commandName));
+    client.commands.get(commandName) || client.commands.find((cmd) => cmd.aliases?.includes(commandName));
 
   if (!command) return;
 
