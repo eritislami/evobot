@@ -1,6 +1,10 @@
-const { LOCALE } = require("./Util");
-const { join } = require("path");
-const i18n = require("i18n");
+import i18n from "i18n";
+import { dirname, join } from "path";
+import { fileURLToPath } from "url";
+import { config } from "./config.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 i18n.configure({
   locales: [
@@ -54,6 +58,6 @@ i18n.configure({
   }
 });
 
-i18n.setLocale(LOCALE);
+i18n.setLocale(config.LOCALE);
 
-module.exports = i18n;
+export { i18n };
