@@ -5,7 +5,9 @@ on:
     branches: [master]
     paths-ignore:
       - README.md
-      - .github/
+      - .github/**
+      - locales/**
+      - sounds/**
       - package.json
   pull_request:
     branches: [master]
