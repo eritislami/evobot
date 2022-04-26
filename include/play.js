@@ -3,6 +3,7 @@ const scdl = require("soundcloud-downloader").default;
 const { canModifyQueue, STAY_TIME } = require("../util/Util");
 const i18n = require("../util/i18n");
 const { createAudioResource, StreamType, AudioPlayerStatus } = require("@discordjs/voice");
+const { MessageActionRow, MessageButton } = require("discord.js");
 
 module.exports = {
   async play(song, message, silent = false) {
@@ -86,44 +87,52 @@ module.exports = {
 
     if (!silent) {
       try {
-        var playingMessage = await queue.textChannel.send(
-          i18n.__mf("play.startedPlaying", { title: song.title, url: song.url })
-        );
-        await playingMessage.react("⏭");
-        await playingMessage.react("⏯");
-        await playingMessage.react("🔇");
-        await playingMessage.react("🔉");
-        await playingMessage.react("🔊");
-        await playingMessage.react("🔁");
-        await playingMessage.react("🔀");
-        await playingMessage.react("⏹");
+        let button1 = [
+          new MessageButton().setCustomId("skip").setStyle("PRIMARY").setEmoji("⏭"),
+          new MessageButton().setCustomId("pause").setStyle("PRIMARY").setEmoji("⏯"),
+          new MessageButton().setCustomId("stop").setStyle("DANGER").setEmoji("⏹"),
+          new MessageButton().setCustomId("loop").setStyle("PRIMARY").setEmoji("🔁")
+        ];
+        let button2 = [
+          new MessageButton().setCustomId("volup").setStyle("SUCCESS").setEmoji("🔊"),
+          new MessageButton().setCustomId("voldown").setStyle("SUCCESS").setEmoji("🔉"),
+          new MessageButton().setCustomId("mute").setStyle("DANGER").setEmoji("🔇"),
+          new MessageButton().setCustomId("shuffle").setStyle("PRIMARY").setEmoji("🔀")
+        ];
+
+        let actionRow1 = new MessageActionRow().addComponents(...button1);
+        let actionRow2 = new MessageActionRow().addComponents(...button2);
+        var playingMessage = await queue.textChannel.send({
+          content: i18n.__mf("play.startedPlaying", { title: song.title, url: song.url }),
+          compoenents: [actionRow1, actionRow2]
+        });
       } catch (error) {
         console.error(error);
       }
 
       const filter = (reaction, user) => user.id !== message.client.user.id;
 
-      var collector = playingMessage.createReactionCollector({
+      var collector = playingMessage.createMessageComponentCollector({
         filter,
-        time: song.duration > 0 ? song.duration * 1000 : 600000
+        time: song.duration > 0 ? song.duration * 1000 : 600000,
+        componentType: "BUTTON"
       });
 
-      collector.on("collect", async (reaction, user) => {
+      collector.on("collect", async (reaction) => {
         if (!queue) return;
-        const member = await message.guild.members.fetch(user);
+        var user = reaction.user.username;
+        const member = await message.guild.members.fetch(reaction.user.id);
 
-        switch (reaction.emoji.name) {
-          case "⏭":
+        switch (reaction.customId) {
+          case "skip":
             queue.playing = true;
-            reaction.users.remove(user).catch(console.error);
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             queue.player.stop();
             queue.textChannel.send(i18n.__mf("play.skipSong", { author: user })).catch(console.error);
             collector.stop();
             break;
 
-          case "⏯":
-            reaction.users.remove(user).catch(console.error);
+          case "pause":
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             if (queue.playing) {
               queue.playing = !queue.playing;
@@ -136,8 +145,7 @@ module.exports = {
             }
             break;
 
-          case "🔇":
-            reaction.users.remove(user).catch(console.error);
+          case "mute":
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             queue.muted = !queue.muted;
             if (queue.muted) {
@@ -149,8 +157,7 @@ module.exports = {
             }
             break;
 
-          case "🔉":
-            reaction.users.remove(user).catch(console.error);
+          case "voldown":
             if (queue.volume == 0) return;
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             queue.volume = Math.max(queue.volume - 10, 0);
@@ -160,8 +167,7 @@ module.exports = {
               .catch(console.error);
             break;
 
-          case "🔊":
-            reaction.users.remove(user).catch(console.error);
+          case "volup":
             if (queue.volume == 100) return;
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             queue.volume = Math.min(queue.volume + 10, 100);
@@ -171,8 +177,7 @@ module.exports = {
               .catch(console.error);
             break;
 
-          case "🔁":
-            reaction.users.remove(user).catch(console.error);
+          case "loop":
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             queue.loop = !queue.loop;
             queue.textChannel
@@ -185,8 +190,7 @@ module.exports = {
               .catch(console.error);
             break;
 
-          case "🔀":
-            reaction.users.remove(user).catch(console.error);
+          case "shuffle":
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
 
             let songs = queue.songs;
@@ -199,17 +203,12 @@ module.exports = {
             queue.textChannel.send(i18n.__mf("shuffle.result", { author: user })).catch(console.error);
             break;
 
-          case "⏹":
-            reaction.users.remove(user).catch(console.error);
+          case "stop":
             if (!canModifyQueue(member, queue)) return i18n.__("common.errorNotChannel");
             queue.songs = [];
             queue.textChannel.send(i18n.__mf("play.stopSong", { author: user })).catch(console.error);
             if (!queue.player.stop()) queue.connection.destroy();
             collector.stop();
-            break;
-
-          default:
-            reaction.users.remove(user).catch(console.error);
             break;
         }
       });
