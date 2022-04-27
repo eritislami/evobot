@@ -14,6 +14,7 @@ export default {
         .catch(console.error);
 
     if (message.channel.activeCollector) return message.reply(i18n.__("search.errorAlreadyCollector"));
+
     if (!message.member?.voice.channel)
       return message.reply(i18n.__("search.errorNotChannel")).catch(console.error);
 

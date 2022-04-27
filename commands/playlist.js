@@ -21,7 +21,7 @@ export default {
   cooldown: 5,
   aliases: ["pl"],
   description: i18n.__("playlist.description"),
-  permissions: ["CONNECT", "SPEAK"],
+  permissions: ["CONNECT", "SPEAK", "ADD_REACTIONS", "MANAGE_MESSAGES"],
   async execute(message, args) {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
