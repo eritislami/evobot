@@ -18,7 +18,6 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@discordjs/collection": "^0.6.0",
     "@discordjs/voice": "^0.9.0",
     "array-move": "^3.0.1",
     "discord.js": "^13",
