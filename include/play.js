@@ -59,7 +59,7 @@ export async function play(song, message, silent = false) {
   });
 
   queue.player.on(AudioPlayerStatus.Idle, () => {
-    if (!collector?.ended) collector.stop();
+    if (collector && !collector.ended) collector.stop();
 
     if (queue.loop && queue.songs.length > 0) {
       let lastSong = queue.songs.shift();
