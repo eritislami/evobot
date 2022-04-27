@@ -1,8 +1,6 @@
 import { config } from "./config.js";
 
-export function canModifyQueue(member) {
-  return member.voice.channelId === member.guild.me.voice.channelId;
-}
+export const canModifyQueue = (member) => member.voice.channelId === member.guild.me.voice.channelId;
 
 export function generateQueue(text, voice) {
   return {

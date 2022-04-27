@@ -23,7 +23,7 @@ export default {
   cooldown: 3,
   aliases: ["p"],
   description: i18n.__("play.description"),
-  permissions: ["CONNECT", "SPEAK"],
+  permissions: ["CONNECT", "SPEAK", "ADD_REACTIONS", "MANAGE_MESSAGES"],
   async execute(message, args) {
     const { channel } = message.member.voice;
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
