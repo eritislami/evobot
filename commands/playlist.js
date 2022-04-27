@@ -21,6 +21,7 @@ export default {
   cooldown: 5,
   aliases: ["pl"],
   description: i18n.__("playlist.description"),
+  permissions: ["CONNECT", "SPEAK"],
   async execute(message, args) {
     const { channel } = message.member.voice;
     const serverQueue = message.client.queue.get(message.guild.id);
@@ -31,10 +32,6 @@ export default {
         .catch(console.error);
 
     if (!channel) return message.reply(i18n.__("playlist.errorNotChannel")).catch(console.error);
-
-    const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT")) return message.reply(i18n.__("playlist.missingPermissionConnect"));
-    if (!permissions.has("SPEAK")) return message.reply(i18n.__("missingPermissionSpeak"));
 
     if (serverQueue && channel.id !== serverQueue.channel.id)
       return message
@@ -103,10 +100,12 @@ export default {
       playlistEmbed.description =
         playlistEmbed.description.substr(0, 2007) + i18n.__("playlist.playlistCharLimit");
 
-    message.reply({
-      content: i18n.__mf("playlist.startedPlaylist", { author: message.author }),
-      embeds: [playlistEmbed]
-    });
+    message
+      .reply({
+        content: i18n.__mf("playlist.startedPlaylist", { author: message.author }),
+        embeds: [playlistEmbed]
+      })
+      .catch(console.error);
 
     if (!serverQueue) {
       message.client.queue.set(message.guild.id, queueConstruct);

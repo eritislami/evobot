@@ -12,6 +12,7 @@ import { play } from "../include/play.js";
 import { generateQueue } from "../utils/queue.js";
 import { config } from "../utils/config.js";
 import { i18n } from "../utils/i18n.js";
+import { videoPattern, playlistPattern, scRegex, mobileScRegex } from "../utils/patterns.js";
 
 const { SOUNDCLOUD_CLIENT_ID, YOUTUBE_API_KEY } = config;
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
@@ -22,6 +23,7 @@ export default {
   cooldown: 3,
   aliases: ["p"],
   description: i18n.__("play.description"),
+  permissions: ["CONNECT", "SPEAK"],
   async execute(message, args) {
     const { channel } = message.member.voice;
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
@@ -38,15 +40,7 @@ export default {
         .reply(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
         .catch(console.error);
 
-    const permissions = channel.permissionsFor(message.client.user);
-    if (!permissions.has("CONNECT")) return message.reply(i18n.__("play.missingPermissionConnect"));
-    if (!permissions.has("SPEAK")) return message.reply(i18n.__("play.missingPermissionSpeak"));
-
     const search = args.join(" ");
-    const videoPattern = /^(https?:\/\/)?(www\.)?(m\.|music\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-    const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
-    const scRegex = /^https?:\/\/(soundcloud\.com)\/(.*)$/;
-    const mobileScRegex = /^https?:\/\/(soundcloud\.app\.goo\.gl)\/(.*)$/;
     const url = args[0];
     const urlValid = videoPattern.test(args[0]);
 
