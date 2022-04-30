@@ -1,5 +1,6 @@
 import { MessageEmbed } from "discord.js";
 import { i18n } from "../utils/i18n.js";
+import lyricsFinder from "lyrics-finder";
 
 export default {
   name: "lyrics",
