@@ -33,7 +33,6 @@ export async function getSong({ message, args }) {
   } else {
     try {
       const result = await youtube.searchOne(search);
-      console.log(result);
 
       if (!result) {
         message.reply(i18n.__("play.songNotFound")).catch(console.error);
