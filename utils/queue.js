@@ -11,7 +11,7 @@ export function generateQueue(text, voice) {
     resource: null,
     songs: [],
     loop: false,
-    volume: config.DEFAULT_VOLUME,
+    volume: config.DEFAULT_VOLUME || 100,
     muted: false
   };
 }
