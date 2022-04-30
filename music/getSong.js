@@ -1,17 +1,15 @@
-import YouTubeAPI from "simple-youtube-api";
 import SoundCloud from "soundcloud-downloader";
+import youtube from "youtube-sr";
 import ytdl from "ytdl-core";
-import { config } from "../utils/config.js";
+import { i18n } from "../utils/i18n.js";
 import { scRegex, videoPattern } from "../utils/patterns.js";
 
-const { SOUNDCLOUD_CLIENT_ID, YOUTUBE_API_KEY } = config;
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const scdl = SoundCloud.create();
 
 export async function getSong({ message, args }) {
   const search = args.join(" ");
   const url = args[0];
-  const urlValid = videoPattern.test(args[0]);
+  const urlValid = videoPattern.test(url);
 
   let songInfo = null;
   let song = null;
@@ -25,7 +23,7 @@ export async function getSong({ message, args }) {
       duration: songInfo.videoDetails.lengthSeconds
     };
   } else if (scRegex.test(url)) {
-    const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
+    const trackInfo = await scdl.getInfo(url);
 
     song = {
       title: trackInfo.title,
@@ -34,14 +32,14 @@ export async function getSong({ message, args }) {
     };
   } else {
     try {
-      const results = await youtube.searchVideos(search, 1, { part: "id" });
+      const result = await youtube.searchOne(search);
 
-      if (!results.length) {
+      if (!result.length) {
         message.reply(i18n.__("play.songNotFound")).catch(console.error);
         return;
       }
 
-      songInfo = await ytdl.getInfo(results[0].url);
+      songInfo = await ytdl.getInfo(`https://youtube.com/watch?v=${result.id}`);
       song = {
         title: songInfo.videoDetails.title,
         url: songInfo.videoDetails.video_url,

@@ -1,12 +1,12 @@
 import https from "https";
-import Scdl from "soundcloud-downloader";
+import SoundCloud from "soundcloud-downloader";
 import { getSong } from "../music/getSong.js";
 import { startQueue } from "../music/startQueue.js";
 import { i18n } from "../utils/i18n.js";
 import { mobileScRegex, playlistPattern, videoPattern } from "../utils/patterns.js";
 import { generateQueue } from "../utils/queue.js";
 
-const scdl = Scdl.create();
+const scdl = SoundCloud.create();
 
 export default {
   name: "play",

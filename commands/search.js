@@ -1,8 +1,6 @@
 import { MessageEmbed } from "discord.js";
-import YouTubeAPI from "simple-youtube-api";
-import { config } from "../utils/config.js";
 import { i18n } from "../utils/i18n.js";
-const youtube = new YouTubeAPI(config.YOUTUBE_API_KEY);
+import youtube from "youtube-sr";
 
 export default {
   name: "search",
@@ -26,8 +24,11 @@ export default {
       .setColor("#F8AA2A");
 
     try {
-      const results = await youtube.searchVideos(search, 10);
-      results.map((video, index) => resultsEmbed.addField(video.shortURL, `${index + 1}. ${video.title}`));
+      const results = await youtube.search(search, { limit: 10 });
+
+      results.map((video, index) =>
+        resultsEmbed.addField(`https://youtube.com/watch?v=${video.id}`, `${index + 1}. ${video.title}`)
+      );
 
       let resultsMessage = await message.channel.send({ embeds: [resultsEmbed] });
 
