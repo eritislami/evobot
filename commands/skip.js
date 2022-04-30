@@ -11,7 +11,7 @@ export default {
     if (!queue) return message.reply(i18n.__("skip.errorNotQueue")).catch(console.error);
     if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
-    queue.player.stop();
+    queue.player.stop(true);
 
     queue.textChannel.send(i18n.__mf("skip.result", { author: message.author })).catch(console.error);
   }
