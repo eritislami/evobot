@@ -10,6 +10,7 @@ import {
 } from "@discordjs/voice";
 import { promisify } from "node:util";
 import { processQueue } from "./processQueue.js";
+import { i18n } from "../utils/i18n.js";
 
 const wait = promisify(setTimeout);
 

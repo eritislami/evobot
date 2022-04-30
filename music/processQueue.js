@@ -1,11 +1,12 @@
 import { AudioPlayerStatus, createAudioResource, entersState, StreamType } from "@discordjs/voice";
-import scdl from "soundcloud-downloader";
+import SoundCloud from "soundcloud-downloader";
 import ytdl from "ytdl-core-discord";
 import { config } from "../utils/config.js";
 import { i18n } from "../utils/i18n.js";
 import { canModifyQueue } from "../utils/queue.js";
 
-const { PRUNING, STAY_TIME, SOUNDCLOUD_CLIENT_ID } = config;
+const { PRUNING, STAY_TIME } = config;
+const scdl = SoundCloud.create();
 
 export async function processQueue(song, message) {
   const queue = message.client.queue.get(message.guild.id);
@@ -30,9 +31,9 @@ export async function processQueue(song, message) {
       stream = await ytdl(song.url, { highWaterMark: 1 << 25 });
     } else if (song.url.includes("soundcloud.com")) {
       try {
-        stream = await scdl.downloadFormat(song.url, scdl.FORMATS.OPUS, SOUNDCLOUD_CLIENT_ID);
+        stream = await scdl.downloadFormat(song.url, 'audio/ogg; codecs="opus"');
       } catch (error) {
-        stream = await scdl.downloadFormat(song.url, scdl.FORMATS.MP3, SOUNDCLOUD_CLIENT_ID);
+        stream = await scdl.downloadFormat(song.url, "audio/mpeg");
         streamType = "unknown";
       }
     }

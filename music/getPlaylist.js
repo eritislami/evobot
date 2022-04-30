@@ -1,9 +1,9 @@
-import YouTubeAPI from "simple-youtube-api";
 import SoundCloud from "soundcloud-downloader";
+import youtube from "youtube-sr";
 import { config } from "../utils/config.js";
+import { i18n } from "../utils/i18n.js";
 
-const { MAX_PLAYLIST_SIZE, SOUNDCLOUD_CLIENT_ID, YOUTUBE_API_KEY } = config;
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const { MAX_PLAYLIST_SIZE } = config;
 const scdl = SoundCloud.create();
 const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
 
@@ -17,8 +17,8 @@ export async function getPlaylist({ message, args }) {
 
   if (urlValid) {
     try {
-      playlist = await youtube.getPlaylist(url, { part: "snippet" });
-      videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
+      playlist = await youtube.getPlaylist(url);
+      videos = playlist.videos.slice(0, MAX_PLAYLIST_SIZE - 1);
     } catch (error) {
       console.error(error);
       return message.reply(i18n.__("playlist.errorNotFoundPlaylist")).catch(console.error);
@@ -27,7 +27,7 @@ export async function getPlaylist({ message, args }) {
     if (args[0].includes("/sets/")) {
       message.reply(i18n.__("playlist.fetchingPlaylist"));
 
-      playlist = await scdl.getSetInfo(args[0], SOUNDCLOUD_CLIENT_ID);
+      playlist = await scdl.getSetInfo(args[0]);
       videos = playlist.tracks.map((track) => ({
         title: track.title,
         url: track.permalink_url,
@@ -36,10 +36,9 @@ export async function getPlaylist({ message, args }) {
     }
   } else {
     try {
-      const results = await youtube.searchPlaylists(search, 1, { part: "id" });
-
-      playlist = results[0];
-      videos = await playlist.getVideos(MAX_PLAYLIST_SIZE, { part: "snippet" });
+      const result = await youtube.searchOne(search, "playlist");
+      playlist = await youtube.getPlaylist(result.url);
+      videos = playlist.videos.slice(0, MAX_PLAYLIST_SIZE - 1);
     } catch (error) {
       console.error(error);
       return message.reply(error.message).catch(console.error);
@@ -51,8 +50,8 @@ export async function getPlaylist({ message, args }) {
     .map((video) => {
       return {
         title: video.title,
-        url: video.url,
-        duration: video.durationSeconds
+        url: `https://youtube.com/watch?v=${video.id}`,
+        duration: video.duration / 1000
       };
     });
 

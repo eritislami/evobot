@@ -8,8 +8,6 @@ try {
 } catch (error) {
   config = {
     TOKEN: process.env.TOKEN,
-    YOUTUBE_API_KEY: process.env.YOUTUBE_API_KEY,
-    SOUNDCLOUD_CLIENT_ID: process.env.SOUNDCLOUD_CLIENT_ID,
     PREFIX: process.env.PREFIX || "/",
     MAX_PLAYLIST_SIZE: parseInt(process.env.MAX_PLAYLIST_SIZE) || 10,
     PRUNING: process.env.PRUNING === "true" ? true : false,
