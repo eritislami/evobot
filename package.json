@@ -9,7 +9,7 @@
   "repository": "github:eritislami/evobot",
   "bugs": "https://github.com/eritislami/evobot/issues",
   "engines": {
-    "node": ">=16.6.0"
+    "node": ">=16.9.0"
   },
   "type": "module",
   "scripts": {
