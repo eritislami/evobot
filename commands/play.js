@@ -1,21 +1,11 @@
-import {
-  createAudioPlayer,
-  getVoiceConnection,
-  joinVoiceChannel,
-  NoSubscriberBehavior
-} from "@discordjs/voice";
 import https from "https";
-import YouTubeAPI from "simple-youtube-api";
 import Scdl from "soundcloud-downloader";
-import ytdl from "ytdl-core";
-import { play } from "../include/play.js";
-import { generateQueue } from "../utils/queue.js";
-import { config } from "../utils/config.js";
+import { getSong } from "../music/getSong.js";
+import { startQueue } from "../music/startQueue.js";
 import { i18n } from "../utils/i18n.js";
-import { videoPattern, playlistPattern, scRegex, mobileScRegex } from "../utils/patterns.js";
+import { mobileScRegex, playlistPattern, videoPattern } from "../utils/patterns.js";
+import { generateQueue } from "../utils/queue.js";
 
-const { SOUNDCLOUD_CLIENT_ID, YOUTUBE_API_KEY } = config;
-const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
 const scdl = Scdl.create();
 
 export default {
@@ -26,6 +16,7 @@ export default {
   permissions: ["CONNECT", "SPEAK", "ADD_REACTIONS", "MANAGE_MESSAGES"],
   async execute(message, args) {
     const { channel } = message.member.voice;
+
     if (!channel) return message.reply(i18n.__("play.errorNotChannel")).catch(console.error);
 
     const queue = message.client.queue.get(message.guild.id);
@@ -40,9 +31,7 @@ export default {
         .reply(i18n.__mf("play.usageReply", { prefix: message.client.prefix }))
         .catch(console.error);
 
-    const search = args.join(" ");
     const url = args[0];
-    const urlValid = videoPattern.test(args[0]);
 
     // Start the playlist if playlist url was provided
     if (
@@ -69,58 +58,9 @@ export default {
       return message.reply("Following url redirection...").catch(console.error);
     }
 
-    let songInfo = null;
-    let song = null;
+    const song = await getSong({ message, args });
 
-    if (urlValid) {
-      try {
-        songInfo = await ytdl.getInfo(url);
-        song = {
-          title: songInfo.videoDetails.title,
-          url: songInfo.videoDetails.video_url,
-          duration: songInfo.videoDetails.lengthSeconds
-        };
-      } catch (error) {
-        console.error(error);
-        return message.reply(error.message).catch(console.error);
-      }
-    } else if (scRegex.test(url)) {
-      try {
-        const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
-        song = {
-          title: trackInfo.title,
-          url: trackInfo.permalink_url,
-          duration: Math.ceil(trackInfo.duration / 1000)
-        };
-      } catch (error) {
-        console.error(error);
-        return message.reply(error.message).catch(console.error);
-      }
-    } else {
-      try {
-        const results = await youtube.searchVideos(search, 1, { part: "id" });
-
-        if (!results.length) {
-          message.reply(i18n.__("play.songNotFound")).catch(console.error);
-          return;
-        }
-
-        songInfo = await ytdl.getInfo(results[0].url);
-        song = {
-          title: songInfo.videoDetails.title,
-          url: songInfo.videoDetails.video_url,
-          duration: songInfo.videoDetails.lengthSeconds
-        };
-      } catch (error) {
-        console.error(error);
-
-        if (error.message.includes("410")) {
-          return message.reply(i18n.__("play.songAccessErr")).catch(console.error);
-        } else {
-          return message.reply(error.message).catch(console.error);
-        }
-      }
-    }
+    if (!song) return message.reply(i18n.__("common.errorCommand")).catch(console.error);
 
     if (queue) {
       queue.songs.push(song);
@@ -131,31 +71,10 @@ export default {
     }
 
     const queueConstruct = generateQueue(message.channel, channel);
-
     queueConstruct.songs.push(song);
+
     message.client.queue.set(message.guild.id, queueConstruct);
 
-    try {
-      queueConstruct.player = createAudioPlayer({
-        behaviors: {
-          noSubscriber: NoSubscriberBehavior.Pause
-        }
-      });
-
-      queueConstruct.connection = joinVoiceChannel({
-        channelId: channel.id,
-        guildId: channel.guild.id,
-        adapterCreator: channel.guild.voiceAdapterCreator
-      });
-
-      play(queueConstruct.songs[0], message);
-    } catch (error) {
-      console.error(error);
-      message.client.queue.delete(message.guild.id);
-
-      getVoiceConnection(channel.guild.id).destroy();
-
-      return message.reply(i18n.__mf("play.cantJoinChannel", { error: error })).catch(console.error);
-    }
+    startQueue({ message, channel });
   }
 };
