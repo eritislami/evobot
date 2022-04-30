@@ -1,12 +1,15 @@
 export function checkPermissions(command, message) {
   if (!command.permissions) return true;
+  const requiredPermissions = command.permissions;
 
   const { channel } = message.member.voice;
-  const requiredPermissions = command.permissions;
-  const permissions = channel.permissionsFor(message.client.user);
 
-  if (!permissions.has(requiredPermissions)) {
-    throw new MissingPermissionsException(permissions.missing(requiredPermissions));
+  if (channel) {
+    const permissions = channel.permissionsFor(message.client.user);
+
+    if (!permissions.has(requiredPermissions)) {
+      throw new MissingPermissionsException(permissions.missing(requiredPermissions));
+    }
   }
 
   return true;
