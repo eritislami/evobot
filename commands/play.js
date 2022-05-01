@@ -34,10 +34,7 @@ export default {
     const url = args[0];
 
     // Start the playlist if playlist url was provided
-    if (
-      (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) ||
-      (scdl.isValidUrl(url) && url.includes("/sets/"))
-    ) {
+    if (playlistPattern.test(args[0]) || (scdl.isValidUrl(url) && url.includes("/sets/"))) {
       return message.client.commands.get("playlist").execute(message, args);
     }
 
