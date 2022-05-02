@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "cz-conventional-changelog": "^3.0.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.16"
   },
   "optionalDependencies": {
     "@discordjs/opus": "^0.7.0",
