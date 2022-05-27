@@ -1,31 +1,22 @@
 import { Message, PermissionResolvable } from "discord.js";
 import { Command } from "../interfaces/Command";
 
-export async function checkPermissions(command: Command, message: Message) {
-  const member = await message.guild!.members.fetch({ user: message.client.user!.id });
-
-  if (!command.permissions) return true;
-  const requiredPermissions = command.permissions as PermissionResolvable[];
-
-  const { channel } = member!.voice;
-
-  if (channel) {
-    const permissions = channel.permissionsFor(member);
-
-    if (!permissions.has(requiredPermissions)) {
-      throw new MissingPermissionsException(permissions.missing(requiredPermissions));
-    }
-  }
-
-  return true;
+interface PermissionResult {
+  result: boolean;
+  missing?: string[];
 }
 
-class MissingPermissionsException {
-  public message = "Missing permissions:";
+export async function checkPermissions(command: Command, message: Message): Promise<PermissionResult> {
+  const member = await message.guild!.members.fetch({ user: message.client.user!.id });
+  const requiredPermissions = command.permissions as PermissionResolvable[];
 
-  constructor(public permissions: string[]) {}
+  if (!command.permissions) return { result: true };
 
-  public toString() {
-    return `${this.message} ${this.permissions.join(", ")}`;
+  const missing = member.permissions.missing(requiredPermissions);
+
+  if (missing.length) {
+    return { result: false, missing: missing };
   }
+
+  return { result: true };
 }

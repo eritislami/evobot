@@ -5,6 +5,7 @@ import { Command } from "../interfaces/Command";
 import { checkPermissions } from "../utils/checkPermissions";
 import { config } from "../utils/config";
 import { i18n } from "../utils/i18n";
+import { MissingPermissionsException } from "../utils/MissingPermissionsException";
 import { MusicQueue } from "./MusicQueue";
 
 const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -31,9 +32,7 @@ export class Bot {
   }
 
   private async importCommands() {
-    const commandFiles = readdirSync(join(__dirname, "..", "commands")).filter((file) =>
-      file.endsWith(".ts")
-    );
+    const commandFiles = readdirSync(join(__dirname, "..", "commands")).filter((file) => file.endsWith(".ts"));
 
     for (const file of commandFiles) {
       const command = await import(join(__dirname, "..", "commands", `${file}`));
@@ -73,9 +72,7 @@ export class Bot {
 
         if (now < expirationTime) {
           const timeLeft = (expirationTime - now) / 1000;
-          return message.reply(
-            i18n.__mf("common.cooldownMessage", { time: timeLeft.toFixed(1), name: command.name })
-          );
+          return message.reply(i18n.__mf("common.cooldownMessage", { time: timeLeft.toFixed(1), name: command.name }));
         }
       }
 
@@ -83,8 +80,13 @@ export class Bot {
       setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
       try {
-        checkPermissions(command, message);
-        command.execute(message, args);
+        const permissionsCheck: any = await checkPermissions(command, message);
+
+        if (permissionsCheck.result) {
+          command.execute(message, args);
+        } else {
+          throw new MissingPermissionsException(permissionsCheck.missing);
+        }
       } catch (error: any) {
         console.error(error);
 
