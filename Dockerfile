@@ -21,4 +21,4 @@ VOLUME [ "/home/evobot" ]
 
 COPY --chown=${USER}:${USER}  . .
 
-ENTRYPOINT [ "node", "index.js" ]
+ENTRYPOINT [ "npm", "run", "start" ]

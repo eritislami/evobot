@@ -4,6 +4,7 @@ config.json
 /.vscode
 /sounds/**
 !/sounds/putmusichere.mp3
+/dist
 
 # Logs
 logs

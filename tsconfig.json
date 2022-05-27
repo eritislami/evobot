@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "outDir": "dist",
+    "module": "commonjs",
+    "target": "es2022",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "useUnknownInCatchVariables": true,
+    "allowUnreachableCode": false,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "importHelpers": true,
+    "typeRoots": ["node_modules/@types"],
+    "sourceMap": true,
+    "strictPropertyInitialization": false
+  },
+  "include": ["./"],
+  "exclude": ["/.github", "./dist", "./node_modules"]
+}

@@ -2,7 +2,7 @@
   "name": "evobot",
   "version": "1.2.2",
   "description": "Discord music bot built with discord.js",
-  "main": "index.js",
+  "main": "index.ts",
   "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
   "homepage": "https://github.com/eritislami/evobot",
@@ -11,10 +11,10 @@
   "engines": {
     "node": ">=16.9.0"
   },
-  "type": "module",
   "scripts": {
-    "dev": "nodemon index.js",
-    "start": "node index.js",
+    "dev": "nodemon index.ts",
+    "start": "ts-node index.ts",
+    "build": "tsc --build",
     "commit": "cz"
   },
   "dependencies": {
@@ -24,9 +24,7 @@
     "dotenv": "^16.0.0",
     "ffmpeg-static": "^4.4.1",
     "i18n": "^0.14.2",
-    "libsodium-wrappers": "^0.7.10",
     "lyrics-finder": "^21.0.5",
-    "opusscript": "^0.0.8",
     "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.4",
     "youtube-sr": "^4.1.17",
@@ -34,12 +32,18 @@
     "ytdl-core-discord": "^1.3.1"
   },
   "devDependencies": {
+    "@types/i18n": "^0.13.2",
+    "@types/node": "^17.0.30",
     "cz-conventional-changelog": "^3.0.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0"
   },
   "optionalDependencies": {
     "@discordjs/opus": "^0.7.0",
-    "tweetnacl": "^1.0.3"
+    "opusscript": "^0.0.8",
+    "sodium-native": "^3.3.0",
+    "tweetnacl": "^1.0.3",
+    "libsodium-wrappers": "^0.7.10"
   },
   "config": {
     "commitizen": {
