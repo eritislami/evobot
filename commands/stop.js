@@ -11,7 +11,8 @@ export default {
     if (!canModifyQueue(message.member)) return i18n.__("common.errorNotChannel");
 
     queue.loop = false;
-    queue.songs = [];
+    queue.songs.shift();
+	queue.songs = [1];
     queue.player.stop();
     queue.connection.destroy();
 

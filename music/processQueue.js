@@ -13,9 +13,11 @@ export async function processQueue(song, message) {
 
   if (!song) {
     setTimeout(function () {
-      queue.connection.destroy();
-      queue.player.stop(true);
-      !PRUNING && queue.textChannel.send(i18n.__("play.leaveChannel"));
+		if (canModifyQueue(message.member) && !message.client.queue.get(message.guild.id)) {
+			queue.player.stop(true);
+			queue.connection.destroy();
+			!PRUNING && queue.textChannel.send(i18n.__("play.leaveChannel"));
+        }
     }, STAY_TIME * 1000);
 
     !PRUNING && queue.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
