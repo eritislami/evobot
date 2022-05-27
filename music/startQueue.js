@@ -38,7 +38,12 @@ export async function startQueue({ message, channel }) {
 
   queue.connection.on("stateChange", async (oldState, newState) => {
     if (newState.status === VoiceConnectionStatus.Disconnected) {
-      if (newState.reason === VoiceConnectionDisconnectReason.WebSocketClose && newState.closeCode === 4014) {
+      if (newState.reason === VoiceConnectionDisconnectReason.Manual) {
+		  queue.loop = false;
+		  queue.songs.shift();
+		  queue.songs = [1];
+		  queue.player.stop(true);
+      } else if (newState.reason === VoiceConnectionDisconnectReason.WebSocketClose && newState.closeCode === 4014) {
         try {
           await entersState(queue.connection, VoiceConnectionStatus.Connecting, 5_000);
         } catch {
@@ -55,8 +60,9 @@ export async function startQueue({ message, channel }) {
        * Once destroyed, stop the subscription.
        */
       queue.loop = false;
-      queue.songs = [];
-      queue.player.stop();
+      queue.songs.shift();
+      queue.songs = [1];
+      queue.player.stop(true);
     } else if (
       !queue.readyLock &&
       (newState.status === VoiceConnectionStatus.Connecting ||
