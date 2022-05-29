@@ -4,7 +4,7 @@ import { i18n } from "../utils/i18n";
 
 export default {
   name: "uptime",
-  aliases: ["u"],
+  aliases: ["up"],
   description: i18n.__("uptime.description"),
   execute(message: Message) {
     let seconds = Math.floor(bot.client.uptime! / 1000);
