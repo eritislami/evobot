@@ -17,8 +17,11 @@ WORKDIR /home/evobot
 
 COPY --chown=${USER}:${USER} package*.json ./
 RUN npm install
+USER root
+RUN npm install pm2 -g
+USER ${USER}
 VOLUME [ "/home/evobot" ]
 
 COPY --chown=${USER}:${USER}  . .
 
-ENTRYPOINT [ "node", "index.js" ]
+ENTRYPOINT [ "pm2-runtime", "index.js" ]

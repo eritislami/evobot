@@ -1,13 +1,12 @@
 {
-  "name": "evobot",
+  "name": "YodaxMusic",
   "version": "1.2.2",
   "description": "Discord music bot built with discord.js",
   "main": "index.js",
-  "author": "Erit Islami <eritislami@gmail.com>",
   "private": true,
-  "homepage": "https://github.com/eritislami/evobot",
-  "repository": "github:eritislami/evobot",
-  "bugs": "https://github.com/eritislami/evobot/issues",
+  "homepage": "",
+  "repository": "",
+  "bugs": "",
   "engines": {
     "node": ">=16.9.0"
   },

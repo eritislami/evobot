@@ -63,3 +63,6 @@ typings/
 
 # Temp ignore 
 config.json
+
+digital-ocean-key
+digital-ocean-key.pub
