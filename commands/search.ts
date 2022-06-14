@@ -17,8 +17,7 @@ export default {
     if ((message.channel as CustomTextChannel).activeCollector)
       return message.reply(i18n.__("search.errorAlreadyCollector"));
 
-    if (!message.member?.voice.channel)
-      return message.reply(i18n.__("search.errorNotChannel")).catch(console.error);
+    if (!message.member?.voice.channel) return message.reply(i18n.__("search.errorNotChannel")).catch(console.error);
 
     const search = args.join(" ");
 
@@ -63,7 +62,7 @@ export default {
     } catch (error: any) {
       console.error(error);
       (message.channel as CustomTextChannel).activeCollector = false;
-      message.reply(error.message).catch(console.error);
+      message.reply(i18n.__("common.errorCommand")).catch(console.error);
     }
   }
 };
