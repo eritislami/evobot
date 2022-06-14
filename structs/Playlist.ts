@@ -1,7 +1,7 @@
 import youtube, { Playlist as YoutubePlaylist } from "youtube-sr";
 import { config } from "../utils/config";
 import { Song } from "./Song";
-const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
+const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/i;
 
 export class Playlist {
   public data: YoutubePlaylist;
