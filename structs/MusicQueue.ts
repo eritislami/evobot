@@ -44,43 +44,36 @@ export class MusicQueue {
     this.player = createAudioPlayer({ behaviors: { noSubscriber: NoSubscriberBehavior.Play } });
     this.connection.subscribe(this.player);
 
-    this.connection.on(
-      "stateChange" as any,
-      async (oldState: VoiceConnectionState, newState: VoiceConnectionState) => {
-        if (newState.status === VoiceConnectionStatus.Disconnected) {
-          if (
-            newState.reason === VoiceConnectionDisconnectReason.WebSocketClose &&
-            newState.closeCode === 4014
-          ) {
-            try {
-              await entersState(this.connection, VoiceConnectionStatus.Connecting, 5_000);
-            } catch {
-              this.connection.destroy();
-            }
-          } else if (this.connection.rejoinAttempts < 5) {
-            await wait((this.connection.rejoinAttempts + 1) * 5_000);
-            this.connection.rejoin();
-          } else {
+    this.connection.on("stateChange" as any, async (oldState: VoiceConnectionState, newState: VoiceConnectionState) => {
+      if (newState.status === VoiceConnectionStatus.Disconnected) {
+        if (newState.reason === VoiceConnectionDisconnectReason.WebSocketClose && newState.closeCode === 4014) {
+          try {
+            await entersState(this.connection, VoiceConnectionStatus.Connecting, 5_000);
+          } catch {
             this.connection.destroy();
           }
-        } else if (newState.status === VoiceConnectionStatus.Destroyed) {
-          // this.stop();
-        } else if (
-          !this.readyLock &&
-          (newState.status === VoiceConnectionStatus.Connecting ||
-            newState.status === VoiceConnectionStatus.Signalling)
-        ) {
-          this.readyLock = true;
-          try {
-            await entersState(this.connection, VoiceConnectionStatus.Ready, 20_000);
-          } catch {
-            if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) this.connection.destroy();
-          } finally {
-            this.readyLock = false;
-          }
+        } else if (this.connection.rejoinAttempts < 5) {
+          await wait((this.connection.rejoinAttempts + 1) * 5_000);
+          this.connection.rejoin();
+        } else {
+          this.connection.destroy();
+        }
+      } else if (newState.status === VoiceConnectionStatus.Destroyed) {
+        // this.stop();
+      } else if (
+        !this.readyLock &&
+        (newState.status === VoiceConnectionStatus.Connecting || newState.status === VoiceConnectionStatus.Signalling)
+      ) {
+        this.readyLock = true;
+        try {
+          await entersState(this.connection, VoiceConnectionStatus.Ready, 20_000);
+        } catch {
+          if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) this.connection.destroy();
+        } finally {
+          this.readyLock = false;
         }
       }
-    );
+    });
 
     this.player.on("stateChange" as any, async (oldState: AudioPlayerState, newState: AudioPlayerState) => {
       if (oldState.status !== AudioPlayerStatus.Idle && newState.status === AudioPlayerStatus.Idle) {
@@ -91,10 +84,7 @@ export class MusicQueue {
         }
 
         this.processQueue();
-      } else if (
-        oldState.status === AudioPlayerStatus.Buffering &&
-        newState.status === AudioPlayerStatus.Playing
-      ) {
+      } else if (oldState.status === AudioPlayerStatus.Buffering && newState.status === AudioPlayerStatus.Playing) {
         this.sendPlayingMessage(newState);
       }
     });
@@ -125,12 +115,16 @@ export class MusicQueue {
     !config.PRUNING && this.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
 
     setTimeout(() => {
-      if (this.player.state.status !== AudioPlayerStatus.Idle) return;
+      if (
+        this.player.state.status !== AudioPlayerStatus.Idle ||
+        this.connection.state.status === VoiceConnectionStatus.Destroyed
+      )
+        return;
 
       this.connection.destroy();
 
       !config.PRUNING && this.textChannel.send(i18n.__("play.leaveChannel"));
-    }, config.STAY_TIME * 1000);
+    }, 100);
   }
 
   private async processQueue(): Promise<void> {
@@ -167,9 +161,7 @@ export class MusicQueue {
     let playingMessage: Message;
 
     try {
-      playingMessage = await this.textChannel.send(
-        (newState.resource as AudioResource<Song>).metadata.startMessage()
-      );
+      playingMessage = await this.textChannel.send((newState.resource as AudioResource<Song>).metadata.startMessage());
 
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
