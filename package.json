@@ -36,7 +36,7 @@
     "@types/i18n": "^0.13.2",
     "@types/node": "^18.0.0",
     "cz-conventional-changelog": "^3.0.1",
-    "nodemon": "^2.0.16"
+    "nodemon": "^2.0.18"
   },
   "optionalDependencies": {
     "@discordjs/opus": "^0.7.0",
