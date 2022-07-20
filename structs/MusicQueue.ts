@@ -117,7 +117,7 @@ export class MusicQueue {
 
     setTimeout(() => {
       if (
-          this.player.state.status !== AudioPlayerStatus.Idle || this.connection.state.status === VoiceConnectionStatus.Destroyed || bot.queues.get(`${this.interaction.guild?.id}`) !== undefined
+          this.player.state.status !== AudioPlayerStatus.Idle || this.connection.state.status === VoiceConnectionStatus.Destroyed || bot.queues.get(this.message.guild!.id) !== undefined
          ) return;
 
       this.connection.destroy();
