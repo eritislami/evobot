@@ -122,7 +122,7 @@ export class MusicQueue {
 
       this.connection.destroy();
       this.player.stop();
-      bot.queues.delete(`${this.interaction.guild?.id}`);
+      bot.queues.delete(this.message.guild!.id);
 
       !config.PRUNING && this.textChannel.send(i18n.__("play.leaveChannel"));
     }, 100);
