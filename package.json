@@ -39,7 +39,7 @@
     "nodemon": "^2.0.19"
   },
   "optionalDependencies": {
-    "@discordjs/opus": "^0.7.0",
+    "@discordjs/opus": "^0.8.0",
     "opusscript": "^0.0.8",
     "sodium-native": "^3.3.0",
     "tweetnacl": "^1.0.3",
