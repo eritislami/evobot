@@ -48,9 +48,10 @@ export class MusicQueue {
       if (newState.status === VoiceConnectionStatus.Disconnected) {
         if (newState.reason === VoiceConnectionDisconnectReason.WebSocketClose && newState.closeCode === 4014) {
           try {
-            await entersState(this.connection, VoiceConnectionStatus.Connecting, 5_000);
-          } catch {
-            this.connection.destroy();
+            this.stop();
+          } catch (e) {
+            console.log(e);
+            this.stop();
           }
         } else if (this.connection.rejoinAttempts < 5) {
           await wait((this.connection.rejoinAttempts + 1) * 5_000);
@@ -116,12 +117,12 @@ export class MusicQueue {
 
     setTimeout(() => {
       if (
-        this.player.state.status !== AudioPlayerStatus.Idle ||
-        this.connection.state.status === VoiceConnectionStatus.Destroyed
-      )
-        return;
+          this.player.state.status !== AudioPlayerStatus.Idle || this.connection.state.status === VoiceConnectionStatus.Destroyed || bot.queues.get(this.message.guild!.id) !== undefined
+         ) return;
 
       this.connection.destroy();
+      this.player.stop();
+      bot.queues.delete(this.message.guild!.id);
 
       !config.PRUNING && this.textChannel.send(i18n.__("play.leaveChannel"));
     }, 100);
