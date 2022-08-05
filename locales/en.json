@@ -92,6 +92,10 @@
     "errorWritingFile": "There was an error writing to the file.",
     "result": "Message pruning is {result}"
   },
+  "playskip": {
+    "description": "Put a song at the front of the queue and start playing it immediately.",
+    "errorPlaylist": "Unable to playskip to playlists."
+  },
   "queue": {
     "description": "Show the music queue and now playing.",
     "missingPermissionMessage": "Missing permission to manage messages or add reactions",
