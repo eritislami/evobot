@@ -10,7 +10,7 @@ export default {
   cooldown: 10,
   aliases: ["pskip"],
   description: i18n.__("playskip.description"),
-  permissions: ["CONNECT", "SPEAK", "ADD_REACTIONS", "MANAGE_MESSAGES"],
+  permissions: ["MANAGE_MESSAGES"],
   async execute(message: Message, args: string[]) {
     const queue = bot.queues.get(message.guild!.id);
     const url = args[0];
