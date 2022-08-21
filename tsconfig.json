@@ -15,6 +15,6 @@
     "sourceMap": true,
     "strictPropertyInitialization": false
   },
-  "include": ["./"],
+  "include": ["./", "./config.json"],
   "exclude": ["/.github", "./dist", "./node_modules"]
 }
