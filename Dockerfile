@@ -17,6 +17,8 @@ WORKDIR /home/evobot
 
 COPY --chown=${USER}:${USER} package*.json ./
 RUN npm install
+RUN npm install ytdl-core@4.10.0
+
 VOLUME [ "/home/evobot" ]
 
 COPY --chown=${USER}:${USER}  . .
