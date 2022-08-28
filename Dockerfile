@@ -21,4 +21,4 @@ VOLUME [ "/home/evobot" ]
 
 COPY --chown=${USER}:${USER}  . .
 
-ENTRYPOINT [ "npm", "run", "start" ]
+ENTRYPOINT [ "npm", "run", "prod" ]

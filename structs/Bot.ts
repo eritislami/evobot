@@ -32,7 +32,7 @@ export class Bot {
   }
 
   private async importCommands() {
-    const commandFiles = readdirSync(join(__dirname, "..", "commands")).filter((file) => file.endsWith(".ts"));
+    const commandFiles = readdirSync(join(__dirname, "..", "commands")).filter((file) => !file.endsWith(".map"));
 
     for (const file of commandFiles) {
       const command = await import(join(__dirname, "..", "commands", `${file}`));
