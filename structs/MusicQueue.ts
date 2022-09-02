@@ -34,8 +34,9 @@ export class MusicQueue {
   public volume = config.DEFAULT_VOLUME || 100;
   public loop = false;
   public muted = false;
-  public queueLock = false;
-  public readyLock = false;
+  public waitTimeout: NodeJS.Timeout;
+  private queueLock = false;
+  private readyLock = false;
 
   public constructor(options: QueueOptions) {
     Object.assign(this, options);
@@ -102,33 +103,27 @@ export class MusicQueue {
   }
 
   public enqueue(...songs: Song[]) {
+    if (typeof this.waitTimeout !== "undefined") clearTimeout(this.waitTimeout);
     this.songs = this.songs.concat(songs);
     this.processQueue();
   }
 
   public stop() {
-    this.queueLock = true;
     this.loop = false;
     this.songs = [];
     this.player.stop();
-    bot.queues.delete(this.message.guild!.id);
 
     !config.PRUNING && this.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
 
-    setTimeout(() => {
-      if (
-          this.player.state.status !== AudioPlayerStatus.Idle || this.connection.state.status === VoiceConnectionStatus.Destroyed || bot.queues.get(this.message.guild!.id) !== undefined
-         ) return;
-
+    this.waitTimeout = setTimeout(() => {
       this.connection.destroy();
-      this.player.stop();
       bot.queues.delete(this.message.guild!.id);
 
       !config.PRUNING && this.textChannel.send(i18n.__("play.leaveChannel"));
-    }, 100);
+    }, config.STAY_TIME * 1000);
   }
 
-  private async processQueue(): Promise<void> {
+  public async processQueue(): Promise<void> {
     if (this.queueLock || this.player.state.status !== AudioPlayerStatus.Idle) {
       return;
     }

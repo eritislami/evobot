@@ -48,7 +48,7 @@ export default {
     }
 
     if (queue) {
-      queue.songs.push(song);
+      queue.enqueue(song);
 
       return message
         .reply(i18n.__mf("play.queueAdded", { title: song.title, author: message.author }))

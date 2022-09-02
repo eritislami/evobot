@@ -12,6 +12,7 @@
     "skipLibCheck": true,
     "importHelpers": true,
     "typeRoots": ["node_modules/@types"],
+    "types": ["node"],
     "sourceMap": true,
     "strictPropertyInitialization": false
   },
