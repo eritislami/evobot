@@ -60,8 +60,6 @@ export class MusicQueue {
         } else {
           this.connection.destroy();
         }
-      } else if (newState.status === VoiceConnectionStatus.Destroyed) {
-        // this.stop();
       } else if (
         !this.readyLock &&
         (newState.status === VoiceConnectionStatus.Connecting || newState.status === VoiceConnectionStatus.Signalling)
@@ -70,7 +68,11 @@ export class MusicQueue {
         try {
           await entersState(this.connection, VoiceConnectionStatus.Ready, 20_000);
         } catch {
-          if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) this.connection.destroy();
+          if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) {
+            try {
+              this.connection.destroy();
+            } catch {}
+          }
         } finally {
           this.readyLock = false;
         }
@@ -85,7 +87,7 @@ export class MusicQueue {
           this.songs.shift();
         }
 
-        this.processQueue();
+        if (this.songs.length) this.processQueue();
       } else if (oldState.status === AudioPlayerStatus.Buffering && newState.status === AudioPlayerStatus.Playing) {
         this.sendPlayingMessage(newState);
       }
