@@ -130,7 +130,7 @@ export class MusicQueue {
       return;
     }
 
-    if (!this.songs.length || this.message.guild?.members?.me?.voice.channel?.members.size == 1) {
+    if (!this.songs.length || this.message.guild?.me?.voice.channel?.members.size == 1) {
       return this.stop();
     }
 
