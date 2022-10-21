@@ -40,7 +40,7 @@
     "ts-node": "^10.9.1"
   },
   "optionalDependencies": {
-    "@discordjs/opus": "^0.8.0",
+    "@discordjs/opus": "^0.9.0",
     "opusscript": "^0.0.8",
     "sodium-native": "^3.4.1",
     "tweetnacl": "^1.0.3",
