@@ -118,7 +118,11 @@ export class MusicQueue {
     !config.PRUNING && this.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
 
     this.waitTimeout = setTimeout(() => {
-      this.connection.destroy();
+      if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) {
+        try {
+          this.connection.destroy();
+        } catch {}
+      }
       bot.queues.delete(this.message.guild!.id);
 
       !config.PRUNING && this.textChannel.send(i18n.__("play.leaveChannel"));
