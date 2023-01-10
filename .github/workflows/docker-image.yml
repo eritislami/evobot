@@ -24,8 +24,8 @@ jobs:
 
 
     steps:
-      - uses: actions/checkout@v3.3.0
       - name: Build the Docker image
+        uses: actions/checkout@v3.3.0
 
 
       # Login against a Docker registry when not a PR
