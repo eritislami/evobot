@@ -34,7 +34,7 @@ export class MusicQueue {
   public volume = config.DEFAULT_VOLUME || 100;
   public loop = false;
   public muted = false;
-  public waitTimeout: NodeJS.Timeout;
+  public waitTimeout: NodeJS.Timeout | null;
   private queueLock = false;
   private readyLock = false;
 
@@ -105,7 +105,8 @@ export class MusicQueue {
   }
 
   public enqueue(...songs: Song[]) {
-    if (typeof this.waitTimeout !== "undefined") clearTimeout(this.waitTimeout);
+    if (this.waitTimeout !== null) clearTimeout(this.waitTimeout);
+    this.waitTimeout = null;
     this.songs = this.songs.concat(songs);
     this.processQueue();
   }
@@ -116,6 +117,8 @@ export class MusicQueue {
     this.player.stop();
 
     !config.PRUNING && this.textChannel.send(i18n.__("play.queueEnded")).catch(console.error);
+
+    if (this.waitTimeout !== null) return;
 
     this.waitTimeout = setTimeout(() => {
       if (this.connection.state.status !== VoiceConnectionStatus.Destroyed) {
