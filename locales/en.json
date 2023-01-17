@@ -8,6 +8,9 @@
   "clips": {
     "description": "List all clips"
   },
+  "grab": {
+    "description": "Send a link to the currently playing song"
+  },
   "help": {
     "description": "Display all commands and descriptions",
     "embedTitle": "{botname} Help",
