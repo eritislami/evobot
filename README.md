@@ -11,7 +11,7 @@
 ## Requirements
 
 1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**  
-1.1. Enable 'Message Content Intent' in Discord Developer Portal
+   1.1. Enable 'Message Content Intent' in Discord Developer Portal
 2. Node.js 16.11.0 or newer
 
 ## 🚀 Getting Started
@@ -62,10 +62,6 @@ docker run -e "TOKEN=<discord-token>" eritislami/evobot
 
 `!play under the bridge red hot chili peppers`
 
-- 🎶 Play music from Soundcloud via url
-
-`!play https://soundcloud.com/blackhorsebrigade/pearl-jam-alive`
-
 - 🔎 Search and select music to play
 
 `!search Pearl Jam`
@@ -94,8 +90,6 @@ Examples: `1` or `1,2,3`
 - Skip to song # in queue (!skipto, !st)
 - Move a song in the queue (!move, !mv)
 - Remove song # from queue (!remove, !rm)
-- Play an mp3 clip (!clip song.mp3) (put the file in sounds folder)
-- List all clips (!clips)
 - Show ping to Discord API (!ping)
 - Show bot uptime (!uptime)
 - Toggle pruning of bot messages (!pruning)
@@ -103,7 +97,7 @@ Examples: `1` or `1,2,3`
 - Command Handler from [discordjs.guide](https://discordjs.guide/)
 - Media Controls via Reactions
 
-![reactions](https://i.imgur.com/9S7Omf9.png)
+![reactions](https://i.imgur.com/0hdUX1C.png)
 
 ## 🌎 Locales
 
