@@ -1,5 +1,5 @@
 import { DiscordGatewayAdapterCreator, joinVoiceChannel } from "@discordjs/voice";
-import { Message, MessageEmbed } from "discord.js";
+import { Message, EmbedBuilder } from "discord.js";
 import { bot } from "../index";
 import { MusicQueue } from "../structs/MusicQueue";
 import { Playlist } from "../structs/Playlist";
@@ -51,22 +51,21 @@ export default {
 
       bot.queues.set(message.guild!.id, newQueue);
       newQueue.songs.push(...playlist.videos);
-      
+
       newQueue.enqueue(playlist.videos[0]);
     }
 
-    let playlistEmbed = new MessageEmbed()
+    let playlistEmbed = new EmbedBuilder()
       .setTitle(`${playlist.data.title}`)
-      .setDescription(
-        playlist.videos.map((song: Song, index: number) => `${index + 1}. ${song.title}`).join("\n")
-      )
+      .setDescription(playlist.videos.map((song: Song, index: number) => `${index + 1}. ${song.title}`).join("\n"))
       .setURL(playlist.data.url!)
       .setColor("#F8AA2A")
       .setTimestamp();
 
-    if (playlistEmbed.description!.length >= 2048)
-      playlistEmbed.description =
-        playlistEmbed.description!.substr(0, 2007) + i18n.__("playlist.playlistCharLimit");
+    if (playlistEmbed.data.description!.length >= 2048)
+      playlistEmbed.setDescription(
+        playlistEmbed.data.description!.substr(0, 2007) + i18n.__("playlist.playlistCharLimit")
+      );
 
     message
       .reply({

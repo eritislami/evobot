@@ -1,4 +1,4 @@
-import { Client, Collection, Snowflake } from "discord.js";
+import { ActivityType, Client, Collection, Snowflake } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Command } from "../interfaces/Command";
@@ -8,7 +8,7 @@ import { i18n } from "../utils/i18n";
 import { MissingPermissionsException } from "../utils/MissingPermissionsException";
 import { MusicQueue } from "./MusicQueue";
 
-const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/, "\\$&");
 
 export class Bot {
   public readonly prefix = config.PREFIX;
@@ -21,7 +21,7 @@ export class Bot {
 
     this.client.on("ready", () => {
       console.log(`${this.client.user!.username} ready!`);
-      client.user!.setActivity(`${this.prefix}help and ${this.prefix}play`, { type: "LISTENING" });
+      client.user!.setActivity(`${this.prefix}help and ${this.prefix}play`, { type: ActivityType.Listening });
     });
 
     this.client.on("warn", (info) => console.log(info));

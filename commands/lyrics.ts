@@ -1,4 +1,4 @@
-import { Message, MessageEmbed } from "discord.js";
+import { Message, EmbedBuilder } from "discord.js";
 import { i18n } from "../utils/i18n";
 // @ts-ignore
 import lyricsFinder from "lyrics-finder";
@@ -23,14 +23,14 @@ export default {
       lyrics = i18n.__mf("lyrics.lyricsNotFound", { title: title });
     }
 
-    let lyricsEmbed = new MessageEmbed()
+    let lyricsEmbed = new EmbedBuilder()
       .setTitle(i18n.__mf("lyrics.embedTitle", { title: title }))
       .setDescription(lyrics)
       .setColor("#F8AA2A")
       .setTimestamp();
 
-    if (lyricsEmbed.description!.length >= 2048)
-      lyricsEmbed.description = `${lyricsEmbed.description!.substr(0, 2045)}...`;
+    if (lyricsEmbed.data.description!.length >= 2048)
+      lyricsEmbed.setDescription(`${lyricsEmbed.data.description!.substr(0, 2045)}...`);
 
     return message.reply({ embeds: [lyricsEmbed] }).catch(console.error);
   }

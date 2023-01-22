@@ -1,4 +1,4 @@
-import { Message, MessageEmbed, TextChannel } from "discord.js";
+import { Message, EmbedBuilder, TextChannel } from "discord.js";
 import youtube from "youtube-sr";
 import { bot } from "../index";
 import { i18n } from "../utils/i18n";
@@ -21,7 +21,7 @@ export default {
 
     const search = args.join(" ");
 
-    let resultsEmbed = new MessageEmbed()
+    let resultsEmbed = new EmbedBuilder()
       .setTitle(i18n.__("search.resultEmbedTitle"))
       .setDescription(i18n.__mf("search.resultEmbedDesc", { search: search }))
       .setColor("#F8AA2A");
@@ -30,7 +30,10 @@ export default {
       const results = await youtube.search(search, { limit: 10, type: "video" });
 
       results.map((video, index) =>
-        resultsEmbed.addField(`https://youtube.com/watch?v=${video.id}`, `${index + 1}. ${video.title}`)
+        resultsEmbed.addFields({
+          name: `https://youtube.com/watch?v=${video.id}`,
+          value: `${index + 1}. ${video.title}`
+        })
       );
 
       let resultsMessage = await message.channel.send({ embeds: [resultsEmbed] });
@@ -49,10 +52,10 @@ export default {
         let songs = reply.split(",").map((str) => str.trim());
 
         for (let song of songs) {
-          await bot.commands.get("play")!.execute(message, [resultsEmbed.fields[parseInt(song) - 1].name]);
+          await bot.commands.get("play")!.execute(message, [resultsEmbed.data.fields![parseInt(song) - 1].name]);
         }
       } else {
-        const choice: any = resultsEmbed.fields[parseInt(response.first()?.toString()!) - 1].name;
+        const choice: any = resultsEmbed.data.fields![parseInt(response.first()?.toString()!) - 1].name;
         bot.commands.get("play")!.execute(message, [choice]);
       }
 

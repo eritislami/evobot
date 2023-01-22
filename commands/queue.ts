@@ -1,4 +1,4 @@
-import { Message, MessageEmbed, MessageReaction, User } from "discord.js";
+import { Message, EmbedBuilder, MessageReaction, User } from "discord.js";
 import { bot } from "../index";
 import { Song } from "../structs/Song";
 import { i18n } from "../utils/i18n";
@@ -77,13 +77,11 @@ function generateQueueEmbed(message: Message, songs: Song[]) {
 
     const info = current.map((track) => `${++j} - [${track.title}](${track.url})`).join("\n");
 
-    const embed = new MessageEmbed()
+    const embed = new EmbedBuilder()
       .setTitle(i18n.__("queue.embedTitle"))
       .setThumbnail(message.guild?.iconURL()!)
       .setColor("#F8AA2A")
-      .setDescription(
-        i18n.__mf("queue.embedCurrentSong", { title: songs[0].title, url: songs[0].url, info: info })
-      )
+      .setDescription(i18n.__mf("queue.embedCurrentSong", { title: songs[0].title, url: songs[0].url, info: info }))
       .setTimestamp();
     embeds.push(embed);
   }
