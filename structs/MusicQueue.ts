@@ -37,6 +37,7 @@ export class MusicQueue {
   public waitTimeout: NodeJS.Timeout | null;
   private queueLock = false;
   private readyLock = false;
+  private stopped = false;
 
   public constructor(options: QueueOptions) {
     Object.assign(this, options);
@@ -85,6 +86,7 @@ export class MusicQueue {
           this.songs.push(this.songs.shift()!);
         } else {
           this.songs.shift();
+          if (!this.songs.length) return this.stop();
         }
 
         if (this.songs.length || this.resource.audioPlayer) this.processQueue();
@@ -95,11 +97,13 @@ export class MusicQueue {
 
     this.player.on("error", (error) => {
       console.error(error);
+
       if (this.loop && this.songs.length) {
         this.songs.push(this.songs.shift()!);
       } else {
         this.songs.shift();
       }
+
       this.processQueue();
     });
   }
@@ -107,11 +111,15 @@ export class MusicQueue {
   public enqueue(...songs: Song[]) {
     if (this.waitTimeout !== null) clearTimeout(this.waitTimeout);
     this.waitTimeout = null;
+    this.stopped = false;
     this.songs = this.songs.concat(songs);
     this.processQueue();
   }
 
   public stop() {
+    if (this.stopped) return;
+
+    this.stopped = true;
     this.loop = false;
     this.songs = [];
     this.player.stop();
