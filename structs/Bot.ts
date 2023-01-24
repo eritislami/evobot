@@ -2,7 +2,7 @@ import { ActivityType, Client, Collection, Snowflake } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Command } from "../interfaces/Command";
-import { checkPermissions } from "../utils/checkPermissions";
+import { checkPermissions, PermissionResult } from "../utils/checkPermissions";
 import { config } from "../utils/config";
 import { i18n } from "../utils/i18n";
 import { MissingPermissionsException } from "../utils/MissingPermissionsException";
@@ -80,7 +80,7 @@ export class Bot {
       setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
       try {
-        const permissionsCheck: any = await checkPermissions(command, message);
+        const permissionsCheck: PermissionResult = await checkPermissions(command, message);
 
         if (permissionsCheck.result) {
           command.execute(message, args);

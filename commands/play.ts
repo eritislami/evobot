@@ -1,17 +1,21 @@
 import { DiscordGatewayAdapterCreator, joinVoiceChannel } from "@discordjs/voice";
-import { Message } from "discord.js";
+import { Message, PermissionsBitField } from "discord.js";
 import { bot } from "../index";
 import { MusicQueue } from "../structs/MusicQueue";
 import { Song } from "../structs/Song";
 import { i18n } from "../utils/i18n";
 import { playlistPattern } from "../utils/patterns";
-
 export default {
   name: "play",
   cooldown: 3,
   aliases: ["p"],
   description: i18n.__("play.description"),
-  permissions: ["CONNECT", "SPEAK", "ADD_REACTIONS", "MANAGE_MESSAGES"],
+  permissions: [
+    PermissionsBitField.Flags.Connect,
+    PermissionsBitField.Flags.Speak,
+    PermissionsBitField.Flags.AddReactions,
+    PermissionsBitField.Flags.ManageMessages
+  ],
   async execute(message: Message, args: string[]) {
     const { channel } = message.member!.voice;
 
