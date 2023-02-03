@@ -1,6 +1,6 @@
 import { i18n } from "../utils/i18n";
 import { readdir } from "fs";
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { CommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js";
 
 export default {
     data: new SlashCommandBuilder()
@@ -16,7 +16,10 @@ export default {
         clips.push(file.substring(0, file.length - 4));
       });
 
-      interaction.reply({content: `${clips.join(" ")}`}).catch(console.error);
+      const clipsEmbed = new EmbedBuilder()
+        .setTitle(i18n.__mf(`Clips for \`${interaction.client.user!.username}\``))
+        .setDescription("- " + clips.join("\n- "))
+        interaction.reply({embeds: [clipsEmbed]}).catch(console.error);
     });
   }
 };

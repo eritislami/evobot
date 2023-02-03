@@ -165,5 +165,10 @@
 		"errorNotChannel": "You need to join a voice channel first!",
 		"cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
 		"errorCommand": "There was an error executing that command."
-	}
+	},
+	"Clips for `dying inside": {
+		"`": "Clips for `dying inside.`"
+	},
+	"Invite me to your server!": "Invite me to your server!",
+	"Invite": "Invite"
 }

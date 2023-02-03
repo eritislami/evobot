@@ -126,7 +126,6 @@ export class Bot {
       if (!interaction.isCommand()) return;
       
       const command = this.slashCommandsMap.get(interaction.commandName);
-      console.log(`Slash command ${interaction.commandName} used`)
 
       if (!command) return;
 
