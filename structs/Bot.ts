@@ -14,6 +14,7 @@ export class Bot {
   public readonly prefix = config.PREFIX;
   public commands = new Collection<string, Command>();
   public slashCommands = new Array<ApplicationCommandDataResolvable>();
+  public slashCommandsMap = new Collection<string, Command>();
   public cooldowns = new Collection<string, Collection<Snowflake, number>>();
   public queues = new Collection<Snowflake, MusicQueue>();
 
@@ -51,6 +52,7 @@ export class Bot {
     for (const file of commandFiles) {
       const command = await import(join(__dirname, "..", "commands_slash", `${file}`));
       this.slashCommands.push(command.default.data);
+      this.slashCommandsMap.set(command.default.data.name, command.default);
       console.log(`Registered slash command ${command.default.data.name}`)
     }
 
@@ -121,18 +123,51 @@ export class Bot {
 
   private async onInteractionCreate() {
     this.client.on("interactionCreate", async (interaction: any) => {
-      console.log(interaction)
       if (!interaction.isCommand()) return;
-
-      const command = this.commands.get(interaction.commandName);
+      
+      const command = this.slashCommandsMap.get(interaction.commandName);
+      console.log(`Slash command ${interaction.commandName} used`)
 
       if (!command) return;
 
+      if (!this.cooldowns.has(interaction.commandName)) {
+        this.cooldowns.set(interaction.commandName, new Collection());
+      }
+
+      console.log(this.cooldowns)
+
+      const now = Date.now();
+      const timestamps: any = this.cooldowns.get(interaction.commandName);
+      const cooldownAmount = (command.cooldown || 1) * 1000;
+
+      if (timestamps.has(interaction.user.id)) {
+        const expirationTime = timestamps.get(interaction.user.id) + cooldownAmount;
+
+        if (now < expirationTime) {
+          const timeLeft = (expirationTime - now) / 1000;
+          return interaction.reply({ content: i18n.__mf("common.cooldownMessage", { time: timeLeft.toFixed(1), name: interaction.commandName }), ephemeral: true });
+        }
+      }
+
+      timestamps.set(interaction.user.id, now);
+      setTimeout(() => timestamps.delete(interaction.user.id), cooldownAmount);
+
       try {
-        await command.execute(interaction);
+        const permissionsCheck: PermissionResult = await checkPermissions(command, interaction);
+
+        if (permissionsCheck.result) {
+          command.execute(interaction);
+        } else {
+          throw new MissingPermissionsException(permissionsCheck.missing);
+        }
       } catch (error: any) {
         console.error(error);
-        await interaction.reply({ content: i18n.__("common.errorCommand"), ephemeral: true });
+
+        if (error.message.includes("permissions")) {
+          interaction.reply({content: error.toString(), emperal: true}).catch(console.error);
+        } else {
+          interaction.reply({content: i18n.__("common.errorCommand"), emperal: true}).catch(console.error);
+        }
       }
     });
   }
