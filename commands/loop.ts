@@ -10,6 +10,8 @@ export default {
   execute(message: Message) {
     const queue = bot.queues.get(message.guild!.id);
 
+    console.log(message.member)
+
     if (!queue) return message.reply(i18n.__("loop.errorNotQueue")).catch(console.error);
     if (!canModifyQueue(message.member!)) return i18n.__("common.errorNotChannel");
 
