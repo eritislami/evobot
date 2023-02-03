@@ -1,4 +1,4 @@
-import { ActivityType, Client, Collection, Snowflake } from "discord.js";
+import { REST, ActivityType, ApplicationCommandDataResolvable, Client, Collection, Routes, Snowflake } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
 import { Command } from "../interfaces/Command";
@@ -13,6 +13,7 @@ const escapeRegex = (str: string) => str.replace(/[.*+?^${}()|[\]\\]/, "\\$&");
 export class Bot {
   public readonly prefix = config.PREFIX;
   public commands = new Collection<string, Command>();
+  public slashCommands = new Array<ApplicationCommandDataResolvable>();
   public cooldowns = new Collection<string, Collection<Snowflake, number>>();
   public queues = new Collection<Snowflake, MusicQueue>();
 
@@ -22,6 +23,7 @@ export class Bot {
     this.client.on("ready", () => {
       console.log(`${this.client.user!.username} ready!`);
       client.user!.setActivity(`${this.prefix}help and ${this.prefix}play`, { type: ActivityType.Listening });
+      this.registerSlashCommands();
     });
 
     this.client.on("warn", (info) => console.log(info));
@@ -29,6 +31,7 @@ export class Bot {
 
     this.importCommands();
     this.onMessageCreate();
+    this.onInteractionCreate();
   }
 
   private async importCommands() {
@@ -38,6 +41,23 @@ export class Bot {
       const command = await import(join(__dirname, "..", "commands", `${file}`));
       this.commands.set(command.default.name, command.default);
     }
+  }
+
+
+  private async registerSlashCommands() {
+    const rest = new REST({ version: "9" }).setToken(config.TOKEN);
+    const commandFiles = readdirSync(join(__dirname, "..", "commands_slash")).filter((file) => !file.endsWith(".map"));
+
+    for (const file of commandFiles) {
+      const command = await import(join(__dirname, "..", "commands_slash", `${file}`));
+      this.slashCommands.push(command.default.data);
+      console.log(`Registered slash command ${command.default.data.name}`)
+    }
+
+    await rest.put(
+      Routes.applicationCommands(this.client.user!.id),
+      { body: this.slashCommands },
+    );
   }
 
   private async onMessageCreate() {
@@ -95,6 +115,24 @@ export class Bot {
         } else {
           message.reply(i18n.__("common.errorCommand")).catch(console.error);
         }
+      }
+    });
+  }
+
+  private async onInteractionCreate() {
+    this.client.on("interactionCreate", async (interaction: any) => {
+      console.log(interaction)
+      if (!interaction.isCommand()) return;
+
+      const command = this.commands.get(interaction.commandName);
+
+      if (!command) return;
+
+      try {
+        await command.execute(interaction);
+      } catch (error: any) {
+        console.error(error);
+        await interaction.reply({ content: i18n.__("common.errorCommand"), ephemeral: true });
       }
     });
   }
