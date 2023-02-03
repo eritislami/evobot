@@ -39,12 +39,13 @@ export default {
 
     const url = argSongName;
 
-    const loadingReply = await interaction.channel?.send("⏳ Loading...");
+    const loadingReply = await interaction.reply("⏳ Loading...");
 
     // Start the playlist if playlist url was provided
     if (playlistPattern.test(url)) {
     // @ts-ignore
-      await loadingReply.delete().catch(console.error);
+      await interaction.deleteReply().catch(console.error);
+      
     // TODO: IMPLEMENT PLAYLIST SLASH COMMAND
       return interaction.reply(`TODO: IMPLEMENT PLAYLIST SLASH COMMAND`);
     //   return bot.commands.get("playlist")!.execute(message, args);
@@ -62,7 +63,7 @@ export default {
       return interaction.reply({content: i18n.__("common.errorCommand"), ephemeral: true}).catch(console.error);
     } finally {
     // @ts-ignore
-      await loadingReply.delete();
+      await interaction.deleteReply().catch(console.error);
     }
 
     if (queue) {
@@ -76,7 +77,7 @@ export default {
     const newQueue = new MusicQueue({
         // @ts-ignore
       interaction,
-    textChannel: interaction.channel,
+      textChannel: interaction.channel,
       connection: joinVoiceChannel({
         channelId: channel.id,
         guildId: channel.guild.id,
