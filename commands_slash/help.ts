@@ -1,4 +1,4 @@
-import { Message, EmbedBuilder, SlashCommandBuilder } from "discord.js";
+import { CommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { i18n } from "../utils/i18n";
 import { bot } from "../index";
 
@@ -6,7 +6,7 @@ export default {
   data: new SlashCommandBuilder()
       .setName("help")
       .setDescription(i18n.__("help.description")),
-  async execute(interaction: any) {
+  async execute(interaction: CommandInteraction) {
     let commands = bot.commands;
 
     let helpEmbed = new EmbedBuilder()
