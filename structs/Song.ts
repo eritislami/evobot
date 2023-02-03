@@ -3,7 +3,7 @@ import youtube from "youtube-sr";
 import { getInfo } from "ytdl-core";
 import ytdl from "ytdl-core-discord";
 import { i18n } from "../utils/i18n";
-import { videoPattern } from "../utils/patterns";
+import { videoPattern, isURL } from "../utils/patterns";
 
 export interface SongData {
   url: string;
@@ -44,6 +44,8 @@ export class Song {
       if(!result) {
         let err = new Error(`No search results found for ${search}`);
         err.name = "NoResults";
+        if(isURL.test(url))
+          err.name = "InvalidURL";
 
         throw err;
       }

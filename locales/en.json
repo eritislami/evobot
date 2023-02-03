@@ -73,7 +73,8 @@
 		"leaveChannel": "Leaving voice channel...",
 		"songNotFound": "Audio Not Found",
 		"songAccessErr": "Video is age restricted, private or unavailable",
-		"errorNoResults": "No results found for {search}"
+		"errorNoResults": "No results found for {url}",
+		"errorInvalidURL": "Invalid URL, please try a search or youtube url"
 	},
 	"playlist": {
 		"description": "Play a playlist from youtube",

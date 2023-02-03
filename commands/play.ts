@@ -45,8 +45,9 @@ export default {
     try {
       song = await Song.from(url, args.join(" "));
     } catch (error: any) {
-      if (error.name == "NoResults") return message.reply(i18n.__mf("play.errorNoResults", {'search': `<${url}>`})).catch(console.error);
-      
+      if (error.name == "NoResults") return message.reply(i18n.__mf("play.errorNoResults", {'url': `<${url}>`})).catch(console.error);
+      if (error.name == "InvalidURL") return message.reply(i18n.__mf("play.errorInvalidURL", {'url': `<${url}>`})).catch(console.error);
+
       console.error(error);
       return message.reply(i18n.__("common.errorCommand")).catch(console.error);
     } finally {
