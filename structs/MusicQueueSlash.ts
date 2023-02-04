@@ -48,6 +48,7 @@ export class MusicQueue {
     this.connection.subscribe(this.player);
 
     this.connection.on("stateChange" as any, async (oldState: VoiceConnectionState, newState: VoiceConnectionState) => {
+      // console.log(newState.status)
       if (newState.status === VoiceConnectionStatus.Disconnected) {
         if (newState.reason === VoiceConnectionDisconnectReason.WebSocketClose && newState.closeCode === 4014) {
           try {
@@ -64,6 +65,7 @@ export class MusicQueue {
         }
       } else if (
         !this.readyLock &&
+        // @ts-ignore
         (newState.status === VoiceConnectionStatus.Connecting || newState.status === VoiceConnectionStatus.Signalling)
       ) {
         this.readyLock = true;

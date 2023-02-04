@@ -10,7 +10,7 @@ export default {
   execute(interaction: CommandInteraction) {
     const queue = bot.queues.get(interaction.guild!.id);
 
-    console.log(interaction.user);
+    // console.log(interaction.user);
     // define guildMember as <GuildMember>
     const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
     if (!queue) return interaction.reply({content: i18n.__("loop.errorNotQueue"), ephemeral: true}).catch(console.error);

@@ -18,7 +18,6 @@ export default {
     PermissionsBitField.Flags.ManageMessages
   ],
   async execute(interaction: CommandInteraction) {
-    // get song 
     // @ts-ignore
     const argSongName = interaction.options.getString("song");
 
@@ -39,16 +38,14 @@ export default {
 
     const url = argSongName;
 
-    const loadingReply = await interaction.reply("⏳ Loading...");
+    /*const loadingReply = */await interaction.reply("⏳ Loading...");
 
     // Start the playlist if playlist url was provided
     if (playlistPattern.test(url)) {
     // @ts-ignore
-      await interaction.deleteReply().catch(console.error);
+      await interaction.editReply("🔗 Link is playlist").catch(console.error);
       
-    // TODO: IMPLEMENT PLAYLIST SLASH COMMAND
-      return interaction.reply(`TODO: IMPLEMENT PLAYLIST SLASH COMMAND`);
-    //   return bot.commands.get("playlist")!.execute(message, args);
+      return bot.slashCommandsMap.get("playlist")!.execute(interaction);
     }
 
     let song;
@@ -61,16 +58,14 @@ export default {
 
       console.error(error);
       return interaction.reply({content: i18n.__("common.errorCommand"), ephemeral: true}).catch(console.error);
-    } finally {
-    // @ts-ignore
-      await interaction.deleteReply().catch(console.error);
     }
+    // REMOVED: finally{*delete reply*}
 
     if (queue) {
       queue.enqueue(song);
 
       return interaction
-        .reply({content: i18n.__mf("play.queueAdded", { title: song.title, author: `${interaction.user.username}#${interaction.user.discriminator}` }), ephemeral: true})
+        .editReply({content: i18n.__mf("play.queueAdded", { title: song.title, author: interaction.user.id })})
         .catch(console.error);
     }
     
@@ -89,5 +84,6 @@ export default {
     bot.queues.set(interaction.guild!.id, newQueue);
 
     newQueue.enqueue(song);
+    interaction.replied && await interaction.editReply({content: "Starting soon :)"}).catch(console.error);
   }
 };

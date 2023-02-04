@@ -53,7 +53,7 @@ export class Bot {
       const command = await import(join(__dirname, "..", "commands_slash", `${file}`));
       this.slashCommands.push(command.default.data);
       this.slashCommandsMap.set(command.default.data.name, command.default);
-      console.log(`Registered slash command ${command.default.data.name}`)
+      console.log(`[SlashCMD INIT] - ${command.default.data.name}`)
     }
 
     await rest.put(
@@ -132,8 +132,6 @@ export class Bot {
       if (!this.cooldowns.has(interaction.commandName)) {
         this.cooldowns.set(interaction.commandName, new Collection());
       }
-
-      console.log(this.cooldowns)
 
       const now = Date.now();
       const timestamps: any = this.cooldowns.get(interaction.commandName);
