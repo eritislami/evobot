@@ -16,6 +16,6 @@ export default {
 
     queue.stop();
 
-    queue.textChannel.send(i18n.__mf("stop.result", { author: interaction.user.id })).catch(console.error);
+    interaction.reply({content: i18n.__mf("stop.result", { author: interaction.user.id })}).catch(console.error);
   }
 };

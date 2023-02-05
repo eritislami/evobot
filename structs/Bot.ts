@@ -30,8 +30,8 @@ export class Bot {
     this.client.on("warn", (info) => console.log(info));
     this.client.on("error", console.error);
 
-    this.importCommands();
-    this.onMessageCreate();
+    // this.importCommands();
+    // this.onMessageCreate();
     this.onInteractionCreate();
   }
 

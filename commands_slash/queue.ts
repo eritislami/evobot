@@ -17,13 +17,16 @@ export default {
     let currentPage = 0;
     const embeds = generateQueueEmbed(interaction, queue.songs);
 
-    await interaction.reply("⏳ Loading queue...")
+    // await interaction.reply("⏳ Loading queue...")
 
     // @ts-ignore
-    const queueEmbed = await interaction.followUp({
+     await interaction.reply({
       content: `**${i18n.__mf("queue.currentPage")} ${currentPage + 1}/${embeds.length}**`,
       embeds: [embeds[currentPage]]
     });
+
+    // @ts-ignore
+    const queueEmbed = await interaction.fetchReply();
 
     try {
       await queueEmbed.react("⬅️");

@@ -24,6 +24,6 @@ export default {
 
     queue.songs = songs;
 
-    queue.textChannel.send(i18n.__mf("shuffle.result", { author: interaction.user.id })).catch(console.error);
+    interaction.reply({content: i18n.__mf("shuffle.result", { author: interaction.user.id })}).catch(console.error);
   }
 };

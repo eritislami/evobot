@@ -17,9 +17,10 @@ export default {
     PermissionsBitField.Flags.AddReactions,
     PermissionsBitField.Flags.ManageMessages
   ],
-  async execute(interaction: CommandInteraction) {
+  async execute(interaction: CommandInteraction, songUrl: string) {
     // @ts-ignore
-    const argSongName = interaction.options.getString("song");
+    var argSongName = interaction.options.getString("song");
+    if(!argSongName) argSongName = songUrl;
 
     const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
     
@@ -37,8 +38,8 @@ export default {
     if (!argSongName) return interaction.reply({content: i18n.__mf("play.usageReply", { prefix: bot.prefix }), ephemeral: true}).catch(console.error);
 
     const url = argSongName;
-
-    /*const loadingReply = */await interaction.reply("⏳ Loading...");
+    if(interaction.replied) await interaction.editReply("⏳ Loading...").catch(console.error);
+    else await interaction.reply("⏳ Loading...");
 
     // Start the playlist if playlist url was provided
     if (playlistPattern.test(url)) {
@@ -57,15 +58,15 @@ export default {
       if (error.name == "InvalidURL") return interaction.reply({content: i18n.__mf("play.errorInvalidURL", {'url': `<${url}>`}), ephemeral: true}).catch(console.error);
 
       console.error(error);
-      return interaction.reply({content: i18n.__("common.errorCommand"), ephemeral: true}).catch(console.error);
+      if(interaction.replied) return await interaction.editReply({content: i18n.__("common.errorCommand")}).catch(console.error);
+      else return interaction.reply({content: i18n.__("common.errorCommand"), ephemeral: true}).catch(console.error);
     }
     // REMOVED: finally{*delete reply*}
 
     if (queue) {
       queue.enqueue(song);
 
-      return interaction
-        .editReply({content: i18n.__mf("play.queueAdded", { title: song.title, author: interaction.user.id })})
+      return interaction.channel!.send({content: i18n.__mf("play.queueAdded", { title: song.title, author: interaction.user.id })})
         .catch(console.error);
     }
     
