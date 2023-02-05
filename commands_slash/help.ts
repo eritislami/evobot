@@ -7,7 +7,7 @@ export default {
       .setName("help")
       .setDescription(i18n.__("help.description")),
   async execute(interaction: CommandInteraction) {
-    let commands = bot.commands;
+    let commands = bot.slashCommandsMap;
 
     let helpEmbed = new EmbedBuilder()
       .setTitle(i18n.__mf("help.embedTitle", { botname: interaction.client.user!.username }))
@@ -15,6 +15,8 @@ export default {
       .setColor("#F8AA2A");
 
     commands.forEach((cmd) => {
+      // @ts-ignore
+      cmd = cmd.data;
       helpEmbed.addFields({
         name: `**${bot.prefix}${cmd.name} ${cmd.aliases ? `(${cmd.aliases})` : ""}**`,
         value: `${cmd.description}`,
