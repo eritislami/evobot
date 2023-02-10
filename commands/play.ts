@@ -61,7 +61,7 @@ export default {
     }
 
     // Channel filter
-    if (!config.ALLOWED_VOICE_CHANNELS.includes(channel.id) && config.ALLOWED_VOICE_CHANNELS.length != 0){
+    if (!config.ALLOWED_VOICE_CHANNELS.includes(channel.id) && config.ALLOWED_VOICE_CHANNELS.length < 0){
       return message
         .reply(i18n.__mf("play.errorChannelNotAllowed"))
         .catch(console.error);
