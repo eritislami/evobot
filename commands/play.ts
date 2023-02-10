@@ -5,6 +5,7 @@ import { MusicQueue } from "../structs/MusicQueue";
 import { Song } from "../structs/Song";
 import { i18n } from "../utils/i18n";
 import { playlistPattern } from "../utils/patterns";
+import { config } from "../utils/config";
 export default {
   name: "play",
   cooldown: 3,
@@ -56,6 +57,13 @@ export default {
 
       return message
         .reply(i18n.__mf("play.queueAdded", { title: song.title, author: message.author }))
+        .catch(console.error);
+    }
+
+    // Channel filter
+    if (!config.ALLOWED_VOICE_CHANNELS.includes(channel.id) && config.ALLOWED_VOICE_CHANNELS.length != 0){
+      return message
+        .reply(i18n.__mf("play.errorChannelNotAllowed"))
         .catch(console.error);
     }
 

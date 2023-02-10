@@ -6,4 +6,5 @@ export interface Config {
   STAY_TIME: number;
   DEFAULT_VOLUME: number;
   LOCALE: string;
+  ALLOWED_VOICE_CHANNELS: Array<string>;
 }
