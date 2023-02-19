@@ -1,19 +1,19 @@
-import { Message } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { bot } from "../index";
 import { i18n } from "../utils/i18n";
 import { canModifyQueue } from "../utils/queue";
 
 export default {
-  name: "stop",
-  description: i18n.__("stop.description"),
-  execute(message: Message) {
-    const queue = bot.queues.get(message.guild!.id);
+  data: new SlashCommandBuilder().setName("stop").setDescription(i18n.__("stop.description")),
+  execute(interaction: ChatInputCommandInteraction) {
+    const queue = bot.queues.get(interaction.guild!.id);
+    const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
 
-    if (!queue) return message.reply(i18n.__("stop.errorNotQueue")).catch(console.error);
-    if (!canModifyQueue(message.member!)) return i18n.__("common.errorNotChannel");
+    if (!queue) return interaction.reply(i18n.__("stop.errorNotQueue")).catch(console.error);
+    if (!guildMemer || !canModifyQueue(guildMemer)) return i18n.__("common.errorNotChannel");
 
     queue.stop();
 
-    queue.textChannel.send(i18n.__mf("stop.result", { author: message.author })).catch(console.error);
+    interaction.reply({ content: i18n.__mf("stop.result", { author: interaction.user.id }) }).catch(console.error);
   }
 };

@@ -1,4 +1,4 @@
-import { Message } from "discord.js";
+import { SlashCommandBuilder, CommandInteraction, ChatInputCommandInteraction } from "discord.js";
 import { bot } from "../index";
 import { Song } from "../structs/Song";
 import { i18n } from "../utils/i18n";
@@ -7,45 +7,51 @@ import { canModifyQueue } from "../utils/queue";
 const pattern = /^[0-9]{1,2}(\s*,\s*[0-9]{1,2})*$/;
 
 export default {
-  name: "remove",
-  aliases: ["rm"],
-  description: i18n.__("remove.description"),
-  execute(message: Message, args: any[]) {
-    const queue = bot.queues.get(message.guild!.id);
+  data: new SlashCommandBuilder()
+    .setName("remove")
+    .setDescription(i18n.__("remove.description"))
+    .addStringOption((option) =>
+      option.setName("slot").setDescription(i18n.__("remove.description")).setRequired(true)
+    ),
+  execute(interaction: ChatInputCommandInteraction) {
+    const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
+    const removeArgs = interaction.options.getString("slot");
 
-    if (!queue) return message.reply(i18n.__("remove.errorNotQueue")).catch(console.error);
+    const queue = bot.queues.get(interaction.guild!.id);
 
-    if (!canModifyQueue(message.member!)) return i18n.__("common.errorNotChannel");
+    if (!queue)
+      return interaction.reply({ content: i18n.__("remove.errorNotQueue"), ephemeral: true }).catch(console.error);
 
-    if (!args.length) return message.reply(i18n.__mf("remove.usageReply", { prefix: bot.prefix }));
+    if (!canModifyQueue(guildMemer!)) return i18n.__("common.errorNotChannel");
 
-    const removeArgs = args.join("");
+    if (!removeArgs)
+      return interaction.reply({ content: i18n.__mf("remove.usageReply", { prefix: bot.prefix }), ephemeral: true });
 
-    const songs = removeArgs.split(",").map((arg) => parseInt(arg));
+    const songs = removeArgs.split(",").map((arg: any) => parseInt(arg));
 
     let removed: Song[] = [];
 
     if (pattern.test(removeArgs)) {
       queue.songs = queue.songs.filter((item, index) => {
-        if (songs.find((songIndex) => songIndex - 1 === index)) removed.push(item);
+        if (songs.find((songIndex: any) => songIndex - 1 === index)) removed.push(item);
         else return true;
       });
 
-      queue.textChannel.send(
+      interaction.reply(
         i18n.__mf("remove.result", {
           title: removed.map((song) => song.title).join("\n"),
-          author: message.author.id
+          author: interaction.user.id
         })
       );
-    } else if (!isNaN(args[0]) && args[0] >= 1 && args[0] <= queue.songs.length) {
-      return queue.textChannel.send(
+    } else if (!isNaN(+removeArgs) && +removeArgs >= 1 && +removeArgs <= queue.songs.length) {
+      return interaction.reply(
         i18n.__mf("remove.result", {
-          title: queue.songs.splice(args[0] - 1, 1)[0].title,
-          author: message.author.id
+          title: queue.songs.splice(+removeArgs - 1, 1)[0].title,
+          author: interaction.user.id
         })
       );
     } else {
-      return message.reply(i18n.__mf("remove.usageReply", { prefix: bot.prefix }));
+      return interaction.reply({ content: i18n.__mf("remove.usageReply", { prefix: bot.prefix }) });
     }
   }
 };

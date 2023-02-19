@@ -1,31 +1,38 @@
-import { Message } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { bot } from "../index";
 import { i18n } from "../utils/i18n";
 import { canModifyQueue } from "../utils/queue";
-import { bot } from "../index";
 
 export default {
-  name: "volume",
-  aliases: ["v"],
-  description: i18n.__("volume.description"),
-  execute(message: Message, args: Array<any>) {
-    const queue = bot.queues.get(message.guild!.id);
+  data: new SlashCommandBuilder()
+    .setName("volume")
+    .setDescription(i18n.__("volume.description"))
+    .addIntegerOption((option) => option.setName("volume").setDescription(i18n.__("volume.description"))),
+  execute(interaction: ChatInputCommandInteraction) {
+    const queue = bot.queues.get(interaction.guild!.id);
+    const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
+    const volumeArg = interaction.options.getInteger("volume");
 
-    if (!queue) return message.reply(i18n.__("volume.errorNotQueue")).catch(console.error);
+    if (!queue)
+      return interaction.reply({ content: i18n.__("volume.errorNotQueue"), ephemeral: true }).catch(console.error);
 
-    if (!canModifyQueue(message.member!))
-      return message.reply(i18n.__("volume.errorNotChannel")).catch(console.error);
+    if (!canModifyQueue(guildMemer!))
+      return interaction.reply({ content: i18n.__("volume.errorNotChannel"), ephemeral: true }).catch(console.error);
 
-    if (!args[0])
-      return message.reply(i18n.__mf("volume.currentVolume", { volume: queue.volume })).catch(console.error);
+    if (!volumeArg || volumeArg === queue.volume)
+      return interaction
+        .reply({ content: i18n.__mf("volume.currentVolume", { volume: queue.volume }) })
+        .catch(console.error);
 
-    if (isNaN(args[0])) return message.reply(i18n.__("volume.errorNotNumber")).catch(console.error);
+    if (isNaN(volumeArg))
+      return interaction.reply({ content: i18n.__("volume.errorNotNumber"), ephemeral: true }).catch(console.error);
 
-    if (Number(args[0]) > 100 || Number(args[0]) < 0)
-      return message.reply(i18n.__("volume.errorNotValid")).catch(console.error);
+    if (Number(volumeArg) > 100 || Number(volumeArg) < 0)
+      return interaction.reply({ content: i18n.__("volume.errorNotValid"), ephemeral: true }).catch(console.error);
 
-    queue.volume = args[0];
-    queue.resource.volume?.setVolumeLogarithmic(args[0] / 100);
+    queue.volume = volumeArg;
+    queue.resource.volume?.setVolumeLogarithmic(volumeArg / 100);
 
-    return message.reply(i18n.__mf("volume.result", { arg: args[0] })).catch(console.error);
+    return interaction.reply({ content: i18n.__mf("volume.result", { arg: volumeArg }) }).catch(console.error);
   }
 };

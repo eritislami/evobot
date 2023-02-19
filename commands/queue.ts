@@ -1,25 +1,37 @@
-import { Message, EmbedBuilder, MessageReaction, User, PermissionsBitField } from "discord.js";
+import {
+  ChatInputCommandInteraction,
+  CommandInteraction,
+  EmbedBuilder,
+  MessageReaction,
+  PermissionsBitField,
+  SlashCommandBuilder,
+  TextChannel,
+  User
+} from "discord.js";
 import { bot } from "../index";
 import { Song } from "../structs/Song";
 import { i18n } from "../utils/i18n";
 
 export default {
-  name: "queue",
+  data: new SlashCommandBuilder().setName("queue").setDescription(i18n.__("queue.description")),
   cooldown: 5,
-  aliases: ["q"],
-  description: i18n.__("queue.description"),
   permissions: [PermissionsBitField.Flags.AddReactions, PermissionsBitField.Flags.ManageMessages],
-  async execute(message: Message) {
-    const queue = bot.queues.get(message.guild!.id);
-    if (!queue || !queue.songs.length) return message.reply(i18n.__("queue.errorNotQueue"));
+  async execute(interaction: ChatInputCommandInteraction) {
+    const queue = bot.queues.get(interaction.guild!.id);
+    if (!queue || !queue.songs.length) return interaction.reply({ content: i18n.__("queue.errorNotQueue") });
 
     let currentPage = 0;
-    const embeds = generateQueueEmbed(message, queue.songs);
+    const embeds = generateQueueEmbed(interaction, queue.songs);
 
-    const queueEmbed = await message.reply({
-      content: `**${i18n.__mf("queue.currentPage")} ${currentPage + 1}/${embeds.length}**`,
-      embeds: [embeds[currentPage]]
-    });
+    await interaction.reply("⏳ Loading queue...");
+
+    if (interaction.replied)
+      await interaction.editReply({
+        content: `**${i18n.__mf("queue.currentPage")} ${currentPage + 1}/${embeds.length}**`,
+        embeds: [embeds[currentPage]]
+      });
+
+    const queueEmbed = await interaction.fetchReply();
 
     try {
       await queueEmbed.react("⬅️");
@@ -27,11 +39,11 @@ export default {
       await queueEmbed.react("➡️");
     } catch (error: any) {
       console.error(error);
-      message.reply(error.message).catch(console.error);
+      (interaction.channel as TextChannel).send(error.message).catch(console.error);
     }
 
     const filter = (reaction: MessageReaction, user: User) =>
-      ["⬅️", "⏹", "➡️"].includes(reaction.emoji.name!) && message.author.id === user.id;
+      ["⬅️", "⏹", "➡️"].includes(reaction.emoji.name!) && interaction.user.id === user.id;
 
     const collector = queueEmbed.createReactionCollector({ filter, time: 60000 });
 
@@ -57,16 +69,16 @@ export default {
           collector.stop();
           reaction.message.reactions.removeAll();
         }
-        await reaction.users.remove(message.author.id);
+        await reaction.users.remove(interaction.user.id);
       } catch (error: any) {
         console.error(error);
-        return message.reply(error.message).catch(console.error);
+        return (interaction.channel as TextChannel).send(error.message).catch(console.error);
       }
     });
   }
 };
 
-function generateQueueEmbed(message: Message, songs: Song[]) {
+function generateQueueEmbed(interaction: CommandInteraction, songs: Song[]) {
   let embeds = [];
   let k = 10;
 
@@ -79,7 +91,7 @@ function generateQueueEmbed(message: Message, songs: Song[]) {
 
     const embed = new EmbedBuilder()
       .setTitle(i18n.__("queue.embedTitle"))
-      .setThumbnail(message.guild?.iconURL()!)
+      .setThumbnail(interaction.guild?.iconURL()!)
       .setColor("#F8AA2A")
       .setDescription(i18n.__mf("queue.embedCurrentSong", { title: songs[0].title, url: songs[0].url, info: info }))
       .setTimestamp();

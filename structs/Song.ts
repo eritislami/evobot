@@ -3,7 +3,7 @@ import youtube from "youtube-sr";
 import { getInfo } from "ytdl-core";
 import ytdl from "ytdl-core-discord";
 import { i18n } from "../utils/i18n";
-import { videoPattern } from "../utils/patterns";
+import { videoPattern, isURL } from "../utils/patterns";
 
 export interface SongData {
   url: string;
@@ -24,7 +24,6 @@ export class Song {
 
   public static async from(url: string = "", search: string = "") {
     const isYoutubeUrl = videoPattern.test(url);
-    // const isScUrl = scRegex.test(url);
 
     let songInfo;
 
@@ -39,6 +38,15 @@ export class Song {
     } else {
       const result = await youtube.searchOne(search);
 
+      result ? null : console.log(`No results found for ${search}`); // This is for handling the case where no results are found (spotify links for example)
+
+      if (!result) {
+        let err = new Error(`No search results found for ${search}`);
+        err.name = "NoResults";
+        if (isURL.test(url)) err.name = "InvalidURL";
+
+        throw err;
+      }
       songInfo = await getInfo(`https://youtube.com/watch?v=${result.id}`);
 
       return new this({

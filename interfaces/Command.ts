@@ -1,8 +1,8 @@
+import { SlashCommandBuilder } from "discord.js";
+
 export interface Command {
-  name: string;
-  description: string;
-  aliases?: string[];
   permissions?: string[];
   cooldown?: number;
+  data: SlashCommandBuilder;
   execute(...args: any): any;
 }

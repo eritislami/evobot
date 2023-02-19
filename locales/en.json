@@ -31,7 +31,11 @@
     "description": "Move songs around in the queue",
     "errorNotQueue": "There is no queue.",
     "usagesReply": "Usage: {prefix}move <Queue Number>",
-    "result": "<@{author}> 🚚 moved **{title}** to {index} in the queue."
+    "result": "<@{author}> 🚚 moved **{title}** to {index} in the queue.",
+    "args": {
+      "movefrom": "Slot to move from",
+      "moveto": "Slot to move to"
+    }
   },
   "nowplaying": {
     "description": "Show now playing song",
@@ -50,10 +54,10 @@
     "result": "📈 Average ping to API: {ping} ms"
   },
   "play": {
-    "description": "Plays audio from YouTube or Soundcloud",
+    "description": "Plays audio from YouTube",
     "errorNotChannel": "You need to join a voice channel first!",
     "errorNotInSameChannel": "You must be in the same channel as {user}",
-    "usageReply": "Usage: {prefix}play <YouTube URL | Video Name | Soundcloud URL>",
+    "usageReply": "Usage: {prefix}play <YouTube URL | Video Name>",
     "missingPermissionConnect": "Cannot connect to voice channel, missing permissions",
     "missingPermissionSpeak": "I cannot speak in this voice channel, make sure I have the proper permissions!",
     "queueAdded": "✅ **{title}** has been added to the queue by <@{author}>",
@@ -72,7 +76,9 @@
     "stopSong": "<@{author}> ⏹ stopped the music!",
     "leaveChannel": "Leaving voice channel...",
     "songNotFound": "Audio Not Found",
-    "songAccessErr": "Video is age restricted, private or unavailable"
+    "songAccessErr": "Video is age restricted, private or unavailable",
+    "errorNoResults": "No results found for {url}",
+    "errorInvalidURL": "Invalid URL, please try a search or youtube url"
   },
   "playlist": {
     "description": "Play a playlist from youtube",
@@ -118,7 +124,8 @@
     "errorAlreadyCollector": "A message collector is already active in this channel.",
     "errorNotChannel": "You need to join a voice channel first!",
     "resultEmbedTitle": "**Reply with the song number you want to play**",
-    "resultEmbedDesc": "Results for: {search}"
+    "resultEmbedDesc": "Results for: {search}",
+    "optionQuery": "Search query"
   },
   "shuffle": {
     "description": "Shuffle queue",
@@ -135,7 +142,10 @@
     "usageReply": "Usage: {prefix}{name} <Queue Number>",
     "errorNotQueue": "There is no queue.",
     "errorNotValid": "The queue is only {length} songs long!",
-    "result": "<@{author}> ⏭ skipped {arg} songs"
+    "result": "<@{author}> ⏭ skipped {arg} songs",
+    "args": {
+      "number": "The queue number to skip to"
+    }
   },
   "stop": {
     "description": "Stops the music",
@@ -163,5 +173,7 @@
     "errorNotChannel": "You need to join a voice channel first!",
     "cooldownMessage": "please wait {time} more second(s) before reusing the `{name}` command.",
     "errorCommand": "There was an error executing that command."
-  }
+  },
+  "Invite me to your server!": "Invite me to your server!",
+  "Invite": "Invite"
 }

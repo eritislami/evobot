@@ -1,21 +1,20 @@
-import { canModifyQueue } from "../utils/queue";
-import { i18n } from "../utils/i18n";
-import { Message } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { bot } from "../index";
+import { i18n } from "../utils/i18n";
+import { canModifyQueue } from "../utils/queue";
 
 export default {
-  name: "skip",
-  aliases: ["s"],
-  description: i18n.__("skip.description"),
-  execute(message: Message) {
-    const queue = bot.queues.get(message.guild!.id);
+  data: new SlashCommandBuilder().setName("skip").setDescription(i18n.__("skip.description")),
+  execute(interaction: ChatInputCommandInteraction) {
+    const queue = bot.queues.get(interaction.guild!.id);
+    const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
 
-    if (!queue) return message.reply(i18n.__("skip.errorNotQueue")).catch(console.error);
+    if (!queue) return interaction.reply(i18n.__("skip.errorNotQueue")).catch(console.error);
 
-    if (!canModifyQueue(message.member!)) return i18n.__("common.errorNotChannel");
+    if (!canModifyQueue(guildMemer!)) return i18n.__("common.errorNotChannel");
 
     queue.player.stop(true);
 
-    queue.textChannel.send(i18n.__mf("skip.result", { author: message.author })).catch(console.error);
+    interaction.reply({ content: i18n.__mf("skip.result", { author: interaction.user.id }) }).catch(console.error);
   }
 };

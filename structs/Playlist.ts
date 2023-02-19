@@ -1,6 +1,7 @@
 import youtube, { Playlist as YoutubePlaylist } from "youtube-sr";
 import { config } from "../utils/config";
 import { Song } from "./Song";
+
 const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/i;
 
 export class Playlist {
@@ -30,6 +31,7 @@ export class Playlist {
       playlist = await youtube.getPlaylist(url);
     } else {
       const result = await youtube.searchOne(search, "playlist");
+
       playlist = await youtube.getPlaylist(result.url!);
     }
 

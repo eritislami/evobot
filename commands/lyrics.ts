@@ -1,17 +1,17 @@
-import { Message, EmbedBuilder } from "discord.js";
+import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { i18n } from "../utils/i18n";
 // @ts-ignore
 import lyricsFinder from "lyrics-finder";
 import { bot } from "../index";
 
 export default {
-  name: "lyrics",
-  aliases: ["ly"],
-  description: i18n.__("lyrics.description"),
-  async execute(message: Message) {
-    const queue = bot.queues.get(message.guild!.id);
+  data: new SlashCommandBuilder().setName("lyrics").setDescription(i18n.__("lyrics.description")),
+  async execute(interaction: ChatInputCommandInteraction) {
+    const queue = bot.queues.get(interaction.guild!.id);
 
-    if (!queue || !queue.songs.length) return message.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error);
+    if (!queue || !queue.songs.length) return interaction.reply(i18n.__("lyrics.errorNotQueue")).catch(console.error);
+
+    await interaction.reply("⏳ Loading...").catch(console.error);
 
     let lyrics = null;
     const title = queue.songs[0].title;
@@ -32,6 +32,6 @@ export default {
     if (lyricsEmbed.data.description!.length >= 2048)
       lyricsEmbed.setDescription(`${lyricsEmbed.data.description!.substr(0, 2045)}...`);
 
-    return message.reply({ embeds: [lyricsEmbed] }).catch(console.error);
+    return interaction.editReply({ content: "", embeds: [lyricsEmbed] }).catch(console.error);
   }
 };
