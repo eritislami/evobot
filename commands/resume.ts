@@ -15,14 +15,18 @@ export default {
     if (!canModifyQueue(guildMemer!)) return i18n.__("common.errorNotChannel");
 
     if (queue.player.unpause()) {
-      interaction
-        .reply({ content: i18n.__mf("resume.resultNotPlaying", { author: interaction.user.id }) })
-        .catch(console.error);
+      const content = { content: i18n.__mf("resume.resultNotPlaying", { author: interaction.user.id }) };
+
+      if (interaction.replied) interaction.followUp(content).catch(console.error);
+      else interaction.reply(content).catch(console.error);
 
       return true;
     }
 
-    interaction.reply({ content: i18n.__("resume.errorPlaying") }).catch(console.error);
+    const content = { content: i18n.__("resume.errorPlaying") };
+
+    if (interaction.replied) interaction.followUp(content).catch(console.error);
+    else interaction.reply(content).catch(console.error);
     return false;
   }
 };

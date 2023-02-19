@@ -23,6 +23,9 @@ export default {
 
     queue.songs = songs;
 
-    interaction.reply({ content: i18n.__mf("shuffle.result", { author: interaction.user.id }) }).catch(console.error);
+    const content = { content: i18n.__mf("shuffle.result", { author: interaction.user.id }) };
+
+    if (interaction.replied) interaction.followUp(content).catch(console.error);
+    else interaction.reply(content).catch(console.error);
   }
 };

@@ -17,8 +17,11 @@ export default {
 
     queue.loop = !queue.loop;
 
-    return interaction
-      .reply({ content: i18n.__mf("loop.result", { loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off") }) })
-      .catch(console.error);
+    const content = {
+      content: i18n.__mf("loop.result", { loop: queue.loop ? i18n.__("common.on") : i18n.__("common.off") })
+    };
+
+    if (interaction.replied) interaction.followUp(content).catch(console.error);
+    else interaction.reply(content).catch(console.error);
   }
 };

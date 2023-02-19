@@ -14,7 +14,10 @@ export default {
     if (!canModifyQueue(guildMemer!)) return i18n.__("common.errorNotChannel");
 
     if (queue.player.pause()) {
-      interaction.reply({ content: i18n.__mf("pause.result", { author: interaction.user.id }) }).catch(console.error);
+      const content = { content: i18n.__mf("pause.result", { author: interaction.user.id }) };
+
+      if (interaction.replied) interaction.followUp(content).catch(console.error);
+      else interaction.reply(content).catch(console.error);
 
       return true;
     }
