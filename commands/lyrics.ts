@@ -25,12 +25,9 @@ export default {
 
     let lyricsEmbed = new EmbedBuilder()
       .setTitle(i18n.__mf("lyrics.embedTitle", { title: title }))
-      .setDescription(lyrics)
+      .setDescription(lyrics.length >= 4096 ? `${lyrics.substr(0, 4093)}...` : lyrics)
       .setColor("#F8AA2A")
       .setTimestamp();
-
-    if (lyricsEmbed.data.description!.length >= 2048)
-      lyricsEmbed.setDescription(`${lyricsEmbed.data.description!.substr(0, 2045)}...`);
 
     return interaction.editReply({ content: "", embeds: [lyricsEmbed] }).catch(console.error);
   }
