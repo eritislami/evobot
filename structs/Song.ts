@@ -24,7 +24,6 @@ export class Song {
 
   public static async from(url: string = "", search: string = "") {
     const isYoutubeUrl = videoPattern.test(url);
-    // const isScUrl = scRegex.test(url);
 
     let songInfo;
 
@@ -41,11 +40,10 @@ export class Song {
 
       result ? null : console.log(`No results found for ${search}`); // This is for handling the case where no results are found (spotify links for example)
 
-      if(!result) {
+      if (!result) {
         let err = new Error(`No search results found for ${search}`);
         err.name = "NoResults";
-        if(isURL.test(url))
-          err.name = "InvalidURL";
+        if (isURL.test(url)) err.name = "InvalidURL";
 
         throw err;
       }

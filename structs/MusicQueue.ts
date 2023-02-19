@@ -11,7 +11,7 @@ import {
   VoiceConnectionState,
   VoiceConnectionStatus
 } from "@discordjs/voice";
-import { Message, TextChannel, User } from "discord.js";
+import { CommandInteraction, Message, TextChannel, User } from "discord.js";
 import { promisify } from "node:util";
 import { bot } from "../index";
 import { QueueOptions } from "../interfaces/QueueOptions";
@@ -23,7 +23,7 @@ import { Song } from "./Song";
 const wait = promisify(setTimeout);
 
 export class MusicQueue {
-  public readonly message: Message;
+  public readonly interaction: CommandInteraction;
   public readonly connection: VoiceConnection;
   public readonly player: AudioPlayer;
   public readonly textChannel: TextChannel;
@@ -42,7 +42,6 @@ export class MusicQueue {
   public constructor(options: QueueOptions) {
     Object.assign(this, options);
 
-    this.textChannel = options.message.channel as TextChannel;
     this.player = createAudioPlayer({ behaviors: { noSubscriber: NoSubscriberBehavior.Play } });
     this.connection.subscribe(this.player);
 
@@ -134,7 +133,7 @@ export class MusicQueue {
           this.connection.destroy();
         } catch {}
       }
-      bot.queues.delete(this.message.guild!.id);
+      bot.queues.delete(this.interaction.guild!.id);
 
       !config.PRUNING && this.textChannel.send(i18n.__("play.leaveChannel"));
     }, config.STAY_TIME * 1000);
@@ -205,15 +204,15 @@ export class MusicQueue {
       switch (reaction.emoji.name) {
         case "⏭":
           reaction.users.remove(user).catch(console.error);
-          await this.bot.commands.get("skip")!.execute(this.message);
+          await this.bot.slashCommandsMap.get("skip")!.execute(this.interaction);
           break;
 
         case "⏯":
           reaction.users.remove(user).catch(console.error);
           if (this.player.state.status == AudioPlayerStatus.Playing) {
-            await this.bot.commands.get("pause")!.execute(this.message);
+            await this.bot.slashCommandsMap.get("pause")!.execute(this.interaction);
           } else {
-            await this.bot.commands.get("resume")!.execute(this.message);
+            await this.bot.slashCommandsMap.get("resume")!.execute(this.interaction);
           }
           break;
 
@@ -254,17 +253,17 @@ export class MusicQueue {
 
         case "🔁":
           reaction.users.remove(user).catch(console.error);
-          await this.bot.commands.get("loop")!.execute(this.message);
+          await this.bot.slashCommandsMap.get("loop")!.execute(this.interaction);
           break;
 
         case "🔀":
           reaction.users.remove(user).catch(console.error);
-          await this.bot.commands.get("shuffle")!.execute(this.message);
+          await this.bot.slashCommandsMap.get("shuffle")!.execute(this.interaction);
           break;
 
         case "⏹":
           reaction.users.remove(user).catch(console.error);
-          await this.bot.commands.get("stop")!.execute(this.message);
+          await this.bot.slashCommandsMap.get("stop")!.execute(this.interaction);
           collector.stop();
           break;
 
