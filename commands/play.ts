@@ -22,8 +22,8 @@ export default {
     let argSongName = interaction.options.getString("song");
     if (!argSongName) argSongName = input;
 
-    const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
-    const { channel } = guildMemer!.voice;
+    const guildMember = interaction.guild!.members.cache.get(interaction.user.id);
+    const { channel } = guildMember!.voice;
 
     if (!channel)
       return interaction.reply({ content: i18n.__("play.errorNotChannel"), ephemeral: true }).catch(console.error);
