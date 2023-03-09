@@ -76,6 +76,19 @@ export default {
         })
       });
 
+      newQueue.connection.on('stateChange', (oldState, newState) => {
+        const oldNetworking = Reflect.get(oldState, 'networking');
+        const newNetworking = Reflect.get(newState, 'networking');
+  
+        const networkStateChangeHandler = (oldNetworkState: any, newNetworkState: any) => {
+          const newUdp = Reflect.get(newNetworkState, 'udp');
+          clearInterval(newUdp?.keepAliveInterval);
+        }
+  
+        oldNetworking?.off('stateChange', networkStateChangeHandler);
+        newNetworking?.on('stateChange', networkStateChangeHandler);
+      });
+
       bot.queues.set(interaction.guild!.id, newQueue);
       newQueue.songs.push(...playlist.videos);
 
