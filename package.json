@@ -1,6 +1,6 @@
 {
   "name": "evobot",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Discord music bot built with discord.js",
   "main": "index.ts",
   "author": "Erit Islami <eritislami@gmail.com>",
