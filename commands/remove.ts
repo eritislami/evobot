@@ -29,7 +29,7 @@ export default {
 
     const songs = removeArgs.split(",").map((arg: any) => parseInt(arg));
 
-    let removed: Song[] = [];
+    const removed: Song[] = [];
 
     if (pattern.test(removeArgs)) {
       queue.songs = queue.songs.filter((item, index) => {

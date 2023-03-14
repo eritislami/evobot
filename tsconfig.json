@@ -1,21 +1,21 @@
 {
-  "compilerOptions": {
-    "strict": true,
-    "outDir": "dist",
-    "module": "commonjs",
-    "target": "es2022",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "useUnknownInCatchVariables": true,
-    "allowUnreachableCode": false,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "importHelpers": true,
-    "typeRoots": ["node_modules/@types"],
-    "types": ["node"],
-    "sourceMap": true,
-    "strictPropertyInitialization": false
-  },
-  "include": ["./", "./config.json", "./locales/*.json", "./sounds/*.mp3"],
-  "exclude": ["/.github", "./dist", "./node_modules"]
+	"compilerOptions": {
+		"strict": true,
+		"outDir": "dist",
+		"module": "ESNext",
+		"target": "ESNext",
+		"moduleResolution": "nodenext",
+		"resolveJsonModule": true,
+		"useUnknownInCatchVariables": true,
+		"allowUnreachableCode": false,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"importHelpers": true,
+		"typeRoots": ["node_modules/@types"],
+		"types": ["node"],
+		"sourceMap": true,
+		"strictPropertyInitialization": false
+	},
+	"include": ["./", "./config.json", "./locales/*.json", "./sounds/*.mp3", "./eslint.js"],
+	"exclude": ["/.github", "./dist", "./node_modules"]
 }

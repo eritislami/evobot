@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { i18n } from "../utils/i18n";
-// @ts-ignore
+// @ts-expect-error
 import lyricsFinder from "lyrics-finder";
 import { bot } from "../index";
 
@@ -23,7 +23,7 @@ export default {
       lyrics = i18n.__mf("lyrics.lyricsNotFound", { title: title });
     }
 
-    let lyricsEmbed = new EmbedBuilder()
+    const lyricsEmbed = new EmbedBuilder()
       .setTitle(i18n.__mf("lyrics.embedTitle", { title: title }))
       .setDescription(lyrics.length >= 4096 ? `${lyrics.substr(0, 4093)}...` : lyrics)
       .setColor("#F8AA2A")

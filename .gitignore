@@ -5,6 +5,7 @@ config.json
 /sounds/**
 !/sounds/putmusichere.mp3
 /dist
+.ignore/
 
 # Logs
 logs

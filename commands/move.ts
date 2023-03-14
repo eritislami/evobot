@@ -31,7 +31,7 @@ export default {
     if (isNaN(movefromArg) || movefromArg <= 1)
       return interaction.reply({ content: i18n.__mf("move.usagesReply", { prefix: bot.prefix }), ephemeral: true });
 
-    let song = queue.songs[movefromArg - 1];
+    const song = queue.songs[movefromArg - 1];
 
     queue.songs = move(queue.songs, movefromArg - 1, movetoArg == 1 ? 1 : movetoArg - 1);
 

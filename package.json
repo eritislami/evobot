@@ -35,9 +35,18 @@
   "devDependencies": {
     "@types/i18n": "^0.13.6",
     "@types/node": "^18.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
     "cz-conventional-changelog": "^3.0.1",
+    "eslint": "^8.36.0",
+    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-promise": "^6.1.1",
     "nodemon": "^2.0.20",
-    "ts-node": "^10.9.1"
+    "prettier": "^2.8.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
   },
   "optionalDependencies": {
     "@discordjs/opus": "^0.9.0",

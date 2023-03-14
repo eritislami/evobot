@@ -16,7 +16,7 @@ export default {
     const seek = queue.resource.playbackDuration / 1000;
     const left = song.duration - seek;
 
-    let nowPlaying = new EmbedBuilder()
+    const nowPlaying = new EmbedBuilder()
       .setTitle(i18n.__("nowplaying.embedTitle"))
       .setDescription(`${song.title}\n${song.url}`)
       .setColor("#F8AA2A");

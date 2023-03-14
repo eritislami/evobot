@@ -25,7 +25,7 @@ export default {
     PermissionsBitField.Flags.ManageMessages
   ],
   async execute(interaction: ChatInputCommandInteraction) {
-    let argSongName = interaction.options.getString("playlist");
+    const argSongName = interaction.options.getString("playlist");
 
     const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
     const { channel } = guildMemer!.voice;
@@ -38,12 +38,12 @@ export default {
     if (queue && channel.id !== queue.connection.joinConfig.channelId)
       if (interaction.replied)
         return interaction
-          .editReply({ content: i18n.__mf("play.errorNotInSameChannel", { user: interaction.client.user!.username }) })
+          .editReply({ content: i18n.__mf("play.errorNotInSameChannel", { user: interaction.client.user.username }) })
           .catch(console.error);
       else
         return interaction
           .reply({
-            content: i18n.__mf("play.errorNotInSameChannel", { user: interaction.client.user!.username }),
+            content: i18n.__mf("play.errorNotInSameChannel", { user: interaction.client.user.username }),
             ephemeral: true
           })
           .catch(console.error);
@@ -82,7 +82,7 @@ export default {
       newQueue.enqueue(playlist.videos[0]);
     }
 
-    let playlistEmbed = new EmbedBuilder()
+    const playlistEmbed = new EmbedBuilder()
       .setTitle(`${playlist.data.title}`)
       .setDescription(playlist.videos.map((song: Song, index: number) => `${index + 1}. ${song.title}`).join("\n"))
       .setURL(playlist.data.url!)

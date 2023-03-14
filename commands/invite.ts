@@ -20,7 +20,7 @@ export default {
         .setStyle(ButtonStyle.Link)
         .setURL(
           `https://discord.com/api/oauth2/authorize?client_id=${
-            interaction.client.user!.id
+            interaction.client.user.id
           }&permissions=8&scope=bot%20applications.commands`
         )
     );

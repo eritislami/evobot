@@ -14,10 +14,10 @@ export default {
 
     if (!guildMemer || !canModifyQueue(guildMemer)) return i18n.__("common.errorNotChannel");
 
-    let songs = queue.songs;
+    const songs = queue.songs;
 
     for (let i = songs.length - 1; i > 1; i--) {
-      let j = 1 + Math.floor(Math.random() * i);
+      const j = 1 + Math.floor(Math.random() * i);
       [songs[i], songs[j]] = [songs[j], songs[i]];
     }
 

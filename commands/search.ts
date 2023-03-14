@@ -39,7 +39,7 @@ export default {
 
     if (!results) return;
 
-    const options = results!.map((video) => {
+    const options = results.map((video) => {
       return {
         label: video.title ?? "",
         value: video.url

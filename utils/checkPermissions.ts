@@ -1,21 +1,22 @@
-import { ChatInputCommandInteraction, PermissionResolvable } from "discord.js";
-import { Command } from "../interfaces/Command";
+import { ChatInputCommandInteraction, PermissionResolvable } from 'discord.js';
+import { Command } from '../interfaces/Command';
 
 export interface PermissionResult {
-  result: boolean;
-  missing: string[];
+	result: boolean;
+	missing: string[];
 }
 
 export async function checkPermissions(
-  command: Command,
-  interaction: ChatInputCommandInteraction
+	command: Command,
+	interaction: ChatInputCommandInteraction
 ): Promise<PermissionResult> {
-  const member = await interaction.guild!.members.fetch({ user: interaction.client.user!.id });
-  const requiredPermissions = command.permissions as PermissionResolvable[];
+	const member = await interaction.guild?.members.fetch({ user: interaction.client.user.id });
 
-  if (!command.permissions) return { result: true, missing: [] };
+	const requiredPermissions = command.permissions as PermissionResolvable[];
 
-  const missing = member.permissions.missing(requiredPermissions);
+	if (!command.permissions) return { result: true, missing: [] };
 
-  return { result: !Boolean(missing.length), missing };
+	const missing = member?.permissions.missing(requiredPermissions) ?? [];
+
+	return { result: !missing.length, missing };
 }

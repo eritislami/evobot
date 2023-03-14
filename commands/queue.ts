@@ -79,7 +79,7 @@ export default {
 };
 
 function generateQueueEmbed(interaction: CommandInteraction, songs: Song[]) {
-  let embeds = [];
+  const embeds = [];
   let k = 10;
 
   for (let i = 0; i < songs.length; i += 10) {
