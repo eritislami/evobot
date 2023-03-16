@@ -1,7 +1,7 @@
 import { ChatInputCommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 import { splitBar } from 'string-progressbar';
-import { bot } from '../index';
-import { i18n } from '../src/utils/i18n';
+import { bot } from '../../index';
+import { i18n } from '../utils/i18n';
 
 export default {
 	data: new SlashCommandBuilder()

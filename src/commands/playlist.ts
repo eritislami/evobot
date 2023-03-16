@@ -6,11 +6,11 @@ import {
 	SlashCommandBuilder,
 	TextChannel,
 } from 'discord.js';
-import { bot } from '../index';
-import { MusicQueue } from '../src/structs/MusicQueue';
-import { Playlist } from '../src/structs/Playlist';
-import { Song } from '../src/structs/Song';
-import { i18n } from '../src/utils/i18n';
+import { bot } from '../../index';
+import { MusicQueue } from '../structs/MusicQueue';
+import { Playlist } from '../structs/Playlist';
+import { Song } from '../structs/Song';
+import { i18n } from '../utils/i18n';
 
 export default {
 	data: new SlashCommandBuilder()

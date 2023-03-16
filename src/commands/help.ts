@@ -1,5 +1,5 @@
 import { CommandInteraction, EmbedBuilder, SlashCommandBuilder } from 'discord.js';
-import { bot } from '../index';
+import { bot } from '../../index';
 
 export default {
 	data: new SlashCommandBuilder().setName('help').setDescription(i18n.__('help.description')),

@@ -6,7 +6,7 @@ import {
 	EmbedBuilder,
 	SlashCommandBuilder,
 } from 'discord.js';
-import { i18n } from '../src/utils/i18n';
+import { i18n } from '../utils/i18n';
 
 export default {
 	data: new SlashCommandBuilder().setName('invite').setDescription(i18n.__('invite.description')),

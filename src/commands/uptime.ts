@@ -1,6 +1,6 @@
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
-import { bot } from '../index';
-import { i18n } from '../src/utils/i18n';
+import { bot } from '../../index';
+import { i18n } from '../utils/i18n';
 
 export default {
 	data: new SlashCommandBuilder().setName('uptime').setDescription(i18n.__('uptime.description')),

@@ -6,8 +6,8 @@ import {
 	StringSelectMenuInteraction,
 } from 'discord.js';
 import youtube, { Video } from 'youtube-sr';
-import { bot } from '../index';
-import { i18n } from '../src/utils/i18n';
+import { bot } from '../../index';
+import { i18n } from '../utils/i18n';
 
 export default {
 	data: new SlashCommandBuilder()

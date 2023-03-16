@@ -1,8 +1,8 @@
 import move from 'array-move';
 import { ChatInputCommandInteraction, SlashCommandBuilder } from 'discord.js';
-import { bot } from '../index';
-import { i18n } from '../src/utils/i18n';
-import { canModifyQueue } from '../src/utils/queue';
+import { bot } from '../../index';
+import { i18n } from '../utils/i18n';
+import { canModifyQueue } from '../utils/queue';
 
 export default {
 	data: new SlashCommandBuilder()

@@ -5,11 +5,11 @@ import {
 	SlashCommandBuilder,
 	TextChannel,
 } from 'discord.js';
-import { bot } from '../index';
-import { MusicQueue } from '../src/structs/MusicQueue';
-import { Song } from '../src/structs/Song';
-import { i18n } from '../src/utils/i18n';
-import { playlistPattern } from '../src/utils/patterns';
+import { bot } from '../../index';
+import { MusicQueue } from '../structs/MusicQueue';
+import { Song } from '../structs/Song';
+import { i18n } from '../utils/i18n';
+import { playlistPattern } from '../utils/patterns';
 
 export default {
 	data: new SlashCommandBuilder()
