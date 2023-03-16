@@ -2,8 +2,8 @@ config.json
 .env
 /.idea
 /.vscode
-/sounds/**
-!/sounds/putmusichere.mp3
+/assets/sounds/**
+!/assets/sounds/putmusichere.mp3
 /dist
 .ignore/
 
