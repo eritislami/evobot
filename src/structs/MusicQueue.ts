@@ -13,7 +13,7 @@ import {
 } from '@discordjs/voice';
 import { CommandInteraction, Message, TextChannel, User } from 'discord.js';
 import { promisify } from 'node:util';
-import { bot } from '../index';
+import { bot } from '../../index';
 import { QueueOptions } from '../interfaces/QueueOptions';
 import { config } from '../utils/config';
 import { i18n } from '../utils/i18n';

@@ -1,6 +1,5 @@
 import {
 	ApplicationCommandDataResolvable,
-	ChatInputCommandInteraction,
 	Client,
 	Collection,
 	Events,
@@ -9,12 +8,14 @@ import {
 	Routes,
 	Snowflake,
 } from 'discord.js';
-import { readdirSync } from 'fs';
-import { join } from 'path';
+import { readdir } from 'node:fs/promises';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import path, { join } from 'node:path';
 import { Command } from '../interfaces/Command';
 import { checkPermissions, PermissionResult } from '../utils/checkPermissions';
 import { config } from '../utils/config';
 import { i18n } from '../utils/i18n';
+import { logger } from '../utils/logger';
 import { MissingPermissionsException } from '../utils/MissingPermissionsException';
 import { MusicQueue } from './MusicQueue';
 
@@ -27,20 +28,53 @@ export class Bot {
 	public queues = new Collection<Snowflake, MusicQueue>();
 
 	public constructor(public readonly client: Client) {
-		void this.client.login(config.TOKEN).then(() => {
-			console.log('Logged in');
+		this.loadEvents()
+			.then(() => {
+				// After loading events login
+				this.client
+					.login(config.TOKEN)
+					.then(() => {
+						logger.info(`Client logged in`);
+					})
+					.catch((error: unknown) => {
+						logger.error(`Error logging in`);
+						logger.error(error);
+					});
+			})
+			.catch((error: unknown) => {
+				logger.error(`Error Loading Events`);
+				logger.error(error);
+			});
+	}
+
+	private async loadEvents() {
+		const eventPath: string = fileURLToPath(new URL(join('..', 'events'), import.meta.url));
+		return readdir(eventPath).then((files: string[]) => {
+			const promises: Promise<any>[] = [];
+			for (const file of files) {
+				const filePath = pathToFileURL(path.join(eventPath, file));
+				promises.push(
+					import(filePath.pathname).then((value: DiscordEventListener) => {
+						const eventListener = value.default as DiscordEventListener;
+						logger.info(`Loading Event ${eventListener.name}`);
+						// logger.debug(eventListener);
+						if (eventListener.once) {
+							client
+								.once(eventListener.name, async (...args) => eventListener.execute(...args))
+								.eventNames();
+							logger.debug(`Registered ${eventListener.name} event once`);
+						} else {
+							client
+								.on(eventListener.name, async (...args) => eventListener.execute(...args))
+								.eventNames();
+							logger.debug(`Registered ${eventListener.name} event`);
+						}
+					})
+				);
+			}
+
+			return Promise.all(promises);
 		});
-
-		this.client.on('ready', () => {
-			console.log(`${this.client.user!.username} ready!`);
-
-			this.registerSlashCommands();
-		});
-
-		this.client.on('warn', (info) => console.log(info));
-		this.client.on('error', console.error);
-
-		this.onInteractionCreate();
 	}
 
 	private async registerSlashCommands() {
