@@ -1,0 +1,179 @@
+{
+  "clip": {
+    "description": "Spiller en klipplyd",
+    "usagesReply": "Bruk: {prefix}klipp <navn>",
+    "errorQueue": "Kan ikke spille av klippet fordi det er en aktiv kø.",
+    "errorNotChannel": "Du må først bli med i en stemmekanal!"
+  },
+  "clips": {
+    "description": "List opp alle klippene"
+  },
+  "help": {
+    "description": "Vis alle kommandoer og beskrivelser",
+    "embedTitle": "{botname} Hjelp",
+    "embedDescription": "Liste over alle kommandoer"
+  },
+  "invite": {
+    "description": "Send invitasjonslenke til bot"
+  },
+  "loop": {
+    "description": "Slå på loop",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "result": "Loop er nå {loop}"
+  },
+  "lyrics": {
+    "description": "Få teksten til sangen som spilles for øyeblikket",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "lyricsNotFound": "Ingen tekster funnet for {title}.",
+    "embedTitle": "{title} - Sangtekster"
+  },
+  "move": {
+    "description": "Flytt sanger rundt i køen",
+    "errorNotQueue": "Det er ingen kø.",
+    "usagesReply": "Bruk: {prefix}flytt <kønummer>",
+    "result": "<@{author}> 🚚 flyttet **{title}** til {index} i køen.",
+    "args": {
+      "movefrom": "Slot å flytte fra",
+      "moveto": "Slot å flytte til"
+    }
+  },
+  "nowplaying": {
+    "description": "Vis sang som spilles nå",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "embedTitle": "Spilles nå",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Gjenstående tid: {time}"
+  },
+  "pause": {
+    "description": "Sett musikken som spilles på pause",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "result": "<@{author}> ⏸ satte musikken på pause."
+  },
+  "ping": {
+    "description": "Vis botens gjennomsnittlige ping",
+    "result": "📈 Gjennomsnittlig ping til API: {ping} ms"
+  },
+  "play": {
+    "description": "Spiller lyd fra YouTube",
+    "errorNotChannel": "Du må først bli med i en talekanal!",
+    "errorNotInSameChannel": "Du må være i samme kanal som {user}",
+    "usageReply": "Bruk: {prefix}spill <YouTube URL | Videonavn>",
+    "missingPermissionConnect": "Kan ikke koble til talekanalen, mangler tillatelser",
+    "missingPermissionSpeak": "Jeg kan ikke snakke i denne talekanalen, sørg for at jeg har de riktige tillatelsene!",
+    "queueAdded": "✅ **{title}** har blitt lagt til i køen av <@{author}>",
+    "cantJoinChannel": "Kunne ikke bli med i kanalen: {error}",
+    "queueEnded": "❌ Musikkøen er avsluttet.",
+    "queueError": "Feil: {error}",
+    "startedPlaying": "🎶 Begynte å spille: **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ hoppet over sangen",
+    "pauseSong": "<@{author}> ⏸ satte musikken på pause.",
+    "resumeSong": "<@{author}> ▶ gjenopptok musikken!",
+    "unmutedSong": "<@{author}> 🔊 dempet musikken!",
+    "mutedSong": "<@{author}> 🔇 dempet musikken!",
+    "decreasedVolume": "<@{author}> 🔉 reduserte volumet, volumet er nå {volume}%",
+    "increasedVolume": "<@{author}> 🔊 økte volumet, volumet er nå {volume}%",
+    "loopSong": "<@{author}> Loop er nå {loop}",
+    "stopSong": "<@{author}> ⏹ stoppet musikken!",
+    "leaveChannel": "Forlater talekanal...",
+    "songNotFound": "Lyd ikke funnet",
+    "songAccessErr": "Videoen er aldersbegrenset, privat eller utilgjengelig",
+    "errorNoResults": "Ingen resultater funnet for {url}",
+    "errorInvalidURL": "Ugyldig nettadresse, prøv et søk eller youtube-nettadresse"
+  },
+  "playlist": {
+    "description": "Spill av en spilleliste fra youtube",
+    "usagesReply": "Bruk: {prefix}spilleliste <YouTube-spillelistenettadresse | -spillelistenavn>",
+    "errorNotChannel": "Du må først bli med i en talekanal!",
+    "errorNotInSameChannel": "Du må være i samme kanal som {user}",
+    "missingPermissionConnect": "Kan ikke koble til talekanalen, mangler tillatelser",
+    "missingPermissionSpeak": "Jeg kan ikke snakke i denne talekanalen, sørg for at jeg har de riktige tillatelsene!",
+    "errorNotFoundPlaylist": "Spilleliste ikke funnet :(",
+    "fetchingPlaylist": "⌛ henter spillelisten...",
+    "playlistCharLimit": "\nSpilleliste større enn tegngrensen...",
+    "startedPlaylist": "<@{author}> Startet en spilleliste",
+    "cantJoinChannel": "Kunne ikke bli med i kanalen: {error}"
+  },
+  "pruning": {
+    "description": "Veksle beskjæring av bot-meldinger",
+    "errorWritingFile": "Det oppsto en feil ved skriving til filen.",
+    "result": "Beskjæring av melding er {result}"
+  },
+  "queue": {
+    "description": "Vis musikkkøen og spilles nå.",
+    "missingPermissionMessage": "Manglende tillatelse til å administrere meldinger eller legge til reaksjoner",
+    "errorNotQueue": "❌ **Ingenting spilles på denne serveren**",
+    "currentPage": "Gjeldende side -",
+    "embedTitle": "Sangkø\n",
+    "embedCurrentSong": "**Gjeldende sang – [{title}]({url})**\n\n{info}"
+  },
+  "remove": {
+    "description": "Fjern sang fra køen",
+    "errorNotQueue": "Det er ingen kø.",
+    "usageReply": "Bruk: {prefix}fjern <kønummer>",
+    "result": "<@{author}> ❌ fjernet **{title}** fra køen."
+  },
+  "resume": {
+    "description": "Fortsett avspilling av musikk",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "resultNotPlaying": "<@{author}> ▶ gjenopptok musikken!",
+    "errorPlaying": "Køen er ikke satt på pause."
+  },
+  "search": {
+    "description": "Søk og velg videoer som skal spilles av",
+    "usageReply": "Bruk: {prefix}{name} <Videonavn>",
+    "errorAlreadyCollector": "En meldingssamler er allerede aktiv i denne kanalen.",
+    "errorNotChannel": "Du må først bli med i en talekanal!",
+    "resultEmbedTitle": "**Svar med sangnummeret du vil spille**",
+    "resultEmbedDesc": "Resultater for: {search}",
+    "optionQuery": "Søkeord"
+  },
+  "shuffle": {
+    "description": "Shuffle køen",
+    "errorNotQueue": "Det er ingen kø.",
+    "result": "<@{author}> 🔀 blandet køen"
+  },
+  "skip": {
+    "description": "Hopp over sangen som spilles for øyeblikket",
+    "errorNotQueue": "Det er ingenting som jeg kan hoppe over for deg.",
+    "result": "<@{author}> ⏭ hoppet over sangen"
+  },
+  "skipto": {
+    "description": "Hopp til det valgte kønummeret",
+    "usageReply": "Bruk: {prefix}{name} <kønummer>",
+    "errorNotQueue": "Det er ingen kø.",
+    "errorNotValid": "Køen er bare {length} sanger lang!",
+    "result": "<@{author}> ⏭ hoppet over {arg} sanger",
+    "args": {
+      "number": "Kønummeret du skal hoppe til"
+    }
+  },
+  "stop": {
+    "description": "Stopper musikken",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "result": "<@{author}> ⏹ stoppet musikken!"
+  },
+  "uptime": {
+    "description": "Sjekk driftstid",
+    "result": "Driftstid: `{days} dag(er),{hours} timer, {minutes} minutter, {seconds} sekunder`"
+  },
+  "volume": {
+    "description": "Endre volumet for musikk som spilles for øyeblikket",
+    "errorNotQueue": "Det er ingenting som spilles av.",
+    "errorNotChannel": "Du må først bli med i en talekanal!",
+    "currentVolume": "🔊 Gjeldende volumet er: **{volume}%**",
+    "errorNotNumber": "Bruk et tall for å stille inn volumet.",
+    "errorNotValid": "Vennligst bruk et tall mellom 0 - 100.",
+    "result": "Volum satt til: **{arg}%**"
+  },
+  "common": {
+    "on": "**på**",
+    "off": "**off**",
+    "enabled": "**aktivert**",
+    "disabled": "**deaktivert**",
+    "errorNotChannel": "Du må først bli med i en talekanal!",
+    "cooldownMessage": "vennligst vent {time} sekund(er) til før du bruker `{name}`-kommandoen på nytt.",
+    "errorCommand": "Det oppsto en feil under utførelse av denne kommandoen."
+  },
+  "Invite me to your server!": "Inviter meg til serveren din!",
+  "Invite": "Inviter"
+}
