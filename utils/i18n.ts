@@ -17,6 +17,7 @@ i18n.configure({
     "ja",
     "ko",
     "mi",
+    "nb",
     "nl",
     "pl",
     "pt_br",
