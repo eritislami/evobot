@@ -26,11 +26,10 @@
     "ffmpeg-static": "^4.4.1",
     "i18n": "^0.15.1",
     "lyrics-finder": "^21.0.5",
+    "play-dl": "^1.9.6",
     "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.4",
-    "youtube-sr": "~4.3.0",
-    "ytdl-core": "~4.9.0",
-    "ytdl-core-discord": "^1.3.1"
+    "youtube-sr": "~4.3.0"
   },
   "devDependencies": {
     "@types/i18n": "^0.13.6",
