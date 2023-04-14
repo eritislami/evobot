@@ -1,8 +1,10 @@
 import { AudioResource, createAudioResource, StreamType } from "@discordjs/voice";
 import youtube from "youtube-sr";
 import { i18n } from "../utils/i18n";
-import { videoPattern, isURL } from "../utils/patterns";
+import { videoPattern, spotifySongPattern, isURL } from "../utils/patterns";
 const { stream , video_basic_info } = require('play-dl');
+const fetch = require('isomorphic-unfetch')
+const { getData } = require('spotify-url-info')(fetch)
 
 export interface SongData {
   url: string;
@@ -23,6 +25,7 @@ export class Song {
 
   public static async from(url: string = "", search: string = "") {
     const isYoutubeUrl = videoPattern.test(url);
+    const isSpotifySongUrl = spotifySongPattern.test(url);
 
     let songInfo;
 
@@ -34,9 +37,12 @@ export class Song {
         title: songInfo.video_details.title,
         duration: parseInt(songInfo.video_details.durationInSec)
       });
-    } 
+    }
     else {
-      const result = await youtube.searchOne(search);
+      // NOTE: this is a workaround for Spotify links
+      const spotifyData = isSpotifySongUrl ? await getData(url) : null;
+      const search_term = spotifyData != null ? `${spotifyData.name} ${spotifyData.artist}` : search;
+      const result = await youtube.searchOne(search_term)
 
       result ? null : console.log(`No results found for ${search}`); // This is for handling the case where no results are found (spotify links for example)
 

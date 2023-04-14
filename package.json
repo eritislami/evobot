@@ -25,9 +25,11 @@
     "dotenv": "^16.0.3",
     "ffmpeg-static": "^4.4.1",
     "i18n": "^0.15.1",
+    "isomorphic-unfetch": "^4.0.2",
     "lyrics-finder": "^21.0.5",
     "play-dl": "^1.9.6",
     "soundcloud-downloader": "^0.2.3",
+    "spotify-url-info": "^3.2.3",
     "string-progressbar": "^1.0.4",
     "youtube-sr": "~4.3.0"
   },
