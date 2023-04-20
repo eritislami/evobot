@@ -1,7 +1,7 @@
 {
   "clip": {
     "description": "Phát một đoạn âm thanh",
-    "usagesReply": "Cách sử dụng: t!clip <tên đoạn âm thanh>",
+    "usagesReply": "Cách sử dụng: {prefix}clip <tên đoạn âm thanh>",
     "errorQueue": "Không thể phát đoạn âm thanh vì hiện tại đang có một hàng đợi trong máy chủ.",
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!"
   },
@@ -142,6 +142,10 @@
     "errorNotQueue": "Hiện tại không có bài hát nào đang phát.",
     "result": "<@{author}> ⏹ đã dừng phát nhạc!"
   },
+  "uptime": {
+    "description": "Kiểm tra uptime",
+    "result": "Uptime: `{days} ngày, {hours} giờ, {minutes} phút, {seconds} giây`"
+  },
   "volume": {
     "description": "Điều chỉnh âm lượng của bài hát đang phát.",
     "errorNotQueue": "Hiện tại không có bài hát nào đang phát.",
@@ -159,5 +163,7 @@
     "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
     "cooldownMessage": "Xin vui lòng chờ {time} giây trước khi sử dụng lại lệnh `{name}`.",
     "errorCommand": "Có lỗi xảy ra khi đang cố gắng thực hiện yêu cầu của bạn, vui lòng thử lại sau ít phút."
-  }
+  },
+  "Invite me to your server!": "Mời tớ vào máy chủ của bạn!",
+  "Invite": "Invite"
 }
