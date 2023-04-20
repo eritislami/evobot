@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "@types/i18n": "^0.13.6",
-    "@types/node": "^18.15.11",
+    "@types/node": "^18.15.12",
     "cz-conventional-changelog": "^3.0.1",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1"
