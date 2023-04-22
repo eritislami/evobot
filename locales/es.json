@@ -28,7 +28,7 @@
     "embedTitle": "{title} - Letra"
   },
   "move": {
-    "description": "Mueve canciones a la cola",
+    "description": "Mueve canciones de la cola",
     "errorNotQueue": "No hay una cola.",
     "usagesReply": "Uso correcto: {prefix}move <Número en la Cola>",
     "result": "<@{author}> 🚚 movió **{title}** al puesto {index} de la cola."
@@ -50,7 +50,7 @@
     "result": "📈 Latencia media a la API: {ping} ms"
   },
   "play": {
-    "description": "Reproduciendo música de YouTube o SoundCloud",
+    "description": "Reproduce música de YouTube o SoundCloud",
     "errorNotChannel": "¡Primero debes unirte a un canal de voz!",
     "errorNotInSameChannel": "Tienes que estar en el mismo canal de voz que {user}",
     "usageReply": "Uso correcto: {prefix}play <URL de YouTube | Nombre del vídeo | URL de SoundCloud>",
@@ -121,7 +121,7 @@
     "resultEmbedDesc": "Resultados para: {search}"
   },
   "shuffle": {
-    "description": "Reproducción aleatoriamente de la cola",
+    "description": "Reproducción aleatoria de la cola",
     "errorNotQueue": "No hay una cola de reproducción.",
     "result": "<@{author}> 🔀 ha activado la reproducción aleatoria de la cola"
   },
