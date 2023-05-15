@@ -84,7 +84,8 @@ export default {
 
     let playlistEmbed = new EmbedBuilder()
       .setTitle(`${playlist.data.title}`)
-      .setDescription(playlist.videos.map((song: Song, index: number) => `${index + 1}. ${song.title}`).join("\n"))
+      //DiscordJS does not support descriptions over 4096
+      .setDescription(playlist.videos.map((song: Song, index: number) => `${index + 1}. ${song.title}`).join("\n").slice(0, 4095))
       .setURL(playlist.data.url!)
       .setColor("#F8AA2A")
       .setTimestamp();
