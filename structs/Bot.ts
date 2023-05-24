@@ -7,7 +7,9 @@ import {
   Interaction,
   REST,
   Routes,
-  Snowflake
+  Snowflake,
+  PresenceData,
+  ActivityType
 } from "discord.js";
 import { readdirSync } from "fs";
 import { join } from "path";
@@ -31,6 +33,11 @@ export class Bot {
 
     this.client.on("ready", () => {
       console.log(`${this.client.user!.username} ready!`);
+
+      //Set your custom status, also you can change Activity Type and Presence Status.
+      this.client.user?.setPresence({
+        activities: [{ name: `Your status`, type: ActivityType.Listening }],
+        status: 'online',} as any);
 
       this.registerSlashCommands();
     });
