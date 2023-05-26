@@ -9,7 +9,8 @@ export const bot = new Bot(
       GatewayIntentBits.GuildMessages,
       GatewayIntentBits.GuildMessageReactions,
       GatewayIntentBits.MessageContent,
-      GatewayIntentBits.DirectMessages
+      GatewayIntentBits.DirectMessages,
+      GatewayIntentBits.GuildPresences
     ]
   })
 );
