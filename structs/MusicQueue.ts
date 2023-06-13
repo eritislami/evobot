@@ -208,6 +208,9 @@ export class MusicQueue {
       if (!this.songs) return;
 
       const member = await playingMessage.guild!.members.fetch(user);
+      Object.defineProperty(this.interaction, 'user', {
+        value: user
+      })
 
       switch (reaction.emoji.name) {
         case "⏭":
