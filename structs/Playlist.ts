@@ -13,7 +13,6 @@ export class Playlist {
 
     this.videos = this.data.videos
       .filter((video) => video.title != "Private video" && video.title != "Deleted video")
-      .slice(0, config.MAX_PLAYLIST_SIZE - 1)
       .map((video) => {
         return new Song({
           title: video.title!,
@@ -24,16 +23,7 @@ export class Playlist {
   }
 
   public static async from(url: string = "", search: string = "") {
-    const urlValid = pattern.test(url);
-    let playlist;
-
-    if (urlValid) {
-      playlist = await youtube.getPlaylist(url);
-    } else {
-      const result = await youtube.searchOne(search, "playlist");
-
-      playlist = await youtube.getPlaylist(result.url!);
-    }
+    const playlist = await youtube.getPlaylist(url, { fetchAll: true });
 
     return new this(playlist);
   }
