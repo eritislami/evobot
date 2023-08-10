@@ -125,7 +125,8 @@
     "errorNotChannel": "You need to join a voice channel first!",
     "resultEmbedTitle": "**Reply with the song number you want to play**",
     "resultEmbedDesc": "Results for: {search}",
-    "optionQuery": "Search query"
+    "optionQuery": "Search query",
+    "noResults": "No results for query, please try something else"
   },
   "shuffle": {
     "description": "Shuffle queue",
