@@ -38,7 +38,7 @@ export default {
     }
 
     if (!results || !results[0]) {
-      interaction.editReply({ content: i18n.__("search.noResults") })
+      interaction.editReply({ content: i18n.__("search.noResults") });
       return;
     }
 

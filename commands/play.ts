@@ -52,7 +52,7 @@ export default {
     if (playlistPattern.test(url)) {
       await interaction.editReply("🔗 Link is playlist").catch(console.error);
 
-      return bot.slashCommandsMap.get("playlist")!.execute(interaction, 'song');
+      return bot.slashCommandsMap.get("playlist")!.execute(interaction, "song");
     }
 
     let song;
