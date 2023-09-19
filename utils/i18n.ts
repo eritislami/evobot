@@ -21,6 +21,7 @@ i18n.configure({
     "nl",
     "pl",
     "pt_br",
+    "ro",
     "ru",
     "sv",
     "th",
