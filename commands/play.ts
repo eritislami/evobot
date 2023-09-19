@@ -60,16 +60,18 @@ export default {
     try {
       song = await Song.from(url, url);
     } catch (error: any) {
+      console.error(error);
+
       if (error.name == "NoResults")
         return interaction
           .reply({ content: i18n.__mf("play.errorNoResults", { url: `<${url}>` }), ephemeral: true })
           .catch(console.error);
+
       if (error.name == "InvalidURL")
         return interaction
           .reply({ content: i18n.__mf("play.errorInvalidURL", { url: `<${url}>` }), ephemeral: true })
           .catch(console.error);
 
-      console.error(error);
       if (interaction.replied)
         return await interaction.editReply({ content: i18n.__("common.errorCommand") }).catch(console.error);
       else return interaction.reply({ content: i18n.__("common.errorCommand"), ephemeral: true }).catch(console.error);
