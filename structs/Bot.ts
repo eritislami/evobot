@@ -19,7 +19,7 @@ import { MissingPermissionsException } from "../utils/MissingPermissionsExceptio
 import { MusicQueue } from "./MusicQueue";
 
 export class Bot {
-  public readonly prefix = config.PREFIX;
+  public readonly prefix = "/";
   public commands = new Collection<string, Command>();
   public slashCommands = new Array<ApplicationCommandDataResolvable>();
   public slashCommandsMap = new Collection<string, Command>();

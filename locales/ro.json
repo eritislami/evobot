@@ -1,0 +1,165 @@
+{
+  "clip": {
+    "description": "Redă un sunet de clip",
+    "usagesReply": "Utilizare: {prefix}clip <nume>",
+    "errorQueue": "Nu pot reda clipul deoarece există o coadă activă.",
+    "errorNotChannel": "Trebuie să te alături mai întâi unui canal vocal!"
+  },
+  "clips": {
+    "description": "Listează toate clipurile"
+  },
+  "help": {
+    "description": "Afișează toate comenzile și descrierile",
+    "embedTitle": "{botname} Ajutor",
+    "embedDescription": "Listă de toate comenzile"
+  },
+  "invite": {
+    "description": "Trimite linkul de invitație al botului"
+  },
+  "loop": {
+    "description": "Comută repetarea melodiilor",
+    "errorNotQueue": "Nu se redă nimic.",
+    "result": "Repetarea este acum {loop}"
+  },
+  "lyrics": {
+    "description": "Obține versurile pentru melodia care se redă în prezent",
+    "errorNotQueue": "Nu se redă nimic.",
+    "lyricsNotFound": "Nu s-au găsit versuri pentru {title}.",
+    "embedTitle": "{title} - Versuri"
+  },
+  "move": {
+    "description": "Mută melodiile în coadă",
+    "errorNotQueue": "Nu există o coadă.",
+    "usagesReply": "Utilizare: {prefix}move <Număr în coadă>",
+    "result": "<@{author}> 🚚 a mutat melodia {title} pe poziția {index} în coadă.",
+    "args": {
+      "movefrom": "Poziția de mutat",
+      "moveto": "Poziția în care să fie mutat"
+    }
+  },
+  "nowplaying": {
+    "description": "Afișează melodia care se redă în prezent",
+    "errorNotQueue": "Nu se redă nimic.",
+    "embedTitle": "Se redă acum",
+    "live": " ◉ LIVE",
+    "timeRemaining": "Timp rămas: {time}"
+  },
+  "pause": {
+    "description": "Pune în pauză melodia care se redă în prezent",
+    "errorNotQueue": "Nu se redă nimic.",
+    "result": "<@{author}> ⏸ a pus muzica pe pauză."
+  },
+  "ping": {
+    "description": "Afișează ping-ul mediu al botului",
+    "result": "📈 Ping mediu către API: {ping} ms"
+  },
+  "play": {
+    "description": "Redă audio de pe YouTube",
+    "errorNotChannel": "Trebuie să te alături mai întâi unui canal vocal!",
+    "errorNotInSameChannel": "Trebuie să fii în același canal cu {user}",
+    "usageReply": "Utilizare: {prefix}play <URL YouTube | Nume Video>",
+    "missingPermissionConnect": "Nu se poate conecta la canalul vocal, permisiuni lipsă",
+    "missingPermissionSpeak": "Nu pot vorbi în acest canal vocal, asigură-te că am permisiunile corespunzătoare!",
+    "queueAdded": "✅ {title} a fost adăugat în coadă de <@{author}>",
+    "cantJoinChannel": "Nu am putut să mă alătur canalului: {error}",
+    "queueEnded": "❌ Coada de muzică s-a încheiat.",
+    "queueError": "Eroare: {error}",
+    "startedPlaying": "🎶 A început redarea: {title} {url}",
+    "skipSong": "<@{author}> ⏩ a trecut peste melodie",
+    "pauseSong": "<@{author}> ⏸ a pus muzica pe pauză.",
+    "resumeSong": "<@{author}> ▶ a reluat muzica!",
+    "unmutedSong": "<@{author}> 🔊 a dat volumul la muzică!",
+    "mutedSong": "<@{author}> 🔇 a tăcut muzica!",
+    "decreasedVolume": "<@{author}> 🔉 a redus volumul, volumul este acum {volume}%",
+    "increasedVolume": "<@{author}> 🔊 a mărit volumul, volumul este acum {volume}%",
+    "loopSong": "<@{author}> Repetarea este acum {loop}",
+    "stopSong": "<@{author}> ⏹ a oprit muzica!",
+    "leaveChannel": "Părăsesc canalul vocal...",
+    "songNotFound": "Audio negăsit",
+    "songAccessErr": "Video restricționat pe bază de vârstă, privat sau indisponibil",
+    "errorNoResults": "Niciun rezultat găsit pentru {url}",
+    "errorInvalidURL": "URL invalid, te rog încearcă o căutare sau un URL de pe YouTube"
+  },
+  "playlist": {
+    "description": "Redă o listă de redare de pe YouTube",
+    "usagesReply": "Utilizare: {prefix}playlist <URL listă redare YouTube | Nume listă redare>",
+    "errorNotChannel": "Trebuie să te alături mai întâi unui canal vocal!",
+    "errorNotInSameChannel": "Trebuie să fii în același canal cu {user}",
+    "missingPermissionConnect": "Nu se poate conecta la canalul vocal, permisiuni lipsă",
+    "missingPermissionSpeak": "Nu pot vorbi în acest canal vocal, asigură-te că am permisiunile corespunzătoare!",
+    "errorNotFoundPlaylist": "Listă de redare negăsită :(",
+    "fetchingPlaylist": "⌛ se obține lista de redare...",
+    "playlistCharLimit": "\nLista de redare depășește limita de caractere...",
+    "startedPlaylist": "<@{author}> A început o listă de redare",
+    "cantJoinChannel": "Nu am putut să mă alătur canalului: {error}"
+  },
+  "pruning": {
+    "description": "Comută eliminarea mesajelor botului",
+    "errorWritingFile": "A apărut o eroare la scrierea în fișier.",
+    "result": "Eliminarea mesajelor este {result}"
+  },
+  "queue": {
+    "description": "Afișează coada de muzică și melodia care se redă în prezent.",
+    "missingPermissionMessage": "Permisiunea de a gestiona mesajele sau adăuga reacții lipsește",
+    "errorNotQueue": "❌ Nimic nu se redă în acest server",
+    "currentPage": "Pagina curentă - ",
+    "embedTitle": "Coada de melodii\n",
+    "embedCurrentSong": "Melodia curentă - {title}\n\n{info}"
+  },
+  "remove": {
+    "description": "Elimină melodia din coadă",
+    "errorNotQueue": "Nu există o coadă.",
+    "usageReply": "Utilizare: {prefix}remove <Număr din coadă>",
+    "result": "<@{author}> ❌ a eliminat {title} din coadă."
+  },
+  "resume": {
+    "description": "Reia redarea muzicii",
+    "errorNotQueue": "Nu se redă nimic.",
+    "resultNotPlaying": "<@{author}> ▶ a reluat muzica!",
+    "errorPlaying": "Coadă nu este pusă pe pauză."
+  },
+  "search": {
+    "description": "Caută și selectează videoclipuri de redat",
+    "usageReply": "Utilizare: {prefix}{name} <Nume videoclip>",
+    "errorAlreadyCollector": "Există deja un colector de mesaje activ în acest canal.",
+    "errorNotChannel": "Trebuie să te alături mai întâi unui canal vocal!",
+    "resultEmbedTitle": "Răspunde cu numărul melodiei pe care dorești să o redai",
+    "resultEmbedDesc": "Rezultate pentru: {search}",
+    "optionQuery": "Căutare"
+  },
+  "shuffle": {
+    "description": "Amestecă coada de melodii",
+    "errorNotQueue": "Nu există o coadă.",
+    "result": "<@{author}> 🔀 a amestecat coada"
+  },
+  "skip": {
+    "description": "Trece peste melodia care se redă în prezent",
+    "errorNotQueue": "Nu se redă nimic ce aș putea să trec peste.",
+    "result": "<@{author}> ⏭ a trecut peste melodie"
+  },
+  "skipto": {
+    "description": "Sari la numărul selectat din coadă",
+    "usageReply": "Utilizare: {prefix}{name} <Număr din coadă>",
+    "errorNotQueue": "Nu există o coadă.",
+    "errorNotValid": "Coadă are doar {length} melodii!",
+    "result": "<@{author}> ⏭ a trecut peste {arg} melodii",
+    "args": {
+      "number": "Numărul melodiei la care să sari"
+    }
+  },
+  "stop": {
+    "description": "Oprește muzica",
+    "errorNotQueue": "Nu se redă nimic.",
+    "result": "<@{author}> ⏹ a oprit muzica!"
+  },
+  "uptime": {
+    "description": "Verifică timpul de funcționare",
+    "result": "Timpul de funcționare: {uptime}"
+  },
+  "volume": {
+    "description": "Ajustează volumul muzicii",
+    "usageReply": "Utilizare: {prefix}volume <Volum>",
+    "errorNotQueue": "Nu se redă nimic.",
+    "result": "Volumul este acum {volume}%"
+  }
+}

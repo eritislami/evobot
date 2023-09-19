@@ -24,8 +24,8 @@ export default {
     PermissionsBitField.Flags.AddReactions,
     PermissionsBitField.Flags.ManageMessages
   ],
-  async execute(interaction: ChatInputCommandInteraction) {
-    let argSongName = interaction.options.getString("playlist");
+  async execute(interaction: ChatInputCommandInteraction, queryOptionName = 'playlist') {
+    let argSongName = interaction.options.getString(queryOptionName);
 
     const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
     const { channel } = guildMemer!.voice;
@@ -82,7 +82,12 @@ export default {
 
     let playlistEmbed = new EmbedBuilder()
       .setTitle(`${playlist.data.title}`)
-      .setDescription(playlist.videos.map((song: Song, index: number) => `${index + 1}. ${song.title}`).join("\n").slice(0, 4095))
+      .setDescription(
+        playlist.videos
+          .map((song: Song, index: number) => `${index + 1}. ${song.title}`)
+          .join("\n")
+          .slice(0, 4095)
+      )
       .setURL(playlist.data.url!)
       .setColor("#F8AA2A")
       .setTimestamp();
