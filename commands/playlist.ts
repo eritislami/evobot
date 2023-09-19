@@ -24,7 +24,7 @@ export default {
     PermissionsBitField.Flags.AddReactions,
     PermissionsBitField.Flags.ManageMessages
   ],
-  async execute(interaction: ChatInputCommandInteraction, queryOptionName = 'playlist') {
+  async execute(interaction: ChatInputCommandInteraction, queryOptionName = "playlist") {
     let argSongName = interaction.options.getString(queryOptionName);
 
     const guildMemer = interaction.guild!.members.cache.get(interaction.user.id);
