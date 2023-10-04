@@ -99,6 +99,7 @@ Currently available locales are:
 - English (en)
 - Arabic (ar)
 - Brazilian Portuguese (pt_br)
+- Bulgarian (bg)
 - Romanian (ro)
 - Czech (cs)
 - Dutch (nl)
