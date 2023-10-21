@@ -1,167 +1,180 @@
 {
   "clip": {
-    "description": "Écoute le son d'un clip",
-    "usagesReply": "Utilisation: {prefix}clip <nom>",
-    "errorQueue": "Impossible d'écouter le clip car une file d'attente est active.",
-    "errorNotChannel": "Vous devez d'abord rejoindre un canal vocal!"
+    "description": "Joue un extrait sonore",
+    "usagesReply": "Utilisation : {prefix}clip <nom>",
+    "errorQueue": "Impossible de jouer l'extrait car il y a une file d'attente active.",
+    "errorNotChannel": "Vous devez rejoindre un salon vocal d'abord !"
   },
   "clips": {
-    "description": "Liste tous les clips"
+    "description": "Liste tous les extraits"
   },
   "help": {
-    "description": "Afficher toutes les commandes et leurs descriptions",
-    "embedTitle": "{botname} Aide",
+    "description": "Affiche toutes les commandes et leurs descriptions",
+    "embedTitle": "Aide de {botname}",
     "embedDescription": "Liste de toutes les commandes"
   },
   "invite": {
-    "description": "Envoie le lien d'invitation du bot"
+    "description": "Envoyer le lien d'invitation du bot"
   },
   "loop": {
-    "description": "Mettre la musique en boucle",
-    "errorNotQueue": "Il n'y a rien à écouter.",
-    "result": "Loop est maintenant {loop}"
+    "description": "Activer/désactiver la boucle de la musique",
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "result": "La boucle est maintenant {loop}"
   },
   "lyrics": {
     "description": "Obtenir les paroles de la chanson en cours de lecture",
-    "errorNotQueue": "Il n'y a rien à jouer.",
-    "lyricsNotFound": "Aucune parole trouvée pour {title}.",
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "lyricsNotFound": "Aucune paroles trouvées pour {title}.",
     "embedTitle": "{title} - Paroles"
+  },
+  "move": {
+    "description": "Déplacer des chansons dans la file d'attente",
+    "errorNotQueue": "Il n'y a pas de file d'attente.",
+    "usagesReply": "Utilisation : {prefix}move <Numéro de file d'attente>",
+    "result": "<@{author}> 🚚 a déplacé **{title}** à la position {index} dans la file d'attente.",
+    "args": {
+      "movefrom": "Position de départ",
+      "moveto": "Position de destination"
+    }
   },
   "nowplaying": {
     "description": "Afficher la chanson en cours de lecture",
-    "errorNotQueue": "Il n'y a rien à jouer.",
-    "embedTitle": "Lecture en cours",
-    "live": " ◉ LIVE",
-    "timeRemaining": "Temps restant: {time}"
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "embedTitle": "En train de jouer",
+    "live": " ◉ EN DIRECT",
+    "timeRemaining": "Temps restant : {time}"
   },
   "pause": {
-    "description": "Mettre en pause la musique en cours de lecture",
-    "errorNotQueue": "Il n'y a rien à jouer.",
-    "result": "<@{author}> ⏸ à mis en pause la musique."
+    "description": "Met en pause la musique en cours de lecture",
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "result": "<@{author}> ⏸ a mis la musique en pause."
   },
   "ping": {
-    "description": "Afficher le ping du bot",
-    "result": "📈 Ping vers l'API: {ping} ms"
+    "description": "Afficher la moyenne de ping du bot",
+    "result": "📈 Ping moyen vers l'API : {ping} ms"
   },
   "play": {
-    "description": "Écoute de la musique depuis YouTube ou SoundCloud",
-    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
+    "description": "Joue de l'audio depuis YouTube",
+    "errorNotChannel": "Vous devez rejoindre un salon vocal d'abord !",
     "errorNotInSameChannel": "Vous devez être dans le même salon que {user}",
-    "usageReply": "Utilisation: {prefix}play <URL YouTube | Nom de la vidéo | URL SoundCloud>",
-    "missingPermissionConnect": "Impossible de se connecter au salon vocal, autorisations manquantes",
-    "missingPermissionSpeak": "Je ne peux pas parler dans ce salon vocal, assurez-vous que j'ai les autorisations!",
+    "usageReply": "Utilisation : {prefix}play <URL YouTube | Nom de la vidéo>",
+    "missingPermissionConnect": "Impossible de se connecter au salon vocal, permissions manquantes",
+    "missingPermissionSpeak": "Je ne peux pas parler dans ce salon vocal, assurez-vous que j'ai les permissions nécessaires !",
     "queueAdded": "✅ **{title}** a été ajouté à la file d'attente par <@{author}>",
-    "cantJoinChannel": "Impossible de rejoindre le salon: {error}",
-    "queueEnded": "❌ La file d'attente est terminée.",
-    "queueError": "Erreur: {error}",
-    "startedPlaying": "🎶 Commence à jouer: **{title}** {url}",
-    "skipSong": "<@{author}> ⏩ a skip la musique.",
-    "pauseSong": "<@{author}> ⏸ a mis en pause la musique.",
-    "resumeSong": "<@{author}> ▶ repris la musique!",
-    "unmutedSong": "<@{author}> 🔊 unmute la musique!",
-    "mutedSong": "<@{author}> 🔇 mute la musique!",
-    "decreasedVolume": "<@{author}> 🔉 diminue le volume, le volume est maintenant {volume}%",
-    "increasedVolume": "<@{author}> 🔊 augmente le volume, le volume est maintenant {volume}%",
-    "loopSong": "<@{author}> Loop est maintenant {loop}",
-    "stopSong": "<@{author}> ⏹ arrête la musique!",
+    "cantJoinChannel": "Impossible de rejoindre le salon : {error}",
+    "queueEnded": "❌ File d'attente de musique terminée.",
+    "queueError": "Erreur : {error}",
+    "startedPlaying": "🎶 Lecture en cours : **{title}** {url}",
+    "skipSong": "<@{author}> ⏩ a passé la chanson",
+    "pauseSong": "<@{author}> ⏸ a mis la musique en pause.",
+    "resumeSong": "<@{author}> ▶ a repris la musique !",
+    "unmutedSong": "<@{author}> 🔊 a réactivé le son de la musique !",
+    "mutedSong": "<@{author}> 🔇 a coupé le son de la musique !",
+    "decreasedVolume": "<@{author}> 🔉 a réduit le volume, le volume est maintenant de {volume}%",
+    "increasedVolume": "<@{author}> 🔊 a augmenté le volume, le volume est maintenant de {volume}%",
+    "loopSong": "<@{author}> La boucle est maintenant {loop}",
+    "stopSong": "<@{author}> ⏹ a arrêté la musique !",
     "leaveChannel": "Quitte le salon vocal...",
-    "songNotFound": "Audio Not Found",
-    "songAccessErr": "La vidéo est soumise à une limite d'âge, privée ou indisponible"
+    "songNotFound": "Audio non trouvé",
+    "songAccessErr": "La vidéo est restreinte par l'âge, privée ou indisponible",
+    "errorNoResults": "Aucun résultat trouvé pour {url}",
+    "errorInvalidURL": "URL invalide, veuillez essayer une recherche ou une URL YouTube"
   },
   "playlist": {
-    "description": "Écoute une playlist venant de YouTube",
-    "usagesReply": "Utilisation: {prefix}playlist <URL de la playlist YouTube | Nom de la playlist>",
-    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
+    "description": "Joue une liste de lecture depuis YouTube",
+    "usagesReply": "Utilisation : {prefix}playlist <URL de la liste de lecture YouTube | Nom de la liste de lecture>",
+    "errorNotChannel": "Vous devez rejoindre un salon vocal d'abord !",
     "errorNotInSameChannel": "Vous devez être dans le même salon que {user}",
-    "missingPermissionConnect": "Impossible de se connecter au salon vocal, autorisations manquantes",
-    "missingPermissionSpeak": "Je ne peux pas parler dans ce salon vocal, assurez-vous que j'ai les autorisations!",
-    "errorNotFoundPlaylist": "Playlist introuvable :(",
-    "fetchingPlaylist": "⌛ récupère la playlist...",
-    "playlistCharLimit": "\nListe de lecture supérieure à la limite de caractères...",
-    "startedPlaylist": "<@{author}> a commencé une playlist",
-    "cantJoinChannel": "Impossible de rejoindre le salon: {error}"
+    "missingPermissionConnect": "Impossible de se connecter au salon vocal, permissions manquantes",
+    "missingPermissionSpeak": "Je ne peux pas parler dans ce salon vocal, assurez-vous que j'ai les permissions nécessaires !",
+    "errorNotFoundPlaylist": "Liste de lecture introuvable :(",
+    "fetchingPlaylist": "⌛ Récupération de la liste de lecture...",
+    "playlistCharLimit": "\nListe de lecture plus longue que la limite de caractères...",
+    "startedPlaylist": "<@{author}> a lancé une liste de lecture",
+    "cantJoinChannel": "Impossible de rejoindre le salon : {error}"
   },
   "pruning": {
-    "description": "Possibilité de supprimer les messages du bot",
+    "description": "Activer/désactiver la suppression des messages du bot",
     "errorWritingFile": "Une erreur s'est produite lors de l'écriture dans le fichier.",
-    "result": "Prunning est {result}"
+    "result": "La suppression des messages est {result}"
   },
   "queue": {
-    "description": "Afficher la file d'attente et la musique en cours de lecture.",
-    "missingPermissionMessage": "Il me manque l'autorisation de gérer les messages ou d'ajouter des réactions",
-    "errorNotQueue": "❌ **Rien ne joue sur ce serveur**",
+    "description": "Afficher la file d'attente de musique et la chanson en cours de lecture.",
+    "missingPermissionMessage": "Permission manquante pour gérer les messages ou ajouter des réactions",
+    "errorNotQueue": "❌ **Rien ne joue dans ce serveur**",
     "currentPage": "Page actuelle - ",
-    "embedTitle": "Song Queue\n",
-    "embedCurrentSong": "**Morceau en cours - [{title}]({url})**\n\n{info}"
+    "embedTitle": "File d'attente de chansons\n",
+    "embedCurrentSong": "**Chanson en cours - [{title}]({url})**\n\n{info}"
   },
   "remove": {
-    "description": "Supprimer la chanson de la file d'attente",
+    "description": "Retirer une chanson de la file d'attente",
     "errorNotQueue": "Il n'y a pas de file d'attente.",
-    "usageReply": "Utilisation: {prefix}remove <Nombre de la musique dans la file d'attente>",
-    "result": "<@{author}> ❌ a rétiré **{title}** de la file d'attente."
+    "usageReply": "Utilisation : {prefix}remove <Numéro de file d'attente>",
+    "result": "<@{author}> ❌ a retiré **{title}** de la file d'attente."
   },
   "resume": {
     "description": "Reprendre la lecture de la musique en cours",
-    "errorNotQueue": "Il n'y a rien à jouer.",
-    "resultNotPlaying": "<@{author}> ▶ reprend la musique!",
-    "errorPlaying": "La file d'attente n'est pas mise en pause."
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "resultNotPlaying": "<@{author}> ▶ a repris la musique !",
+    "errorPlaying": "La file d'attente n'est pas en pause."
   },
   "search": {
-    "description": "Recherchez et sélectionnez des vidéos à écouter",
-    "usageReply": "Utilisation: {prefix}{name} <Nom de la vidéo>",
-    "errorAlreadyCollector": "Un collecteur de messages est déjà actif dans ce salon.",
-    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
-    "resultEmbedTitle": "**Répondez avec le numéro de la chanson que vous souhaitez écouter**",
-    "resultEmbedDesc": "Résultat pour: {search}"
+    "description": "Rechercher et sélectionner des vidéos à lire",
+    "usageReply": "Utilisation : {prefix}{name} <Nom de la vidéo>",
+    "errorAlreadyCollector": "Un collecteur de messages est déjà actif dans ce canal.",
+    "errorNotChannel": "Vous devez rejoindre un salon vocal d'abord !",
+    "resultEmbedTitle": "**Répondez avec le numéro de la chanson que vous voulez jouer**",
+    "resultEmbedDesc": "Résultats pour : {search}",
+    "optionQuery": "Requête de recherche",
+    "noResults": "Aucun résultat pour la requête, veuillez essayer autre chose"
   },
   "shuffle": {
-    "description": "Mélange la file d'attentre",
+    "description": "Mélanger la file d'attente",
     "errorNotQueue": "Il n'y a pas de file d'attente.",
     "result": "<@{author}> 🔀 a mélangé la file d'attente"
   },
   "skip": {
-    "description": "Skip la musique en cours de lecture",
-    "errorNotQueue": "Il n'y a rien que je pourrais skip pour vous.",
-    "result": "<@{author}> ⏭ skip la musique"
+    "description": "Passer la chanson en cours de lecture",
+    "errorNotQueue": "Rien n'est en train de jouer que je pourrais passer pour vous.",
+    "result": "<@{author}> ⏭ a passé la chanson"
   },
   "skipto": {
     "description": "Passer au numéro de file d'attente sélectionné",
-    "usageReply": "Utilisation: {prefix}{name} <Nombre dans la file d'attente>",
+    "usageReply": "Utilisation : {prefix}{name} <Numéro de file d'attente>",
     "errorNotQueue": "Il n'y a pas de file d'attente.",
-    "errorNotValid": "La file d'attente contient seulement {length} chansons!",
-    "result": "<@{author}> ⏭ skip {arg} musiques"
+    "errorNotValid": "La file d'attente ne comporte que {length} chansons !",
+    "result": "<@{author}> ⏭ a sauté {arg} chansons",
+    "args": {
+      "number": "Le numéro de file d'attente à sauter vers"
+    }
   },
   "stop": {
-    "description": "Arrête la musique",
-    "errorNotQueue": "Il n'y a rien à jouer.",
-    "result": "<@{author}> ⏹ arrête la musique!"
+    "description": "Arrêter la musique",
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "result": "<@{author}> ⏹ a arrêté la musique !"
   },
   "uptime": {
-    "description": "Vérifiez le uptime du bot",
-    "result": "Uptime: `{days} jour(s),{hours} heures, {minutes} minutes, {seconds} secondes`"
+    "description": "Vérifier le temps d'activité",
+    "result": "Temps d'activité : `{days} jour(s), {hours} heures, {minutes} minutes, {seconds} secondes`"
   },
   "volume": {
     "description": "Changer le volume de la musique en cours de lecture",
-    "errorNotQueue": "Il n'y a rien à jouer.",
-    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
-    "currentVolume": "🔊 Le volume actuelle est de: **{volume}%**",
+    "errorNotQueue": "Rien n'est en train de jouer.",
+    "errorNotChannel": "Vous devez rejoindre un salon vocal d'abord !",
+    "currentVolume": "🔊 Le volume actuel est de : **{volume}%**",
     "errorNotNumber": "Veuillez utiliser un nombre pour régler le volume.",
-    "errorNotValid": "Veuillez utiliser un nombre compris entre 0 et 100.",
-    "result": "Volume réglé sur: **{arg}%**"
+    "errorNotValid": "Veuillez utiliser un nombre entre 0 et 100.",
+    "result": "Volume réglé à : **{arg}%**"
   },
   "common": {
-    "on": "**on**",
-    "off": "**off**",
-    "enabled": "**activer**",
-    "disabled": "**désactiver**",
-    "errorNotChannel": "Vous devez d'abord rejoindre un salon vocal!",
-    "cooldownMessage": "S'il vous plaît, attendez {time} secondes avant de réutiliser la commande `{name}`.",
+    "on": "**activé**",
+    "off": "**désactivé**",
+    "enabled": "**activé**",
+    "disabled": "**désactivé**",
+    "errorNotChannel": "Vous devez rejoindre un salon vocal d'abord !",
+    "cooldownMessage": "Veuillez patienter {time} seconde(s) de plus avant de réutiliser la commande `{name}`.",
     "errorCommand": "Une erreur s'est produite lors de l'exécution de cette commande."
   },
-  "move": {
-    "description": "Déplacez les chansons de la file d'attente",
-    "errorNotQueue": "Il n'y a pas de file d'attente.",
-    "usagesReply": "Utilisation: {prefix}move <Nombre dans la file d'attente>",
-    "result": "<@{author}> 🚚 a déplacé **{title}** vers {index} dans la file d'attente."
-  }
+  "Invitez-moi sur votre serveur !": "Invitez-moi sur votre serveur !",
+  "Inviter": "Inviter"
 }
