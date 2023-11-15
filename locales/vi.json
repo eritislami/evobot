@@ -1,169 +1,180 @@
 {
   "clip": {
     "description": "Phát một đoạn âm thanh",
-    "usagesReply": "Cách sử dụng: {prefix}clip <tên đoạn âm thanh>",
-    "errorQueue": "Không thể phát đoạn âm thanh vì hiện tại đang có một hàng đợi trong máy chủ.",
-    "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!"
+    "usagesReply": "Sử dụng: {prefix}clip <tên>",
+    "errorQueue": "Không thể phát một đoạn âm thanh vì có hàng đợi đang hoạt động.",
+    "errorNotChannel": "Bạn cần tham gia kênh thoại trước!"
   },
   "clips": {
-    "description": "Liệt kê tất cả đoạn âm thanh có sẵn"
+    "description": "Liệt kê tất cả các đoạn âm thanh có sẵn"
   },
   "help": {
-    "description": "Hiển thị tất cả câu lệnh sẵn có và mô tỏ của nó.",
-    "embedTitle": "{botname} Help",
-    "embedDescription": "Hiện thị tất cả câu lệnh sẵn có."
+    "description": "Hiển thị tất cả các lệnh và mô tả",
+    "embedTitle": "Trợ giúp {botname}",
+    "embedDescription": "Danh sách tất cả các lệnh"
   },
   "invite": {
-    "description": "Nhận đường liên kết để mời bot."
+    "description": "Gửi liên kết mời bot."
   },
   "loop": {
     "description": "Bật tắt chức năng lặp lại",
-    "errorNotQueue": "Không có bài hát nào đang phát.",
-    "result": "Lặp lại hiện đang {loop}"
+    "errorNotQueue": "Không có gì đang phát.",
+    "result": "Lặp hiện tại là {loop}"
   },
   "lyrics": {
     "description": "Hiển thị lời bài hát của bài nhạc đang phát",
-    "errorNotQueue": "Không có bài hát nào đang phát.",
+    "errorNotQueue": "Không có bài nhạc nào đang phát.",
     "lyricsNotFound": "Không tìm thấy lời cho bài hát {title}.",
     "embedTitle": "{title} - Lời bài hát"
   },
   "move": {
-    "description": "Di chuyển bài hát đến vị trí chỉ định",
-    "errorNotQueue": "Không có hàng đợi nào đang hoạt động.",
-    "usagesReply": "Cách sử dụng: {prefix}move <thứ tự trong hàng đợi>",
-    "result": "<@{author}> 🚚 đã di chuyển **{title}** đến vị trí {index} trong hàng đợi."
+    "description": "Di chuyển bài hát trong hàng đợi",
+    "errorNotQueue": "Không có hàng đợi nào.",
+    "usagesReply": "Sử dụng: {prefix}move <Số Thứ Tự Hàng Đợi>",
+    "result": "<@{author}> 🚚 đã di chuyển **{title}** đến vị trí {index} trong hàng đợi.",
+    "args": {
+      "movefrom": "Vị trí di chuyển từ",
+      "moveto": "Vị trí di chuyển đến"
+    }
   },
   "nowplaying": {
     "description": "Hiển thị bài hát đang phát",
-    "errorNotQueue": "Không có bài hát nào đang phát.",
+    "errorNotQueue": "Không có gì đang phát.",
     "embedTitle": "Đang phát",
-    "live": " ◉ Trực Tiếp",
-    "timeRemaining": "Thời gian còn lại: {time}"
+    "live": " ◉ TRỰC TIẾP",
+    "timeRemaining": "Thời Gian Còn Lại: {time}"
   },
   "pause": {
-    "description": "Tạm dừng phát nhạc",
-    "errorNotQueue": "Không có bài hát nào đang phát.",
-    "result": "<@{author}> ⏸ đã tạm dừng phát nhạc."
+    "description": "Tạm dừng âm nhạc đang phát",
+    "errorNotQueue": "Không có gì đang phát.",
+    "result": "<@{author}> ⏸ đã tạm dừng âm nhạc."
   },
   "ping": {
-    "description": "Hiển thị thời gian phản hồi trung bình của bot",
-    "result": "📈 Thời gian phản hồi trung bình của API: {ping} ms"
+    "description": "Hiển thị độ trễ trung bình của bot",
+    "result": "📈 Độ trễ trung bình đến API: {ping} ms"
   },
   "play": {
-    "description": "Phát nhạc từ YouTube hoặc Soundcloud",
-    "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "errorNotInSameChannel": "Bạn phải ở cùng kênh thoại với {user}",
-    "usageReply": "Cách sử dụng: {prefix}play <Link YouTube | Tên Video | Link Soundcloud>",
-    "missingPermissionConnect": "Không thể kết nối đến kênh thoại, không có đủ quyền hạn",
-    "missingPermissionSpeak": "Không thể phát nhạc vì không có quyền nói!",
+    "description": "Phát âm thanh từ YouTube",
+    "errorNotChannel": "Bạn cần tham gia kênh thoại trước!",
+    "errorNotInSameChannel": "Bạn phải ở trong cùng một kênh với {user}",
+    "usageReply": "Sử dụng: {prefix}play <URL YouTube | Tên Video>",
+    "missingPermissionConnect": "Không thể kết nối đến kênh thoại, thiếu quyền hạn",
+    "missingPermissionSpeak": "Tôi không thể nói trong kênh thoại này, hãy chắc chắn rằng tôi có đủ quyền!",
     "queueAdded": "✅ **{title}** đã được thêm vào hàng đợi bởi <@{author}>",
-    "cantJoinChannel": "Không thể kết nối đến kênh thoại: {error}",
-    "queueEnded": "❌ Đã phát hết nhạc trong hàng đợi.",
+    "cantJoinChannel": "Không thể tham gia kênh: {error}",
+    "queueEnded": "❌ Hết hàng đợi âm nhạc.",
     "queueError": "Lỗi: {error}",
     "startedPlaying": "🎶 Bắt đầu phát: **{title}** {url}",
-    "skipSong": "<@{author}> ⏩ đã bỏ qua bài hát đang phát",
-    "pauseSong": "<@{author}> ⏸ đã tạm dừng phát nhạc!",
-    "resumeSong": "<@{author}> ▶ đã tiếp tục phát nhạc!",
-    "unmutedSong": "<@{author}> 🔊 đã bỏ tắt tiếng bài hát!",
-    "mutedSong": "<@{author}> 🔇 đã tắt tiếng bài hát!",
+    "skipSong": "<@{author}> ⏩ đã bỏ qua bài hát.",
+    "pauseSong": "<@{author}> ⏸ đã tạm dừng âm nhạc.",
+    "resumeSong": "<@{author}> ▶ đã tiếp tục phát âm nhạc!",
+    "unmutedSong": "<@{author}> 🔊 đã bỏ tắt âm nhạc!",
+    "mutedSong": "<@{author}> 🔇 đã tắt âm nhạc!",
     "decreasedVolume": "<@{author}> 🔉 đã giảm âm lượng, âm lượng hiện tại là {volume}%",
     "increasedVolume": "<@{author}> 🔊 đã tăng âm lượng, âm lượng hiện tại là {volume}%",
-    "loopSong": "<@{author}> chế độ lặp lại hiện đang {loop}",
-    "stopSong": "<@{author}> ⏹ đã dừng phát nhạc!",
-    "leaveChannel": "Đang rời khỏi kênh thoại...",
-    "songNotFound": "Không thể tìm thấy đoạn âm thanh",
-    "songAccessErr": "Video bị giới hạn độ tuổi, ở chế độ riêng tư hoặc không khả dụng!"
+    "loopSong": "<@{author}> Lặp hiện tại là {loop}",
+    "stopSong": "<@{author}> ⏹ đã dừng âm nhạc!",
+    "leaveChannel": "Rời khỏi kênh thoại...",
+    "songNotFound": "Không tìm thấy âm thanh",
+    "songAccessErr": "Video có giới hạn độ tuổi, riêng tư hoặc không khả dụng",
+    "errorNoResults": "Không có kết quả cho {url}",
+    "errorInvalidURL": "URL không hợp lệ, vui lòng thử tìm kiếm hoặc nhập URL YouTube"
   },
   "playlist": {
-    "description": "Phát danh sách nhạc từ link YouTube",
-    "usagesReply": "Cách sử dụng: {prefix}playlist <Link danh sách nhạc từ YouTube | Tên danh sách nhạc>",
-    "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "errorNotInSameChannel": "Bạn phải ở cùng kênh thoại với {user}",
-    "missingPermissionConnect": "Không thể kết nối đến kênh thoại, không có đủ quyền hạn",
-    "missingPermissionSpeak": "Không thể phát nhạc vì không có quyền nói!",
-    "errorNotFoundPlaylist": "Không thể tìm thấy danh sách nhạc :(",
-    "fetchingPlaylist": "⌛ đang tìm nạp danh sách nhạc...",
-    "playlistCharLimit": "\nDanh sách nhạc lớn hơn giới hạn từ có thể gửi trong một tin nhắn...",
-    "startedPlaylist": "<@{author}> Bắt đầu phát danh sách nhạc",
-    "cantJoinChannel": "Không thể tham gia kênh thoại: {error}"
+    "description": "Phát danh sách phát từ youtube",
+    "usagesReply": "Sử dụng: {prefix}playlist <URL Danh sách phát YouTube | Tên Danh sách phát>",
+    "errorNotChannel": "Bạn cần tham gia kênh thoại trước!",
+    "errorNotInSameChannel": "Bạn phải ở trong cùng một kênh với {user}",
+    "missingPermissionConnect": "Không thể kết nối đến kênh thoại, thiếu quyền hạn",
+    "missingPermissionSpeak": "Tôi không thể nói trong kênh thoại này, hãy chắc chắn rằng tôi có đủ quyền!",
+    "errorNotFoundPlaylist": "Không tìm thấy danh sách phát :(",
+    "fetchingPlaylist": "⌛ đang tải danh sách phát...",
+    "playlistCharLimit": "\nDanh sách phát lớn hơn giới hạn ký tự...",
+    "startedPlaylist": "<@{author}> Bắt đầu danh sách phát",
+    "cantJoinChannel": "Không thể tham gia kênh: {error}"
   },
   "pruning": {
-    "description": "Tùy chính xóa tin nhắn của bot",
-    "errorWritingFile": "Hiện đang có lỗi khi thực hiện thay đổi trên máy chủ.",
+    "description": "Tùy chỉnh xóa tin nhắn của bot",
+    "errorWritingFile": "Có lỗi khi ghi vào tệp.",
     "result": "Tự động xóa tin nhắn hiện đang {result}"
   },
   "queue": {
-    "description": "Hiển thị danh sách hàng đợi phát nhạc đang hoạt động",
-    "missingPermissionMessage": "Thiếu quyền để Quản lý tin nhắn hoặc Thêm biểu tượng cảm xúc",
-    "errorNotQueue": "❌ **Không có hàng đợi nào đang hoạt động trong máy chủ này**",
-    "currentPage": "Trang hiện tại - ",
-    "embedTitle": "Danh sách hàng đợi\n",
-    "embedCurrentSong": "**Bài hát đang phát - [{title}]({url})**\n\n{info}"
+    "description": "Hiển thị hàng đợi âm nhạc và bài hát đang phát.",
+    "missingPermissionMessage": "Thiếu quyền để quản lý tin nhắn hoặc thêm biểu tượng",
+    "errorNotQueue": "❌ **Không có gì đang phát trong máy chủ này**",
+    "currentPage": "Trang Hiện Tại - ",
+    "embedTitle": "Hàng Đợi Bài Hát\n",
+    "embedCurrentSong": "**Bài Hát Đang Phát - [{title}]({url})**\n\n{info}"
   },
   "remove": {
-    "description": "Loại bỏ bài hát khỏi hàng đợi",
-    "errorNotQueue": "Không có hàng đợi nào đang hoạt động.",
-    "usageReply": "Cách sử dụng: {prefix}remove <số thứ tự bài hát trong hàng đợi>",
+    "description": "Xóa bài hát khỏi hàng đợi",
+    "errorNotQueue": "Không có hàng đợi nào.",
+    "usageReply": "Sử dụng: {prefix}remove <Số Thứ Tự Hàng Đợi>",
     "result": "<@{author}> ❌ đã xóa **{title}** khỏi hàng đợi."
   },
   "resume": {
-    "description": "Tiếp tục phát bài hát hiện đang bị tạm dừng",
-    "errorNotQueue": "Không có bài hát nào đang phát.",
-    "resultNotPlaying": "<@{author}> ▶ đã tiếp tục phát nhạc!",
-    "errorPlaying": "Bài hát trong hàng đợi hiện đang không bị tạm dừng."
+    "description": "Tiếp tục phát âm nhạc đang phát",
+    "errorNotQueue": "Không có gì đang phát.",
+    "resultNotPlaying": "<@{author}> ▶ đã tiếp tục phát âm nhạc!",
+    "errorPlaying": "Hàng đợi không tạm dừng."
   },
   "search": {
     "description": "Tìm kiếm và chọn video để phát",
-    "usageReply": "Cách sử dụng: {prefix}{name} <tên video>",
+    "usageReply": "Sử dụng: {prefix}{name} <Tên Video>",
     "errorAlreadyCollector": "Hiện đang có một người dùng khác đang tìm kiếm trong kênh này.",
-    "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "resultEmbedTitle": "**Gửi số bài hát mà bạn chọn trong danh sách ở trên**",
-    "resultEmbedDesc": "Kết quả tìm kiểm cho: {search}"
+    "errorNotChannel": "Bạn cần tham gia kênh thoại trước!",
+    "resultEmbedTitle": "**Trả lời với số bài hát bạn muốn phát**",
+    "resultEmbedDesc": "Kết quả cho: {search}",
+    "optionQuery": "Truy vấn tìm kiếm",
+    "noResults": "Không có kết quả cho truy vấn, vui lòng thử một cái gì khác"
   },
   "shuffle": {
-    "description": "Đảo hàng đợi",
-    "errorNotQueue": "Không có hàng đợi nào đang hoạt động.",
-    "result": "<@{author}> 🔀 đã đảo hàng đợi"
+    "description": "Xáo trộn hàng đợi",
+    "errorNotQueue": "Không có hàng đợi nào.",
+    "result": "<@{author}> 🔀 đã xáo trộn hàng đợi"
   },
   "skip": {
     "description": "Bỏ qua bài hát đang phát",
-    "errorNotQueue": "Không có bài hát nào đang phát nào.",
-    "result": "<@{author}> ⏭ bỏ qua bài hát"
+    "errorNotQueue": "Không có gì đang phát để bỏ qua cho bạn.",
+    "result": "<@{author}> ⏭ đã bỏ qua bài hát"
   },
   "skipto": {
-    "description": "Bỏ qua tất cả bài hát và phát bài hát ở vị trí đã chọn",
-    "usageReply": "Cách sử dụng: {prefix}{name} <số thứ tự bài hát trong hàng đợi>",
-    "errorNotQueue": "Không có bài hát nào trong hàng đợi.",
-    "errorNotValid": "Hiện chỉ có {length} bài hát trong hàng đợi!",
-    "result": "<@{author}> ⏭ đã chuyển đến bài hát ở vị trí {arg}."
+    "description": "Bỏ qua đến số hàng đợi được chọn",
+    "usageReply": "Sử dụng: {prefix}{name} <Số Thứ Tự Hàng Đợi>",
+    "errorNotQueue": "Không có hàng đợi nào.",
+    "errorNotValid": "Hàng đợi chỉ có {length} bài hát!",
+    "result": "<@{author}> ⏭ đã bỏ qua {arg} bài hát",
+    "args": {
+      "number": "Số thứ tự hàng đợi để bỏ qua đến"
+    }
   },
   "stop": {
-    "description": "Dừng phát nhạc.",
-    "errorNotQueue": "Hiện tại không có bài hát nào đang phát.",
-    "result": "<@{author}> ⏹ đã dừng phát nhạc!"
+    "description": "Dừng âm nhạc",
+    "errorNotQueue": "Không có gì đang phát.",
+    "result": "<@{author}> ⏹ đã dừng âm nhạc!"
   },
   "uptime": {
-    "description": "Kiểm tra uptime",
-    "result": "Uptime: `{days} ngày, {hours} giờ, {minutes} phút, {seconds} giây`"
+    "description": "Kiểm tra thời gian hoạt động",
+    "result": "Thời Gian Hoạt Động: `{days} ngày, {hours} giờ, {minutes} phút, {seconds} giây`."
   },
   "volume": {
-    "description": "Điều chỉnh âm lượng của bài hát đang phát.",
-    "errorNotQueue": "Hiện tại không có bài hát nào đang phát.",
-    "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
+    "description": "Thay đổi âm lượng của âm nhạc đang phát",
+    "errorNotQueue": "Không có gì đang phát.",
+    "errorNotChannel": "Bạn cần tham gia kênh thoại trước!",
     "currentVolume": "🔊 Âm lượng hiện tại là: **{volume}%**",
-    "errorNotNumber": "Vui lòng chỉ sử dụng giá trị là số để chỉnh âm lượng.",
-    "errorNotValid": "Vui lòng chỉ sử dụng số trong phạm vi từ 0 đến 100.",
-    "result": "Âm lượng được đặt thành: **{arg}%**"
+    "errorNotNumber": "Vui lòng sử dụng số để đặt âm lượng.",
+    "errorNotValid": "Vui lòng sử dụng số từ 0 - 100.",
+    "result": "Âm lượng được đặt là: **{arg}%**"
   },
   "common": {
-    "on": "**bật**",
-    "off": "**tắt**",
-    "enabled": "**kích hoạt*",
-    "disabled": "**vô hiệu hóa**",
-    "errorNotChannel": "Bạn cần tham gia một kênh thoại trước!",
-    "cooldownMessage": "Xin vui lòng chờ {time} giây trước khi sử dụng lại lệnh `{name}`.",
-    "errorCommand": "Có lỗi xảy ra khi đang cố gắng thực hiện yêu cầu của bạn, vui lòng thử lại sau ít phút."
+    "on": "**Bật**",
+    "off": "**Tắt**",
+    "enabled": "**Bật**",
+    "disabled": "**Tắt**",
+    "errorNotChannel": "Bạn cần tham gia kênh thoại trước!",
+    "cooldownMessage": "vui lòng đợi thêm {time} giây trước khi sử dụng lại lệnh `{name}`.",
+    "errorCommand": "Có lỗi khi thực hiện lệnh đó."
   },
-  "Invite me to your server!": "Mời tớ vào máy chủ của bạn!",
-  "Invite": "Invite"
+  "Invite me to your server!": "Mời tôi vào máy chủ của bạn!",
+  "Invite": "Mời"
 }
