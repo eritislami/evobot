@@ -1,7 +1,9 @@
 .vscode
 .github
 node_modules
+npm-debug.log
 .env
+.git
 .gitignore
 .node-version
 .prettierrc
@@ -10,3 +12,5 @@ config.json
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 Procfile
+Dockerfile
+.dockerignore
