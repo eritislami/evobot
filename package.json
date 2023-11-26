@@ -15,7 +15,7 @@
     "dev": "nodemon index.ts",
     "start": "ts-node index.ts",
     "build": "tsc --build",
-    "prod": "node ./dist/index.js",
+    "prod": "npm run build && node ./dist/index.js",
     "commit": "cz",
     "format": "npx prettier --write '**/*.ts' --config .prettierrc"
   },
