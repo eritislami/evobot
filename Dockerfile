@@ -20,7 +20,7 @@ COPY --chown=${USER}:${USER}  . .
 RUN npm ci
 RUN npm run build
 
-FROM base as prod
+FROM node:${NODE_VERSION} as prod
 
 COPY --chown=${USER}:${USER} package*.json ./
 COPY --from=build --chown=${USER}:${USER} /home/evobot/node_modules ./node_modules
