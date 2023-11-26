@@ -20,6 +20,9 @@ COPY --chown=${USER}:${USER}  . .
 RUN npm ci
 RUN npm run build
 
+RUN rm -rf node_modules && \
+    npm ci --omit=dev
+
 FROM node:${NODE_VERSION} as prod
 
 COPY --chown=${USER}:${USER} package*.json ./
