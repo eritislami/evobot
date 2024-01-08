@@ -63,13 +63,17 @@ Media Controls available via Reactions
 ## 🚀 Getting Started
 
 1. Generate a Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**
-1.1. Enable `Message Content Intent` in Discord Developer Portal
-1.2. Use both the `bot` and `applications.commands` scopes, and enable the following permissions:
+
+  1.1. Enable `Message Content Intent` in Discord Developer Portal
+
+  1.2. Use both the `bot` and `applications.commands` scopes, and enable the following permissions:
+
     - View Channels
     - Send Messages
     - Manage Messages
     - Connect (Voice)
     - Speak (Voice)
+
 2. Copy or rename `config.json.example` to `config.json` and enter the Discord Bot Token for `TOKEN`
 
 ⚠️ **Note: Never commit or share your token or api keys publicly** ⚠️
