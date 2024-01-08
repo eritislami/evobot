@@ -1,4 +1,4 @@
-ARG NODE_VERSION=18.18.2-slim
+ARG NODE_VERSION=18-slim
 FROM node:${NODE_VERSION} as base
 
 ENV USER=evobot
