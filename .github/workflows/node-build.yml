@@ -1,26 +1,26 @@
-name: Node.js CI
-
+name: Node.js Build
 on:
   push:
-    branches: [master]
-    paths-ignore:
-      - README.md
-      - .github/**
-      - locales/**
-      - sounds/**
-      - package.json
+    branches: [main]
+    paths:
+      - "**/*.ts"
+      - "**/*.js"
+      - "**/*.json"
   pull_request:
-    branches: [master]
+    branches: [main]
+
+permissions:
+  contents: read
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Use Node.js 16.11.0
+      - name: Use Node.js 18.19.0
         uses: actions/setup-node@v3
         with:
-          node-version: "16.11.0"
+          node-version: "18.19.0"
           cache: "npm"
       - run: npm ci
       - run: npm run build --if-present

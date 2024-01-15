@@ -1,4 +1,4 @@
-ARG NODE_VERSION=18-slim
+ARG NODE_VERSION=18.19.0-slim
 FROM node:${NODE_VERSION} as build
 
 RUN apt-get update && \

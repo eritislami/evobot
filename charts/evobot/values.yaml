@@ -1,0 +1,39 @@
+# Default values for evobot.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: ghcr.io/drewburr-labs/evobot
+  pullPolicy: IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: ""
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+securityContext: {}
+
+resources: {}
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# Additional volumes and volumeMounts on the output Deployment definition.
+volumes: []
+volumeMounts: []
+
+# Environment variables to set in the container.
+env: []
+envFrom: []
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

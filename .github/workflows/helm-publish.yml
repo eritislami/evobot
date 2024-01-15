@@ -1,0 +1,56 @@
+## Reference: https://github.com/helm/chart-releaser-action
+name: Helm Publish
+on:
+  push:
+    branches: [main]
+    paths:
+      - "charts/**"
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    permissions:
+      contents: write  # for helm/chart-releaser-action to push chart release and create a release
+      packages: write  # to push OCI chart package to GitHub Registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.13.0 # Also update in lint-and-test.yaml
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Run chart-releaser
+        uses: helm/chart-releaser-action@v1.5.0
+        with:
+          config: "./.github/configs/cr.yaml"
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push chart to GHCR
+        run: |
+          shopt -s nullglob
+          for pkg in .cr-release-packages/*.tgz; do
+            if [ -z "${pkg:-}" ]; then
+              break
+            fi
+            helm push "${pkg}" oci://ghcr.io/${{ github.repository }}
+          done
