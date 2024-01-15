@@ -13,7 +13,6 @@
   },
   "scripts": {
     "dev": "nodemon index.ts",
-    "docker-dev": "./docker-build.sh && ./docker-test.sh",
     "start": "ts-node index.ts",
     "build": "tsc --build",
     "prod": "npm run build && node ./dist/index.js",
