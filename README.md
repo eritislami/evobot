@@ -1,6 +1,6 @@
 # 🤖 EvoBot (Discord Music Bot)
 
-![Node build](https://github.com/eritislami/evobot/actions/workflows/node.yml/badge.svg) ![Docker build](https://github.com/eritislami/evobot/actions/workflows/docker.yml/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+![Node build](https://github.com/drewburr-labs/evobot/actions/workflows/node-build.yml/badge.svg) ![Docker build](https://github.com/drewburr-labs/evobot/actions/workflows/docker-build-and-publish.yml/badge.svg) ![Helm build](https://github.com/drewburr-labs/evobot/actions/workflows/helm-publish.yml/badge.svg) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 ![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
 
