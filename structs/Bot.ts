@@ -1,4 +1,5 @@
 import {
+  ActivityType,
   ApplicationCommandDataResolvable,
   ChatInputCommandInteraction,
   Client,
@@ -29,10 +30,14 @@ export class Bot {
   public constructor(public readonly client: Client) {
     this.client.login(config.TOKEN);
 
-    this.client.on("ready", () => {
-      console.log(`${this.client.user!.username} ready!`);
-
+    this.client.once(Events.ClientReady, readyClient => {
+      console.log(`${readyClient.user!.username} connected!`);
+      let activity = undefined
+      if (config.LISTENING_ACTIVITY)
+        activity = {name: config.LISTENING_ACTIVITY, type: ActivityType.Listening}
+      readyClient.user.setActivity(activity)
       this.registerSlashCommands();
+      console.log(`${readyClient.user!.username} ready!`);
     });
 
     this.client.on("warn", (info) => console.log(info));

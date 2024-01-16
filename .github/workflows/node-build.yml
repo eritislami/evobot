@@ -1,0 +1,26 @@
+name: Node.js Build
+on:
+  push:
+    paths-ignore:
+      - "**/*.md"
+  pull_request:
+    branches:
+    - main
+    - master
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Use Node.js 18.19.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.19.0"
+          cache: "npm"
+      - run: npm ci --loglevel info
+      - run: npm run build --if-present --loglevel info

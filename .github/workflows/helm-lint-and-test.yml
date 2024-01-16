@@ -1,0 +1,72 @@
+## Reference: https://github.com/helm/chart-testing-action
+name: Helm Lint and Test
+on:
+  push:
+    paths:
+      - "charts/**"
+  pull_request:
+    branches:
+    - main
+    - master
+
+permissions:
+  contents: read
+
+jobs:
+  linter-artifacthub:
+    runs-on: ubuntu-latest
+    container:
+      image: public.ecr.aws/artifacthub/ah:v1.14.0
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Run ah lint
+        working-directory: ./charts
+        run: ah lint
+
+  chart-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+        with:
+          version: v3.13.0 # Also update in helm-publish.yaml
+
+      - name: Set up python
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.9
+
+      - name: Setup Chart Linting
+        id: lint
+        uses: helm/chart-testing-action@v2
+        with:
+          # Note: Also update in scripts/lint.sh
+          version: v3.7.1
+
+      # - name: List changed charts
+      #   id: list-changed
+      #   run: |
+      #     ## If executed with debug this won't work anymore.
+      #     changed=$(ct --config ./.github/configs/ct-lint.yaml list-changed)
+      #     charts=$(echo "$changed" | tr '\n' ' ' | xargs)
+      #     if [[ -n "$changed" ]]; then
+      #       echo "changed=true" >> $GITHUB_OUTPUT
+      #       echo "changed_charts=$charts" >> $GITHUB_OUTPUT
+      #     fi
+
+      # - name: Create kind cluster
+      #   uses: helm/kind-action@dda0770415bac9fc20092cacbc54aa298604d140 # v1.8.0
+      #   if: steps.list-changed.outputs.changed == 'true'
+      #   with:
+      #     config: .github/configs/kind-config.yaml
+
+      # - name: Run chart-testing (install)
+      #   run: ct install --config ./.github/configs/ct-install.yaml
+      #   if: steps.list-changed.outputs.changed == 'true'
