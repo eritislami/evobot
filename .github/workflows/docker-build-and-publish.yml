@@ -9,7 +9,9 @@ on:
       - ".dockerignore"
       - "Dockerfile"
   pull_request:
-    branches: [main]
+    branches:
+    - main
+    - master
 
 env:
   REGISTRY: ghcr.io

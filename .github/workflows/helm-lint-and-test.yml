@@ -5,7 +5,9 @@ on:
     paths:
       - "charts/**"
   pull_request:
-    branches: [main]
+    branches:
+    - main
+    - master
 
 permissions:
   contents: read
