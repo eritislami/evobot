@@ -8,10 +8,6 @@ on:
       - "**/*.json"
       - ".dockerignore"
       - "Dockerfile"
-  pull_request:
-    branches:
-    - main
-    - master
 
 env:
   REGISTRY: ghcr.io
