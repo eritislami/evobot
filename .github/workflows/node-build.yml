@@ -22,5 +22,5 @@ jobs:
         with:
           node-version: "18.19.0"
           cache: "npm"
-      - run: npm ci
-      - run: npm run build --if-present
+      - run: npm ci --loglevel info
+      - run: npm run build --if-present --loglevel info

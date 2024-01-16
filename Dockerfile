@@ -9,13 +9,13 @@ RUN apt-get update && \
 WORKDIR /home/node
 
 COPY package*.json ./
-RUN npm ci
+RUN npm ci --loglevel info
 
 COPY . .
 RUN npm run build
 
 RUN mv node_modules _modules && \
-    npm ci --omit=dev
+    npm ci --omit=dev --loglevel info
 
 FROM node:${NODE_VERSION} as prod
 ENV USER="node"
