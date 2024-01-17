@@ -37,7 +37,7 @@
     "@types/node": "^20.10.0",
     "cz-conventional-changelog": "^3.0.1",
     "nodemon": "^2.0.22",
-    "prettier": "^3.1.0",
+    "prettier": "^3.2.3",
     "ts-node": "^10.9.1"
   },
   "optionalDependencies": {
