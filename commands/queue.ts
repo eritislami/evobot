@@ -15,7 +15,7 @@ import { i18n } from "../utils/i18n";
 export default {
   data: new SlashCommandBuilder().setName("queue").setDescription(i18n.__("queue.description")),
   cooldown: 5,
-  permissions: [PermissionsBitField.Flags.AddReactions, PermissionsBitField.Flags.ManageMessages],
+  permissions: [PermissionsBitField.Flags.AddReactions],
   async execute(interaction: ChatInputCommandInteraction) {
     const queue = bot.queues.get(interaction.guild!.id);
     if (!queue || !queue.songs.length) return interaction.reply({ content: i18n.__("queue.errorNotQueue") });

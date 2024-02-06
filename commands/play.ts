@@ -15,8 +15,7 @@ export default {
   permissions: [
     PermissionsBitField.Flags.Connect,
     PermissionsBitField.Flags.Speak,
-    PermissionsBitField.Flags.AddReactions,
-    PermissionsBitField.Flags.ManageMessages
+    PermissionsBitField.Flags.AddReactions
   ],
   async execute(interaction: ChatInputCommandInteraction, input: string) {
     let argSongName = interaction.options.getString("song");
@@ -98,6 +97,5 @@ export default {
     bot.queues.set(interaction.guild!.id, newQueue);
 
     newQueue.enqueue(song);
-    interaction.deleteReply().catch(console.error);
-  }
+    await interaction.editReply("✅ Done!").catch(console.error)  }
 };

@@ -21,8 +21,7 @@ export default {
   permissions: [
     PermissionsBitField.Flags.Connect,
     PermissionsBitField.Flags.Speak,
-    PermissionsBitField.Flags.AddReactions,
-    PermissionsBitField.Flags.ManageMessages
+    PermissionsBitField.Flags.AddReactions
   ],
   async execute(interaction: ChatInputCommandInteraction, queryOptionName = "playlist") {
     let argSongName = interaction.options.getString(queryOptionName);
