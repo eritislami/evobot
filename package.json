@@ -23,7 +23,7 @@
     "@discordjs/voice": "^0.16.1",
     "array-move": "^3.0.1",
     "discord.js": "^14.14.1",
-    "dotenv": "^16.3.1",
+    "dotenv": "^16.4.2",
     "ffmpeg-static": "^4.4.1",
     "i18n": "^0.15.1",
     "lyrics-finder": "^21.0.5",
