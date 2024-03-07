@@ -90,7 +90,7 @@ docker run -e "TOKEN=<discord-token>" eritislami/evobot
 - Command Handler from [discordjs.guide](https://discordjs.guide/)
 - Media Controls via Buttons
 
-![buttons](https://i.imgur.com/0hdUX1C.png)
+![buttons](https://i.imgur.com/67TGY0c.png)
 
 ## 🌎 Locales
 
