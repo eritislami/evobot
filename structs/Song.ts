@@ -63,8 +63,6 @@ export class Song {
   public async makeResource(): Promise<AudioResource<Song> | void> {
     let playStream;
 
-    let type = this.url.includes("youtube.com") ? StreamType.Opus : StreamType.OggOpus;
-
     const source = this.url.includes("youtube") ? "youtube" : "soundcloud";
 
     if (source === "youtube") {
