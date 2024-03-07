@@ -38,7 +38,7 @@
     "cz-conventional-changelog": "^3.0.1",
     "nodemon": "^2.0.22",
     "prettier": "^3.2.5",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.2"
   },
   "optionalDependencies": {
     "@discordjs/opus": "^0.9.0",
