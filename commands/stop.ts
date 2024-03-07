@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { bot } from "../index";
 import { i18n } from "../utils/i18n";
 import { canModifyQueue } from "../utils/queue";
+import { safeReply } from "../utils/safeReply";
 
 export default {
   data: new SlashCommandBuilder().setName("stop").setDescription(i18n.__("stop.description")),
@@ -14,6 +15,6 @@ export default {
 
     queue.stop();
 
-    interaction.reply({ content: i18n.__mf("stop.result", { author: interaction.user.id }) }).catch(console.error);
+    safeReply(interaction, i18n.__mf("stop.result", { author: interaction.user.id }));
   }
 };
