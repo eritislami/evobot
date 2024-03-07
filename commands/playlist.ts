@@ -18,12 +18,7 @@ export default {
     .setDescription(i18n.__("playlist.description"))
     .addStringOption((option) => option.setName("playlist").setDescription("Playlist name or link").setRequired(true)),
   cooldown: 5,
-  permissions: [
-    PermissionsBitField.Flags.Connect,
-    PermissionsBitField.Flags.Speak,
-    PermissionsBitField.Flags.AddReactions,
-    PermissionsBitField.Flags.ManageMessages
-  ],
+  permissions: [PermissionsBitField.Flags.Connect, PermissionsBitField.Flags.Speak],
   async execute(interaction: ChatInputCommandInteraction, queryOptionName = "playlist") {
     let argSongName = interaction.options.getString(queryOptionName);
 
