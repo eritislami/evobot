@@ -12,12 +12,7 @@ export default {
     .setDescription(i18n.__("play.description"))
     .addStringOption((option) => option.setName("song").setDescription("The song you want to play").setRequired(true)),
   cooldown: 3,
-  permissions: [
-    PermissionsBitField.Flags.Connect,
-    PermissionsBitField.Flags.Speak,
-    PermissionsBitField.Flags.AddReactions,
-    PermissionsBitField.Flags.ManageMessages
-  ],
+  permissions: [PermissionsBitField.Flags.Connect, PermissionsBitField.Flags.Speak],
   async execute(interaction: ChatInputCommandInteraction, input: string) {
     let argSongName = interaction.options.getString("song");
     if (!argSongName) argSongName = input;
