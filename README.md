@@ -71,7 +71,7 @@ docker run -e "TOKEN=<discord-token>" eritislami/evobot
 
 `/playlist linkin park meteora`
 
-- Now Playing (/np)
+- Now Playing (/nowplaying)
 - Queue system (/queue)
 - Loop / Repeat (/loop)
 - Shuffle (/shuffle)
@@ -88,9 +88,9 @@ docker run -e "TOKEN=<discord-token>" eritislami/evobot
 - Toggle pruning of bot messages (/pruning)
 - Help (/help)
 - Command Handler from [discordjs.guide](https://discordjs.guide/)
-- Media Controls via Reactions
+- Media Controls via Buttons
 
-![reactions](https://i.imgur.com/0hdUX1C.png)
+![buttons](https://i.imgur.com/0hdUX1C.png)
 
 ## 🌎 Locales
 
