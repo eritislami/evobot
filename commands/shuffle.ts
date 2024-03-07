@@ -2,6 +2,7 @@ import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 import { bot } from "../index";
 import { i18n } from "../utils/i18n";
 import { canModifyQueue } from "../utils/queue";
+import { safeReply } from "../utils/safeReply";
 
 export default {
   data: new SlashCommandBuilder().setName("shuffle").setDescription(i18n.__("shuffle.description")),
@@ -23,9 +24,8 @@ export default {
 
     queue.songs = songs;
 
-    const content = { content: i18n.__mf("shuffle.result", { author: interaction.user.id }) };
+    const content = i18n.__mf("shuffle.result", { author: interaction.user.id });
 
-    if (interaction.replied) interaction.followUp(content).catch(console.error);
-    else interaction.reply(content).catch(console.error);
+    safeReply(interaction, content);
   }
 };

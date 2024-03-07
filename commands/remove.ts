@@ -27,13 +27,13 @@ export default {
     if (!removeArgs)
       return interaction.reply({ content: i18n.__mf("remove.usageReply", { prefix: bot.prefix }), ephemeral: true });
 
-    const songs = removeArgs.split(",").map((arg: any) => parseInt(arg));
+    const songs = removeArgs.split(",").map((arg) => parseInt(arg));
 
     let removed: Song[] = [];
 
     if (pattern.test(removeArgs)) {
       queue.songs = queue.songs.filter((item, index) => {
-        if (songs.find((songIndex: any) => songIndex - 1 === index)) removed.push(item);
+        if (songs.find((songIndex) => songIndex - 1 === index)) removed.push(item);
         else return true;
       });
 
