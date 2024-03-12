@@ -23,7 +23,7 @@ export class Playlist {
       });
   }
 
-  public static async from(url: string = "", search: string = "") {
+  public static async from(url: string = "", search: string = ""): Promise<Playlist> {
     const urlValid = pattern.test(url);
     let playlist;
 
@@ -32,7 +32,11 @@ export class Playlist {
     } else {
       const result = await youtube.searchOne(search, "playlist");
 
-      playlist = await youtube.getPlaylist(result.url!);
+      if (!result || !result.url) {
+        throw new Error('Keine Playlist gefunden');
+      }
+
+      playlist = await youtube.getPlaylist(result.url);
     }
 
     return new this(playlist);

@@ -22,6 +22,7 @@
   "dependencies": {
     "@discordjs/voice": "^0.16.1",
     "array-move": "^3.0.1",
+    "cheerio": "^1.0.0-rc.12",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
     "ffmpeg-static": "^4.4.1",

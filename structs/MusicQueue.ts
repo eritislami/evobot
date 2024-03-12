@@ -352,5 +352,17 @@ export class MusicQueue {
         }, 3000);
       }
     });
+
   }
+
+  // Hinzufügen der isPlaying Eigenschaft
+  get isPlaying(): boolean {
+    return this.player.state.status === AudioPlayerStatus.Playing;
+  }
+
+  // Hinzufügen der play Methode
+  play() {
+    this.processQueue();
+  }
+  
 }

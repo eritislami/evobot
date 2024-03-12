@@ -64,3 +64,7 @@ typings/
 
 # Temp ignore 
 config.json
+
+
+# MacOS
+.DS_Store

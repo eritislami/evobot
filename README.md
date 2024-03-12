@@ -1,28 +1,44 @@
-![Node build](https://github.com/eritislami/evobot/actions/workflows/node.yml/badge.svg)
-![Docker build](https://github.com/eritislami/evobot/actions/workflows/docker.yml/badge.svg)
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+<p align="center">
+  <img src="/bnfoneMusicBotLogo.png" height="90px" />
+</p>
 
-![logo](https://repository-images.githubusercontent.com/186841818/8aa95700-7730-11e9-84be-e80f28520325)
+<h1 align="center"> bnfoneMusic - A Discord Music Bot</h1>
 
-# 🤖 EvoBot (Discord Music Bot)
+> This is a fork of the original [EvoBot](https://github.com/eritislami/evobot), a Discord Music Bot built with TypeScript, discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide). This version includes enhancements and additional features to improve user experience and functionality.
 
-> EvoBot is a Discord Music Bot built with TypeScript, discord.js & uses Command Handler from [discordjs.guide](https://discordjs.guide)
+![Node build](https://github.com/bnfone/DiscordMusicBot-evobot/actions/workflows/node.yml/badge.svg)
+![Docker build](https://github.com/bnfone/DiscordMusicBot-evobot/actions/workflows/docker.yml/badge.svg)
 
-## Requirements
+
+
+## 🌟 Quickstart & Support
+
+If you want to quickly add this bot to your Discord server and support its development, consider making a donation. Your contribution will help maintain and improve the bot, and as a token of appreciation, you will receive an invitation link to add the bot to your Discord server.
+
+[![Invite-Button](./unlock-invitation-link-with-donation.svg)](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
+[Donate 💖](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
+
+**💸 Donation Options:** You can choose the amount you wish to donate; every contribution is welcome and appreciated. Thank you for your generosity!
+
+**⚠️ Important Note:** While we strive to provide the best service possible, please note that we cannot guarantee 100% uptime. However, your donations greatly assist us in improving the bot's reliability and performance. Thank you for your understanding and support!
+
+
+## 📋 Requirements
 
 1. Discord Bot Token **[Guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)**  
    1.1. Enable 'Message Content Intent' in Discord Developer Portal
-2. Node.js 16.11.0 or newer
+2. Spotify Client ID & Secret *-> can be requested at [Spotify Developer Dashboard](https://developer.spotify.com/dashboard)
+3. Node.js 16.11.0 or newer
 
-## 🚀 Getting Started
+## 🛠️ Getting Started
 
 ```sh
-git clone https://github.com/eritislami/evobot.git
-cd evobot
+git clone https://github.com/bnfone/DiscordMusicBot-evobot.git  # Clone the forked repository
+cd DiscordMusicBot-evobot
 npm install
 ```
 
-After installation finishes follow configuration instructions then run `npm run start` to start the bot.
+After installation finishes, follow the configuration instructions and then run `npm run start` to start the bot.
 
 ## ⚙️ Configuration
 
@@ -32,7 +48,9 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 
 ```json
 {
-  "TOKEN": "",
+  "TOKEN": "",  // Your Discord Bot Token
+  "SPOTIFY_CLIENT_ID": "",   // Your Spotify Client ID
+  "SPOTIFY_CLIENT_SECRET": "", // Your Spotify Client Secret
   "MAX_PLAYLIST_SIZE": 10,
   "PRUNING": false,
   "LOCALE": "en",
@@ -41,97 +59,57 @@ Copy or Rename `config.json.example` to `config.json` and fill out the values:
 }
 ```
 
-## 🐬 Docker Configuration
+## 🐳 Docker Configuration
 
 For those who would prefer to use our [Docker container](https://hub.docker.com/repository/docker/eritislami/evobot), you may provide values from `config.json` as environment variables.
 
 ```shell
-docker run -e "TOKEN=<discord-token>" eritislami/evobot
+docker run -e TOKEN=your_discord_bot_token -e SPOTIFY_CLIENT_ID=your_spotify_client_id -e SPOTIFY_CLIENT_SECRET=your_spotify_client_secret bnfone/DiscordMusicBot-evobot -d
+```
+
+**Docker Compose**
+
+```yml
+version: '3.8'
+
+services:
+  discord_music_bot:
+    image: bnfone/DiscordMusicBot-evobot
+    container_name: discord_music_bot
+    environment:
+      - TOKEN=your_discord_bot_token
+      - SPOTIFY_CLIENT_ID=your_spotify_client_id
+      - SPOTIFY_CLIENT_SECRET=your_spotify_client_secret
+    restart: always
 ```
 
 ## 📝 Features & Commands
 
-- 🎶 Play music from YouTube via url
-
-`/play https://www.youtube.com/watch?v=GLvohMXgcBo`
-
-- 🔎 Play music from YouTube via search query
-
-`/play under the bridge red hot chili peppers`
-
+- 🎶 Play music from YouTube, Spotify, and Apple Music via URL
+- 🔎 Play music using search queries
+- 📃 Play YouTube, Spotify, and Apple Music playlists via URL
 - 🔎 Search and select music to play
+- 🎛️ Volume control, queue system, loop/repeat, shuffle, and more
+- 🎤 Display lyrics for the playing song
+- ⏸️ Pause, resume, skip, and stop music playback
+- 📱 Media Controls via Buttons
+- 🌍 Supports multiple locales
 
-`/search Pearl Jam`
+> **Note:** For Spotify and Apple Music integration, the bot converts the provided links to YouTube links before playing, ensuring compatibility and a broader range of music availability. The [Odesli.co API](https://odesli.co) is used for that.
 
-- 📃 Play youtube playlists via url
-
-`/playlist https://www.youtube.com/watch?v=YlUKcNNmywk&list=PL5RNCwK3GIO13SR_o57bGJCEmqFAwq82c`
-
-- 🔎 Play youtube playlists via search query
-
-`/playlist linkin park meteora`
-
-- Now Playing (/nowplaying)
-- Queue system (/queue)
-- Loop / Repeat (/loop)
-- Shuffle (/shuffle)
-- Volume control (/volume)
-- Lyrics (/lyrics)
-- Pause (/pause)
-- Resume (/resume)
-- Skip (/skip)
-- Skip to song # in queue (/skipto)
-- Move a song in the queue (/move)
-- Remove song # from queue (/remove)
-- Show ping to Discord API (/ping)
-- Show bot uptime (/uptime)
-- Toggle pruning of bot messages (/pruning)
-- Help (/help)
-- Command Handler from [discordjs.guide](https://discordjs.guide/)
-- Media Controls via Buttons
-
-![buttons](https://i.imgur.com/67TGY0c.png)
 
 ## 🌎 Locales
 
-Currently available locales are:
+This fork supports additional locales. For a complete list, please refer to the original repository. If you want to contribute by adding new locales, please check the contributing section.
 
-- English (en)
-- Arabic (ar)
-- Brazilian Portuguese (pt_br)
-- Bulgarian (bg)
-- Romanian (ro)
-- Czech (cs)
-- Dutch (nl)
-- French (fr)
-- German (de)
-- Greek (el)
-- Indonesian (id)
-- Italian (it)
-- Japanese (ja)
-- Korean (ko)
-- Minionese (mi)
-- Persian (fa)
-- Polish (pl)
-- Russian (ru)
-- Simplified Chinese (zh_cn)
-- Singaporean Mandarin (zh_sg)
-- Spanish (es)
-- Swedish (sv)
-- Traditional Chinese (zh_tw)
-- Thai (th)
-- Turkish (tr)
-- Ukrainian (uk)
-- Vietnamese (vi)
-- Check [Contributing](#-contributing) if you wish to help add more languages!
-- For languages please use [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) two letter format
+## 🤝 Contributing to This Fork
 
-## 🤝 Contributing
+1. Clone your fork: `git clone https://github.com/your-username/evobot.git`
+2. Create your feature branch: `git checkout -b my-new-feature`
+3. Commit your changes: `cz` OR `npm run commit` (Avoid using `git commit` directly)
+4. Push to the branch: `git push origin my-new-feature`
+5. Submit a pull request to the original repository and mention that it's for the forked version
 
-1. [Fork the repository](https://github.com/eritislami/evobot/fork)
-2. Clone your fork: `git clone https://github.com/your-username/evobot.git`
-3. Create your feature branch: `git checkout -b my-new-feature`
-4. Stage changes `git add .`
-5. Commit your changes: `cz` OR `npm run commit` do not use `git commit`
-6. Push to the branch: `git push origin my-new-feature`
-7. Submit a pull request
+--- 
+**Note:** This fork is maintained separately from the original  [EvoBot](https://github.com/eritislami/evobot). For changes specific to this fork, ensure to target the correct repository when submitting pull requests or issues.
+
