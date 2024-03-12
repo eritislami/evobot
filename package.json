@@ -24,7 +24,7 @@
     "array-move": "^3.0.1",
     "discord.js": "^14.14.1",
     "dotenv": "^16.4.5",
-    "ffmpeg-static": "^4.4.1",
+    "ffmpeg-static": "^5.2.0",
     "i18n": "^0.15.1",
     "lyrics-finder": "^21.0.5",
     "play-dl": "^1.9.7",
