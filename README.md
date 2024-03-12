@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="/bnfoneMusicBotLogo.png" height="90px" />
+  <img src="./img/bnfoneMusicBotLogo.png" height="90px" />
 </p>
 
 <h1 align="center"> bnfoneMusic - A Discord Music Bot</h1>
@@ -15,7 +15,7 @@
 
 If you want to quickly add this bot to your Discord server and support its development, consider making a donation. Your contribution will help maintain and improve the bot, and as a token of appreciation, you will receive an invitation link to add the bot to your Discord server.
 
-[![Invite-Button](./unlock-invitation-link-with-donation.svg)](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
+[![Invite-Button](./img/unlock-invitation-link-with-donation.svg)](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
 [Donate 💖](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
 
 **💸 Donation Options:** You can choose the amount you wish to donate; every contribution is welcome and appreciated. Thank you for your generosity!
@@ -94,6 +94,8 @@ services:
 - ⏸️ Pause, resume, skip, and stop music playback
 - 📱 Media Controls via Buttons
 - 🌍 Supports multiple locales
+
+![Preview](./img/bot-chat.png)
 
 > **Note:** For Spotify and Apple Music integration, the bot converts the provided links to YouTube links before playing, ensuring compatibility and a broader range of music availability. The [Odesli.co API](https://odesli.co) is used for that.
 
