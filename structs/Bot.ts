@@ -35,7 +35,7 @@ export class Bot {
       console.log(`${this.client.user!.username} ready!`);
 
       this.client.user!.setPresence({
-        activities: [{ name: 'Spotify & Apple Music', type: 'LISTENING' }],
+        activities: [{ name: 'Spotify & Apple Music', type: ActivityType.Listening }],
         status: 'online'
       });
 
