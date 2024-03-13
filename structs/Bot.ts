@@ -17,6 +17,8 @@ import { config } from "../utils/config";
 import { i18n } from "../utils/i18n";
 import { MissingPermissionsException } from "../utils/MissingPermissionsException";
 import { MusicQueue } from "./MusicQueue";
+import { ActivityType } from 'discord.js';
+
 
 export class Bot {
   public readonly prefix = "/";
