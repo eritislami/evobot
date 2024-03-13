@@ -32,6 +32,11 @@ export class Bot {
     this.client.on("ready", () => {
       console.log(`${this.client.user!.username} ready!`);
 
+      this.client.user!.setPresence({
+        activities: [{ name: 'Spotify & Apple Music', type: 'LISTENING' }],
+        status: 'online'
+      });
+
       this.registerSlashCommands();
     });
 
