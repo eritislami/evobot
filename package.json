@@ -37,7 +37,7 @@
     "@types/i18n": "^0.13.10",
     "@types/node": "^20.11.27",
     "cz-conventional-changelog": "^3.0.1",
-    "nodemon": "^3.1.0",
+    "nodemon": "^2.0.22",
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2"
   },
