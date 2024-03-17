@@ -179,27 +179,34 @@ export class MusicQueue {
     if (this.queueLock || this.player.state.status !== AudioPlayerStatus.Idle) {
       return;
     }
-
+  
     if (!this.songs.length) {
       return this.stop();
     }
-
+  
     this.queueLock = true;
-
-    const next = this.songs[0];
-
+  
+    // Versuche, den nächsten Song in der Queue abzuspielen
+    const nextSong = this.songs[0];
     try {
-      const resource = await next.makeResource();
-
+      const resource = await nextSong.makeResource();
       this.resource = resource!;
       this.player.play(this.resource);
       this.resource.volume?.setVolumeLogarithmic(this.volume / 100);
     } catch (error) {
-      console.error(error);
-
-      return this.processQueue();
+      // Hier handhaben wir den Fehler und überspringen den Song
+      console.error(`Fehler beim Abspielen des Songs: ${error}`);
+      this.songs.shift(); // Entferne den fehlerhaften Song aus der Queue
+  
+      if (this.textChannel) {
+        this.textChannel.send(
+          `Ein Fehler ist aufgetreten beim Abspielen des Songs **${nextSong.title}** und er wurde übersprungen.`
+        ).catch(console.error);
+      }
     } finally {
       this.queueLock = false;
+      // Rufe processQueue erneut auf, um den nächsten Song zu verarbeiten
+      if (this.songs.length) this.processQueue();
     }
   }
 

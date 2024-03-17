@@ -127,28 +127,34 @@ async function processSpotifySongs(interaction: ChatInputCommandInteraction, son
 }
 
 async function processSong(songDetail: any, interaction: ChatInputCommandInteraction, channel: VoiceChannel) {
-  const youtubeLink = await convertToYouTubeLink(songDetail.spotifyUrl, 'spotify');
-  if (!youtubeLink) {
-    console.error(`Kein YouTube-Link gefunden für Spotify URL: ${songDetail.spotifyUrl}`);
-    return;
+  try {
+    const youtubeLink = await convertToYouTubeLink(songDetail.spotifyUrl, 'spotify');
+    if (!youtubeLink) {
+      console.error(`Kein YouTube-Link gefunden für Spotify URL: ${songDetail.spotifyUrl}`);
+      return;
+    }
+
+    const song = new Song({ title: `${songDetail.title} - ${songDetail.artist}`, url: youtubeLink, duration: 0 });
+    let queue = bot.queues.get(interaction.guild!.id);
+
+    if (!queue) {
+      queue = new MusicQueue({
+        interaction,
+        textChannel: interaction.channel as TextChannel,
+        connection: joinVoiceChannel({
+          channelId: channel.id,
+          guildId: channel.guild.id,
+          adapterCreator: channel.guild.voiceAdapterCreator as DiscordGatewayAdapterCreator,
+        }),
+      });
+
+      bot.queues.set(interaction.guild!.id, queue);
+    }
+
+    queue.enqueue(song);
+  } catch (error) {
+    console.error(`Fehler beim Verarbeiten des Songs: ${songDetail.title} - ${songDetail.artist}`, error);
+    // Optional: Senden einer Nachricht im Discord-Kanal, um anzuzeigen, dass der Song übersprungen wurde
+    await interaction.followUp({ content: `Ein Fehler ist aufgetreten. Der Song ${songDetail.title} - ${songDetail.artist} wurde übersprungen.` });
   }
-
-  const song = new Song({ title: `${songDetail.title} - ${songDetail.artist}`, url: youtubeLink, duration: 0 });
-  let queue = bot.queues.get(interaction.guild!.id);
-
-  if (!queue) {
-    queue = new MusicQueue({
-      interaction,
-      textChannel: interaction.channel as TextChannel,
-      connection: joinVoiceChannel({
-        channelId: channel.id,
-        guildId: channel.guild.id,
-        adapterCreator: channel.guild.voiceAdapterCreator as DiscordGatewayAdapterCreator,
-      }),
-    });
-
-    bot.queues.set(interaction.guild!.id, queue);
-  }
-
-  queue.enqueue(song);
 }
