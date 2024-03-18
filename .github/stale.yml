@@ -2,7 +2,7 @@ only: issues
 daysUntilStale: 30
 daysUntilClose: 7
 exemptLabels:
-  - "bug: confirmed"
+  - "suspected bug"
   - "in progress"
   - "enhancement"
   - "dependencies"
