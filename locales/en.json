@@ -178,5 +178,8 @@
 		"errorCommand": "There was an error executing that command."
 	},
 	"Invite me to your server!": "Invite me to your server!",
-	"Invite": "Invite"
+	"Invite": "Invite",
+	"playnext": {
+		"description": "Plays a song after the current song :)"
+	}
 }
