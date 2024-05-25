@@ -13,14 +13,12 @@
 
 ## 🌟 Quickstart & Support
 
-If you want to quickly add this bot to your Discord server and support its development, consider making a donation. Your contribution will help maintain and improve the bot, and as a token of appreciation, you will receive an invitation link to add the bot to your Discord server.
+We no longer offer hosting for the bot. However, if you want to support its development, consider making a donation. Your contribution will help maintain and improve the bot, ensuring it remains available for those who self-host. While the bot may not be perfect, we continuously work on enhancements and appreciate your understanding and support.
 
-[![Invite-Button](./img/unlock-invitation-link-with-donation.svg)](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
 [Donate 💖](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
 
 **💸 Donation Options:** You can choose the amount you wish to donate; every contribution is welcome and appreciated. Thank you for your generosity!
 
-**⚠️ Important Note:** While we strive to provide the best service possible, please note that we cannot guarantee 100% uptime. However, your donations greatly assist us in improving the bot's reliability and performance. Thank you for your understanding and support!
 
 
 ## 📋 Requirements
