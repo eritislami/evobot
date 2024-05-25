@@ -13,12 +13,14 @@
 
 ## 🌟 Quickstart & Support
 
-We no longer offer hosting for the bot. However, if you want to support its development, consider making a donation. Your contribution will help maintain and improve the bot, ensuring it remains available for those who self-host. While the bot may not be perfect, we continuously work on enhancements and appreciate your understanding and support.
+Thank you for your support in helping us develop and maintain this bot. We greatly appreciate your understanding and contributions.
 
+**⚠️ Important Note:** We no longer offer hosting services. Thank you for your understanding and continued support!
+
+If you would still like to support us, you can make a donation here:
 [Donate 💖](https://donate.stripe.com/6oE2bm9ajcU49A43cg)
 
-**💸 Donation Options:** You can choose the amount you wish to donate; every contribution is welcome and appreciated. Thank you for your generosity!
-
+You can still choose the amount you wish to donate; every contribution is welcome and appreciated. Thank you for your generosity!
 
 
 ## 📋 Requirements
