@@ -13,14 +13,23 @@ import {
   VoiceConnectionStatus
 } from "@discordjs/voice";
 import {
+  ActionRow,
   ActionRowBuilder,
+  ActionRowComponent,
+  AnyComponent,
+  AnyComponentBuilder,
+  APIButtonComponent,
   ButtonBuilder,
+  ButtonComponent,
   ButtonInteraction,
   ButtonStyle,
   CommandInteraction,
+  ComponentType,
   GuildMember,
   Interaction,
   Message,
+  MessageActionRowComponent,
+  MessageActionRowComponentBuilder,
   TextChannel
 } from "discord.js";
 import { promisify } from "node:util";
@@ -243,6 +252,32 @@ export class MusicQueue {
     safeReply(interaction, i18n.__mf("play.decreasedVolume", { author: interaction.user, volume: this.volume })).catch(
       console.error
     );
+
+    if (this.volume == 0 || this.volume == 90) {
+      const newActionRowEmbeds = interaction.message.components.map((oldActionRow) => {
+        const updatedActionRow = new ActionRowBuilder<MessageActionRowComponentBuilder>();
+
+        updatedActionRow.addComponents(
+          oldActionRow.components.map((buttonComponent) => {
+            if (buttonComponent.type == ComponentType.Button) {
+              const newButton = ButtonBuilder.from(buttonComponent);
+
+              if (this.volume == 90) {
+                newButton.setDisabled(false);
+              } else if (this.volume == 0) {
+                const isDisabled = buttonComponent.customId == "decrease_volume" ? true : false;
+                newButton.setDisabled(isDisabled);
+              }
+              return newButton;
+            } else {
+              return buttonComponent as unknown as MessageActionRowComponentBuilder;
+            }
+          })
+        );
+        return updatedActionRow;
+      });
+      interaction.message.edit({ components: newActionRowEmbeds });
+    }
   }
 
   private async handleIncreaseVolume(interaction: ButtonInteraction): Promise<void> {
@@ -257,6 +292,31 @@ export class MusicQueue {
     safeReply(interaction, i18n.__mf("play.increasedVolume", { author: interaction.user, volume: this.volume })).catch(
       console.error
     );
+    if (this.volume == 100 || this.volume == 10) {
+      const newActionRowEmbeds = interaction.message.components.map((oldActionRow) => {
+        const updatedActionRow = new ActionRowBuilder<MessageActionRowComponentBuilder>();
+        updatedActionRow.addComponents(
+          oldActionRow.components.map((buttonComponent) => {
+            if (buttonComponent.type == ComponentType.Button) {
+              const newButton = ButtonBuilder.from(buttonComponent);
+              let isDisabled: boolean;
+              if (this.volume === 100) {
+                isDisabled = buttonComponent.customId === "increase_volume";
+                newButton.setDisabled(isDisabled);
+              }
+              if (this.volume === 10) {
+                newButton.setDisabled(false);
+              }
+              return newButton;
+            } else {
+              return buttonComponent as unknown as MessageActionRowComponentBuilder;
+            }
+          })
+        );
+        return updatedActionRow;
+      });
+      interaction.message.edit({ components: newActionRowEmbeds });
+    }
   }
 
   private async handleLoop(interaction: ButtonInteraction): Promise<void> {
@@ -287,8 +347,16 @@ export class MusicQueue {
       new ButtonBuilder().setCustomId("skip").setLabel("⏭").setStyle(ButtonStyle.Secondary),
       new ButtonBuilder().setCustomId("play_pause").setLabel("⏯").setStyle(ButtonStyle.Secondary),
       new ButtonBuilder().setCustomId("mute").setLabel("🔇").setStyle(ButtonStyle.Secondary),
-      new ButtonBuilder().setCustomId("decrease_volume").setLabel("🔉").setStyle(ButtonStyle.Secondary),
-      new ButtonBuilder().setCustomId("increase_volume").setLabel("🔊").setStyle(ButtonStyle.Secondary)
+      new ButtonBuilder()
+        .setCustomId("decrease_volume")
+        .setLabel("🔉")
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(config.DEFAULT_VOLUME == 0),
+      new ButtonBuilder()
+        .setCustomId("increase_volume")
+        .setLabel("🔊")
+        .setStyle(ButtonStyle.Secondary)
+        .setDisabled(config.DEFAULT_VOLUME == 100)
     );
     const secondRow = new ActionRowBuilder<ButtonBuilder>().addComponents(
       new ButtonBuilder().setCustomId("loop").setLabel("🔁").setStyle(ButtonStyle.Secondary),
