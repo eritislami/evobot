@@ -3,7 +3,7 @@ import youtube from "youtube-sr";
 import { i18n } from "../utils/i18n";
 import { videoPattern, isURL } from "../utils/patterns";
 
-const { stream, video_basic_info } = require("play-dl");
+const ytdl = require('@distube/ytdl-core');
 
 export interface SongData {
   url: string;
@@ -28,34 +28,41 @@ export class Song {
     let songInfo;
 
     if (isYoutubeUrl) {
-      songInfo = await video_basic_info(url);
+      try {
+        songInfo = await ytdl.getBasicInfo(url);
+        console.log("YouTube Link:", url); // Nur den YouTube-Link anzeigen
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Song-Info:", error);
+        throw error;
+      }
 
       return new this({
-        url: songInfo.video_details.url,
-        title: songInfo.video_details.title,
-        duration: parseInt(songInfo.video_details.durationInSec)
+        url: songInfo.videoDetails.video_url,
+        title: songInfo.videoDetails.title,
+        duration: parseInt(songInfo.videoDetails.lengthSeconds)
       });
     } else {
       const result = await youtube.searchOne(search);
 
-      result ? null : console.log(`No results found for ${search}`);
-
       if (!result) {
         let err = new Error(`No search results found for ${search}`);
-
         err.name = "NoResults";
-
         if (isURL.test(url)) err.name = "InvalidURL";
-
         throw err;
       }
 
-      songInfo = await video_basic_info(`https://youtube.com/watch?v=${result.id}`);
+      try {
+        songInfo = await ytdl.getBasicInfo(`https://youtube.com/watch?v=${result.id}`);
+        console.log("YouTube Link:", `https://youtube.com/watch?v=${result.id}`); // Nur den YouTube-Link anzeigen
+      } catch (error) {
+        console.error("Fehler beim Abrufen der Song-Info (Suche):", error);
+        throw error;
+      }
 
       return new this({
-        url: songInfo.video_details.url,
-        title: songInfo.video_details.title,
-        duration: parseInt(songInfo.video_details.durationInSec)
+        url: songInfo.videoDetails.video_url,
+        title: songInfo.videoDetails.title,
+        duration: parseInt(songInfo.videoDetails.lengthSeconds)
       });
     }
   }
@@ -63,15 +70,32 @@ export class Song {
   public async makeResource(): Promise<AudioResource<Song> | void> {
     let playStream;
 
-    const source = this.url.includes("youtube") ? "youtube" : "soundcloud";
-
-    if (source === "youtube") {
-      playStream = await stream(this.url);
+    if (!this.url) {
+      console.error("URL ist undefined oder null.");
+      return;
     }
 
-    if (!stream) return;
+    try {
+      if (this.url.includes("youtube")) {
+        playStream = await ytdl(this.url, {
+          filter: 'audioonly',
+          quality: 'highestaudio',
+          highWaterMark: 1 << 25 // Erhöhen der Puffergröße
+        });
+      } else {
+        // Handhabung für andere Quellen falls benötigt
+      }
+    } catch (error) {
+      console.error("Fehler beim Abrufen des Streams:", error);
+      return;
+    }
 
-    return createAudioResource(playStream.stream, { metadata: this, inputType: playStream.type, inlineVolume: true });
+    if (!playStream) {
+      console.error("Stream konnte nicht abgerufen werden.");
+      return;
+    }
+
+    return createAudioResource(playStream, { metadata: this, inputType: StreamType.Arbitrary, inlineVolume: true });
   }
 
   public startMessage() {

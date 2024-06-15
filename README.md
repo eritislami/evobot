@@ -10,13 +10,6 @@
 ![Docker build](https://github.com/bnfone/DiscordMusicBot-evobot/actions/workflows/docker.yml/badge.svg)
 
 
-## ⚠️ Note: This Bot is not working at the moment!
-YouTube changed some things in how things worked. Now it seems that the Bot is no longer compatible ...
-Hope I'll find a solution for that asap.
-
-Related Issue of the "Motherproject": 
-- [🐛 Sign in to confirm you’re not a bot #1638](https://github.com/eritislami/evobot/issues/1638#issue-2340479387)
-- [[=BUG=] Youtube requires sign in to confirm you are not a bot #370](https://github.com/play-dl/play-dl/issues/370#issue-2354076599)
 ## 🌟 Quickstart & Support
 
 Thank you for your support in helping us develop and maintain this bot. We greatly appreciate your understanding and contributions.
