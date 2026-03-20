@@ -1,4 +1,5 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ quiet: true });
 import { Config } from "../interfaces/Config";
 
 let config: Config;

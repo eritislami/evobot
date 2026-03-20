@@ -25,17 +25,17 @@ export default {
       nowPlaying.addFields({
         name: "\u200b",
         value:
-          new Date(seek * 1000).toISOString().substr(11, 8) +
+          new Date(seek * 1000).toISOString().substring(11, 19) +
           "[" +
           splitBar(song.duration == 0 ? seek : song.duration, seek, 20)[0] +
           "]" +
-          (song.duration == 0 ? " ◉ LIVE" : new Date(song.duration * 1000).toISOString().substr(11, 8)),
+          (song.duration == 0 ? " ◉ LIVE" : new Date(song.duration * 1000).toISOString().substring(11, 19)),
         inline: false
       });
 
       nowPlaying.setFooter({
         text: i18n.__mf("nowplaying.timeRemaining", {
-          time: new Date(left * 1000).toISOString().substr(11, 8)
+          time: new Date(left * 1000).toISOString().substring(11, 19)
         })
       });
     }

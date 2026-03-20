@@ -9,7 +9,7 @@
   "repository": "github:eritislami/evobot",
   "bugs": "https://github.com/eritislami/evobot/issues",
   "engines": {
-    "node": ">=16.11.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "dev": "nodemon index.ts",
@@ -20,32 +20,30 @@
     "format": "npx prettier --write '**/*.ts' --config .prettierrc"
   },
   "dependencies": {
-    "@discordjs/voice": "^0.17.0",
+    "@discordjs/voice": "^0.18.0",
     "array-move": "^3.0.1",
-    "discord.js": "^14.15.3",
-    "dotenv": "^16.4.5",
-    "ffmpeg-static": "^4.4.1",
-    "i18n": "^0.15.1",
-    "lyrics-finder": "^21.0.5",
+    "discord.js": "^14.25.1",
+    "dotenv": "^17.3.1",
+    "ffmpeg-static": "^5.3.0",
+    "i18n": "^0.15.3",
+    "lyrics-finder": "^21.7.0",
     "play-dl": "^1.9.7",
-    "soundcloud-downloader": "^0.2.3",
     "string-progressbar": "^1.0.4",
-    "youtube-sr": "~4.3.0"
+    "youtube-sr": "~4.3.12"
   },
   "devDependencies": {
     "@types/i18n": "^0.13.12",
-    "@types/node": "^20.14.2",
-    "cz-conventional-changelog": "^3.0.1",
-    "nodemon": "^2.0.22",
-    "prettier": "^3.3.1",
+    "@types/node": "^22.15.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "nodemon": "^3.1.14",
+    "prettier": "^3.8.1",
     "ts-node": "^10.9.2"
   },
   "optionalDependencies": {
-    "@discordjs/opus": "^0.9.0",
-    "libsodium-wrappers": "^0.7.13",
+    "@discordjs/opus": "^0.10.0",
+    "libsodium-wrappers": "^0.8.2",
     "opusscript": "^0.1.1",
-    "sodium-native": "^3.4.1",
-    "tweetnacl": "^1.0.3"
+    "sodium-native": "^4.3.3"
   },
   "config": {
     "commitizen": {
