@@ -49,6 +49,15 @@ For those who would prefer to use our [Docker container](https://hub.docker.com/
 docker run -e "TOKEN=<discord-token>" eritislami/evobot
 ```
 
+## Easypanel
+
+If you'd rather not manage the container yourself, [Easypanel](https://easypanel.io) is a self-hosted deployment platform with a one-click EvoBot template:
+
+[![Deploy on Easypanel][easypanel-btn]][easypanel-deploy]
+
+[easypanel-btn]: https://easypanel.io/img/deploy-on-easypanel-40.svg
+[easypanel-deploy]: https://easypanel.io/templates/evobot
+
 ## 📝 Features & Commands
 
 - 🎶 Play music from YouTube via url
